@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JLC Studio portfolio - Browse our collection of florals, event decor, and custom tailoring work.">
+    <title>Portfolio | JLC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">JLC Studio</span></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link active">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta">Get in Touch</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-hero short">
+        <div class="page-hero-image">
+            <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80" alt="Floral arrangement">
+        </div>
+        <div class="page-hero-content">
+            <span class="section-label">Our Work</span>
+            <h1>Portfolio</h1>
+            <p>A collection of our finest creations</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="florals">Florals</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="tailoring">Tailoring</button>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Florals -->
+                <div class="gallery-item" data-category="florals">
+                    <img src="https://images.unsplash.com/photo-1561128290-005859246e58?w=600&q=80" alt="Romantic bridal bouquet">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Florals</span>
+                        <h4>Romantic Bridal Bouquet</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="florals">
+                    <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600&q=80" alt="Spring centerpiece">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Florals</span>
+                        <h4>Spring Centerpiece</h4>
+                    </div>
+                </div>
+                <div class="gallery-item large" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Wedding reception">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Events</span>
+                        <h4>Elegant Wedding Reception</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="florals">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Wildflower arrangement">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Florals</span>
+                        <h4>Wildflower Arrangement</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80" alt="Gala decor">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Events</span>
+                        <h4>Corporate Gala</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tailoring">
+                    <img src="https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=600&q=80" alt="Wedding dress detail">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Tailoring</span>
+                        <h4>Bridal Gown Detail</h4>
+                    </div>
+                </div>
+                <div class="gallery-item large" data-category="florals">
+                    <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=800&q=80" alt="Ceremony arch">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Florals</span>
+                        <h4>Ceremony Arch</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1460364157752-926555571943?w=600&q=80" alt="Event lighting">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Events</span>
+                        <h4>Ambient Lighting Design</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tailoring">
+                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Tailoring detail">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Tailoring</span>
+                        <h4>Custom Alteration</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="florals">
+                    <img src="https://images.unsplash.com/photo-1522057384400-681b421cfebc?w=600&q=80" alt="Table florals">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Florals</span>
+                        <h4>Reception Centerpieces</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80" alt="Outdoor ceremony">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Events</span>
+                        <h4>Garden Ceremony</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="florals">
+                    <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=600&q=80" alt="Bouquet">
+                    <div class="gallery-overlay">
+                        <span class="gallery-category">Florals</span>
+                        <h4>Garden Style Bouquet</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-image">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="Event setup">
+        </div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Love What You See?</h2>
+                <p>Let's create something beautiful for your next occasion.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-large">Start Your Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">JLC Studio</div>
+                    <p>Where creativity meets occasion.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#florals">Floral Design</a></li>
+                        <li><a href="services.html#decor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Studio</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>Sarasota, FL 34232</p>
+                        <p><a href="tel:941-769-7526">(941) 769-7526</a></p>
+                        <p><a href="mailto:jeremyhuffer@gmail.com">jeremyhuffer@gmail.com</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 JLC Studio. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery Filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
