@@ -6,6 +6,11 @@ const https = require('https');
 const REPO_OWNER = 'PheonixOfTesla';
 const REPO_NAME = 'jlc-studio';
 
+// Debug logging
+function log(...args) {
+    console.log('[save-content]', ...args);
+}
+
 async function githubRequest(method, path, body = null) {
     const token = process.env.GITHUB_TOKEN;
     if (!token) {
@@ -75,28 +80,44 @@ async function saveFile(filePath, content, message) {
 }
 
 module.exports = async (req, res) => {
+    log('Request received:', req.method, req.url);
+
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     if (req.method === 'OPTIONS') {
+        log('OPTIONS request, returning 200');
         return res.status(200).end();
     }
 
     if (req.method !== 'POST') {
+        log('Method not allowed:', req.method);
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
     // Verify admin token
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        log('Unauthorized - missing or invalid auth header');
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    try {
-        const { type, data } = req.body;
+    // Check if GITHUB_TOKEN exists
+    if (!process.env.GITHUB_TOKEN) {
+        log('ERROR: GITHUB_TOKEN environment variable not set!');
+        return res.status(500).json({
+            error: 'Server configuration error',
+            details: 'GITHUB_TOKEN not configured'
+        });
+    }
 
-        if (!type || !data) {
+    try {
+        const { type, data } = req.body || {};
+        log('Processing save for type:', type);
+
+        if (!type || data === undefined) {
+            log('Missing type or data in request body');
             return res.status(400).json({ error: 'Missing type or data' });
         }
 
@@ -116,8 +137,11 @@ module.exports = async (req, res) => {
 
         const filePath = fileMap[type];
         if (!filePath) {
+            log('Unknown content type:', type);
             return res.status(400).json({ error: `Unknown content type: ${type}` });
         }
+
+        log('Saving to:', filePath);
 
         // Save to GitHub
         const result = await saveFile(
@@ -125,6 +149,8 @@ module.exports = async (req, res) => {
             data,
             `Update ${type} via admin panel`
         );
+
+        log('Save successful, commit:', result.commit?.sha);
 
         return res.status(200).json({
             success: true,
@@ -134,7 +160,8 @@ module.exports = async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Save error:', error);
+        log('Save error:', error.message);
+        console.error('Full error:', error);
         return res.status(500).json({
             error: 'Failed to save content',
             details: error.message
