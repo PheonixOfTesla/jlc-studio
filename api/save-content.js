@@ -100,12 +100,16 @@ module.exports = async (req, res) => {
             return res.status(400).json({ error: 'Missing type or data' });
         }
 
-        // Map content types to file paths
+        // Map content types to file paths - ALL editable content
         const fileMap = {
             'hero': '_data/hero.json',
             'about': '_data/about.json',
             'settings': '_data/settings.json',
             'services': '_data/services.json',
+            'packages': '_data/packages.json',
+            'testimonials': '_data/testimonials.json',
+            'faq': '_data/faq.json',
+            'theme': '_data/theme.json',
             'gallery': '_data/gallery.json'
         };
 

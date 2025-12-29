@@ -3,94 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JLC Studio - Admin</title>
+    <title>JLC Studio - Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --gold: #C4A052;
-            --gold-dark: #A68A42;
+            --primary: #C4A052;
+            --primary-dark: #A68A42;
+            --accent: #F5E6E0;
             --dark: #1a1a1a;
-            --gray: #666;
-            --light-gray: #999;
-            --bg: #f8f8f8;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fafaf8;
             --white: #fff;
-            --green: #2ecc71;
+            --success: #7D9B76;
+            --error: #C45B5B;
+            --border: #e5e5e5;
         }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg); min-height: 100vh; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); min-height: 100vh; color: var(--text); }
 
-        /* Login */
+        /* LOGIN */
         .login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%); }
         .login-screen.hidden { display: none; }
         .login-box { background: var(--white); padding: 3rem; border-radius: 16px; width: 100%; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .login-logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); text-align: center; margin-bottom: 2rem; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--dark); }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.875rem 1rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .btn-primary { background: var(--gold); color: var(--white); }
-        .btn-primary:hover { background: var(--gold-dark); }
-        .btn-save { background: var(--green); color: white; }
-        .btn-save:hover { background: #27ae60; }
-        .error-msg { background: #fee; color: #c00; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; display: none; }
+        .login-logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--primary); text-align: center; margin-bottom: 0.5rem; }
+        .login-subtitle { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-bottom: 2rem; }
+        .error-msg { background: #fef2f2; color: var(--error); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; display: none; font-size: 0.9rem; }
         .error-msg.show { display: block; }
 
-        /* Dashboard */
+        /* FORMS */
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.875rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 0.95rem; font-family: inherit; transition: all 0.2s; background: var(--white); }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(196,160,82,0.1); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+        .form-hint { font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem; }
+
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .btn-save { background: var(--success); color: var(--white); }
+        .btn-save:hover { background: #6a8965; }
+        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-danger { background: var(--error); color: var(--white); }
+        .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; }
+        .btn-block { width: 100%; }
+
+        /* DASHBOARD */
         .dashboard { display: none; }
         .dashboard.active { display: flex; min-height: 100vh; }
 
-        /* Sidebar */
-        .sidebar { width: 260px; background: var(--dark); color: white; padding: 2rem 0; position: fixed; height: 100vh; overflow-y: auto; }
-        .sidebar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); padding: 0 1.5rem; margin-bottom: 2rem; }
-        .sidebar-section { padding: 0.5rem 1.5rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--light-gray); margin-top: 1.5rem; }
-        .nav-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; color: #ccc; text-decoration: none; font-size: 0.9rem; border-left: 3px solid transparent; cursor: pointer; transition: all 0.2s; }
-        .nav-item:hover { background: rgba(255,255,255,0.05); color: white; }
-        .nav-item.active { background: rgba(196, 160, 82, 0.1); color: var(--gold); border-left-color: var(--gold); }
-        .nav-item svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
-        .sidebar-footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .logout-btn { width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: none; color: white; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
+        /* SIDEBAR */
+        .sidebar { width: 280px; background: var(--dark); color: var(--white); position: fixed; height: 100vh; overflow-y: auto; }
+        .sidebar-header { padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--primary); }
+        .sidebar-user { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.25rem; }
+        .sidebar-section { padding: 0.75rem 1.5rem 0.5rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+        .nav-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.5rem; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; border-left: 3px solid transparent; cursor: pointer; transition: all 0.2s; }
+        .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--white); }
+        .nav-item.active { background: rgba(196,160,82,0.15); color: var(--primary); border-left-color: var(--primary); }
+        .nav-item svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+        .sidebar-footer { padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
+        .logout-btn { width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: none; color: var(--white); border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: all 0.2s; }
         .logout-btn:hover { background: rgba(255,255,255,0.15); }
 
-        /* Main Content */
-        .main-content { flex: 1; margin-left: 260px; padding: 2rem; }
-        .page-header { margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; }
-        .page-header p { color: var(--gray); font-size: 0.9rem; margin-top: 0.25rem; }
+        /* MAIN CONTENT */
+        .main-content { flex: 1; margin-left: 280px; padding: 2rem; max-width: calc(100vw - 280px); }
+        .page-header { margin-bottom: 2rem; }
+        .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .page-header p { color: var(--text-light); font-size: 0.9rem; }
 
-        /* Cards */
-        .card { background: var(--white); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+        /* CARDS */
+        .card { background: var(--white); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid var(--border); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
         .card-header h3 { font-size: 1rem; font-weight: 600; }
-        .card-preview { background: var(--bg); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; color: var(--gray); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 
-        /* Sections */
+        /* SECTIONS */
         .section { display: none; }
         .section.active { display: block; }
 
-        /* Form Layout */
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .form-hint { font-size: 0.8rem; color: var(--light-gray); margin-top: 0.25rem; }
+        /* STATUS */
+        .status { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; padding: 0.35rem 0.75rem; border-radius: 20px; font-weight: 500; }
+        .status-connected { background: rgba(125,155,118,0.15); color: var(--success); }
+        .status-connected::before { content: ''; width: 6px; height: 6px; background: var(--success); border-radius: 50%; }
 
-        /* Toast */
-        .toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem; background: var(--dark); color: var(--white); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; }
+        /* ITEMS */
+        .item-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .item { background: var(--bg); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); }
+        .item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+        .item-number { font-size: 0.7rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; }
+        .delete-btn { background: none; border: none; color: var(--error); cursor: pointer; font-size: 0.8rem; padding: 0.25rem 0.5rem; border-radius: 4px; }
+        .delete-btn:hover { background: rgba(196,91,91,0.1); }
+
+        /* COLOR PICKER */
+        .color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+        .color-swatch { aspect-ratio: 1; border-radius: 8px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s; position: relative; }
+        .color-swatch:hover { transform: scale(1.05); }
+        .color-swatch.active { border-color: var(--dark); }
+        .color-swatch.active::after { content: ''; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+        .color-input-group { display: flex; gap: 0.5rem; align-items: center; }
+        .color-input-group input[type="color"] { width: 50px; height: 40px; border: none; border-radius: 8px; cursor: pointer; }
+        .color-input-group input[type="text"] { flex: 1; }
+        .rgb-display { font-family: monospace; font-size: 0.85rem; color: var(--text-light); }
+
+        /* STATS */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .stat-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border); }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 0.5rem; }
+        .stat-value { font-size: 1.75rem; font-weight: 600; color: var(--dark); font-family: 'Cormorant Garamond', serif; }
+        .stat-note { font-size: 0.8rem; color: var(--text-light); margin-top: 0.25rem; }
+
+        /* TOAST */
+        .toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem; background: var(--dark); color: var(--white); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; display: flex; align-items: center; gap: 0.75rem; }
         .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.success { background: var(--green); }
-        .toast.error { background: #c00; }
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--error); }
 
-        /* Service Item */
-        .service-item { background: var(--bg); padding: 1rem; border-radius: 8px; margin-bottom: 0.75rem; }
-        .service-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-        .delete-btn { background: none; border: none; color: #c00; cursor: pointer; font-size: 0.8rem; }
+        /* IMAGE UPLOAD */
+        .image-upload { border: 2px dashed var(--border); border-radius: 8px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .image-upload:hover { border-color: var(--primary); background: rgba(196,160,82,0.05); }
+        .image-preview { width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
 
-        /* Status Badge */
-        .status-connected { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--green); }
-        .status-connected::before { content: ''; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+        /* INCLUDES LIST */
+        .includes-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .include-tag { background: rgba(196,160,82,0.15); color: var(--primary-dark); padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+        .include-tag button { background: none; border: none; color: inherit; cursor: pointer; font-size: 1rem; line-height: 1; }
 
-        @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; }
-            .form-row { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; max-width: 100%; }
+            .dashboard.active { flex-direction: column; }
+            .form-row, .form-row-3 { grid-template-columns: 1fr; }
+            .color-grid { grid-template-columns: repeat(5, 1fr); }
         }
     </style>
 </head>
@@ -99,17 +148,18 @@
     <div class="login-screen" id="loginScreen">
         <div class="login-box">
             <div class="login-logo">JLC Studio</div>
+            <div class="login-subtitle">Admin Dashboard</div>
             <div class="error-msg" id="loginError"></div>
             <form id="loginForm">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" id="username" required>
+                    <input type="text" id="username" required autocomplete="username">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" required>
+                    <input type="password" id="password" required autocomplete="current-password">
                 </div>
-                <button type="submit" class="btn btn-primary" style="width:100%">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </form>
         </div>
     </div>
@@ -117,9 +167,12 @@
     <!-- DASHBOARD -->
     <div class="dashboard" id="dashboard">
         <aside class="sidebar">
-            <div class="sidebar-logo">JLC Studio</div>
+            <div class="sidebar-header">
+                <div class="sidebar-logo">JLC Studio</div>
+                <div class="sidebar-user">Welcome, JLynne</div>
+            </div>
 
-            <div class="sidebar-section">Site Sections</div>
+            <div class="sidebar-section">Website Content</div>
             <a class="nav-item active" data-section="hero">
                 <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
                 Hero Banner
@@ -129,19 +182,37 @@
                 About / Bio
             </a>
             <a class="nav-item" data-section="services">
-                <svg viewBox="0 0 24 24"><rect x="2" y="7" width="6" height="10" rx="1"/><rect x="9" y="4" width="6" height="13" rx="1"/><rect x="16" y="10" width="6" height="7" rx="1"/></svg>
-                Services
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Services & Pricing
+            </a>
+            <a class="nav-item" data-section="packages">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Packages
             </a>
             <a class="nav-item" data-section="testimonials">
                 <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 Testimonials
             </a>
+            <a class="nav-item" data-section="faq">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                FAQ
+            </a>
             <a class="nav-item" data-section="contact">
-                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Contact Info
             </a>
 
+            <div class="sidebar-section">Appearance</div>
+            <a class="nav-item" data-section="theme">
+                <svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.73-.67 1.9-1.57.1-.56-.09-1.14-.48-1.54-.39-.4-.58-.96-.48-1.54.17-.9.97-1.56 1.88-1.56H17c2.76 0 5-2.24 5-5 0-4.42-4.03-8.79-10-8.79z"/></svg>
+                Color Theme
+            </a>
+
             <div class="sidebar-section">Business</div>
+            <a class="nav-item" data-section="analytics">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                Analytics
+            </a>
             <a class="nav-item" data-section="integrations">
                 <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Calendly & Stripe
@@ -153,23 +224,18 @@
         </aside>
 
         <main class="main-content">
-            <!-- HERO SECTION -->
+            <!-- HERO -->
             <section id="hero" class="section active">
                 <div class="page-header">
-                    <div>
-                        <h1>Hero Banner</h1>
-                        <p>Edit the main banner visitors see first</p>
-                    </div>
+                    <h1>Hero Banner</h1>
+                    <p>Edit the main banner that visitors see first on your homepage</p>
                 </div>
-
                 <div class="card">
-                    <div class="card-preview">
-                        Preview: This appears at the top of your homepage
-                    </div>
                     <form id="heroForm">
                         <div class="form-group">
                             <label>Badge Text</label>
                             <input type="text" id="heroBadge" placeholder="e.g., Sarasota's Premier Creative Studio">
+                            <div class="form-hint">Small text that appears above the main title</div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
@@ -199,22 +265,23 @@
                                 <input type="text" id="heroBtnSecondary" placeholder="View Our Work">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-save">Save Changes</button>
+                        <div class="form-group">
+                            <label>Hero Image URL</label>
+                            <input type="text" id="heroImage" placeholder="/assets/images/hero.jpg">
+                            <div class="form-hint">Enter image path or URL</div>
+                        </div>
+                        <button type="submit" class="btn btn-save">Save Hero Section</button>
                     </form>
                 </div>
             </section>
 
-            <!-- ABOUT SECTION -->
+            <!-- ABOUT -->
             <section id="about" class="section">
                 <div class="page-header">
-                    <div>
-                        <h1>About / Bio</h1>
-                        <p>Edit your personal information and bio</p>
-                    </div>
+                    <h1>About / Bio</h1>
+                    <p>Edit your personal information and professional bio</p>
                 </div>
-
                 <div class="card">
-                    <div class="card-header"><h3>Personal Info</h3></div>
                     <form id="aboutForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -222,13 +289,13 @@
                                 <input type="text" id="aboutName" placeholder="JLynne Huffer">
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
+                                <label>Professional Title</label>
                                 <input type="text" id="aboutTitle" placeholder="Founder & Creative Director">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Bio</label>
-                            <textarea id="aboutBio" rows="4" placeholder="Your professional background..."></textarea>
+                            <label>Bio / About Text</label>
+                            <textarea id="aboutBio" rows="5" placeholder="Your professional background and story..."></textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
@@ -240,75 +307,100 @@
                                 <input type="number" id="aboutEvents" placeholder="500">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-save">Save Changes</button>
+                        <div class="form-group">
+                            <label>Profile Photo URL</label>
+                            <input type="text" id="aboutPhoto" placeholder="/assets/images/jlynne.jpg">
+                        </div>
+                        <button type="submit" class="btn btn-save">Save About Section</button>
                     </form>
                 </div>
             </section>
 
-            <!-- SERVICES SECTION -->
+            <!-- SERVICES -->
             <section id="services" class="section">
                 <div class="page-header">
-                    <div>
-                        <h1>Services & Pricing</h1>
-                        <p>Manage your service offerings</p>
-                    </div>
+                    <h1>Services & Pricing</h1>
+                    <p>Manage your service offerings and pricing</p>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Floral Design</h3>
+                        <h3>Floral Design Services</h3>
+                        <button type="button" class="btn btn-outline btn-small" onclick="addService('floral')">+ Add Service</button>
                     </div>
-                    <div id="floralServices"></div>
-                    <button type="button" class="btn btn-primary" onclick="addService('floral')" style="margin-top:1rem">+ Add Service</button>
+                    <div class="item-list" id="floralServices"></div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Event Decor</h3>
+                        <h3>Event Decor Services</h3>
+                        <button type="button" class="btn btn-outline btn-small" onclick="addService('decor')">+ Add Service</button>
                     </div>
-                    <div id="decorServices"></div>
-                    <button type="button" class="btn btn-primary" onclick="addService('decor')" style="margin-top:1rem">+ Add Service</button>
+                    <div class="item-list" id="decorServices"></div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Custom Tailoring</h3>
+                        <h3>Custom Tailoring Services</h3>
+                        <button type="button" class="btn btn-outline btn-small" onclick="addService('tailoring')">+ Add Service</button>
                     </div>
-                    <div id="tailoringServices"></div>
-                    <button type="button" class="btn btn-primary" onclick="addService('tailoring')" style="margin-top:1rem">+ Add Service</button>
+                    <div class="item-list" id="tailoringServices"></div>
                 </div>
 
-                <button type="button" class="btn btn-save" onclick="saveServices()" style="margin-top:1rem">Save All Services</button>
+                <button type="button" class="btn btn-save" onclick="saveServices()">Save All Services</button>
             </section>
 
-            <!-- TESTIMONIALS SECTION -->
+            <!-- PACKAGES -->
+            <section id="packages" class="section">
+                <div class="page-header">
+                    <h1>Packages</h1>
+                    <p>Manage your bundled service packages</p>
+                </div>
+                <div class="item-list" id="packagesList"></div>
+                <button type="button" class="btn btn-outline" onclick="addPackage()" style="margin-top:1rem">+ Add Package</button>
+                <button type="button" class="btn btn-save" onclick="savePackages()" style="margin-top:1rem;margin-left:1rem">Save Packages</button>
+            </section>
+
+            <!-- TESTIMONIALS -->
             <section id="testimonials" class="section">
                 <div class="page-header">
-                    <div>
-                        <h1>Testimonials</h1>
-                        <p>Manage client reviews</p>
-                    </div>
+                    <h1>Testimonials</h1>
+                    <p>Manage client reviews and testimonials</p>
                 </div>
-
-                <div class="card">
-                    <div id="testimonialsList"></div>
-                    <button type="button" class="btn btn-primary" onclick="addTestimonial()" style="margin-top:1rem">+ Add Testimonial</button>
-                </div>
-
-                <button type="button" class="btn btn-save" onclick="saveTestimonials()" style="margin-top:1rem">Save Testimonials</button>
+                <div class="item-list" id="testimonialsList"></div>
+                <button type="button" class="btn btn-outline" onclick="addTestimonial()" style="margin-top:1rem">+ Add Testimonial</button>
+                <button type="button" class="btn btn-save" onclick="saveTestimonials()" style="margin-top:1rem;margin-left:1rem">Save Testimonials</button>
             </section>
 
-            <!-- CONTACT SECTION -->
+            <!-- FAQ -->
+            <section id="faq" class="section">
+                <div class="page-header">
+                    <h1>FAQ</h1>
+                    <p>Manage frequently asked questions</p>
+                </div>
+                <div class="item-list" id="faqList"></div>
+                <button type="button" class="btn btn-outline" onclick="addFaq()" style="margin-top:1rem">+ Add Question</button>
+                <button type="button" class="btn btn-save" onclick="saveFaq()" style="margin-top:1rem;margin-left:1rem">Save FAQ</button>
+            </section>
+
+            <!-- CONTACT -->
             <section id="contact" class="section">
                 <div class="page-header">
-                    <div>
-                        <h1>Contact Information</h1>
-                        <p>Update your business contact details</p>
-                    </div>
+                    <h1>Contact Information</h1>
+                    <p>Update your business contact details</p>
                 </div>
-
                 <div class="card">
                     <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Business Name</label>
+                                <input type="text" id="contactBusiness" placeholder="JLC Studio">
+                            </div>
+                            <div class="form-group">
+                                <label>Tagline</label>
+                                <input type="text" id="contactTagline" placeholder="Where Creativity Meets Occasion">
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Phone</label>
@@ -316,7 +408,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" id="contactEmail" placeholder="email@example.com">
+                                <input type="email" id="contactEmail" placeholder="hello@jlcstudio.art">
                             </div>
                         </div>
                         <div class="form-group">
@@ -326,43 +418,137 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Instagram URL</label>
-                                <input type="url" id="contactInstagram" placeholder="https://instagram.com/...">
+                                <input type="url" id="contactInstagram" placeholder="https://instagram.com/jlcstudio">
                             </div>
                             <div class="form-group">
                                 <label>Pinterest URL</label>
-                                <input type="url" id="contactPinterest" placeholder="https://pinterest.com/...">
+                                <input type="url" id="contactPinterest" placeholder="https://pinterest.com/jlcstudio">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-save">Save Changes</button>
+                        <button type="submit" class="btn btn-save">Save Contact Info</button>
                     </form>
                 </div>
             </section>
 
-            <!-- INTEGRATIONS SECTION -->
+            <!-- THEME -->
+            <section id="theme" class="section">
+                <div class="page-header">
+                    <h1>Color Theme</h1>
+                    <p>Customize your website colors with RGB control</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Color Presets</h3>
+                    </div>
+                    <div class="color-grid" id="colorPresets"></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Custom Colors</h3>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Primary Color</label>
+                            <div class="color-input-group">
+                                <input type="color" id="themePrimary" value="#C4A052">
+                                <input type="text" id="themePrimaryHex" placeholder="#C4A052">
+                            </div>
+                            <div class="rgb-display" id="themePrimaryRgb">RGB: 196, 160, 82</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Accent Color</label>
+                            <div class="color-input-group">
+                                <input type="color" id="themeAccent" value="#F5E6E0">
+                                <input type="text" id="themeAccentHex" placeholder="#F5E6E0">
+                            </div>
+                            <div class="rgb-display" id="themeAccentRgb">RGB: 245, 230, 224</div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Dark Color</label>
+                            <div class="color-input-group">
+                                <input type="color" id="themeDark" value="#1A1A1A">
+                                <input type="text" id="themeDarkHex" placeholder="#1A1A1A">
+                            </div>
+                            <div class="rgb-display" id="themeDarkRgb">RGB: 26, 26, 26</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Background Color</label>
+                            <div class="color-input-group">
+                                <input type="color" id="themeBg" value="#FAFAF8">
+                                <input type="text" id="themeBgHex" placeholder="#FAFAF8">
+                            </div>
+                            <div class="rgb-display" id="themeBgRgb">RGB: 250, 250, 248</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-save" onclick="saveTheme()">Save Theme</button>
+                </div>
+            </section>
+
+            <!-- ANALYTICS -->
+            <section id="analytics" class="section">
+                <div class="page-header">
+                    <h1>Business Analytics</h1>
+                    <p>View your booking and revenue data from connected services</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Bookings</div>
+                        <div class="stat-value" id="statBookings">-</div>
+                        <div class="stat-note">Via Calendly</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">This Month</div>
+                        <div class="stat-value" id="statMonthly">-</div>
+                        <div class="stat-note">Upcoming events</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Revenue</div>
+                        <div class="stat-value" id="statRevenue">-</div>
+                        <div class="stat-note">Via Stripe</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Avg. Booking</div>
+                        <div class="stat-value" id="statAvg">-</div>
+                        <div class="stat-note">Per client</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-outline">View Calendly Schedule</a>
+                        <a href="https://dashboard.stripe.com" target="_blank" class="btn btn-outline">View Stripe Dashboard</a>
+                    </div>
+                    <p style="margin-top:1rem;color:var(--text-light);font-size:0.85rem">Analytics will populate once Calendly and Stripe APIs are connected. Data shown here is read-only.</p>
+                </div>
+            </section>
+
+            <!-- INTEGRATIONS -->
             <section id="integrations" class="section">
                 <div class="page-header">
-                    <div>
-                        <h1>Calendly & Stripe</h1>
-                        <p>Manage your booking and payment integrations</p>
-                    </div>
+                    <h1>Calendly & Stripe</h1>
+                    <p>Manage your booking and payment integrations</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Calendly</h3>
-                        <span class="status-connected">Connected</span>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Calendly</h3>
+                            <span class="status status-connected">Connected</span>
+                        </div>
+                        <p style="color:var(--text-light);margin-bottom:1rem;font-size:0.9rem">Manage your booking calendar and availability</p>
+                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-primary">Open Calendly Dashboard</a>
                     </div>
-                    <p style="color: var(--gray); margin-bottom: 1rem;">View and manage your booking schedule</p>
-                    <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-primary">Open Calendly Dashboard</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Stripe</h3>
-                        <span class="status-connected">Connected</span>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Stripe</h3>
+                            <span class="status status-connected">Connected</span>
+                        </div>
+                        <p style="color:var(--text-light);margin-bottom:1rem;font-size:0.9rem">View payments, transactions, and revenue</p>
+                        <a href="https://dashboard.stripe.com" target="_blank" class="btn btn-primary">Open Stripe Dashboard</a>
                     </div>
-                    <p style="color: var(--gray); margin-bottom: 1rem;">View payments and revenue</p>
-                    <a href="https://dashboard.stripe.com" target="_blank" class="btn btn-primary">Open Stripe Dashboard</a>
                 </div>
             </section>
         </main>
@@ -371,16 +557,23 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        // Data
+        // =====================
+        // DATA STORE
+        // =====================
         let siteData = {
-            hero: { badge: '', titleLine1: '', titleLine2: '', subtitle: '', description: '', primaryBtn: '', secondaryBtn: '' },
-            about: { name: '', title: '', bio: '', years: 15, events: 500 },
-            settings: { phone: '', email: '', address: '', instagram: '', pinterest: '' },
+            hero: {},
+            about: {},
+            settings: {},
             services: [],
-            testimonials: []
+            packages: [],
+            testimonials: [],
+            faq: [],
+            theme: {}
         };
 
-        // Auth
+        // =====================
+        // AUTH
+        // =====================
         const CREDS = { username: 'jlcstudio', password: 'JLC2024!' };
         let authToken = null;
 
@@ -393,14 +586,15 @@
                 localStorage.setItem('jlc_token', authToken);
                 showDashboard();
             } else {
-                document.getElementById('loginError').textContent = 'Invalid credentials';
+                document.getElementById('loginError').textContent = 'Invalid username or password';
                 document.getElementById('loginError').classList.add('show');
             }
         });
 
         function checkAuth() {
-            if (localStorage.getItem('jlc_token')) {
-                authToken = localStorage.getItem('jlc_token');
+            const token = localStorage.getItem('jlc_token');
+            if (token) {
+                authToken = token;
                 showDashboard();
             }
         }
@@ -416,7 +610,9 @@
             location.reload();
         }
 
-        // Navigation
+        // =====================
+        // NAVIGATION
+        // =====================
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function() {
                 const section = this.dataset.section;
@@ -427,16 +623,23 @@
             });
         });
 
-        // Load Data
+        // =====================
+        // LOAD DATA
+        // =====================
         async function loadAllData() {
-            const [hero, about, settings, services] = await Promise.all([
-                fetchJSON('hero'), fetchJSON('about'), fetchJSON('settings'), fetchJSON('services')
-            ]);
-            if (hero) siteData.hero = hero;
-            if (about) siteData.about = about;
-            if (settings) siteData.settings = settings;
-            if (services) siteData.services = services;
-            populateForms();
+            const files = ['hero', 'about', 'settings', 'services', 'packages', 'testimonials', 'faq', 'theme'];
+            const results = await Promise.all(files.map(f => fetchJSON(f)));
+
+            if (results[0]) siteData.hero = results[0];
+            if (results[1]) siteData.about = results[1];
+            if (results[2]) siteData.settings = results[2];
+            if (results[3]) siteData.services = results[3];
+            if (results[4]) siteData.packages = results[4];
+            if (results[5]) siteData.testimonials = results[5];
+            if (results[6]) siteData.faq = results[6];
+            if (results[7]) siteData.theme = results[7];
+
+            populateAllForms();
         }
 
         async function fetchJSON(name) {
@@ -446,7 +649,10 @@
             } catch { return null; }
         }
 
-        function populateForms() {
+        // =====================
+        // POPULATE FORMS
+        // =====================
+        function populateAllForms() {
             // Hero
             document.getElementById('heroBadge').value = siteData.hero.badge || '';
             document.getElementById('heroTitle1').value = siteData.hero.titleLine1 || '';
@@ -455,46 +661,322 @@
             document.getElementById('heroDesc').value = siteData.hero.description || '';
             document.getElementById('heroBtnPrimary').value = siteData.hero.primaryBtn || '';
             document.getElementById('heroBtnSecondary').value = siteData.hero.secondaryBtn || '';
+            document.getElementById('heroImage').value = siteData.hero.heroImage || '';
 
             // About
             document.getElementById('aboutName').value = siteData.about.name || '';
             document.getElementById('aboutTitle').value = siteData.about.title || '';
             document.getElementById('aboutBio').value = siteData.about.bio || '';
-            document.getElementById('aboutYears').value = siteData.about.years || 15;
-            document.getElementById('aboutEvents').value = siteData.about.events || 500;
+            document.getElementById('aboutYears').value = siteData.about.years || '';
+            document.getElementById('aboutEvents').value = siteData.about.events || '';
+            document.getElementById('aboutPhoto').value = siteData.about.photo || '';
 
-            // Contact
+            // Contact/Settings
+            document.getElementById('contactBusiness').value = siteData.settings.businessName || '';
+            document.getElementById('contactTagline').value = siteData.settings.tagline || '';
             document.getElementById('contactPhone').value = siteData.settings.phone || '';
             document.getElementById('contactEmail').value = siteData.settings.email || '';
             document.getElementById('contactAddress').value = siteData.settings.address || '';
             document.getElementById('contactInstagram').value = siteData.settings.instagram || '';
             document.getElementById('contactPinterest').value = siteData.settings.pinterest || '';
 
-            // Services
+            // Render lists
+            renderServices();
+            renderPackages();
+            renderTestimonials();
+            renderFaq();
+            renderTheme();
+        }
+
+        // =====================
+        // SERVICES
+        // =====================
+        function renderServices() {
+            ['floral', 'decor', 'tailoring'].forEach(cat => {
+                const container = document.getElementById(cat + 'Services');
+                const items = (siteData.services || []).filter(s => s.category === cat);
+                container.innerHTML = items.length ? items.map((item, i) => `
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-number">${cat} Service ${i + 1}</span>
+                            <button class="delete-btn" onclick="deleteService('${cat}', ${i})">Remove</button>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Service Name</label>
+                                <input type="text" value="${item.type || ''}" onchange="updateService('${cat}', ${i}, 'type', this.value)">
+                            </div>
+                            <div class="form-group">
+                                <label>Price Range</label>
+                                <input type="text" value="${item.price || ''}" onchange="updateService('${cat}', ${i}, 'price', this.value)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" value="${item.desc || ''}" onchange="updateService('${cat}', ${i}, 'desc', this.value)">
+                        </div>
+                    </div>
+                `).join('') : '<p style="color:var(--text-light);padding:1rem">No services yet. Click "+ Add Service" to add one.</p>';
+            });
+        }
+
+        function updateService(category, index, field, value) {
+            const catServices = siteData.services.filter(s => s.category === category);
+            const actualIndex = siteData.services.indexOf(catServices[index]);
+            if (actualIndex >= 0) siteData.services[actualIndex][field] = value;
+        }
+
+        function addService(category) {
+            siteData.services.push({ category, type: '', desc: '', price: '' });
             renderServices();
         }
 
-        // Save Functions
-        async function saveToGitHub(type, data) {
-            showToast('Saving...', '');
-            try {
-                const res = await fetch('/api/save-content', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
-                    body: JSON.stringify({ type, data })
-                });
-                const result = await res.json();
-                if (result.success) {
-                    showToast('Saved! Site updating...', 'success');
-                } else {
-                    showToast('Error: ' + result.error, 'error');
-                }
-            } catch (e) {
-                showToast('Network error', 'error');
+        function deleteService(category, index) {
+            const catServices = siteData.services.filter(s => s.category === category);
+            const actualIndex = siteData.services.indexOf(catServices[index]);
+            if (actualIndex >= 0) siteData.services.splice(actualIndex, 1);
+            renderServices();
+        }
+
+        async function saveServices() {
+            await saveToGitHub('services', siteData.services);
+        }
+
+        // =====================
+        // PACKAGES
+        // =====================
+        function renderPackages() {
+            const container = document.getElementById('packagesList');
+            const items = siteData.packages || [];
+            container.innerHTML = items.length ? items.map((pkg, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Package ${i + 1}</span>
+                        <button class="delete-btn" onclick="deletePackage(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Package Title</label>
+                            <input type="text" value="${pkg.title || ''}" onchange="siteData.packages[${i}].title = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" value="${pkg.price || ''}" onchange="siteData.packages[${i}].price = this.value">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea rows="2" onchange="siteData.packages[${i}].description = this.value">${pkg.description || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Featured</label>
+                        <select onchange="siteData.packages[${i}].featured = this.value === 'true'">
+                            <option value="false" ${!pkg.featured ? 'selected' : ''}>No</option>
+                            <option value="true" ${pkg.featured ? 'selected' : ''}>Yes (Highlighted)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Includes (comma separated)</label>
+                        <textarea rows="2" onchange="siteData.packages[${i}].includes = this.value.split(',').map(s=>s.trim())">${(pkg.includes || []).join(', ')}</textarea>
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No packages yet.</p>';
+        }
+
+        function addPackage() {
+            siteData.packages.push({ title: '', description: '', price: '', featured: false, includes: [], order: siteData.packages.length + 1 });
+            renderPackages();
+        }
+
+        function deletePackage(index) {
+            siteData.packages.splice(index, 1);
+            renderPackages();
+        }
+
+        async function savePackages() {
+            await saveToGitHub('packages', siteData.packages);
+        }
+
+        // =====================
+        // TESTIMONIALS
+        // =====================
+        function renderTestimonials() {
+            const container = document.getElementById('testimonialsList');
+            const items = siteData.testimonials || [];
+            container.innerHTML = items.length ? items.map((t, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Testimonial ${i + 1}</span>
+                        <button class="delete-btn" onclick="deleteTestimonial(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Client Name</label>
+                            <input type="text" value="${t.name || ''}" onchange="siteData.testimonials[${i}].name = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Event/Role</label>
+                            <input type="text" value="${t.event || ''}" onchange="siteData.testimonials[${i}].event = this.value">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Quote</label>
+                        <textarea rows="3" onchange="siteData.testimonials[${i}].quote = this.value">${t.quote || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Initials (for avatar)</label>
+                        <input type="text" value="${t.initials || ''}" onchange="siteData.testimonials[${i}].initials = this.value" maxlength="4" style="width:100px">
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No testimonials yet.</p>';
+        }
+
+        function addTestimonial() {
+            siteData.testimonials.push({ name: '', event: '', quote: '', initials: '', order: siteData.testimonials.length + 1 });
+            renderTestimonials();
+        }
+
+        function deleteTestimonial(index) {
+            siteData.testimonials.splice(index, 1);
+            renderTestimonials();
+        }
+
+        async function saveTestimonials() {
+            await saveToGitHub('testimonials', siteData.testimonials);
+        }
+
+        // =====================
+        // FAQ
+        // =====================
+        function renderFaq() {
+            const container = document.getElementById('faqList');
+            const items = siteData.faq || [];
+            container.innerHTML = items.length ? items.map((f, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Question ${i + 1}</span>
+                        <button class="delete-btn" onclick="deleteFaq(${i})">Remove</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Question</label>
+                        <input type="text" value="${f.question || ''}" onchange="siteData.faq[${i}].question = this.value">
+                    </div>
+                    <div class="form-group">
+                        <label>Answer</label>
+                        <textarea rows="3" onchange="siteData.faq[${i}].answer = this.value">${f.answer || ''}</textarea>
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No FAQ items yet.</p>';
+        }
+
+        function addFaq() {
+            siteData.faq.push({ question: '', answer: '', order: siteData.faq.length + 1 });
+            renderFaq();
+        }
+
+        function deleteFaq(index) {
+            siteData.faq.splice(index, 1);
+            renderFaq();
+        }
+
+        async function saveFaq() {
+            await saveToGitHub('faq', siteData.faq);
+        }
+
+        // =====================
+        // THEME
+        // =====================
+        const colorPresets = [
+            { name: 'Classic Gold', primary: '#C4A052', accent: '#F5E6E0' },
+            { name: 'Sage Garden', primary: '#7D9B76', accent: '#E8EDE7' },
+            { name: 'Dusty Rose', primary: '#C4A08A', accent: '#F5E8E4' },
+            { name: 'Ocean Blue', primary: '#5B8FA8', accent: '#E4EEF2' },
+            { name: 'Terracotta', primary: '#C47D52', accent: '#F5EBE4' },
+            { name: 'Lavender', primary: '#9B7DAA', accent: '#F0EAF3' },
+            { name: 'Champagne', primary: '#D4C4A8', accent: '#FAF8F5' },
+            { name: 'Forest', primary: '#5B7D5B', accent: '#E7EDE7' },
+            { name: 'Midnight', primary: '#3D4A5C', accent: '#E8EAED' },
+            { name: 'Coral', primary: '#E07B7B', accent: '#FBF0F0' }
+        ];
+
+        function renderTheme() {
+            const container = document.getElementById('colorPresets');
+            container.innerHTML = colorPresets.map((p, i) => `
+                <div class="color-swatch" style="background:${p.primary}" title="${p.name}" onclick="applyPreset(${i})"></div>
+            `).join('');
+
+            // Set current values
+            const theme = siteData.theme.colors || {};
+            if (theme.primary) {
+                document.getElementById('themePrimary').value = theme.primary.hex || '#C4A052';
+                document.getElementById('themePrimaryHex').value = theme.primary.hex || '#C4A052';
+                document.getElementById('themePrimaryRgb').textContent = 'RGB: ' + (theme.primary.rgb || '196, 160, 82');
+            }
+            if (theme.accent) {
+                document.getElementById('themeAccent').value = theme.accent.hex || '#F5E6E0';
+                document.getElementById('themeAccentHex').value = theme.accent.hex || '#F5E6E0';
+                document.getElementById('themeAccentRgb').textContent = 'RGB: ' + (theme.accent.rgb || '245, 230, 224');
             }
         }
 
-        // Form Handlers
+        function applyPreset(index) {
+            const preset = colorPresets[index];
+            document.getElementById('themePrimary').value = preset.primary;
+            document.getElementById('themePrimaryHex').value = preset.primary;
+            document.getElementById('themePrimaryRgb').textContent = 'RGB: ' + hexToRgb(preset.primary);
+            document.getElementById('themeAccent').value = preset.accent;
+            document.getElementById('themeAccentHex').value = preset.accent;
+            document.getElementById('themeAccentRgb').textContent = 'RGB: ' + hexToRgb(preset.accent);
+
+            // Highlight selected
+            document.querySelectorAll('.color-swatch').forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '';
+        }
+
+        // Color input sync
+        ['themePrimary', 'themeAccent', 'themeDark', 'themeBg'].forEach(id => {
+            const colorInput = document.getElementById(id);
+            const hexInput = document.getElementById(id + 'Hex');
+            const rgbDisplay = document.getElementById(id + 'Rgb');
+
+            if (colorInput) {
+                colorInput.addEventListener('input', function() {
+                    hexInput.value = this.value;
+                    rgbDisplay.textContent = 'RGB: ' + hexToRgb(this.value);
+                });
+            }
+            if (hexInput) {
+                hexInput.addEventListener('input', function() {
+                    if (/^#[0-9A-Fa-f]{6}$/.test(this.value)) {
+                        colorInput.value = this.value;
+                        rgbDisplay.textContent = 'RGB: ' + hexToRgb(this.value);
+                    }
+                });
+            }
+        });
+
+        async function saveTheme() {
+            const themeData = {
+                colors: {
+                    primary: { hex: document.getElementById('themePrimary').value, rgb: hexToRgb(document.getElementById('themePrimary').value) },
+                    accent: { hex: document.getElementById('themeAccent').value, rgb: hexToRgb(document.getElementById('themeAccent').value) },
+                    dark: { hex: document.getElementById('themeDark').value, rgb: hexToRgb(document.getElementById('themeDark').value) },
+                    background: { hex: document.getElementById('themeBg').value, rgb: hexToRgb(document.getElementById('themeBg').value) }
+                },
+                presets: colorPresets
+            };
+            await saveToGitHub('theme', themeData);
+        }
+
+        // =====================
+        // FORM HANDLERS
+        // =====================
         document.getElementById('heroForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const data = {
@@ -505,7 +987,7 @@
                 description: document.getElementById('heroDesc').value,
                 primaryBtn: document.getElementById('heroBtnPrimary').value,
                 secondaryBtn: document.getElementById('heroBtnSecondary').value,
-                heroImage: siteData.hero.heroImage || '/assets/images/hero.jpg'
+                heroImage: document.getElementById('heroImage').value
             };
             await saveToGitHub('hero', data);
         });
@@ -516,9 +998,9 @@
                 name: document.getElementById('aboutName').value,
                 title: document.getElementById('aboutTitle').value,
                 bio: document.getElementById('aboutBio').value,
-                years: parseInt(document.getElementById('aboutYears').value),
-                events: parseInt(document.getElementById('aboutEvents').value),
-                photo: siteData.about.photo || '/assets/images/founder.jpg'
+                years: parseInt(document.getElementById('aboutYears').value) || 0,
+                events: parseInt(document.getElementById('aboutEvents').value) || 0,
+                photo: document.getElementById('aboutPhoto').value
             };
             await saveToGitHub('about', data);
         });
@@ -526,8 +1008,8 @@
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const data = {
-                businessName: 'JLC Studio',
-                tagline: 'Where Creativity Meets Occasion',
+                businessName: document.getElementById('contactBusiness').value,
+                tagline: document.getElementById('contactTagline').value,
                 phone: document.getElementById('contactPhone').value,
                 email: document.getElementById('contactEmail').value,
                 address: document.getElementById('contactAddress').value,
@@ -537,69 +1019,41 @@
             await saveToGitHub('settings', data);
         });
 
-        // Services
-        function renderServices() {
-            const categories = ['floral', 'decor', 'tailoring'];
-            categories.forEach(cat => {
-                const container = document.getElementById(cat + 'Services');
-                const items = (siteData.services || []).filter(s => s.category === cat);
-                container.innerHTML = items.map((item, i) => `
-                    <div class="service-item">
-                        <div class="form-row">
-                            <input type="text" value="${item.type || ''}" placeholder="Service name" onchange="updateService('${cat}', ${i}, 'type', this.value)">
-                            <input type="text" value="${item.price || ''}" placeholder="Price range" onchange="updateService('${cat}', ${i}, 'price', this.value)">
-                        </div>
-                        <input type="text" value="${item.desc || ''}" placeholder="Description" style="margin-top:0.5rem;width:100%" onchange="updateService('${cat}', ${i}, 'desc', this.value)">
-                    </div>
-                `).join('') || '<p style="color:var(--gray)">No services added yet</p>';
-            });
+        // =====================
+        // SAVE TO GITHUB
+        // =====================
+        async function saveToGitHub(type, data) {
+            showToast('Saving...', '');
+            try {
+                const res = await fetch('/api/save-content', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
+                    body: JSON.stringify({ type, data })
+                });
+                const result = await res.json();
+                if (result.success) {
+                    showToast('Saved! Site will update in ~30 seconds.', 'success');
+                } else {
+                    showToast('Error: ' + result.error, 'error');
+                }
+            } catch (e) {
+                showToast('Network error. Please try again.', 'error');
+            }
         }
 
-        function updateService(category, index, field, value) {
-            const items = siteData.services.filter(s => s.category === category);
-            if (items[index]) items[index][field] = value;
-        }
-
-        function addService(category) {
-            siteData.services.push({ category, type: '', desc: '', price: '' });
-            renderServices();
-        }
-
-        async function saveServices() {
-            await saveToGitHub('services', siteData.services);
-        }
-
-        // Testimonials
-        function renderTestimonials() {
-            const container = document.getElementById('testimonialsList');
-            container.innerHTML = (siteData.testimonials || []).map((t, i) => `
-                <div class="service-item">
-                    <input type="text" value="${t.name || ''}" placeholder="Client name" style="margin-bottom:0.5rem;width:100%" onchange="siteData.testimonials[${i}].name = this.value">
-                    <textarea rows="2" placeholder="Their quote" style="width:100%;margin-bottom:0.5rem" onchange="siteData.testimonials[${i}].quote = this.value">${t.quote || ''}</textarea>
-                    <input type="text" value="${t.event || ''}" placeholder="Event type (e.g., Wedding, Sarasota)" style="width:100%" onchange="siteData.testimonials[${i}].event = this.value">
-                </div>
-            `).join('') || '<p style="color:var(--gray)">No testimonials added yet</p>';
-        }
-
-        function addTestimonial() {
-            if (!siteData.testimonials) siteData.testimonials = [];
-            siteData.testimonials.push({ name: '', quote: '', event: '' });
-            renderTestimonials();
-        }
-
-        async function saveTestimonials() {
-            showToast('Testimonials saved locally', 'success');
-        }
-
-        // Toast
+        // =====================
+        // TOAST
+        // =====================
         function showToast(msg, type) {
             const toast = document.getElementById('toast');
             toast.textContent = msg;
             toast.className = 'toast ' + type + ' show';
-            setTimeout(() => toast.classList.remove('show'), 3000);
+            setTimeout(() => toast.classList.remove('show'), 4000);
         }
 
-        // Init
+        // =====================
+        // INIT
+        // =====================
         checkAuth();
     </script>
 </body>

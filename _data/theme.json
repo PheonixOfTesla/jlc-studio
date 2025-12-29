@@ -1,0 +1,26 @@
+{
+  "colors": {
+    "primary": {"name": "Gold", "hex": "#C4A052", "rgb": "196, 160, 82"},
+    "primaryDark": {"name": "Dark Gold", "hex": "#A68A42", "rgb": "166, 138, 66"},
+    "accent": {"name": "Blush", "hex": "#F5E6E0", "rgb": "245, 230, 224"},
+    "dark": {"name": "Charcoal", "hex": "#1A1A1A", "rgb": "26, 26, 26"},
+    "text": {"name": "Slate", "hex": "#333333", "rgb": "51, 51, 51"},
+    "textLight": {"name": "Gray", "hex": "#666666", "rgb": "102, 102, 102"},
+    "background": {"name": "Cream", "hex": "#FAFAF8", "rgb": "250, 250, 248"},
+    "white": {"name": "White", "hex": "#FFFFFF", "rgb": "255, 255, 255"},
+    "success": {"name": "Sage", "hex": "#7D9B76", "rgb": "125, 155, 118"},
+    "error": {"name": "Rose", "hex": "#C45B5B", "rgb": "196, 91, 91"}
+  },
+  "presets": [
+    {"name": "Classic Gold", "primary": "#C4A052", "accent": "#F5E6E0"},
+    {"name": "Sage Garden", "primary": "#7D9B76", "accent": "#E8EDE7"},
+    {"name": "Dusty Rose", "primary": "#C4A08A", "accent": "#F5E8E4"},
+    {"name": "Ocean Blue", "primary": "#5B8FA8", "accent": "#E4EEF2"},
+    {"name": "Terracotta", "primary": "#C47D52", "accent": "#F5EBE4"},
+    {"name": "Lavender", "primary": "#9B7DAA", "accent": "#F0EAF3"},
+    {"name": "Champagne", "primary": "#D4C4A8", "accent": "#FAF8F5"},
+    {"name": "Forest", "primary": "#5B7D5B", "accent": "#E7EDE7"},
+    {"name": "Midnight", "primary": "#3D4A5C", "accent": "#E8EAED"},
+    {"name": "Coral", "primary": "#E07B7B", "accent": "#FBF0F0"}
+  ]
+}
