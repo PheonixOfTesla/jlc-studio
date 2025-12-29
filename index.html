@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <div class="preloader" id="preloader">
@@ -36,20 +35,20 @@
     <!-- Hero with Stunning Image -->
     <section class="hero" id="hero">
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80" alt="Elegant floral arrangement">
+            <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80" alt="Elegant floral arrangement" data-content="hero-image">
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-badge">Sarasota's Premier Creative Studio</div>
+            <div class="hero-badge" data-content="hero-badge">Sarasota's Premier Creative Studio</div>
             <h1 class="hero-title">
-                <span class="title-line">Where Creativity</span>
-                <span class="title-line accent">Meets Occasion</span>
+                <span class="title-line" data-content="hero-title-1">Where Creativity</span>
+                <span class="title-line accent" data-content="hero-title-2">Meets Occasion</span>
             </h1>
-            <p class="hero-subtitle">Florals • Event Decor • Custom Tailoring</p>
-            <p class="hero-description">Every detail designed with intention for life's most important moments.</p>
+            <p class="hero-subtitle" data-content="hero-subtitle">Florals • Event Decor • Custom Tailoring</p>
+            <p class="hero-description" data-content="hero-description">Every detail designed with intention for life's most important moments.</p>
             <div class="hero-cta">
-                <a href="contact.html" class="btn btn-primary">Start Your Vision</a>
-                <a href="gallery.html" class="btn btn-outline">View Our Work</a>
+                <a href="contact.html" class="btn btn-primary" data-content="hero-btn-primary">Start Your Vision</a>
+                <a href="gallery.html" class="btn btn-outline" data-content="hero-btn-secondary">View Our Work</a>
             </div>
         </div>
         <div class="hero-scroll"><span>Scroll</span><div class="scroll-indicator"></div></div>
@@ -170,24 +169,24 @@
             <div class="about-grid">
                 <div class="about-image">
                     <div class="image-frame">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" alt="Designer at work">
+                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" alt="Designer at work" data-content="about-photo">
                     </div>
                     <div class="about-stats">
                         <div class="stat">
-                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-number" data-count="15" data-content="years-experience">0</span>
                             <span class="stat-label">Years Experience</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number" data-count="500">0</span>
+                            <span class="stat-number" data-count="500" data-content="events-created">0</span>
                             <span class="stat-label">Events Created</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-content">
                     <span class="section-label">Meet the Designer</span>
-                    <h2 class="section-title">Jeremy Huffer</h2>
-                    <p class="about-lead">A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry.</p>
-                    <p class="about-text">From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, Jeremy brings a unique perspective that blends artistic vision with technical expertise. Having worked with celebrity clients at Mood Fabrics and assisted on multiple seasons of Project Runway, he understands how to create experiences that are both visually stunning and deeply personal.</p>
+                    <h2 class="section-title" data-content="about-name">JLynne Huffer</h2>
+                    <p class="about-lead" data-content="about-short-bio">A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry.</p>
+                    <p class="about-text" data-content="about-full-bio">From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, JLynne brings a unique perspective that blends artistic vision with technical expertise. Having worked with celebrity clients at Mood Fabrics and assisted on multiple seasons of Project Runway, she understands how to create experiences that are both visually stunning and deeply personal.</p>
                     <div class="about-features">
                         <div class="feature"><span>✓ NYC Fashion Background</span></div>
                         <div class="feature"><span>✓ International Experience</span></div>
@@ -296,9 +295,9 @@
                 <div class="footer-contact">
                     <h4>Get in Touch</h4>
                     <address>
-                        <p>Sarasota, FL 34232</p>
-                        <p><a href="tel:941-769-7526">(941) 769-7526</a></p>
-                        <p><a href="mailto:jeremyhuffer@gmail.com">jeremyhuffer@gmail.com</a></p>
+                        <p data-content="address">Sarasota, FL 34232</p>
+                        <p><a href="tel:941-769-7526" data-content="phone">(941) 769-7526</a></p>
+                        <p><a href="mailto:jeremyhuffer@gmail.com" data-content="email">jeremyhuffer@gmail.com</a></p>
                     </address>
                 </div>
             </div>
@@ -310,16 +309,5 @@
 
     <script src="js/main.js"></script>
     <script src="js/content-loader.js"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
 </body>
 </html>

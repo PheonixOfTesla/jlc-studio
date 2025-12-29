@@ -2,34 +2,7 @@
   "name": "JLynne Huffer",
   "title": "Founder & Creative Director",
   "photo": "/assets/images/jlynne.jpg",
-  "shortBio": "A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry.",
-  "fullBio": "With over 15 years of experience spanning fashion design, event decor, textile development, floral design, and creative instruction, JLynne brings a rare combination of artistic vision and technical mastery to every project.\n\nHer professional journey began in the heart of New York's fashion district. At Elise Overland, she developed and directed seasonal collections, produced patterns and tech packs, and supported runway shows at New York Fashion Week. Her time at the legendary Mood Fabrics saw her sourcing textiles for both NYC and LA locations while designing for celebrity clients including Sarah Jessica Parker, Katie Holmes, and Damon Dash.\n\nAs a creative designer at Catering by Design in Denver, JLynne led the Floral Department, overseeing concept creation, production, labor management, and purchasing budgets for luxury events. This role crystallized her vision for JLC Studio—a place where florals, decor, and tailoring come together under one creative roof.",
-  "yearsExperience": 15,
-  "eventsCreated": 500,
-  "experience": [
-    {
-      "years": "2008-2013",
-      "title": "NYC Fashion Industry",
-      "description": "Fashion Designer at Elise Overland. Silk Department Manager at Mood Fabrics. Worked with Project Runway and celebrity clients.",
-      "image": "/assets/images/experience-fashion.jpg"
-    },
-    {
-      "years": "2011-2018",
-      "title": "Creative Instruction",
-      "description": "Private sewing instructor in NYC, teaching students from beginner to advanced levels in patternmaking and garment construction.",
-      "image": "/assets/images/experience-instruction.jpg"
-    },
-    {
-      "years": "2018-2024",
-      "title": "Floral Leadership",
-      "description": "Led the Floral Department at Catering by Design, overseeing luxury event florals and building comprehensive design systems.",
-      "image": "/assets/images/experience-floral.jpg"
-    },
-    {
-      "years": "2024-Present",
-      "title": "JLC Studio",
-      "description": "Founded JLC Studio in Sarasota, bringing together florals, event decor, and custom tailoring under one creative vision.",
-      "image": "/assets/images/experience-jlc.jpg"
-    }
-  ]
+  "bio": "A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry. From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, JLynne brings a unique perspective that blends artistic vision with technical expertise.",
+  "years": 15,
+  "events": 500
 }

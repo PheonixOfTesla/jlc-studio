@@ -231,6 +231,7 @@
         .toast.show { transform: translateY(0); opacity: 1; }
         .toast.success { background: var(--green); }
         .toast.error { background: #c00; }
+        .toast.info { background: var(--blue); }
 
         /* Bookings Table */
         .bookings-table { width: 100%; border-collapse: collapse; }
@@ -568,6 +569,8 @@
         // ============================================
         let siteData = {
             settings: {
+                businessName: "JLC Studio",
+                tagline: "Where Creativity Meets Occasion",
                 phone: "(941) 769-7526",
                 email: "jeremyhuffer@gmail.com",
                 address: "Sarasota, FL 34232",
@@ -576,36 +579,33 @@
             },
             hero: {
                 badge: "Sarasota's Premier Creative Studio",
-                title1: "Where Creativity",
-                title2: "Meets Occasion",
-                tagline: "Florals • Event Decor • Custom Tailoring",
-                description: "Every detail designed with intention for life's most important moments."
+                titleLine1: "Where Creativity",
+                titleLine2: "Meets Occasion",
+                subtitle: "Florals • Event Decor • Custom Tailoring",
+                description: "Every detail designed with intention for life's most important moments.",
+                heroImage: "/assets/images/hero.jpg",
+                primaryBtn: "Start Your Vision",
+                secondaryBtn: "View Our Work"
             },
             about: {
                 name: "JLynne Huffer",
                 title: "Founder & Creative Director",
-                photo: "",
+                photo: "/assets/images/founder.jpg",
                 bio: "A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry.",
                 years: 15,
                 events: 500
             },
-            services: {
-                floral: [
-                    { type: "Weddings", desc: "Bridal bouquets, ceremony florals, reception centerpieces", price: "$800 - $3,500" },
-                    { type: "Corporate Events", desc: "Office arrangements, corporate galas, product launches", price: "$200 - $1,500" },
-                    { type: "Dinner Parties", desc: "Intimate gatherings, dinner party centerpieces", price: "$75 - $200" }
-                ],
-                decor: [
-                    { type: "Weddings", desc: "Complete venue transformation, ceremony to reception", price: "$2,000 - $12,000" },
-                    { type: "Galas & Fundraisers", desc: "Charity events, black-tie affairs", price: "$2,500 - $15,000" },
-                    { type: "Private Celebrations", desc: "Birthdays, anniversaries, baby showers", price: "$400 - $4,000" }
-                ],
-                tailoring: [
-                    { type: "Bridal Alterations", desc: "Wedding gown fitting, bustles, adjustments", price: "$150 - $400" },
-                    { type: "Custom Design", desc: "One-of-a-kind garments, special occasion wear", price: "$400 - $2,500" },
-                    { type: "Event Tailoring", desc: "On-site alterations, last-minute adjustments", price: "$75 - $200/hr" }
-                ]
-            },
+            services: [
+                { category: "floral", type: "Weddings", desc: "Bridal bouquets, ceremony florals, reception centerpieces", price: "$800 - $3,500" },
+                { category: "floral", type: "Corporate Events", desc: "Office arrangements, corporate galas, product launches", price: "$200 - $1,500" },
+                { category: "floral", type: "Dinner Parties", desc: "Intimate gatherings, dinner party centerpieces", price: "$75 - $200" },
+                { category: "decor", type: "Weddings", desc: "Complete venue transformation, ceremony to reception", price: "$2,000 - $12,000" },
+                { category: "decor", type: "Galas & Fundraisers", desc: "Charity events, black-tie affairs", price: "$2,500 - $15,000" },
+                { category: "decor", type: "Private Celebrations", desc: "Birthdays, anniversaries, baby showers", price: "$400 - $4,000" },
+                { category: "tailoring", type: "Bridal Alterations", desc: "Wedding gown fitting, bustles, adjustments", price: "$150 - $400" },
+                { category: "tailoring", type: "Custom Design", desc: "One-of-a-kind garments, special occasion wear", price: "$400 - $2,500" },
+                { category: "tailoring", type: "Event Tailoring", desc: "On-site alterations, last-minute adjustments", price: "$75 - $200/hr" }
+            ],
             stats: {
                 monthlyBookings: 12,
                 monthlyRevenue: 8500,
@@ -622,9 +622,12 @@
             password: "JLC2024!"
         };
 
+        let authToken = null;
+
         function checkAuth() {
             const token = localStorage.getItem('jlc_token');
             if (token) {
+                authToken = token;
                 showDashboard();
             }
         }
@@ -636,7 +639,8 @@
             const error = document.getElementById('loginError');
 
             if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
-                localStorage.setItem('jlc_token', 'authenticated');
+                authToken = 'admin_' + Date.now();
+                localStorage.setItem('jlc_token', authToken);
                 localStorage.setItem('jlc_user', username);
                 showDashboard();
             } else {
@@ -655,6 +659,7 @@
         function logout() {
             localStorage.removeItem('jlc_token');
             localStorage.removeItem('jlc_user');
+            authToken = null;
             location.reload();
         }
 
@@ -676,31 +681,83 @@
         }
 
         // ============================================
+        // API FUNCTIONS - GitHub Integration
+        // ============================================
+        async function fetchFromGitHub(file) {
+            try {
+                const response = await fetch(`/_data/${file}.json?t=${Date.now()}`);
+                if (response.ok) {
+                    return await response.json();
+                }
+            } catch (e) {
+                console.log(`Could not fetch ${file}, using defaults`);
+            }
+            return null;
+        }
+
+        async function saveToGitHub(type, data) {
+            try {
+                showToast('Saving...', 'info');
+                const response = await fetch('/api/save-content', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ type, data })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast(`Saved! Deploying... (${result.commit || 'pending'})`, 'success');
+                    return true;
+                } else {
+                    showToast('Error: ' + (result.error || 'Save failed'), 'error');
+                    return false;
+                }
+            } catch (e) {
+                showToast('Network error - saving locally', 'error');
+                localStorage.setItem('jlc_' + type, JSON.stringify(data));
+                return false;
+            }
+        }
+
+        // ============================================
         // DATA LOADING
         // ============================================
-        function loadData() {
-            // Load from localStorage or use defaults
-            const saved = localStorage.getItem('jlc_siteData');
-            if (saved) {
-                siteData = JSON.parse(saved);
-            }
+        async function loadData() {
+            // Try to load from GitHub first, fall back to localStorage
+            const [hero, about, settings, services] = await Promise.all([
+                fetchFromGitHub('hero'),
+                fetchFromGitHub('about'),
+                fetchFromGitHub('settings'),
+                fetchFromGitHub('services')
+            ]);
+
+            if (hero) siteData.hero = hero;
+            if (about) siteData.about = about;
+            if (settings) siteData.settings = settings;
+            if (services) siteData.services = services;
 
             // Populate forms
-            document.getElementById('heroBadge').value = siteData.hero.badge;
-            document.getElementById('heroTitle1').value = siteData.hero.title1;
-            document.getElementById('heroTitle2').value = siteData.hero.title2;
-            document.getElementById('heroTagline').value = siteData.hero.tagline;
-            document.getElementById('heroDesc').value = siteData.hero.description;
+            document.getElementById('heroBadge').value = siteData.hero.badge || '';
+            document.getElementById('heroTitle1').value = siteData.hero.titleLine1 || '';
+            document.getElementById('heroTitle2').value = siteData.hero.titleLine2 || '';
+            document.getElementById('heroTagline').value = siteData.hero.subtitle || '';
+            document.getElementById('heroDesc').value = siteData.hero.description || '';
 
-            document.getElementById('aboutName').value = siteData.about.name;
-            document.getElementById('aboutTitle').value = siteData.about.title;
-            document.getElementById('aboutBio').value = siteData.about.bio;
-            document.getElementById('aboutYears').value = siteData.about.years;
-            document.getElementById('aboutEvents').value = siteData.about.events;
+            document.getElementById('aboutName').value = siteData.about.name || '';
+            document.getElementById('aboutTitle').value = siteData.about.title || '';
+            document.getElementById('aboutBio').value = siteData.about.bio || '';
+            document.getElementById('aboutYears').value = siteData.about.years || 15;
+            document.getElementById('aboutEvents').value = siteData.about.events || 500;
 
-            document.getElementById('settingsPhone').value = siteData.settings.phone;
-            document.getElementById('settingsEmail').value = siteData.settings.email;
-            document.getElementById('settingsAddress').value = siteData.settings.address;
+            document.getElementById('settingsPhone').value = siteData.settings.phone || '';
+            document.getElementById('settingsEmail').value = siteData.settings.email || '';
+            document.getElementById('settingsAddress').value = siteData.settings.address || '';
+            document.getElementById('settingsInstagram').value = siteData.settings.instagram || '';
+            document.getElementById('settingsPinterest').value = siteData.settings.pinterest || '';
 
             // Stats
             document.getElementById('monthlyBookings').textContent = siteData.stats.monthlyBookings;
@@ -708,81 +765,100 @@
             document.getElementById('upcomingEvents').textContent = siteData.stats.upcomingEvents;
             document.getElementById('newInquiries').textContent = siteData.stats.newInquiries;
 
-            // Load pricing
-            renderPricing('floral', siteData.services.floral);
-            renderPricing('decor', siteData.services.decor);
-            renderPricing('tailoring', siteData.services.tailoring);
-        }
-
-        function saveData() {
-            localStorage.setItem('jlc_siteData', JSON.stringify(siteData));
-            showToast('Changes saved!', 'success');
+            // Load pricing by category
+            const floral = (siteData.services || []).filter(s => s.category === 'floral');
+            const decor = (siteData.services || []).filter(s => s.category === 'decor');
+            const tailoring = (siteData.services || []).filter(s => s.category === 'tailoring');
+            renderPricing('floral', floral);
+            renderPricing('decor', decor);
+            renderPricing('tailoring', tailoring);
         }
 
         // ============================================
         // FORM HANDLERS
         // ============================================
-        document.getElementById('heroForm').addEventListener('submit', function(e) {
+        document.getElementById('heroForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            siteData.hero = {
+            const heroData = {
                 badge: document.getElementById('heroBadge').value,
-                title1: document.getElementById('heroTitle1').value,
-                title2: document.getElementById('heroTitle2').value,
-                tagline: document.getElementById('heroTagline').value,
-                description: document.getElementById('heroDesc').value
+                titleLine1: document.getElementById('heroTitle1').value,
+                titleLine2: document.getElementById('heroTitle2').value,
+                subtitle: document.getElementById('heroTagline').value,
+                description: document.getElementById('heroDesc').value,
+                heroImage: siteData.hero.heroImage || '/assets/images/hero.jpg',
+                primaryBtn: siteData.hero.primaryBtn || 'Start Your Vision',
+                secondaryBtn: siteData.hero.secondaryBtn || 'View Our Work'
             };
-            saveData();
+            siteData.hero = heroData;
+            await saveToGitHub('hero', heroData);
         });
 
-        document.getElementById('aboutForm').addEventListener('submit', function(e) {
+        document.getElementById('aboutForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            siteData.about = {
+            const aboutData = {
                 name: document.getElementById('aboutName').value,
                 title: document.getElementById('aboutTitle').value,
                 bio: document.getElementById('aboutBio').value,
                 years: parseInt(document.getElementById('aboutYears').value),
                 events: parseInt(document.getElementById('aboutEvents').value),
-                photo: siteData.about.photo
+                photo: siteData.about.photo || '/assets/images/founder.jpg'
             };
-            saveData();
+            siteData.about = aboutData;
+            await saveToGitHub('about', aboutData);
         });
 
-        document.getElementById('settingsForm').addEventListener('submit', function(e) {
+        document.getElementById('settingsForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            siteData.settings = {
+            const settingsData = {
+                businessName: siteData.settings.businessName || 'JLC Studio',
+                tagline: siteData.settings.tagline || 'Where Creativity Meets Occasion',
                 phone: document.getElementById('settingsPhone').value,
                 email: document.getElementById('settingsEmail').value,
                 address: document.getElementById('settingsAddress').value,
                 instagram: document.getElementById('settingsInstagram').value,
                 pinterest: document.getElementById('settingsPinterest').value
             };
-            saveData();
+            siteData.settings = settingsData;
+            await saveToGitHub('settings', settingsData);
         });
 
         // ============================================
         // PRICING MANAGEMENT
         // ============================================
-        function renderPricing(service, items) {
-            const container = document.getElementById(service + 'Pricing');
+        function renderPricing(category, items) {
+            const container = document.getElementById(category + 'Pricing');
+            if (!container) return;
             container.innerHTML = items.map((item, i) => `
                 <div class="list-item">
                     <div class="form-row">
-                        <input type="text" value="${item.type}" placeholder="Service type" onchange="updatePricing('${service}', ${i}, 'type', this.value)">
-                        <input type="text" value="${item.price}" placeholder="Price" onchange="updatePricing('${service}', ${i}, 'price', this.value)">
+                        <input type="text" value="${item.type || ''}" placeholder="Service type"
+                               onchange="updatePricing('${category}', ${i}, 'type', this.value)">
+                        <input type="text" value="${item.price || ''}" placeholder="Price"
+                               onchange="updatePricing('${category}', ${i}, 'price', this.value)">
                     </div>
-                    <input type="text" value="${item.desc}" placeholder="Description" style="margin-top: 0.5rem" onchange="updatePricing('${service}', ${i}, 'desc', this.value)">
+                    <input type="text" value="${item.desc || ''}" placeholder="Description"
+                           style="margin-top: 0.5rem" onchange="updatePricing('${category}', ${i}, 'desc', this.value)">
                 </div>
             `).join('');
         }
 
-        function updatePricing(service, index, field, value) {
-            siteData.services[service][index][field] = value;
-            saveData();
+        function updatePricing(category, index, field, value) {
+            // Find items in this category
+            const categoryItems = siteData.services.filter(s => s.category === category);
+            if (categoryItems[index]) {
+                categoryItems[index][field] = value;
+                saveServices();
+            }
         }
 
-        function addPricing(service) {
-            siteData.services[service].push({ type: "", desc: "", price: "" });
-            renderPricing(service, siteData.services[service]);
+        function addPricing(category) {
+            siteData.services.push({ category: category, type: "", desc: "", price: "" });
+            const categoryItems = siteData.services.filter(s => s.category === category);
+            renderPricing(category, categoryItems);
+        }
+
+        async function saveServices() {
+            await saveToGitHub('services', siteData.services);
         }
 
         // ============================================

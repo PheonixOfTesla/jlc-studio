@@ -74,19 +74,24 @@ const ContentLoader = {
       el.textContent = about.name;
     });
 
-    // Update bio
+    // Update title
+    document.querySelectorAll('[data-content="about-title"]').forEach(el => {
+      el.textContent = about.title;
+    });
+
+    // Update bio - works with both 'bio' (admin) and legacy field names
     const shortBio = document.querySelector('[data-content="about-short-bio"]');
-    if (shortBio) shortBio.textContent = about.shortBio;
+    if (shortBio) shortBio.textContent = about.bio || about.shortBio || '';
 
     const fullBio = document.querySelector('[data-content="about-full-bio"]');
-    if (fullBio) fullBio.innerHTML = about.fullBio.replace(/\n\n/g, '</p><p>');
+    if (fullBio && about.bio) fullBio.textContent = about.bio;
 
     // Update stats
     const yearsEl = document.querySelector('[data-content="years-experience"]');
-    if (yearsEl) yearsEl.setAttribute('data-count', about.yearsExperience);
+    if (yearsEl) yearsEl.setAttribute('data-count', about.years || about.yearsExperience || 15);
 
     const eventsEl = document.querySelector('[data-content="events-created"]');
-    if (eventsEl) eventsEl.setAttribute('data-count', about.eventsCreated);
+    if (eventsEl) eventsEl.setAttribute('data-count', about.events || about.eventsCreated || 500);
 
     // Update photo
     const photo = document.querySelector('[data-content="about-photo"]');
