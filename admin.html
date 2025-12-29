@@ -149,12 +149,78 @@
         .photo-modal-preview { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
         .photo-modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--white); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; }
 
+        /* PREVIEW SECTION */
+        .preview-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; flex-wrap: wrap; }
+        .preview-tab { padding: 0.75rem 1.5rem; background: transparent; border: none; font-family: inherit; font-size: 0.9rem; font-weight: 500; color: var(--text-light); cursor: pointer; border-radius: 8px 8px 0 0; transition: all 0.2s; }
+        .preview-tab.active { background: var(--primary); color: var(--white); }
+        .preview-tab:hover:not(.active) { background: rgba(196,160,82,0.1); }
+        .preview-container { background: var(--white); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 5rem; }
+        .preview-page { display: none; padding: 1.5rem; }
+        .preview-page.active { display: block; }
+        .preview-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .preview-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .preview-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .preview-section-header h3 { font-size: 0.9rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; }
+        .editable-wrapper { position: relative; display: inline-block; }
+        .editable-wrapper:hover .edit-btn { opacity: 1; }
+        .edit-btn { position: absolute; top: -8px; right: -28px; width: 22px; height: 22px; background: var(--primary); border: none; border-radius: 50%; color: white; cursor: pointer; opacity: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 10; font-size: 10px; }
+        .edit-btn:hover { background: var(--primary-dark); transform: scale(1.1); }
+        .editable-text { outline: none; border: 2px dashed transparent; padding: 4px 8px; margin: -4px -8px; border-radius: 4px; transition: border-color 0.2s; min-width: 20px; }
+        .editable-text:hover { border-color: rgba(196,160,82,0.3); }
+        .editable-text:focus { border-color: var(--primary); background: rgba(196,160,82,0.05); }
+        .editable-text.modified { background: rgba(196,160,82,0.15); }
+        .preview-hero-mock { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 12px; padding: 2.5rem; text-align: center; color: white; }
+        .preview-hero-badge { display: inline-block; padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+        .preview-hero-title { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; margin-bottom: 0.75rem; line-height: 1.2; }
+        .preview-hero-title .line2 { color: #C4A052; font-style: italic; }
+        .preview-hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; color: rgba(255,255,255,0.9); }
+        .preview-hero-description { font-size: 0.8rem; color: rgba(255,255,255,0.7); max-width: 400px; margin: 0 auto 1rem; }
+        .preview-hero-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .preview-btn-primary { padding: 0.6rem 1.2rem; background: #C4A052; color: white; border-radius: 4px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .preview-btn-outline { padding: 0.6rem 1.2rem; background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); border-radius: 4px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .preview-save-bar { position: fixed; bottom: 0; left: 280px; right: 0; background: var(--white); padding: 1rem 2rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; align-items: center; gap: 1rem; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 100; }
+        .unsaved-indicator { color: var(--error); font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+        .unsaved-indicator::before { content: ''; width: 8px; height: 8px; background: var(--error); border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .preview-services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        .preview-service-card { background: #fafaf8; border: 1px solid #e5e5e5; border-radius: 8px; padding: 1rem; transition: all 0.2s; }
+        .preview-service-card:hover { border-color: var(--primary); }
+        .preview-service-card h4 { font-size: 0.9rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .preview-service-card p { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.5rem; line-height: 1.4; }
+        .preview-service-card .price { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
+        .preview-about-mock { background: #fafaf8; border-radius: 12px; padding: 1.5rem; }
+        .preview-testimonials { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem; }
+        .preview-testimonial-card { flex: 0 0 250px; background: #fafaf8; border-radius: 8px; padding: 1.25rem; }
+        .preview-testimonial-quote { font-style: italic; font-size: 0.8rem; margin-bottom: 0.75rem; line-height: 1.5; color: var(--text); }
+        .preview-testimonial-author { display: flex; align-items: center; gap: 0.6rem; }
+        .preview-author-avatar { width: 32px; height: 32px; background: #8B9B7A; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; }
+        .preview-author-name { font-size: 0.8rem; font-weight: 600; }
+        .preview-author-event { font-size: 0.7rem; color: var(--text-light); }
+        .preview-faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .preview-faq-item { background: #fafaf8; border-radius: 8px; padding: 1rem; }
+        .preview-faq-question { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+        .preview-faq-answer { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+        .preview-contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .preview-contact-item { background: #fafaf8; border-radius: 8px; padding: 1rem; }
+        .preview-contact-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 0.25rem; }
+        .preview-contact-value { font-size: 0.9rem; font-weight: 500; }
+        .edit-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 2rem; }
+        .edit-modal.show { display: flex; }
+        .edit-modal-content { background: white; border-radius: 12px; padding: 1.5rem; width: 100%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+        .edit-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .edit-modal-header h3 { font-size: 1.1rem; font-weight: 600; }
+        .edit-modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); line-height: 1; }
+        .edit-modal-actions { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
         @media (max-width: 900px) {
             .sidebar { width: 100%; height: auto; position: relative; }
             .main-content { margin-left: 0; max-width: 100%; }
             .dashboard.active { flex-direction: column; }
             .form-row, .form-row-3 { grid-template-columns: 1fr; }
             .color-grid { grid-template-columns: repeat(5, 1fr); }
+            .preview-save-bar { left: 0; }
+            .edit-btn { opacity: 1; }
+            .preview-services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -187,8 +253,14 @@
                 <div class="sidebar-user">Welcome, JLynne</div>
             </div>
 
+            <div class="sidebar-section">Visual Editor</div>
+            <a class="nav-item active" data-section="preview">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Preview & Edit
+            </a>
+
             <div class="sidebar-section">Website Content</div>
-            <a class="nav-item active" data-section="hero">
+            <a class="nav-item" data-section="hero">
                 <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
                 Hero Banner
             </a>
@@ -243,8 +315,33 @@
         </aside>
 
         <main class="main-content">
+            <!-- PREVIEW & EDIT -->
+            <section id="preview" class="section active">
+                <div class="page-header">
+                    <h1>Preview & Edit</h1>
+                    <p>See your site content and edit text directly</p>
+                </div>
+
+                <div class="preview-tabs">
+                    <button class="preview-tab active" data-page="home">Homepage</button>
+                    <button class="preview-tab" data-page="services">Services</button>
+                    <button class="preview-tab" data-page="contact">Contact</button>
+                </div>
+
+                <div class="preview-container">
+                    <div class="preview-page active" id="preview-home"></div>
+                    <div class="preview-page" id="preview-services"></div>
+                    <div class="preview-page" id="preview-contact"></div>
+                </div>
+
+                <div class="preview-save-bar" id="previewSaveBar" style="display:none">
+                    <span class="unsaved-indicator">Unsaved changes</span>
+                    <button class="btn btn-save" onclick="saveAllPreviewChanges()">Save All Changes</button>
+                </div>
+            </section>
+
             <!-- HERO -->
-            <section id="hero" class="section active">
+            <section id="hero" class="section">
                 <div class="page-header">
                     <h1>Hero Banner</h1>
                     <p>Edit the main banner that visitors see first on your homepage</p>
@@ -649,6 +746,9 @@
         </div>
     </div>
 
+    <!-- Edit Modal (for services/testimonials/faq) -->
+    <div class="edit-modal" id="editModal"></div>
+
     <script>
         // =====================
         // DATA STORE
@@ -783,7 +883,707 @@
             renderFaq();
             renderTheme();
             renderPhotos();
+            initPreview();
         }
+
+        // =====================
+        // PREVIEW MODE
+        // =====================
+        let previewChanges = {};
+        let hasUnsavedChanges = false;
+
+        // Preview tab switching
+        document.querySelectorAll('.preview-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.preview-page').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('preview-' + this.dataset.page).classList.add('active');
+            });
+        });
+
+        function initPreview() {
+            renderHomepagePreview();
+            renderServicesPreview();
+            renderContactPreview();
+        }
+
+        function renderHomepagePreview() {
+            const hero = siteData.hero || {};
+            const about = siteData.about || {};
+            const testimonials = siteData.testimonials || [];
+
+            const container = document.getElementById('preview-home');
+            container.innerHTML = `
+                <!-- Hero Preview -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Hero Banner</h3>
+                    </div>
+                    <div class="preview-hero-mock">
+                        <div class="editable-wrapper">
+                            <div class="preview-hero-badge editable-text" contenteditable="true" data-field="hero.badge">${hero.badge || 'Badge Text'}</div>
+                            <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                        </div>
+
+                        <div class="preview-hero-title">
+                            <div class="editable-wrapper" style="display:block">
+                                <span class="editable-text" contenteditable="true" data-field="hero.titleLine1">${hero.titleLine1 || 'Title Line 1'}</span>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                            <div class="editable-wrapper" style="display:block">
+                                <span class="line2 editable-text" contenteditable="true" data-field="hero.titleLine2">${hero.titleLine2 || 'Title Line 2'}</span>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                        </div>
+
+                        <div class="editable-wrapper" style="display:block">
+                            <div class="preview-hero-subtitle editable-text" contenteditable="true" data-field="hero.subtitle">${hero.subtitle || 'Subtitle'}</div>
+                            <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                        </div>
+
+                        <div class="editable-wrapper" style="display:block">
+                            <div class="preview-hero-description editable-text" contenteditable="true" data-field="hero.description">${hero.description || 'Description text'}</div>
+                            <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                        </div>
+
+                        <div class="preview-hero-buttons">
+                            <div class="editable-wrapper">
+                                <span class="preview-btn-primary editable-text" contenteditable="true" data-field="hero.primaryBtn">${hero.primaryBtn || 'Primary Button'}</span>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                            <div class="editable-wrapper">
+                                <span class="preview-btn-outline editable-text" contenteditable="true" data-field="hero.secondaryBtn">${hero.secondaryBtn || 'Secondary Button'}</span>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Preview -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>About Section</h3>
+                    </div>
+                    <div class="preview-about-mock">
+                        <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap">
+                            <div style="flex:0 0 100px">
+                                <div style="width:100px;height:120px;background:#e5e5e5;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.7rem">Photo</div>
+                            </div>
+                            <div style="flex:1;min-width:200px">
+                                <div class="editable-wrapper" style="display:block">
+                                    <h4 class="editable-text" contenteditable="true" data-field="about.name" style="font-size:1.25rem;margin-bottom:0.25rem">${about.name || 'Name'}</h4>
+                                    <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                                </div>
+                                <div class="editable-wrapper" style="display:block">
+                                    <p class="editable-text" contenteditable="true" data-field="about.title" style="color:#C4A052;margin-bottom:0.75rem;font-size:0.85rem">${about.title || 'Title'}</p>
+                                    <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                                </div>
+                                <div class="editable-wrapper" style="display:block">
+                                    <p class="editable-text" contenteditable="true" data-field="about.bio" style="font-size:0.8rem;line-height:1.5;color:#666">${about.bio || 'Bio text...'}</p>
+                                    <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                                </div>
+                                <div style="display:flex;gap:1.5rem;margin-top:0.75rem">
+                                    <div style="text-align:center">
+                                        <div class="editable-wrapper">
+                                            <span class="editable-text" contenteditable="true" data-field="about.years" style="font-size:1.25rem;font-weight:600;color:#C4A052">${about.years || 15}</span>
+                                            <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                                        </div>
+                                        <div style="font-size:0.65rem;color:#666">Years</div>
+                                    </div>
+                                    <div style="text-align:center">
+                                        <div class="editable-wrapper">
+                                            <span class="editable-text" contenteditable="true" data-field="about.events" style="font-size:1.25rem;font-weight:600;color:#C4A052">${about.events || 500}</span>
+                                            <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                                        </div>
+                                        <div style="font-size:0.65rem;color:#666">Events</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials Preview -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Testimonials</h3>
+                        <button class="btn btn-small btn-outline" onclick="openTestimonialModal(-1)">+ Add</button>
+                    </div>
+                    <div class="preview-testimonials">
+                        ${renderPreviewTestimonials(testimonials)}
+                    </div>
+                </div>
+            `;
+
+            attachEditableListeners();
+        }
+
+        function renderPreviewTestimonials(testimonials) {
+            if (!testimonials.length) return '<p style="color:#666">No testimonials yet. Click "+ Add" to add one.</p>';
+            return testimonials.map((t, i) => \`
+                <div class="preview-testimonial-card">
+                    <div style="display:flex;justify-content:flex-end;margin-bottom:0.5rem">
+                        <button class="edit-btn" style="position:static;opacity:1" onclick="openTestimonialModal(${i})" title="Edit">✎</button>
+                    </div>
+                    <div class="preview-testimonial-quote">"${t.quote || ''}"</div>
+                    <div class="preview-testimonial-author">
+                        <div class="preview-author-avatar">${t.initials || ''}</div>
+                        <div>
+                            <div class="preview-author-name">${t.name || ''}</div>
+                            <div class="preview-author-event">${t.event || ''}</div>
+                        </div>
+                    </div>
+                </div>
+            \`).join('');
+        }
+
+        function renderServicesPreview() {
+            const services = siteData.services || [];
+            const packages = siteData.packages || [];
+
+            const container = document.getElementById('preview-services');
+            container.innerHTML = \`
+                <!-- Services by Category -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Floral Design</h3>
+                        <button class="btn btn-small btn-outline" onclick="openServiceModal(-1, 'floral')">+ Add</button>
+                    </div>
+                    <div class="preview-services-grid">
+                        ${renderPreviewServiceCards(services.filter(s => s.category === 'floral'), 'floral')}
+                    </div>
+                </div>
+
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Event Decor</h3>
+                        <button class="btn btn-small btn-outline" onclick="openServiceModal(-1, 'decor')">+ Add</button>
+                    </div>
+                    <div class="preview-services-grid">
+                        ${renderPreviewServiceCards(services.filter(s => s.category === 'decor'), 'decor')}
+                    </div>
+                </div>
+
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Custom Tailoring</h3>
+                        <button class="btn btn-small btn-outline" onclick="openServiceModal(-1, 'tailoring')">+ Add</button>
+                    </div>
+                    <div class="preview-services-grid">
+                        ${renderPreviewServiceCards(services.filter(s => s.category === 'tailoring'), 'tailoring')}
+                    </div>
+                </div>
+
+                <!-- Packages -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Packages</h3>
+                        <button class="btn btn-small btn-outline" onclick="openPackageModal(-1)">+ Add</button>
+                    </div>
+                    <div class="preview-services-grid">
+                        ${renderPreviewPackages(packages)}
+                    </div>
+                </div>
+            \`;
+        }
+
+        function renderPreviewServiceCards(services, category) {
+            if (!services.length) return '<p style="color:#666;grid-column:1/-1">No services yet</p>';
+            return services.map((s, i) => {
+                const globalIndex = siteData.services.indexOf(s);
+                return \`
+                    <div class="preview-service-card">
+                        <h4>${s.type || 'Service Name'}<button class="edit-btn" style="position:static;opacity:1;margin-left:auto" onclick="openServiceModal(${globalIndex}, '${category}')" title="Edit">✎</button></h4>
+                        <p>${s.desc || 'Description'}</p>
+                        <span class="price">${s.price || 'Price'}</span>
+                    </div>
+                \`;
+            }).join('');
+        }
+
+        function renderPreviewPackages(packages) {
+            if (!packages.length) return '<p style="color:#666;grid-column:1/-1">No packages yet</p>';
+            return packages.map((p, i) => \`
+                <div class="preview-service-card" style="${p.featured ? 'border-color:#C4A052;border-width:2px' : ''}">
+                    <h4>${p.title || 'Package'} ${p.featured ? '<span style="font-size:0.6rem;background:#C4A052;color:white;padding:2px 6px;border-radius:10px;margin-left:0.5rem">Popular</span>' : ''}<button class="edit-btn" style="position:static;opacity:1;margin-left:auto" onclick="openPackageModal(${i})" title="Edit">✎</button></h4>
+                    <p>${p.description || ''}</p>
+                    <span class="price">${p.price || ''}</span>
+                </div>
+            \`).join('');
+        }
+
+        function renderContactPreview() {
+            const settings = siteData.settings || {};
+            const faq = siteData.faq || [];
+
+            const container = document.getElementById('preview-contact');
+            container.innerHTML = \`
+                <!-- Contact Info -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Contact Information</h3>
+                    </div>
+                    <div class="preview-contact-grid">
+                        <div class="preview-contact-item">
+                            <div class="preview-contact-label">Business Name</div>
+                            <div class="editable-wrapper" style="display:block">
+                                <div class="preview-contact-value editable-text" contenteditable="true" data-field="settings.businessName">${settings.businessName || 'Business Name'}</div>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                        </div>
+                        <div class="preview-contact-item">
+                            <div class="preview-contact-label">Phone</div>
+                            <div class="editable-wrapper" style="display:block">
+                                <div class="preview-contact-value editable-text" contenteditable="true" data-field="settings.phone">${settings.phone || 'Phone'}</div>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                        </div>
+                        <div class="preview-contact-item">
+                            <div class="preview-contact-label">Email</div>
+                            <div class="editable-wrapper" style="display:block">
+                                <div class="preview-contact-value editable-text" contenteditable="true" data-field="settings.email">${settings.email || 'Email'}</div>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                        </div>
+                        <div class="preview-contact-item">
+                            <div class="preview-contact-label">Address</div>
+                            <div class="editable-wrapper" style="display:block">
+                                <div class="preview-contact-value editable-text" contenteditable="true" data-field="settings.address">${settings.address || 'Address'}</div>
+                                <button class="edit-btn" onclick="focusEditable(this)" title="Edit">✎</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="preview-section">
+                    <div class="preview-section-header">
+                        <h3>Frequently Asked Questions</h3>
+                        <button class="btn btn-small btn-outline" onclick="openFaqModal(-1)">+ Add</button>
+                    </div>
+                    <div class="preview-faq-list">
+                        ${renderPreviewFaq(faq)}
+                    </div>
+                </div>
+            \`;
+
+            attachEditableListeners();
+        }
+
+        function renderPreviewFaq(faq) {
+            if (!faq.length) return '<p style="color:#666">No FAQ items yet. Click "+ Add" to add one.</p>';
+            return faq.map((f, i) => \`
+                <div class="preview-faq-item">
+                    <div class="preview-faq-question">
+                        <span>Q: ${f.question || ''}</span>
+                        <button class="edit-btn" style="position:static;opacity:1" onclick="openFaqModal(${i})" title="Edit">✎</button>
+                    </div>
+                    <div class="preview-faq-answer">A: ${f.answer || ''}</div>
+                </div>
+            \`).join('');
+        }
+
+        // Focus editable element
+        function focusEditable(button) {
+            const wrapper = button.parentElement;
+            const editable = wrapper.querySelector('.editable-text');
+            if (editable) {
+                editable.focus();
+                const range = document.createRange();
+                range.selectNodeContents(editable);
+                const sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+
+        // Attach input listeners for change tracking
+        function attachEditableListeners() {
+            document.querySelectorAll('.editable-text').forEach(el => {
+                el.addEventListener('input', function() {
+                    const field = this.dataset.field;
+                    const value = this.textContent.trim();
+                    previewChanges[field] = value;
+                    this.classList.add('modified');
+                    markUnsavedChanges();
+                });
+
+                el.addEventListener('blur', function() {
+                    const field = this.dataset.field;
+                    const value = this.textContent.trim();
+                    updateSiteDataField(field, value);
+                });
+            });
+        }
+
+        // Update nested siteData field
+        function updateSiteDataField(path, value) {
+            const parts = path.split('.');
+            let obj = siteData;
+            for (let i = 0; i < parts.length - 1; i++) {
+                if (!obj[parts[i]]) obj[parts[i]] = {};
+                obj = obj[parts[i]];
+            }
+            // Handle numeric values for years/events
+            if (parts[parts.length - 1] === 'years' || parts[parts.length - 1] === 'events') {
+                obj[parts[parts.length - 1]] = parseInt(value) || 0;
+            } else {
+                obj[parts[parts.length - 1]] = value;
+            }
+        }
+
+        // Show unsaved indicator
+        function markUnsavedChanges() {
+            hasUnsavedChanges = true;
+            document.getElementById('previewSaveBar').style.display = 'flex';
+        }
+
+        // Save all preview changes
+        async function saveAllPreviewChanges() {
+            if (!hasUnsavedChanges && Object.keys(previewChanges).length === 0) {
+                showToast('No changes to save', '');
+                return;
+            }
+
+            const saveBtn = document.querySelector('#previewSaveBar .btn-save');
+            saveBtn.textContent = 'Saving...';
+            saveBtn.disabled = true;
+
+            try {
+                // Determine which files need saving
+                const filesToSave = new Set();
+                Object.keys(previewChanges).forEach(key => {
+                    const fileType = key.split('.')[0];
+                    filesToSave.add(fileType);
+                });
+
+                // Save each modified file
+                for (const fileType of filesToSave) {
+                    await saveToGitHub(fileType, siteData[fileType]);
+                }
+
+                // Reset state
+                previewChanges = {};
+                hasUnsavedChanges = false;
+                document.getElementById('previewSaveBar').style.display = 'none';
+                document.querySelectorAll('.editable-text.modified').forEach(el => {
+                    el.classList.remove('modified');
+                });
+
+                showToast('All changes saved!', 'success');
+
+                // Re-populate forms to keep in sync
+                populateAllForms();
+            } catch (error) {
+                showToast('Error saving: ' + error.message, 'error');
+            } finally {
+                saveBtn.textContent = 'Save All Changes';
+                saveBtn.disabled = false;
+            }
+        }
+
+        // Modal for editing testimonials
+        function openTestimonialModal(index) {
+            const isNew = index === -1;
+            const t = isNew ? { name: '', event: '', quote: '', initials: '', order: siteData.testimonials.length + 1 } : siteData.testimonials[index];
+
+            const modal = document.getElementById('editModal');
+            modal.innerHTML = \`
+                <div class="edit-modal-content">
+                    <div class="edit-modal-header">
+                        <h3>\${isNew ? 'Add Testimonial' : 'Edit Testimonial'}</h3>
+                        <button class="edit-modal-close" onclick="closeEditModal()">&times;</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Client Name</label>
+                            <input type="text" id="modal-t-name" value="\${t.name || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Initials</label>
+                            <input type="text" id="modal-t-initials" value="\${t.initials || ''}" maxlength="4" style="width:80px">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Event/Role</label>
+                        <input type="text" id="modal-t-event" value="\${t.event || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Quote</label>
+                        <textarea id="modal-t-quote" rows="4">\${t.quote || ''}</textarea>
+                    </div>
+                    <div class="edit-modal-actions">
+                        <button class="btn btn-save" onclick="saveTestimonialFromModal(\${index})">\${isNew ? 'Add' : 'Save'}</button>
+                        \${!isNew ? '<button class="btn btn-danger" onclick="deleteTestimonialFromModal(' + index + ')">Delete</button>' : ''}
+                        <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                    </div>
+                </div>
+            \`;
+            modal.classList.add('show');
+        }
+
+        function saveTestimonialFromModal(index) {
+            const isNew = index === -1;
+            const testimonial = {
+                name: document.getElementById('modal-t-name').value,
+                initials: document.getElementById('modal-t-initials').value,
+                event: document.getElementById('modal-t-event').value,
+                quote: document.getElementById('modal-t-quote').value,
+                order: isNew ? siteData.testimonials.length + 1 : siteData.testimonials[index].order
+            };
+
+            if (isNew) {
+                siteData.testimonials.push(testimonial);
+            } else {
+                siteData.testimonials[index] = testimonial;
+            }
+
+            previewChanges['testimonials'] = true;
+            markUnsavedChanges();
+            closeEditModal();
+            renderHomepagePreview();
+            renderTestimonials(); // Update form section too
+        }
+
+        function deleteTestimonialFromModal(index) {
+            if (confirm('Delete this testimonial?')) {
+                siteData.testimonials.splice(index, 1);
+                previewChanges['testimonials'] = true;
+                markUnsavedChanges();
+                closeEditModal();
+                renderHomepagePreview();
+                renderTestimonials();
+            }
+        }
+
+        // Modal for editing services
+        function openServiceModal(index, category = 'floral') {
+            const isNew = index === -1;
+            const s = isNew ? { category: category, type: '', desc: '', price: '' } : siteData.services[index];
+
+            const modal = document.getElementById('editModal');
+            modal.innerHTML = \`
+                <div class="edit-modal-content">
+                    <div class="edit-modal-header">
+                        <h3>\${isNew ? 'Add Service' : 'Edit Service'}</h3>
+                        <button class="edit-modal-close" onclick="closeEditModal()">&times;</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="modal-s-category">
+                            <option value="floral" \${s.category === 'floral' ? 'selected' : ''}>Floral Design</option>
+                            <option value="decor" \${s.category === 'decor' ? 'selected' : ''}>Event Decor</option>
+                            <option value="tailoring" \${s.category === 'tailoring' ? 'selected' : ''}>Custom Tailoring</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Name</label>
+                        <input type="text" id="modal-s-type" value="\${s.type || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="modal-s-desc" value="\${s.desc || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Price Range</label>
+                        <input type="text" id="modal-s-price" value="\${s.price || ''}">
+                    </div>
+                    <div class="edit-modal-actions">
+                        <button class="btn btn-save" onclick="saveServiceFromModal(\${index})">\${isNew ? 'Add' : 'Save'}</button>
+                        \${!isNew ? '<button class="btn btn-danger" onclick="deleteServiceFromModal(' + index + ')">Delete</button>' : ''}
+                        <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                    </div>
+                </div>
+            \`;
+            modal.classList.add('show');
+        }
+
+        function saveServiceFromModal(index) {
+            const isNew = index === -1;
+            const service = {
+                category: document.getElementById('modal-s-category').value,
+                type: document.getElementById('modal-s-type').value,
+                desc: document.getElementById('modal-s-desc').value,
+                price: document.getElementById('modal-s-price').value
+            };
+
+            if (isNew) {
+                siteData.services.push(service);
+            } else {
+                siteData.services[index] = service;
+            }
+
+            previewChanges['services'] = true;
+            markUnsavedChanges();
+            closeEditModal();
+            renderServicesPreview();
+            renderServices(); // Update form section too
+        }
+
+        function deleteServiceFromModal(index) {
+            if (confirm('Delete this service?')) {
+                siteData.services.splice(index, 1);
+                previewChanges['services'] = true;
+                markUnsavedChanges();
+                closeEditModal();
+                renderServicesPreview();
+                renderServices();
+            }
+        }
+
+        // Modal for editing packages
+        function openPackageModal(index) {
+            const isNew = index === -1;
+            const p = isNew ? { title: '', description: '', price: '', featured: false, includes: [], order: siteData.packages.length + 1 } : siteData.packages[index];
+
+            const modal = document.getElementById('editModal');
+            modal.innerHTML = \`
+                <div class="edit-modal-content">
+                    <div class="edit-modal-header">
+                        <h3>\${isNew ? 'Add Package' : 'Edit Package'}</h3>
+                        <button class="edit-modal-close" onclick="closeEditModal()">&times;</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Package Title</label>
+                            <input type="text" id="modal-p-title" value="\${p.title || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" id="modal-p-price" value="\${p.price || ''}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="modal-p-desc" rows="2">\${p.description || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Featured (Most Popular)</label>
+                        <select id="modal-p-featured">
+                            <option value="false" \${!p.featured ? 'selected' : ''}>No</option>
+                            <option value="true" \${p.featured ? 'selected' : ''}>Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Includes (comma separated)</label>
+                        <textarea id="modal-p-includes" rows="2">\${(p.includes || []).join(', ')}</textarea>
+                    </div>
+                    <div class="edit-modal-actions">
+                        <button class="btn btn-save" onclick="savePackageFromModal(\${index})">\${isNew ? 'Add' : 'Save'}</button>
+                        \${!isNew ? '<button class="btn btn-danger" onclick="deletePackageFromModal(' + index + ')">Delete</button>' : ''}
+                        <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                    </div>
+                </div>
+            \`;
+            modal.classList.add('show');
+        }
+
+        function savePackageFromModal(index) {
+            const isNew = index === -1;
+            const pkg = {
+                title: document.getElementById('modal-p-title').value,
+                description: document.getElementById('modal-p-desc').value,
+                price: document.getElementById('modal-p-price').value,
+                featured: document.getElementById('modal-p-featured').value === 'true',
+                includes: document.getElementById('modal-p-includes').value.split(',').map(s => s.trim()).filter(Boolean),
+                order: isNew ? siteData.packages.length + 1 : siteData.packages[index].order
+            };
+
+            if (isNew) {
+                siteData.packages.push(pkg);
+            } else {
+                siteData.packages[index] = pkg;
+            }
+
+            previewChanges['packages'] = true;
+            markUnsavedChanges();
+            closeEditModal();
+            renderServicesPreview();
+            renderPackages(); // Update form section too
+        }
+
+        function deletePackageFromModal(index) {
+            if (confirm('Delete this package?')) {
+                siteData.packages.splice(index, 1);
+                previewChanges['packages'] = true;
+                markUnsavedChanges();
+                closeEditModal();
+                renderServicesPreview();
+                renderPackages();
+            }
+        }
+
+        // Modal for editing FAQ
+        function openFaqModal(index) {
+            const isNew = index === -1;
+            const f = isNew ? { question: '', answer: '', order: siteData.faq.length + 1 } : siteData.faq[index];
+
+            const modal = document.getElementById('editModal');
+            modal.innerHTML = \`
+                <div class="edit-modal-content">
+                    <div class="edit-modal-header">
+                        <h3>\${isNew ? 'Add FAQ' : 'Edit FAQ'}</h3>
+                        <button class="edit-modal-close" onclick="closeEditModal()">&times;</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Question</label>
+                        <input type="text" id="modal-f-question" value="\${f.question || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Answer</label>
+                        <textarea id="modal-f-answer" rows="4">\${f.answer || ''}</textarea>
+                    </div>
+                    <div class="edit-modal-actions">
+                        <button class="btn btn-save" onclick="saveFaqFromModal(\${index})">\${isNew ? 'Add' : 'Save'}</button>
+                        \${!isNew ? '<button class="btn btn-danger" onclick="deleteFaqFromModal(' + index + ')">Delete</button>' : ''}
+                        <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                    </div>
+                </div>
+            \`;
+            modal.classList.add('show');
+        }
+
+        function saveFaqFromModal(index) {
+            const isNew = index === -1;
+            const faqItem = {
+                question: document.getElementById('modal-f-question').value,
+                answer: document.getElementById('modal-f-answer').value,
+                order: isNew ? siteData.faq.length + 1 : siteData.faq[index].order
+            };
+
+            if (isNew) {
+                siteData.faq.push(faqItem);
+            } else {
+                siteData.faq[index] = faqItem;
+            }
+
+            previewChanges['faq'] = true;
+            markUnsavedChanges();
+            closeEditModal();
+            renderContactPreview();
+            renderFaq(); // Update form section too
+        }
+
+        function deleteFaqFromModal(index) {
+            if (confirm('Delete this FAQ?')) {
+                siteData.faq.splice(index, 1);
+                previewChanges['faq'] = true;
+                markUnsavedChanges();
+                closeEditModal();
+                renderContactPreview();
+                renderFaq();
+            }
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('show');
+        }
+
+        // Close modal on outside click
+        document.getElementById('editModal').addEventListener('click', function(e) {
+            if (e.target === this) closeEditModal();
+        });
 
         // =====================
         // SERVICES
