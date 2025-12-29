@@ -304,49 +304,35 @@
                         <p>Welcome back! Here's what's happening with your business.</p>
                     </div>
 
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>This Month</h3>
-                            <div class="value" id="monthlyBookings">0</div>
-                            <div class="change">Bookings</div>
-                        </div>
-                        <div class="stat-card green">
-                            <h3>Revenue</h3>
-                            <div class="value" id="monthlyRevenue">$0</div>
-                            <div class="change">This month</div>
-                        </div>
-                        <div class="stat-card blue">
-                            <h3>Upcoming</h3>
-                            <div class="value" id="upcomingEvents">0</div>
-                            <div class="change">Events scheduled</div>
-                        </div>
-                        <div class="stat-card orange">
-                            <h3>Inquiries</h3>
-                            <div class="value" id="newInquiries">0</div>
-                            <div class="change">New this week</div>
-                        </div>
+                    <div class="card" style="text-align: center; padding: 3rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📅</div>
+                        <h3 style="margin-bottom: 0.5rem;">Connect Calendly</h3>
+                        <p style="color: var(--gray); margin-bottom: 1.5rem;">Link your Calendly account to see bookings, revenue, and upcoming events.</p>
+                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-primary" style="width: auto;">Open Calendly Dashboard</a>
                     </div>
 
-                    <div class="card">
+                    <div class="card" style="margin-top: 1.5rem;">
                         <div class="card-header">
-                            <h2>Upcoming Bookings</h2>
-                            <button class="btn btn-secondary btn-small" onclick="showSection('bookings')">View All</button>
+                            <h2>Quick Links</h2>
                         </div>
-                        <table class="bookings-table">
-                            <thead>
-                                <tr>
-                                    <th>Client</th>
-                                    <th>Service</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="recentBookings">
-                                <tr>
-                                    <td colspan="4" style="color: var(--gray); text-align: center;">Connect Calendly to see bookings</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <a href="https://calendly.com/jlcstudiollc" target="_blank" class="list-item" style="text-decoration: none; color: inherit;">
+                                <strong>Calendly</strong>
+                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">Manage bookings</p>
+                            </a>
+                            <a href="https://dashboard.stripe.com" target="_blank" class="list-item" style="text-decoration: none; color: inherit;">
+                                <strong>Stripe</strong>
+                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">View payments</p>
+                            </a>
+                            <a onclick="showSection('content')" class="list-item" style="text-decoration: none; color: inherit; cursor: pointer;">
+                                <strong>Edit Site Content</strong>
+                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">Update text & images</p>
+                            </a>
+                            <a onclick="showSection('services')" class="list-item" style="text-decoration: none; color: inherit; cursor: pointer;">
+                                <strong>Services & Pricing</strong>
+                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">Manage offerings</p>
+                            </a>
+                        </div>
                     </div>
                 </section>
 
@@ -607,10 +593,10 @@
                 { category: "tailoring", type: "Event Tailoring", desc: "On-site alterations, last-minute adjustments", price: "$75 - $200/hr" }
             ],
             stats: {
-                monthlyBookings: 12,
-                monthlyRevenue: 8500,
-                upcomingEvents: 5,
-                newInquiries: 8
+                monthlyBookings: 0,
+                monthlyRevenue: 0,
+                upcomingEvents: 0,
+                newInquiries: 0
             }
         };
 
