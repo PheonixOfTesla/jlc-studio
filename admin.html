@@ -1263,9 +1263,10 @@
             console.log('Saving:', type, data);
 
             // Use absolute URL to avoid redirect issues
+            // jlc-studio.vercel.app has the env vars, www.jlcstudio.art doesn't yet
             const apiUrl = window.location.hostname.includes('localhost')
                 ? '/api/save-content'
-                : 'https://www.jlcstudio.art/api/save-content';
+                : 'https://jlc-studio.vercel.app/api/save-content';
 
             try {
                 const res = await fetch(apiUrl, {
