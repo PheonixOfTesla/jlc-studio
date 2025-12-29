@@ -24,10 +24,6 @@
     {
       "src": "_data/**/*",
       "use": "@vercel/static"
-    },
-    {
-      "src": "admin/**/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -36,12 +32,12 @@
       "dest": "/api/$1"
     },
     {
+      "src": "/admin$",
+      "dest": "/admin.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "env": {
-    "ADMIN_USERNAME": "@admin_username",
-    "ADMIN_PASSWORD": "@admin_password"
-  }
+  ]
 }
