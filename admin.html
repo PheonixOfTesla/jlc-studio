@@ -1021,7 +1021,7 @@
 
         function renderPreviewTestimonials(testimonials) {
             if (!testimonials.length) return '<p style="color:#666">No testimonials yet. Click "+ Add" to add one.</p>';
-            return testimonials.map((t, i) => \`
+            return testimonials.map((t, i) => `
                 <div class="preview-testimonial-card">
                     <div style="display:flex;justify-content:flex-end;margin-bottom:0.5rem">
                         <button class="edit-btn" style="position:static;opacity:1" onclick="openTestimonialModal(${i})" title="Edit">✎</button>
@@ -1035,7 +1035,7 @@
                         </div>
                     </div>
                 </div>
-            \`).join('');
+            `).join('');
         }
 
         function renderServicesPreview() {
@@ -1043,7 +1043,7 @@
             const packages = siteData.packages || [];
 
             const container = document.getElementById('preview-services');
-            container.innerHTML = \`
+            container.innerHTML = `
                 <!-- Services by Category -->
                 <div class="preview-section">
                     <div class="preview-section-header">
@@ -1085,32 +1085,32 @@
                         ${renderPreviewPackages(packages)}
                     </div>
                 </div>
-            \`;
+            `;
         }
 
         function renderPreviewServiceCards(services, category) {
             if (!services.length) return '<p style="color:#666;grid-column:1/-1">No services yet</p>';
             return services.map((s, i) => {
                 const globalIndex = siteData.services.indexOf(s);
-                return \`
+                return `
                     <div class="preview-service-card">
                         <h4>${s.type || 'Service Name'}<button class="edit-btn" style="position:static;opacity:1;margin-left:auto" onclick="openServiceModal(${globalIndex}, '${category}')" title="Edit">✎</button></h4>
                         <p>${s.desc || 'Description'}</p>
                         <span class="price">${s.price || 'Price'}</span>
                     </div>
-                \`;
+                `;
             }).join('');
         }
 
         function renderPreviewPackages(packages) {
             if (!packages.length) return '<p style="color:#666;grid-column:1/-1">No packages yet</p>';
-            return packages.map((p, i) => \`
+            return packages.map((p, i) => `
                 <div class="preview-service-card" style="${p.featured ? 'border-color:#C4A052;border-width:2px' : ''}">
                     <h4>${p.title || 'Package'} ${p.featured ? '<span style="font-size:0.6rem;background:#C4A052;color:white;padding:2px 6px;border-radius:10px;margin-left:0.5rem">Popular</span>' : ''}<button class="edit-btn" style="position:static;opacity:1;margin-left:auto" onclick="openPackageModal(${i})" title="Edit">✎</button></h4>
                     <p>${p.description || ''}</p>
                     <span class="price">${p.price || ''}</span>
                 </div>
-            \`).join('');
+            `).join('');
         }
 
         function renderContactPreview() {
@@ -1118,7 +1118,7 @@
             const faq = siteData.faq || [];
 
             const container = document.getElementById('preview-contact');
-            container.innerHTML = \`
+            container.innerHTML = `
                 <!-- Contact Info -->
                 <div class="preview-section">
                     <div class="preview-section-header">
@@ -1166,14 +1166,14 @@
                         ${renderPreviewFaq(faq)}
                     </div>
                 </div>
-            \`;
+            `;
 
             attachEditableListeners();
         }
 
         function renderPreviewFaq(faq) {
             if (!faq.length) return '<p style="color:#666">No FAQ items yet. Click "+ Add" to add one.</p>';
-            return faq.map((f, i) => \`
+            return faq.map((f, i) => `
                 <div class="preview-faq-item">
                     <div class="preview-faq-question">
                         <span>Q: ${f.question || ''}</span>
@@ -1181,7 +1181,7 @@
                     </div>
                     <div class="preview-faq-answer">A: ${f.answer || ''}</div>
                 </div>
-            \`).join('');
+            `).join('');
         }
 
         // Focus editable element
@@ -1289,7 +1289,7 @@
             const t = isNew ? { name: '', event: '', quote: '', initials: '', order: siteData.testimonials.length + 1 } : siteData.testimonials[index];
 
             const modal = document.getElementById('editModal');
-            modal.innerHTML = \`
+            modal.innerHTML = `
                 <div class="edit-modal-content">
                     <div class="edit-modal-header">
                         <h3>\${isNew ? 'Add Testimonial' : 'Edit Testimonial'}</h3>
@@ -1319,7 +1319,7 @@
                         <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
                     </div>
                 </div>
-            \`;
+            `;
             modal.classList.add('show');
         }
 
@@ -1363,7 +1363,7 @@
             const s = isNew ? { category: category, type: '', desc: '', price: '' } : siteData.services[index];
 
             const modal = document.getElementById('editModal');
-            modal.innerHTML = \`
+            modal.innerHTML = `
                 <div class="edit-modal-content">
                     <div class="edit-modal-header">
                         <h3>\${isNew ? 'Add Service' : 'Edit Service'}</h3>
@@ -1395,7 +1395,7 @@
                         <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
                     </div>
                 </div>
-            \`;
+            `;
             modal.classList.add('show');
         }
 
@@ -1438,7 +1438,7 @@
             const p = isNew ? { title: '', description: '', price: '', featured: false, includes: [], order: siteData.packages.length + 1 } : siteData.packages[index];
 
             const modal = document.getElementById('editModal');
-            modal.innerHTML = \`
+            modal.innerHTML = `
                 <div class="edit-modal-content">
                     <div class="edit-modal-header">
                         <h3>\${isNew ? 'Add Package' : 'Edit Package'}</h3>
@@ -1475,7 +1475,7 @@
                         <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
                     </div>
                 </div>
-            \`;
+            `;
             modal.classList.add('show');
         }
 
@@ -1520,7 +1520,7 @@
             const f = isNew ? { question: '', answer: '', order: siteData.faq.length + 1 } : siteData.faq[index];
 
             const modal = document.getElementById('editModal');
-            modal.innerHTML = \`
+            modal.innerHTML = `
                 <div class="edit-modal-content">
                     <div class="edit-modal-header">
                         <h3>\${isNew ? 'Add FAQ' : 'Edit FAQ'}</h3>
@@ -1540,7 +1540,7 @@
                         <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
                     </div>
                 </div>
-            \`;
+            `;
             modal.classList.add('show');
         }
 
