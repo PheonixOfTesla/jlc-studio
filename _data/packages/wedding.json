@@ -1,0 +1,14 @@
+{
+  "title": "Wedding Essentials",
+  "description": "Florals + decor for your special day",
+  "price": "From $3,500",
+  "featured": true,
+  "order": 2,
+  "includes": [
+    "Bridal & party bouquets",
+    "Ceremony florals",
+    "Reception centerpieces",
+    "Venue styling",
+    "Setup & breakdown"
+  ]
+}

@@ -1,0 +1,160 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Use Netlify's media handling
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+# Site URL for previews
+site_url: https://jlcstudio.art
+display_url: https://jlcstudio.art
+
+collections:
+  # ========================
+  # SITE SETTINGS
+  # ========================
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "_data/settings.json"
+        fields:
+          - {label: "Business Name", name: "businessName", widget: "string", default: "JLC Studio"}
+          - {label: "Tagline", name: "tagline", widget: "string", default: "Where Creativity Meets Occasion"}
+          - {label: "Phone", name: "phone", widget: "string", default: "(941) 769-7526"}
+          - {label: "Email", name: "email", widget: "string", default: "jeremyhuffer@gmail.com"}
+          - {label: "Address", name: "address", widget: "string", default: "Sarasota, FL 34232"}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+          - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false}
+
+  # ========================
+  # HOME PAGE
+  # ========================
+  - name: "home"
+    label: "Home Page"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "_data/hero.json"
+        fields:
+          - {label: "Badge Text", name: "badge", widget: "string", default: "Sarasota's Premier Creative Studio"}
+          - {label: "Title Line 1", name: "titleLine1", widget: "string", default: "Where Creativity"}
+          - {label: "Title Line 2", name: "titleLine2", widget: "string", default: "Meets Occasion"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: "Florals • Event Decor • Custom Tailoring"}
+          - {label: "Description", name: "description", widget: "text", default: "Every detail designed with intention for life's most important moments."}
+          - {label: "Hero Image", name: "heroImage", widget: "image"}
+          - {label: "Primary Button Text", name: "primaryBtn", widget: "string", default: "Start Your Vision"}
+          - {label: "Secondary Button Text", name: "secondaryBtn", widget: "string", default: "View Our Work"}
+
+  # ========================
+  # ABOUT PAGE
+  # ========================
+  - name: "about"
+    label: "About Page"
+    files:
+      - name: "profile"
+        label: "Designer Profile"
+        file: "_data/about.json"
+        fields:
+          - {label: "Name", name: "name", widget: "string", default: "JLynne Huffer"}
+          - {label: "Title", name: "title", widget: "string", default: "Founder & Creative Director"}
+          - {label: "Profile Photo", name: "photo", widget: "image"}
+          - {label: "Short Bio", name: "shortBio", widget: "text"}
+          - {label: "Full Bio", name: "fullBio", widget: "markdown"}
+          - {label: "Years Experience", name: "yearsExperience", widget: "number", default: 15}
+          - {label: "Events Created", name: "eventsCreated", widget: "number", default: 500}
+          - label: "Experience Timeline"
+            name: "experience"
+            widget: "list"
+            fields:
+              - {label: "Years", name: "years", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Image", name: "image", widget: "image"}
+
+  # ========================
+  # SERVICES
+  # ========================
+  - name: "services"
+    label: "Services"
+    folder: "_data/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Short Description", name: "shortDesc", widget: "text"}
+      - {label: "Full Description", name: "fullDesc", widget: "markdown"}
+      - {label: "Main Image", name: "image", widget: "image"}
+      - {label: "Display Order", name: "order", widget: "number"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - label: "Pricing Tiers"
+        name: "pricing"
+        widget: "list"
+        fields:
+          - {label: "Service Type", name: "type", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Price Range", name: "price", widget: "string"}
+
+  # ========================
+  # PACKAGES
+  # ========================
+  - name: "packages"
+    label: "Packages"
+    folder: "_data/packages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Package Name", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Display Order", name: "order", widget: "number"}
+      - label: "Included Items"
+        name: "includes"
+        widget: "list"
+        field: {label: "Item", name: "item", widget: "string"}
+
+  # ========================
+  # GALLERY / PORTFOLIO
+  # ========================
+  - name: "gallery"
+    label: "Portfolio Gallery"
+    folder: "_data/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["florals", "decor", "tailoring", "events"]}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Large Featured", name: "large", widget: "boolean", default: false}
+      - {label: "Display Order", name: "order", widget: "number"}
+
+  # ========================
+  # TESTIMONIALS
+  # ========================
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "_data/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Client Name", name: "name", widget: "string"}
+      - {label: "Event Type", name: "event", widget: "string"}
+      - {label: "Quote", name: "quote", widget: "text"}
+      - {label: "Initials", name: "initials", widget: "string"}
+      - {label: "Display Order", name: "order", widget: "number"}
+
+  # ========================
+  # FAQ
+  # ========================
+  - name: "faq"
+    label: "FAQ"
+    folder: "_data/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Question", name: "question", widget: "string"}
+      - {label: "Answer", name: "answer", widget: "text"}
+      - {label: "Display Order", name: "order", widget: "number"}
