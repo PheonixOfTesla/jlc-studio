@@ -301,38 +301,51 @@
                 <section id="overview" class="section active">
                     <div class="page-header">
                         <h1>Dashboard Overview</h1>
-                        <p>Welcome back! Here's what's happening with your business.</p>
+                        <p>Welcome back! Manage your business from here.</p>
                     </div>
 
-                    <div class="card" style="text-align: center; padding: 3rem;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">📅</div>
-                        <h3 style="margin-bottom: 0.5rem;">Connect Calendly</h3>
-                        <p style="color: var(--gray); margin-bottom: 1.5rem;">Link your Calendly account to see bookings, revenue, and upcoming events.</p>
-                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-primary" style="width: auto;">Open Calendly Dashboard</a>
-                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 2rem;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin-bottom: 1rem;">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <h3 style="margin-bottom: 0.5rem;">Calendly</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">View bookings & schedule</p>
+                            <span style="display: inline-block; margin-top: 1rem; color: var(--green); font-size: 0.8rem;">Connected</span>
+                        </a>
 
-                    <div class="card" style="margin-top: 1.5rem;">
-                        <div class="card-header">
-                            <h2>Quick Links</h2>
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                            <a href="https://calendly.com/jlcstudiollc" target="_blank" class="list-item" style="text-decoration: none; color: inherit;">
-                                <strong>Calendly</strong>
-                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">Manage bookings</p>
-                            </a>
-                            <a href="https://dashboard.stripe.com" target="_blank" class="list-item" style="text-decoration: none; color: inherit;">
-                                <strong>Stripe</strong>
-                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">View payments</p>
-                            </a>
-                            <a onclick="showSection('content')" class="list-item" style="text-decoration: none; color: inherit; cursor: pointer;">
-                                <strong>Edit Site Content</strong>
-                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">Update text & images</p>
-                            </a>
-                            <a onclick="showSection('services')" class="list-item" style="text-decoration: none; color: inherit; cursor: pointer;">
-                                <strong>Services & Pricing</strong>
-                                <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.25rem;">Manage offerings</p>
-                            </a>
-                        </div>
+                        <a href="https://dashboard.stripe.com" target="_blank" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 2rem;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin-bottom: 1rem;">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                            <h3 style="margin-bottom: 0.5rem;">Stripe</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Payments & revenue</p>
+                            <span style="display: inline-block; margin-top: 1rem; color: var(--green); font-size: 0.8rem;">Connected</span>
+                        </a>
+
+                        <a onclick="showSection('content')" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 2rem; cursor: pointer;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin-bottom: 1rem;">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            <h3 style="margin-bottom: 0.5rem;">Site Content</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Edit text & images</p>
+                            <span style="display: inline-block; margin-top: 1rem; color: var(--gold); font-size: 0.8rem;">Edit Now</span>
+                        </a>
+
+                        <a onclick="showSection('services')" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 2rem; cursor: pointer;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin-bottom: 1rem;">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            <h3 style="margin-bottom: 0.5rem;">Services & Pricing</h3>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Manage your offerings</p>
+                            <span style="display: inline-block; margin-top: 1rem; color: var(--gold); font-size: 0.8rem;">Edit Now</span>
+                        </a>
                     </div>
                 </section>
 
