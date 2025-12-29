@@ -1262,14 +1262,20 @@
             showToast('Saving...', '');
             console.log('Saving:', type, data);
 
+            // Use absolute URL to avoid redirect issues
+            const apiUrl = window.location.hostname.includes('localhost')
+                ? '/api/save-content'
+                : 'https://www.jlcstudio.art/api/save-content';
+
             try {
-                const res = await fetch('/api/save-content', {
+                const res = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${authToken}`
                     },
-                    body: JSON.stringify({ type, data })
+                    body: JSON.stringify({ type, data }),
+                    redirect: 'follow'
                 });
 
                 console.log('Response status:', res.status);
