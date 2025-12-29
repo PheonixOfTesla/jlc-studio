@@ -78,14 +78,14 @@
       "id": "decor-thumb-2",
       "label": "Event Decor - Thumbnail 2",
       "description": "Event lighting sample",
-      "url": "https://images.unsplash.com/photo-1460364157752-926555571943?w=300&q=80",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=300&q=80",
       "page": "services.html"
     },
     "tailoringMain": {
       "id": "tailoring-main",
       "label": "Custom Tailoring - Main",
       "description": "Primary tailoring image",
-      "url": "https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=600&q=80",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
       "page": "services.html"
     },
     "tailoringThumb1": {
@@ -173,14 +173,14 @@
       "id": "featured-gala",
       "label": "Featured - Gala Design",
       "description": "Featured work gallery",
-      "url": "https://images.unsplash.com/photo-1460364157752-926555571943?w=600&q=80",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
       "page": "index.html"
     },
     "customTailoring": {
       "id": "featured-tailoring",
       "label": "Featured - Custom Tailoring",
       "description": "Featured work gallery - large",
-      "url": "https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=800&q=80",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80",
       "page": "index.html"
     }
   },
@@ -231,7 +231,7 @@
       "id": "gallery-6",
       "label": "Gallery - Wedding Dress",
       "description": "Portfolio item",
-      "url": "https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=600&q=80",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
       "page": "gallery.html"
     },
     "item7": {
@@ -245,7 +245,7 @@
       "id": "gallery-8",
       "label": "Gallery - Event Lighting",
       "description": "Portfolio item",
-      "url": "https://images.unsplash.com/photo-1460364157752-926555571943?w=600&q=80",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
       "page": "gallery.html"
     },
     "item9": {
