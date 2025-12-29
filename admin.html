@@ -134,6 +134,21 @@
         .include-tag { background: rgba(196,160,82,0.15); color: var(--primary-dark); padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
         .include-tag button { background: none; border: none; color: inherit; cursor: pointer; font-size: 1rem; line-height: 1; }
 
+        /* PHOTO GRID */
+        .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        .photo-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+        .photo-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .photo-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
+        .photo-card-info { padding: 0.75rem; }
+        .photo-card-label { font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+        .photo-card-desc { font-size: 0.7rem; color: var(--text-light); }
+        .photo-card-page { font-size: 0.65rem; color: var(--primary); margin-top: 0.25rem; }
+        .photo-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 2rem; }
+        .photo-modal.show { display: flex; }
+        .photo-modal-content { background: var(--white); border-radius: 12px; padding: 1.5rem; width: 100%; max-width: 500px; }
+        .photo-modal-preview { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
+        .photo-modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--white); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; }
+
         @media (max-width: 900px) {
             .sidebar { width: 100%; height: auto; position: relative; }
             .main-content { margin-left: 0; max-width: 100%; }
@@ -203,6 +218,10 @@
             </a>
 
             <div class="sidebar-section">Appearance</div>
+            <a class="nav-item" data-section="photos">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Photos
+            </a>
             <a class="nav-item" data-section="theme">
                 <svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.73-.67 1.9-1.57.1-.56-.09-1.14-.48-1.54-.39-.4-.58-.96-.48-1.54.17-.9.97-1.56 1.88-1.56H17c2.76 0 5-2.24 5-5 0-4.42-4.03-8.79-10-8.79z"/></svg>
                 Color Theme
@@ -430,6 +449,58 @@
                 </div>
             </section>
 
+            <!-- PHOTOS -->
+            <section id="photos" class="section">
+                <div class="page-header">
+                    <h1>Photos</h1>
+                    <p>Manage all images across your website. Click any image to replace it.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Hero & Banners</h3>
+                    </div>
+                    <div class="photo-grid" id="photosHero"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>About Section</h3>
+                    </div>
+                    <div class="photo-grid" id="photosAbout"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Services Images</h3>
+                    </div>
+                    <div class="photo-grid" id="photosServices"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Homepage Featured</h3>
+                    </div>
+                    <div class="photo-grid" id="photosFeatured"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Gallery / Portfolio</h3>
+                    </div>
+                    <div class="photo-grid" id="photosGallery"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Career Timeline</h3>
+                    </div>
+                    <div class="photo-grid" id="photosTimeline"></div>
+                </div>
+
+                <button type="button" class="btn btn-save" onclick="saveImages()">Save All Photos</button>
+            </section>
+
             <!-- THEME -->
             <section id="theme" class="section">
                 <div class="page-header">
@@ -556,6 +627,28 @@
 
     <div class="toast" id="toast"></div>
 
+    <!-- Photo Upload Modal -->
+    <div class="photo-modal" id="photoModal">
+        <div class="photo-modal-content">
+            <h3 style="margin-bottom:1rem" id="photoModalTitle">Update Photo</h3>
+            <img id="photoModalPreview" class="photo-modal-preview" src="" alt="Preview">
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" id="photoModalUrl" placeholder="https://...">
+                <div class="form-hint">Paste an image URL or upload to a service like Unsplash, Imgur, or Cloudinary</div>
+            </div>
+            <div class="form-group">
+                <label>Or Upload File</label>
+                <input type="file" id="photoModalFile" accept="image/*" style="padding:0.5rem">
+                <div class="form-hint">Images will be converted to base64 (best for small images)</div>
+            </div>
+            <div style="display:flex;gap:1rem;margin-top:1rem">
+                <button type="button" class="btn btn-save" onclick="savePhotoUrl()">Save Photo</button>
+                <button type="button" class="btn btn-outline" onclick="closePhotoModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // =====================
         // DATA STORE
@@ -568,8 +661,10 @@
             packages: [],
             testimonials: [],
             faq: [],
-            theme: {}
+            theme: {},
+            images: {}
         };
+        let currentEditingPhoto = null;
 
         // =====================
         // AUTH
@@ -627,7 +722,7 @@
         // LOAD DATA
         // =====================
         async function loadAllData() {
-            const files = ['hero', 'about', 'settings', 'services', 'packages', 'testimonials', 'faq', 'theme'];
+            const files = ['hero', 'about', 'settings', 'services', 'packages', 'testimonials', 'faq', 'theme', 'images'];
             const results = await Promise.all(files.map(f => fetchJSON(f)));
 
             if (results[0]) siteData.hero = results[0];
@@ -638,6 +733,7 @@
             if (results[5]) siteData.testimonials = results[5];
             if (results[6]) siteData.faq = results[6];
             if (results[7]) siteData.theme = results[7];
+            if (results[8]) siteData.images = results[8];
 
             populateAllForms();
         }
@@ -686,6 +782,7 @@
             renderTestimonials();
             renderFaq();
             renderTheme();
+            renderPhotos();
         }
 
         // =====================
@@ -973,6 +1070,145 @@
             };
             await saveToGitHub('theme', themeData);
         }
+
+        // =====================
+        // PHOTOS
+        // =====================
+        function renderPhotos() {
+            const images = siteData.images || {};
+
+            // Hero & Banners
+            const heroContainer = document.getElementById('photosHero');
+            const heroImages = [
+                images.hero?.main,
+                images.services?.pageHero,
+                images.gallery?.pageHero,
+                images.contact?.pageHero,
+                images.about?.pageHero
+            ].filter(Boolean);
+            heroContainer.innerHTML = heroImages.map(img => createPhotoCard(img)).join('');
+
+            // About
+            const aboutContainer = document.getElementById('photosAbout');
+            const aboutImages = [
+                images.about?.profile,
+                images.about?.headshot
+            ].filter(Boolean);
+            aboutContainer.innerHTML = aboutImages.map(img => createPhotoCard(img)).join('');
+
+            // Services
+            const servicesContainer = document.getElementById('photosServices');
+            const serviceImages = Object.values(images.services || {}).filter(img => img && img.id);
+            servicesContainer.innerHTML = serviceImages.map(img => createPhotoCard(img)).join('');
+
+            // Featured/Homepage
+            const featuredContainer = document.getElementById('photosFeatured');
+            const featuredImages = [
+                ...Object.values(images.featured || {}),
+                ...Object.values(images.homepage || {})
+            ].filter(img => img && img.id);
+            featuredContainer.innerHTML = featuredImages.map(img => createPhotoCard(img)).join('');
+
+            // Gallery
+            const galleryContainer = document.getElementById('photosGallery');
+            const galleryImages = Object.values(images.gallery || {}).filter(img => img && img.id);
+            galleryContainer.innerHTML = galleryImages.map(img => createPhotoCard(img)).join('');
+
+            // Timeline
+            const timelineContainer = document.getElementById('photosTimeline');
+            const timelineImages = Object.values(images.timeline || {}).filter(img => img && img.id);
+            timelineContainer.innerHTML = timelineImages.map(img => createPhotoCard(img)).join('');
+        }
+
+        function createPhotoCard(img) {
+            if (!img || !img.id) return '';
+            return `
+                <div class="photo-card" onclick="openPhotoModal('${img.id}')">
+                    <img src="${img.url}" alt="${img.label}" onerror="this.src='https://via.placeholder.com/200x120?text=No+Image'">
+                    <div class="photo-card-info">
+                        <div class="photo-card-label">${img.label}</div>
+                        <div class="photo-card-desc">${img.description || ''}</div>
+                        <div class="photo-card-page">${img.page || ''}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function findImageById(id) {
+            const images = siteData.images;
+            for (const category of Object.values(images)) {
+                if (typeof category === 'object') {
+                    for (const [key, img] of Object.entries(category)) {
+                        if (img && img.id === id) {
+                            return { category: Object.keys(images).find(k => images[k] === category), key, img };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        function openPhotoModal(id) {
+            const found = findImageById(id);
+            if (!found) return;
+
+            currentEditingPhoto = found;
+            document.getElementById('photoModalTitle').textContent = 'Update: ' + found.img.label;
+            document.getElementById('photoModalPreview').src = found.img.url;
+            document.getElementById('photoModalUrl').value = found.img.url;
+            document.getElementById('photoModal').classList.add('show');
+        }
+
+        function closePhotoModal() {
+            document.getElementById('photoModal').classList.remove('show');
+            currentEditingPhoto = null;
+            document.getElementById('photoModalFile').value = '';
+        }
+
+        // Handle file upload preview
+        document.getElementById('photoModalFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('photoModalPreview').src = event.target.result;
+                    document.getElementById('photoModalUrl').value = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle URL input preview
+        document.getElementById('photoModalUrl').addEventListener('input', function() {
+            if (this.value.startsWith('http')) {
+                document.getElementById('photoModalPreview').src = this.value;
+            }
+        });
+
+        function savePhotoUrl() {
+            if (!currentEditingPhoto) return;
+
+            const newUrl = document.getElementById('photoModalUrl').value;
+            if (!newUrl) {
+                showToast('Please enter an image URL', 'error');
+                return;
+            }
+
+            // Update in data
+            siteData.images[currentEditingPhoto.category][currentEditingPhoto.key].url = newUrl;
+            closePhotoModal();
+            renderPhotos();
+            showToast('Photo updated. Click "Save All Photos" to apply.', 'success');
+        }
+
+        async function saveImages() {
+            await saveToGitHub('images', siteData.images);
+        }
+
+        // Close modal on outside click
+        document.getElementById('photoModal').addEventListener('click', function(e) {
+            if (e.target === this) closePhotoModal();
+        });
 
         // =====================
         // FORM HANDLERS

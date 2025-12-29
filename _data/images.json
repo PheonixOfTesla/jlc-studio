@@ -1,0 +1,326 @@
+{
+  "hero": {
+    "main": {
+      "id": "hero-main",
+      "label": "Homepage Hero Image",
+      "description": "Main banner image on homepage",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80",
+      "page": "index.html"
+    }
+  },
+  "about": {
+    "profile": {
+      "id": "about-profile",
+      "label": "Profile Photo",
+      "description": "Your professional headshot",
+      "url": "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80",
+      "page": "index.html, about.html"
+    },
+    "pageHero": {
+      "id": "about-hero",
+      "label": "About Page Hero",
+      "description": "Banner image on About page",
+      "url": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1920&q=80",
+      "page": "about.html"
+    },
+    "headshot": {
+      "id": "about-headshot",
+      "label": "About Headshot",
+      "description": "Main photo in About section",
+      "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      "page": "about.html"
+    }
+  },
+  "services": {
+    "pageHero": {
+      "id": "services-hero",
+      "label": "Services Page Hero",
+      "description": "Banner image on Services page",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
+      "page": "services.html"
+    },
+    "floralMain": {
+      "id": "floral-main",
+      "label": "Floral Design - Main",
+      "description": "Primary floral services image",
+      "url": "https://images.unsplash.com/photo-1561128290-005859246e58?w=600&q=80",
+      "page": "services.html"
+    },
+    "floralThumb1": {
+      "id": "floral-thumb-1",
+      "label": "Floral Design - Thumbnail 1",
+      "description": "Floral arrangement sample",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=300&q=80",
+      "page": "services.html"
+    },
+    "floralThumb2": {
+      "id": "floral-thumb-2",
+      "label": "Floral Design - Thumbnail 2",
+      "description": "Colorful flowers sample",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80",
+      "page": "services.html"
+    },
+    "decorMain": {
+      "id": "decor-main",
+      "label": "Event Decor - Main",
+      "description": "Primary event decor image",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
+      "page": "services.html"
+    },
+    "decorThumb1": {
+      "id": "decor-thumb-1",
+      "label": "Event Decor - Thumbnail 1",
+      "description": "Table setting sample",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=300&q=80",
+      "page": "services.html"
+    },
+    "decorThumb2": {
+      "id": "decor-thumb-2",
+      "label": "Event Decor - Thumbnail 2",
+      "description": "Event lighting sample",
+      "url": "https://images.unsplash.com/photo-1460364157752-926555571943?w=300&q=80",
+      "page": "services.html"
+    },
+    "tailoringMain": {
+      "id": "tailoring-main",
+      "label": "Custom Tailoring - Main",
+      "description": "Primary tailoring image",
+      "url": "https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=600&q=80",
+      "page": "services.html"
+    },
+    "tailoringThumb1": {
+      "id": "tailoring-thumb-1",
+      "label": "Custom Tailoring - Thumbnail 1",
+      "description": "Tailoring detail",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=300&q=80",
+      "page": "services.html"
+    },
+    "tailoringThumb2": {
+      "id": "tailoring-thumb-2",
+      "label": "Custom Tailoring - Thumbnail 2",
+      "description": "Fabric sample",
+      "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&q=80",
+      "page": "services.html"
+    },
+    "cta": {
+      "id": "services-cta",
+      "label": "Services CTA Background",
+      "description": "Bottom call-to-action image",
+      "url": "https://images.unsplash.com/photo-1522057384400-681b421cfebc?w=1920&q=80",
+      "page": "services.html"
+    }
+  },
+  "homepage": {
+    "floralCard": {
+      "id": "home-floral-card",
+      "label": "Homepage Floral Card",
+      "description": "Floral service preview card",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=500&q=80",
+      "page": "index.html"
+    },
+    "decorCard": {
+      "id": "home-decor-card",
+      "label": "Homepage Decor Card",
+      "description": "Event decor preview card",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=500&q=80",
+      "page": "index.html"
+    },
+    "tailoringCard": {
+      "id": "home-tailoring-card",
+      "label": "Homepage Tailoring Card",
+      "description": "Tailoring preview card",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=500&q=80",
+      "page": "index.html"
+    },
+    "processBackground": {
+      "id": "home-process-bg",
+      "label": "Process Section Background",
+      "description": "Background for How We Work section",
+      "url": "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=1920&q=80",
+      "page": "index.html"
+    },
+    "ctaBackground": {
+      "id": "home-cta-bg",
+      "label": "Homepage CTA Background",
+      "description": "Bottom call-to-action image",
+      "url": "https://images.unsplash.com/photo-1522057384400-681b421cfebc?w=1920&q=80",
+      "page": "index.html"
+    }
+  },
+  "featured": {
+    "bridalFlorals": {
+      "id": "featured-bridal",
+      "label": "Featured - Bridal Florals",
+      "description": "Featured work gallery - large",
+      "url": "https://images.unsplash.com/photo-1561128290-005859246e58?w=800&q=80",
+      "page": "index.html"
+    },
+    "eventDecor": {
+      "id": "featured-event",
+      "label": "Featured - Event Decor",
+      "description": "Featured work gallery",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
+      "page": "index.html"
+    },
+    "customArrangements": {
+      "id": "featured-arrangements",
+      "label": "Featured - Custom Arrangements",
+      "description": "Featured work gallery",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+      "page": "index.html"
+    },
+    "galaDesign": {
+      "id": "featured-gala",
+      "label": "Featured - Gala Design",
+      "description": "Featured work gallery",
+      "url": "https://images.unsplash.com/photo-1460364157752-926555571943?w=600&q=80",
+      "page": "index.html"
+    },
+    "customTailoring": {
+      "id": "featured-tailoring",
+      "label": "Featured - Custom Tailoring",
+      "description": "Featured work gallery - large",
+      "url": "https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=800&q=80",
+      "page": "index.html"
+    }
+  },
+  "gallery": {
+    "pageHero": {
+      "id": "gallery-hero",
+      "label": "Gallery Page Hero",
+      "description": "Banner image on Gallery page",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80",
+      "page": "gallery.html"
+    },
+    "item1": {
+      "id": "gallery-1",
+      "label": "Gallery - Romantic Bouquet",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1561128290-005859246e58?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item2": {
+      "id": "gallery-2",
+      "label": "Gallery - Spring Centerpiece",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item3": {
+      "id": "gallery-3",
+      "label": "Gallery - Wedding Reception",
+      "description": "Portfolio item - wide",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
+      "page": "gallery.html"
+    },
+    "item4": {
+      "id": "gallery-4",
+      "label": "Gallery - Wildflower",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item5": {
+      "id": "gallery-5",
+      "label": "Gallery - Gala Decor",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item6": {
+      "id": "gallery-6",
+      "label": "Gallery - Wedding Dress",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1522057306606-8d84dfe71eb2?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item7": {
+      "id": "gallery-7",
+      "label": "Gallery - Ceremony Arch",
+      "description": "Portfolio item - wide",
+      "url": "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=800&q=80",
+      "page": "gallery.html"
+    },
+    "item8": {
+      "id": "gallery-8",
+      "label": "Gallery - Event Lighting",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1460364157752-926555571943?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item9": {
+      "id": "gallery-9",
+      "label": "Gallery - Tailoring Detail",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item10": {
+      "id": "gallery-10",
+      "label": "Gallery - Table Florals",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1522057384400-681b421cfebc?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item11": {
+      "id": "gallery-11",
+      "label": "Gallery - Outdoor Ceremony",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "item12": {
+      "id": "gallery-12",
+      "label": "Gallery - Bouquet",
+      "description": "Portfolio item",
+      "url": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=600&q=80",
+      "page": "gallery.html"
+    },
+    "cta": {
+      "id": "gallery-cta",
+      "label": "Gallery CTA Background",
+      "description": "Bottom call-to-action image",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
+      "page": "gallery.html"
+    }
+  },
+  "contact": {
+    "pageHero": {
+      "id": "contact-hero",
+      "label": "Contact Page Hero",
+      "description": "Banner image on Contact page",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
+      "page": "contact.html"
+    }
+  },
+  "timeline": {
+    "fashion": {
+      "id": "timeline-fashion",
+      "label": "Timeline - Fashion Design",
+      "description": "Career journey image",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80",
+      "page": "about.html"
+    },
+    "teaching": {
+      "id": "timeline-teaching",
+      "label": "Timeline - Teaching",
+      "description": "Career journey image",
+      "url": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400&q=80",
+      "page": "about.html"
+    },
+    "floral": {
+      "id": "timeline-floral",
+      "label": "Timeline - Floral Design",
+      "description": "Career journey image",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=400&q=80",
+      "page": "about.html"
+    },
+    "studio": {
+      "id": "timeline-studio",
+      "label": "Timeline - JLC Studio",
+      "description": "Career journey image",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=80",
+      "page": "about.html"
+    }
+  }
+}

@@ -110,7 +110,8 @@ module.exports = async (req, res) => {
             'testimonials': '_data/testimonials.json',
             'faq': '_data/faq.json',
             'theme': '_data/theme.json',
-            'gallery': '_data/gallery.json'
+            'gallery': '_data/gallery.json',
+            'images': '_data/images.json'
         };
 
         const filePath = fileMap[type];
