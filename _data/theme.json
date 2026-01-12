@@ -1,20 +1,20 @@
 {
   "colors": {
     "primary": {
-      "hex": "#5b4a98",
-      "rgb": "91, 74, 152"
+      "hex": "#9b7daa",
+      "rgb": "155, 125, 170"
     },
     "accent": {
-      "hex": "#73e4d8",
-      "rgb": "115, 228, 216"
+      "hex": "#f0eaf3",
+      "rgb": "240, 234, 243"
     },
     "dark": {
-      "hex": "#1b0f4d",
-      "rgb": "27, 15, 77"
+      "hex": "#1a1a1a",
+      "rgb": "26, 26, 26"
     },
     "background": {
-      "hex": "#e2f64d",
-      "rgb": "226, 246, 77"
+      "hex": "#fafaf8",
+      "rgb": "250, 250, 248"
     }
   },
   "presets": [
