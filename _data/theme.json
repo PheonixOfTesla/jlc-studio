@@ -9,12 +9,12 @@
       "rgb": "217, 255, 2"
     },
     "dark": {
-      "hex": "#093c1d",
-      "rgb": "9, 60, 29"
-    },
-    "background": {
       "hex": "#07f67b",
       "rgb": "7, 246, 123"
+    },
+    "background": {
+      "hex": "#fafaf8",
+      "rgb": "250, 250, 248"
     }
   },
   "presets": [
