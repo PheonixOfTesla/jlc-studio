@@ -38,6 +38,22 @@ const ContentLoader = {
       }
     };
 
+    // Load labels/template text from admin.json
+    if (this.adminData.labels) {
+      const labels = this.adminData.labels;
+      const loadLabels = (obj, prefix = '') => {
+        for (const key in obj) {
+          if (typeof obj[key] === 'string') {
+            const selectorKey = prefix ? `${prefix}-${key}` : key;
+            setTextContent(selectorKey, obj[key]);
+          } else if (typeof obj[key] === 'object') {
+            loadLabels(obj[key], key);
+          }
+        }
+      };
+      loadLabels(labels);
+    }
+
     // Hero content
     if (this.adminData.hero) {
       const hero = this.adminData.hero;

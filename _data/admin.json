@@ -688,5 +688,64 @@
       "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
       "label": "Contact Hero"
     }
+  },
+  "labels": {
+    "businessName": "JLC Studio",
+    "tagline": "Where artistry meets occasion",
+    "hero": {
+      "craft": "Our Craft",
+      "craftTitle": "Artistry in Every Detail"
+    },
+    "services": {
+      "expertise": "Our Expertise",
+      "expertiseTitle": "Three Disciplines, One Vision",
+      "expertiseDesc": "From the first consultation to the final touch, we bring artistry and precision to every project",
+      "floral": "Floral Design",
+      "decor": "Event Decor",
+      "tailoring": "Custom Tailoring"
+    },
+    "about": {
+      "designer": "The Designer",
+      "journey": "A Journey of Creativity",
+      "background": "Background",
+      "expertise": "Expertise",
+      "coreSkills": "Core Skills",
+      "education": "Education"
+    },
+    "process": {
+      "title": "How We Work",
+      "description": "Our collaborative process ensures every detail aligns with your vision",
+      "discovery": "Discovery",
+      "design": "Design",
+      "create": "Create",
+      "execute": "Execute"
+    },
+    "testimonials": {
+      "heading": "Client Stories",
+      "subheading": "Words That Inspire Us"
+    },
+    "packages": {
+      "heading": "Value",
+      "title": "Complete Packages",
+      "description": "Choose the package that best fits your vision"
+    },
+    "cta": {
+      "heading": "Ready to Create Something Beautiful?",
+      "description": "Let's bring your vision to life",
+      "button": "Start Your Project"
+    },
+    "gallery": {
+      "heading": "Our Work",
+      "title": "Portfolio",
+      "subtitle": "A collection of our finest creations",
+      "cta": "Love What You See?"
+    },
+    "pages": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "contact": "Get in Touch"
+    }
   }
 }
