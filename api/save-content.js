@@ -121,33 +121,16 @@ module.exports = async (req, res) => {
             return res.status(400).json({ error: 'Missing type or data' });
         }
 
-        // Map content types to file paths - ALL editable content
-        const fileMap = {
-            'hero': '_data/hero.json',
-            'about': '_data/about.json',
-            'settings': '_data/settings.json',
-            'services': '_data/services.json',
-            'packages': '_data/packages.json',
-            'testimonials': '_data/testimonials.json',
-            'faq': '_data/faq.json',
-            'theme': '_data/theme.json',
-            'gallery': '_data/gallery.json',
-            'images': '_data/images.json'
-        };
+        // Single source of truth: admin.json contains all data
+        const filePath = '_data/admin.json';
 
-        const filePath = fileMap[type];
-        if (!filePath) {
-            log('Unknown content type:', type);
-            return res.status(400).json({ error: `Unknown content type: ${type}` });
-        }
-
-        log('Saving to:', filePath);
+        log('Saving to master file:', filePath, 'Type:', type);
 
         // Save to GitHub
         const result = await saveFile(
             filePath,
             data,
-            `Update ${type} via admin panel`
+            `Update admin data via admin panel (${type})`
         );
 
         log('Save successful, commit:', result.commit?.sha);

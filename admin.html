@@ -822,18 +822,12 @@
         // LOAD DATA
         // =====================
         async function loadAllData() {
-            const files = ['hero', 'about', 'settings', 'services', 'packages', 'testimonials', 'faq', 'theme', 'images'];
-            const results = await Promise.all(files.map(f => fetchJSON(f)));
+            // Load single master admin.json file
+            const adminData = await fetchJSON('admin');
 
-            if (results[0]) siteData.hero = results[0];
-            if (results[1]) siteData.about = results[1];
-            if (results[2]) siteData.settings = results[2];
-            if (results[3]) siteData.services = results[3];
-            if (results[4]) siteData.packages = results[4];
-            if (results[5]) siteData.testimonials = results[5];
-            if (results[6]) siteData.faq = results[6];
-            if (results[7]) siteData.theme = results[7];
-            if (results[8]) siteData.images = results[8];
+            if (adminData) {
+                siteData = adminData;
+            }
 
             populateAllForms();
         }
@@ -2062,6 +2056,9 @@
             showToast('Saving...', '');
             console.log('Saving:', type, data);
 
+            // Update siteData with the new data
+            siteData[type] = data;
+
             // Use absolute URL to avoid redirect issues
             // jlc-studio.vercel.app has the env vars, www.jlcstudio.art doesn't yet
             const apiUrl = window.location.hostname.includes('localhost')
@@ -2069,13 +2066,14 @@
                 : 'https://jlc-studio.vercel.app/api/save-content';
 
             try {
+                // Always save the entire siteData to 'admin' type (master admin.json)
                 const res = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${authToken}`
                     },
-                    body: JSON.stringify({ type, data }),
+                    body: JSON.stringify({ type: 'admin', data: siteData }),
                     redirect: 'follow'
                 });
 
@@ -2096,8 +2094,6 @@
 
                 if (result.success) {
                     showToast('Saved! Site will update in ~30 seconds.', 'success');
-                    // Update local data
-                    siteData[type] = data;
                 } else {
                     console.error('Save error:', result);
                     showToast('Error: ' + (result.error || result.details || 'Unknown error'), 'error');
