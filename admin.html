@@ -1869,87 +1869,74 @@
         // PHOTOS
         // =====================
         function renderPhotos() {
-            const images = siteData.images || {};
+            const imageMap = siteData.imageMap || {};
 
-            // Hero & Banners
-            const heroContainer = document.getElementById('photosHero');
-            const heroImages = [
-                images.hero?.main,
-                images.services?.pageHero,
-                images.gallery?.pageHero,
-                images.contact?.pageHero,
-                images.about?.pageHero
-            ].filter(Boolean);
-            heroContainer.innerHTML = heroImages.map(img => createPhotoCard(img)).join('');
+            // Define photo categories
+            const categories = {
+                photosHero: {
+                    title: 'Hero & Banners',
+                    keys: ['hero-main', 'services-hero', 'gallery-hero', 'contact-hero', 'about-hero']
+                },
+                photosAbout: {
+                    title: 'About Section',
+                    keys: ['about-profile', 'about-hero', 'about-cta-image']
+                },
+                photosServices: {
+                    title: 'Services Images',
+                    keys: ['services-floral-main', 'services-floral-detail-1', 'services-floral-detail-2',
+                           'services-decor-main', 'services-decor-detail-1', 'services-decor-detail-2',
+                           'services-tailoring-main', 'services-tailoring-detail-1', 'services-tailoring-detail-2']
+                },
+                photosFeatured: {
+                    title: 'Homepage Featured',
+                    keys: ['services-cta-image', 'about-cta-image']
+                },
+                photosGallery: {
+                    title: 'Gallery / Portfolio',
+                    keys: ['gallery-hero', 'gallery-filter-hero']
+                },
+                photosTimeline: {
+                    title: 'Process & Timeline',
+                    keys: ['process-discovery', 'process-design', 'process-create', 'process-execute']
+                }
+            };
 
-            // About
-            const aboutContainer = document.getElementById('photosAbout');
-            const aboutImages = [
-                images.about?.profile,
-                images.about?.headshot
-            ].filter(Boolean);
-            aboutContainer.innerHTML = aboutImages.map(img => createPhotoCard(img)).join('');
+            // Render each category
+            for (const [containerId, config] of Object.entries(categories)) {
+                const container = document.getElementById(containerId);
+                if (!container) continue;
 
-            // Services
-            const servicesContainer = document.getElementById('photosServices');
-            const serviceImages = Object.values(images.services || {}).filter(img => img && img.id);
-            servicesContainer.innerHTML = serviceImages.map(img => createPhotoCard(img)).join('');
+                const html = config.keys
+                    .filter(key => imageMap[key])
+                    .map(key => createPhotoCard(key, imageMap[key]))
+                    .join('');
 
-            // Featured/Homepage
-            const featuredContainer = document.getElementById('photosFeatured');
-            const featuredImages = [
-                ...Object.values(images.featured || {}),
-                ...Object.values(images.homepage || {})
-            ].filter(img => img && img.id);
-            featuredContainer.innerHTML = featuredImages.map(img => createPhotoCard(img)).join('');
-
-            // Gallery
-            const galleryContainer = document.getElementById('photosGallery');
-            const galleryImages = Object.values(images.gallery || {}).filter(img => img && img.id);
-            galleryContainer.innerHTML = galleryImages.map(img => createPhotoCard(img)).join('');
-
-            // Timeline
-            const timelineContainer = document.getElementById('photosTimeline');
-            const timelineImages = Object.values(images.timeline || {}).filter(img => img && img.id);
-            timelineContainer.innerHTML = timelineImages.map(img => createPhotoCard(img)).join('');
+                container.innerHTML = html;
+            }
         }
 
-        function createPhotoCard(img) {
-            if (!img || !img.id) return '';
+        function createPhotoCard(imageId, imageUrl) {
+            const label = imageId.replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
             return `
-                <div class="photo-card" onclick="openPhotoModal('${img.id}')">
-                    <img src="${img.url}" alt="${img.label}" onerror="this.style.background='#f0f0f0';this.style.display='flex';this.alt='No Image'">
+                <div class="photo-card" onclick="openPhotoModal('${imageId}')">
+                    <img src="${imageUrl}" alt="${label}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 120%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22200%22 height=%22120%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22Arial%22 font-size=%2212%22 fill=%22%23999%22%3ENo Image%3C/text%3E%3C/svg%3E'">
                     <div class="photo-card-info">
-                        <div class="photo-card-label">${img.label}</div>
-                        <div class="photo-card-desc">${img.description || ''}</div>
-                        <div class="photo-card-page">${img.page || ''}</div>
+                        <div class="photo-card-label">${label}</div>
+                        <div class="photo-card-desc">Click to edit</div>
                     </div>
                 </div>
             `;
         }
 
-        function findImageById(id) {
-            const images = siteData.images;
-            for (const category of Object.values(images)) {
-                if (typeof category === 'object') {
-                    for (const [key, img] of Object.entries(category)) {
-                        if (img && img.id === id) {
-                            return { category: Object.keys(images).find(k => images[k] === category), key, img };
-                        }
-                    }
-                }
-            }
-            return null;
-        }
+        function openPhotoModal(imageId) {
+            const imageMap = siteData.imageMap || {};
+            const currentUrl = imageMap[imageId] || '';
 
-        function openPhotoModal(id) {
-            const found = findImageById(id);
-            if (!found) return;
-
-            currentEditingPhoto = found;
-            document.getElementById('photoModalTitle').textContent = 'Update: ' + found.img.label;
-            document.getElementById('photoModalPreview').src = found.img.url;
-            document.getElementById('photoModalUrl').value = found.img.url;
+            currentEditingPhoto = { id: imageId, url: currentUrl };
+            const label = imageId.replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+            document.getElementById('photoModalTitle').textContent = 'Edit: ' + label;
+            document.getElementById('photoModalPreview').src = currentUrl;
+            document.getElementById('photoModalUrl').value = currentUrl;
             document.getElementById('photoModal').classList.add('show');
         }
 
@@ -1957,6 +1944,7 @@
             document.getElementById('photoModal').classList.remove('show');
             currentEditingPhoto = null;
             document.getElementById('photoModalFile').value = '';
+            document.getElementById('photoModalUrl').value = '';
         }
 
         // Handle file upload preview
@@ -1974,7 +1962,7 @@
 
         // Handle URL input preview
         document.getElementById('photoModalUrl').addEventListener('input', function() {
-            if (this.value.startsWith('http')) {
+            if (this.value.startsWith('http') || this.value.startsWith('data:')) {
                 document.getElementById('photoModalPreview').src = this.value;
             }
         });
@@ -1984,19 +1972,19 @@
 
             const newUrl = document.getElementById('photoModalUrl').value;
             if (!newUrl) {
-                showToast('Please enter an image URL', 'error');
+                showToast('Please enter an image URL or upload a file', 'error');
                 return;
             }
 
-            // Update in data
-            siteData.images[currentEditingPhoto.category][currentEditingPhoto.key].url = newUrl;
+            // Update in imageMap
+            siteData.imageMap[currentEditingPhoto.id] = newUrl;
             closePhotoModal();
             renderPhotos();
             showToast('Photo updated. Click "Save All Photos" to apply.', 'success');
         }
 
         async function saveImages() {
-            await saveToGitHub('images', siteData.images);
+            await saveToGitHub('photos', { imageMap: siteData.imageMap });
         }
 
         // Close modal on outside click
