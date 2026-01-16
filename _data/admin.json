@@ -12,56 +12,10 @@
   "about": {
     "name": "JLynne Huffer",
     "title": "Founder & Creative Director",
-    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     "bio": "A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry. From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, I bring a unique perspective that blends artistic vision with technical expertise. My background combines couture-level tailoring with innovative event design and botanical artistry—three disciplines that allow me to create truly cohesive, unforgettable experiences.",
     "years": 15,
     "events": 500,
-    "experience": [
-      {
-        "year": "2018 - Present",
-        "title": "Founder & Creative Director",
-        "company": "JLC Studio",
-        "description": "Founded and grow a full-service creative studio specializing in florals, event design, and custom tailoring. Leading a team of artisans and managing 50+ events annually across the Southeast."
-      },
-      {
-        "year": "2012 - 2018",
-        "title": "Event Design Lead",
-        "company": "Luxe Events Denver",
-        "description": "Designed and executed 200+ high-end events for Fortune 500 companies, celebrity clients, and luxury weddings. Managed teams of 15+ professionals and budgets up to $500K per event."
-      },
-      {
-        "year": "2008 - 2012",
-        "title": "Fashion Designer & Alterations Specialist",
-        "company": "NYC Fashion District",
-        "description": "Worked with legendary designers on New York Fashion Week runway shows. Specialized in bridal couture, custom garment creation, and precision alterations for A-list clientele."
-      },
-      {
-        "year": "2005 - 2008",
-        "title": "Floral Design & Event Coordinator",
-        "company": "Botanical Studios",
-        "description": "Trained in European floral design techniques. Created installations for hotels, restaurants, and corporate events. Built foundation in color theory and seasonal arrangement design."
-      }
-    ],
-    "skills": [
-      "Floral Design & Arrangement",
-      "Event Planning & Coordination",
-      "Custom Garment Design",
-      "Bridal Couture & Alterations",
-      "Color Theory & Styling",
-      "Project Management",
-      "Team Leadership",
-      "Venue Transformation",
-      "Client Consultation",
-      "Budget Management",
-      "Vendor Management",
-      "Timeline Coordination"
-    ],
-    "education": {
-      "degree": "Bachelor of Fine Arts",
-      "field": "Fashion Design",
-      "institution": "Parsons School of Design, New York",
-      "year": "2005"
-    }
+    "photo": ""
   },
   "settings": {
     "businessName": "JLC Studio",
@@ -326,36 +280,216 @@
     }
   ],
   "gallery": {
-    "wedding-1": {"id": "wedding-1", "title": "Spring Garden Wedding - Main", "category": "florals", "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80", "order": 1},
-    "wedding-2": {"id": "wedding-2", "title": "Elegant Ceremony Backdrop", "category": "events", "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80", "order": 2},
-    "wedding-3": {"id": "wedding-3", "title": "Beach Wedding Arch", "category": "events", "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80", "order": 3},
-    "wedding-4": {"id": "wedding-4", "title": "Luxury Reception Setup", "category": "events", "url": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80", "order": 4},
-    "wedding-5": {"id": "wedding-5", "title": "Garden Ceremony", "category": "florals", "url": "https://images.unsplash.com/photo-1519514553032-481d68e3d378?w=800&q=80", "order": 5},
-    "corporate-1": {"id": "corporate-1", "title": "Corporate Gala Design", "category": "events", "url": "https://images.unsplash.com/photo-1519167758481-dc3982c01dc8?w=800&q=80", "order": 6},
-    "corporate-2": {"id": "corporate-2", "title": "Fundraiser Event Setup", "category": "events", "url": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80", "order": 7},
-    "corporate-3": {"id": "corporate-3", "title": "Product Launch Venue", "category": "events", "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80", "order": 8},
-    "corporate-4": {"id": "corporate-4", "title": "Executive Dinner Styling", "category": "events", "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80", "order": 9},
-    "floral-1": {"id": "floral-1", "title": "Bridal Bouquet", "category": "florals", "url": "https://images.unsplash.com/photo-1561905572-fbc5e5d76fdf?w=800&q=80", "order": 10},
-    "floral-2": {"id": "floral-2", "title": "Table Centerpieces", "category": "florals", "url": "https://images.unsplash.com/photo-1550047815-7b4e6f6f5f7a?w=800&q=80", "order": 11},
-    "floral-3": {"id": "floral-3", "title": "Ceremony Arch Florals", "category": "florals", "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80", "order": 12},
-    "floral-4": {"id": "floral-4", "title": "Runner Installation", "category": "florals", "url": "https://images.unsplash.com/photo-1519514553032-481d68e3d378?w=800&q=80", "order": 13},
-    "floral-5": {"id": "floral-5", "title": "Guest Table Design", "category": "florals", "url": "https://images.unsplash.com/photo-1482633757820-7546f80b6ff0?w=800&q=80", "order": 14},
-    "floral-6": {"id": "floral-6", "title": "Sympathy Arrangement", "category": "florals", "url": "https://images.unsplash.com/photo-1568170020529-7f13f1c60f7f?w=800&q=80", "order": 15},
-    "decor-1": {"id": "decor-1", "title": "Entrance Installation", "category": "events", "url": "https://images.unsplash.com/photo-1519167758481-dc3982c01dc8?w=800&q=80", "order": 16},
-    "decor-2": {"id": "decor-2", "title": "Lighting Design", "category": "events", "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80", "order": 17},
-    "decor-3": {"id": "decor-3", "title": "Fabric & Drapery", "category": "events", "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80", "order": 18},
-    "decor-4": {"id": "decor-4", "title": "Table Styling Complete", "category": "events", "url": "https://images.unsplash.com/photo-1519514553032-481d68e3d378?w=800&q=80", "order": 19},
-    "decor-5": {"id": "decor-5", "title": "Ceremony Space Transform", "category": "events", "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80", "order": 20},
-    "tailoring-1": {"id": "tailoring-1", "title": "Custom Bridal Gown", "category": "tailoring", "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80", "order": 21},
-    "tailoring-2": {"id": "tailoring-2", "title": "Beaded Gown Detail", "category": "tailoring", "url": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80", "order": 22},
-    "tailoring-3": {"id": "tailoring-3", "title": "Bridesmaid Dress Fitting", "category": "tailoring", "url": "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", "order": 23},
-    "tailoring-4": {"id": "tailoring-4", "title": "Custom Hem Work", "category": "tailoring", "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", "order": 24},
-    "party-1": {"id": "party-1", "title": "Anniversary Party", "category": "events", "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80", "order": 25},
-    "party-2": {"id": "party-2", "title": "Birthday Celebration", "category": "events", "url": "https://images.unsplash.com/photo-1482633757820-7546f80b6ff0?w=800&q=80", "order": 26},
-    "party-3": {"id": "party-3", "title": "Baby Shower Decor", "category": "events", "url": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80", "order": 27},
-    "party-4": {"id": "party-4", "title": "Milestone Celebration", "category": "events", "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80", "order": 28},
-    "seasonal-1": {"id": "seasonal-1", "title": "Holiday Party Setup", "category": "events", "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80", "order": 29},
-    "seasonal-2": {"id": "seasonal-2", "title": "Winter Wonderland Theme", "category": "events", "url": "https://images.unsplash.com/photo-1519167758481-dc3982c01dc8?w=800&q=80", "order": 30}
+    "wedding-1": {
+      "id": "wedding-1",
+      "title": "Spring Garden Wedding - Main",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+      "order": 1
+    },
+    "wedding-2": {
+      "id": "wedding-2",
+      "title": "Elegant Ceremony Backdrop",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
+      "order": 2
+    },
+    "wedding-3": {
+      "id": "wedding-3",
+      "title": "Beach Wedding Arch",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+      "order": 3
+    },
+    "wedding-4": {
+      "id": "wedding-4",
+      "title": "Luxury Reception Setup",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80",
+      "order": 4
+    },
+    "wedding-5": {
+      "id": "wedding-5",
+      "title": "Garden Ceremony",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1519514553032-481d68e3d378?w=800&q=80",
+      "order": 5
+    },
+    "corporate-1": {
+      "id": "corporate-1",
+      "title": "Corporate Gala Design",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519167758481-dc3982c01dc8?w=800&q=80",
+      "order": 6
+    },
+    "corporate-2": {
+      "id": "corporate-2",
+      "title": "Fundraiser Event Setup",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80",
+      "order": 7
+    },
+    "corporate-3": {
+      "id": "corporate-3",
+      "title": "Product Launch Venue",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+      "order": 8
+    },
+    "corporate-4": {
+      "id": "corporate-4",
+      "title": "Executive Dinner Styling",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
+      "order": 9
+    },
+    "floral-1": {
+      "id": "floral-1",
+      "title": "Bridal Bouquet",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1561905572-fbc5e5d76fdf?w=800&q=80",
+      "order": 10
+    },
+    "floral-2": {
+      "id": "floral-2",
+      "title": "Table Centerpieces",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1550047815-7b4e6f6f5f7a?w=800&q=80",
+      "order": 11
+    },
+    "floral-3": {
+      "id": "floral-3",
+      "title": "Ceremony Arch Florals",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+      "order": 12
+    },
+    "floral-4": {
+      "id": "floral-4",
+      "title": "Runner Installation",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1519514553032-481d68e3d378?w=800&q=80",
+      "order": 13
+    },
+    "floral-5": {
+      "id": "floral-5",
+      "title": "Guest Table Design",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1482633757820-7546f80b6ff0?w=800&q=80",
+      "order": 14
+    },
+    "floral-6": {
+      "id": "floral-6",
+      "title": "Sympathy Arrangement",
+      "category": "florals",
+      "url": "https://images.unsplash.com/photo-1568170020529-7f13f1c60f7f?w=800&q=80",
+      "order": 15
+    },
+    "decor-1": {
+      "id": "decor-1",
+      "title": "Entrance Installation",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519167758481-dc3982c01dc8?w=800&q=80",
+      "order": 16
+    },
+    "decor-2": {
+      "id": "decor-2",
+      "title": "Lighting Design",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+      "order": 17
+    },
+    "decor-3": {
+      "id": "decor-3",
+      "title": "Fabric & Drapery",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+      "order": 18
+    },
+    "decor-4": {
+      "id": "decor-4",
+      "title": "Table Styling Complete",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519514553032-481d68e3d378?w=800&q=80",
+      "order": 19
+    },
+    "decor-5": {
+      "id": "decor-5",
+      "title": "Ceremony Space Transform",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
+      "order": 20
+    },
+    "tailoring-1": {
+      "id": "tailoring-1",
+      "title": "Custom Bridal Gown",
+      "category": "tailoring",
+      "url": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+      "order": 21
+    },
+    "tailoring-2": {
+      "id": "tailoring-2",
+      "title": "Beaded Gown Detail",
+      "category": "tailoring",
+      "url": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80",
+      "order": 22
+    },
+    "tailoring-3": {
+      "id": "tailoring-3",
+      "title": "Bridesmaid Dress Fitting",
+      "category": "tailoring",
+      "url": "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80",
+      "order": 23
+    },
+    "tailoring-4": {
+      "id": "tailoring-4",
+      "title": "Custom Hem Work",
+      "category": "tailoring",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "order": 24
+    },
+    "party-1": {
+      "id": "party-1",
+      "title": "Anniversary Party",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
+      "order": 25
+    },
+    "party-2": {
+      "id": "party-2",
+      "title": "Birthday Celebration",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1482633757820-7546f80b6ff0?w=800&q=80",
+      "order": 26
+    },
+    "party-3": {
+      "id": "party-3",
+      "title": "Baby Shower Decor",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80",
+      "order": 27
+    },
+    "party-4": {
+      "id": "party-4",
+      "title": "Milestone Celebration",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80",
+      "order": 28
+    },
+    "seasonal-1": {
+      "id": "seasonal-1",
+      "title": "Holiday Party Setup",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
+      "order": 29
+    },
+    "seasonal-2": {
+      "id": "seasonal-2",
+      "title": "Winter Wonderland Theme",
+      "category": "events",
+      "url": "https://images.unsplash.com/photo-1519167758481-dc3982c01dc8?w=800&q=80",
+      "order": 30
+    }
   },
   "theme": {
     "primary": "#C4A052",
@@ -515,7 +649,12 @@
       "title": "Founder & Creative Director",
       "bio": "Master of three disciplines: floral design, event coordination, and couture tailoring. 15+ years of experience transforming visions into reality.",
       "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-      "specialties": ["Creative Direction", "Floral Design", "Event Strategy", "Couture Tailoring"],
+      "specialties": [
+        "Creative Direction",
+        "Floral Design",
+        "Event Strategy",
+        "Couture Tailoring"
+      ],
       "order": 1
     },
     {
@@ -524,7 +663,12 @@
       "title": "Lead Floral Designer",
       "bio": "European-trained floral artist with expertise in seasonal arrangements and bold color palettes. Brings botanical artistry to every arrangement.",
       "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-      "specialties": ["Floral Design", "Arrangements", "Seasonal Design", "Color Theory"],
+      "specialties": [
+        "Floral Design",
+        "Arrangements",
+        "Seasonal Design",
+        "Color Theory"
+      ],
       "order": 2
     },
     {
@@ -533,7 +677,12 @@
       "title": "Event Design & Production Manager",
       "bio": "Coordinates complex events from concept to completion. Expert in logistics, timeline management, and vendor coordination for 50+ event details.",
       "photo": "https://images.unsplash.com/photo-1507527557404-182002ec814e?w=400&q=80",
-      "specialties": ["Event Logistics", "Production Management", "Vendor Relations", "Timeline Coordination"],
+      "specialties": [
+        "Event Logistics",
+        "Production Management",
+        "Vendor Relations",
+        "Timeline Coordination"
+      ],
       "order": 3
     },
     {
@@ -542,7 +691,12 @@
       "title": "Custom Tailoring Specialist",
       "bio": "Expert seamstress with 8 years of experience in bridal couture and custom garment creation. Meticulous attention to detail in every stitch.",
       "photo": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&q=80",
-      "specialties": ["Bridal Alterations", "Custom Design", "Couture Construction", "Precision Fitting"],
+      "specialties": [
+        "Bridal Alterations",
+        "Custom Design",
+        "Couture Construction",
+        "Precision Fitting"
+      ],
       "order": 4
     }
   ],
@@ -578,8 +732,14 @@
       "challenge": "Client wanted an elegant, romantic beach wedding that would transport 150 guests to a garden paradise despite the sandy venue.",
       "solution": "Created an elaborate floral installation arch, custom furniture arrangement, and lighting design that transformed the beach into an enchanted garden. Coordinated weather contingencies and setup logistics.",
       "results": "Guests raved about the transformation. Featured in 3 wedding publications. Client rated 10/10.",
-      "services": ["Florals", "Event Decor", "Styling"],
-      "images": ["https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"],
+      "services": [
+        "Florals",
+        "Event Decor",
+        "Styling"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+      ],
       "testimonial": "JLynne created something truly magical. The beach was transformed into our dream venue.",
       "order": 1
     },
@@ -592,8 +752,14 @@
       "challenge": "Design and execute a high-stakes fundraiser for 400 guests with a $500K budget and strict brand compliance requirements.",
       "solution": "Coordinated complete venue transformation with 8-person team, managed 15+ vendors, designed 3-tiered floral installations, and executed real-time adjustments.",
       "results": "Event raised $1.2M. CEO requested JLC Studio for future events. Media coverage in 5 publications.",
-      "services": ["Event Decor", "Florals", "Venue Transformation"],
-      "images": ["https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"],
+      "services": [
+        "Event Decor",
+        "Florals",
+        "Venue Transformation"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"
+      ],
       "testimonial": "JLC Studio didn't just deliver an event—they delivered an experience that will be remembered for years.",
       "order": 2
     },
@@ -606,8 +772,14 @@
       "challenge": "Bride wanted perfect coordination across custom wedding dress design, ceremony florals, and reception decor all reflecting her unique vision.",
       "solution": "Created custom mermaid gown with hand-beaded details, designed coordinating floral installations, and styled complete reception aesthetic.",
       "results": "Bride's vision brought to life perfectly. Wedding featured in Coastal Celebrations magazine. Client became brand ambassador, referred 5 new clients.",
-      "services": ["Custom Tailoring", "Florals", "Event Styling"],
-      "images": ["https://images.unsplash.com/photo-1561905572-fbc5e5d76fdf?w=800&q=80"],
+      "services": [
+        "Custom Tailoring",
+        "Florals",
+        "Event Styling"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1561905572-fbc5e5d76fdf?w=800&q=80"
+      ],
       "testimonial": "JLynne made me feel like the most beautiful bride. Everything was perfect from dress to decor.",
       "order": 3
     }
@@ -753,7 +925,11 @@
       "description": "Plan your winter celebration and save 15% on complete wedding packages booked before January 31st.",
       "discount": "15%",
       "validUntil": "January 31, 2025",
-      "appliesTo": ["Wedding Essentials", "Grand Celebration", "Bridal Complete"],
+      "appliesTo": [
+        "Wedding Essentials",
+        "Grand Celebration",
+        "Bridal Complete"
+      ],
       "order": 1
     },
     {
@@ -762,7 +938,9 @@
       "description": "Book your 2025 corporate event by February and receive complimentary design consultation + 10% discount.",
       "discount": "10%",
       "validUntil": "February 28, 2025",
-      "appliesTo": ["Corporate Events"],
+      "appliesTo": [
+        "Corporate Events"
+      ],
       "order": 2
     },
     {
@@ -770,7 +948,9 @@
       "title": "Referral Rewards",
       "description": "Refer a friend and both you and your referral receive $200 in credit toward your next event.",
       "discount": "$200 credit",
-      "appliesTo": ["All Services"],
+      "appliesTo": [
+        "All Services"
+      ],
       "order": 3
     }
   ],
