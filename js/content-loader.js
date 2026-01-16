@@ -1,6 +1,7 @@
 /**
  * JLC Studio Content Loader
- * Loads content from admin.json - Single Source of Truth
+ * Comprehensive loader - pulls ALL content from admin.json
+ * No hardcoded data should exist in HTML files
  */
 
 const ContentLoader = {
@@ -12,108 +13,90 @@ const ContentLoader = {
       const response = await fetch(`${this.dataPath}/admin.json?t=${Date.now()}`);
       if (!response.ok) throw new Error('Failed to load admin.json');
       this.adminData = await response.json();
-      console.log('Admin data loaded from single source of truth');
+      console.log('✓ Admin data loaded (single source of truth)');
       return this.adminData;
     } catch (error) {
-      console.warn('Failed to load admin.json:', error);
+      console.error('Failed to load admin.json:', error);
       return null;
     }
   },
 
-  async loadSettings() {
+  // Load text content via data-content attributes
+  loadTextContent() {
     if (!this.adminData) return;
-    const settings = this.adminData.settings;
-    if (!settings) return;
 
-    // Update phone numbers
-    document.querySelectorAll('[data-content="phone"]').forEach(el => {
-      el.textContent = settings.phone;
-      if (el.href) el.href = `tel:${settings.phone.replace(/\D/g, '')}`;
-    });
-
-    // Update email
-    document.querySelectorAll('[data-content="email"]').forEach(el => {
-      el.textContent = settings.email;
-      if (el.href) el.href = `mailto:${settings.email}`;
-    });
-
-    // Update address
-    document.querySelectorAll('[data-content="address"]').forEach(el => {
-      el.textContent = settings.address;
-    });
-  },
-
-  async loadHero() {
-    if (!this.adminData) return;
-    const hero = this.adminData.hero;
-    if (!hero) return;
-
-    const selectors = {
-      'hero-badge': 'badge',
-      'hero-title-1': 'titleLine1',
-      'hero-title-2': 'titleLine2',
-      'hero-subtitle': 'subtitle',
-      'hero-description': 'description',
-      'hero-btn-primary': 'primaryBtn',
-      'hero-btn-secondary': 'secondaryBtn'
+    const setTextContent = (selector, value) => {
+      const elements = document.querySelectorAll(`[data-content="${selector}"]`);
+      if (elements.length > 0 && value) {
+        elements.forEach(el => {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = value;
+          } else {
+            el.textContent = value;
+          }
+        });
+      }
     };
 
-    Object.entries(selectors).forEach(([selector, key]) => {
-      const el = document.querySelector(`[data-content="${selector}"]`);
-      if (el && hero[key]) el.textContent = hero[key];
-    });
+    // Hero content
+    if (this.adminData.hero) {
+      const hero = this.adminData.hero;
+      setTextContent('hero-badge', hero.badge);
+      setTextContent('hero-title-1', hero.titleLine1);
+      setTextContent('hero-title-2', hero.titleLine2);
+      setTextContent('hero-subtitle', hero.subtitle);
+      setTextContent('hero-description', hero.description);
+      setTextContent('hero-btn-primary', hero.primaryBtn);
+      setTextContent('hero-btn-secondary', hero.secondaryBtn);
 
-    // Update hero image
-    const heroImg = document.querySelector('[data-content="hero-image"]');
-    if (heroImg && hero.heroImage) {
-      heroImg.src = hero.heroImage;
+      // Hero image
+      const heroImg = document.querySelector('[data-image-id="hero-main"]');
+      if (heroImg && hero.heroImage) heroImg.src = hero.heroImage;
+    }
+
+    // About content
+    if (this.adminData.about) {
+      const about = this.adminData.about;
+      setTextContent('about-name', about.name);
+      setTextContent('about-title', about.title);
+      setTextContent('about-short-bio', about.bio);
+      setTextContent('about-full-bio', about.bio);
+
+      // Stats
+      const yearsEl = document.querySelector('[data-content="years-experience"]');
+      if (yearsEl) yearsEl.setAttribute('data-count', about.years || 15);
+
+      const eventsEl = document.querySelector('[data-content="events-created"]');
+      if (eventsEl) eventsEl.setAttribute('data-count', about.events || 500);
+    }
+
+    // Settings/Contact content
+    if (this.adminData.settings) {
+      const settings = this.adminData.settings;
+      setTextContent('business-name', settings.businessName);
+      setTextContent('tagline', settings.tagline);
+      setTextContent('phone', settings.phone);
+      setTextContent('email', settings.email);
+      setTextContent('address', settings.address);
+
+      // Update phone and email links
+      document.querySelectorAll('a[data-content="phone"]').forEach(el => {
+        el.href = `tel:${settings.phone.replace(/\D/g, '')}`;
+      });
+      document.querySelectorAll('a[data-content="email"]').forEach(el => {
+        el.href = `mailto:${settings.email}`;
+      });
     }
   },
 
-  async loadAbout() {
-    if (!this.adminData) return;
-    const about = this.adminData.about;
-    if (!about) return;
-
-    // Update name
-    document.querySelectorAll('[data-content="about-name"]').forEach(el => {
-      el.textContent = about.name;
-    });
-
-    // Update title
-    document.querySelectorAll('[data-content="about-title"]').forEach(el => {
-      el.textContent = about.title;
-    });
-
-    // Update bio
-    const shortBio = document.querySelector('[data-content="about-short-bio"]');
-    if (shortBio) shortBio.textContent = about.bio || '';
-
-    const fullBio = document.querySelector('[data-content="about-full-bio"]');
-    if (fullBio && about.bio) fullBio.textContent = about.bio;
-
-    // Update stats
-    const yearsEl = document.querySelector('[data-content="years-experience"]');
-    if (yearsEl) yearsEl.setAttribute('data-count', about.years || 15);
-
-    const eventsEl = document.querySelector('[data-content="events-created"]');
-    if (eventsEl) eventsEl.setAttribute('data-count', about.events || 500);
-
-    // Update photo from images.json in admin data
-    if (this.adminData.images && this.adminData.images.about && this.adminData.images.about.profile) {
-      const photoUrl = this.adminData.images.about.profile.url;
-      const photo = document.querySelector('[data-content="about-photo"]');
-      if (photo && photoUrl) photo.src = photoUrl;
-    }
-  },
-
-  async loadImages() {
+  // Load images via data-image-id attributes
+  loadImages() {
     if (!this.adminData || !this.adminData.images) return;
 
     const images = this.adminData.images;
+    const flatImages = {};
 
     // Flatten images object to lookup by ID
-    const flatImages = {};
     const traverse = (obj) => {
       for (const key in obj) {
         if (obj[key] && typeof obj[key] === 'object' && 'url' in obj[key]) {
@@ -125,7 +108,7 @@ const ContentLoader = {
     };
     traverse(images);
 
-    // Update all images with data-image-id
+    // Apply images to all elements with data-image-id
     document.querySelectorAll('[data-image-id]').forEach(img => {
       const id = img.getAttribute('data-image-id');
       if (flatImages[id]) {
@@ -134,51 +117,191 @@ const ContentLoader = {
     });
   },
 
-  async loadTestimonials() {
-    try {
-      if (!this.adminData || !Array.isArray(this.adminData.testimonials)) return;
+  // Load services dynamically
+  loadServices() {
+    if (!this.adminData || !Array.isArray(this.adminData.services)) return;
 
-      const testimonials = this.adminData.testimonials.sort((a, b) => (a.order || 99) - (b.order || 99));
+    const services = this.adminData.services;
 
-      const container = document.querySelector('.testimonials-slider');
-      if (!container || testimonials.length === 0) return;
+    // Load services by category
+    ['floral', 'decor', 'tailoring'].forEach(category => {
+      const container = document.querySelector(`[data-service-category="${category}"]`);
+      if (!container) return;
 
-      container.innerHTML = testimonials.map((t, i) => `
-        <div class="testimonial ${i === 0 ? 'active' : ''}">
-          <blockquote><p>"${t.quote}"</p></blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar">${t.initials}</div>
-            <div class="author-info">
-              <strong>${t.name}</strong>
-              <span>${t.event}</span>
-            </div>
-          </div>
+      const categoryServices = services.filter(s => s.category === category);
+      container.innerHTML = categoryServices.map(s => `
+        <div class="offering">
+          <h5>${s.type}</h5>
+          <p>${s.desc}</p>
+          <span class="price">${s.price}</span>
         </div>
       `).join('');
+    });
+  },
 
-    } catch (error) {
-      console.warn('Could not load testimonials', error);
+  // Load packages dynamically
+  loadPackages() {
+    if (!this.adminData || !Array.isArray(this.adminData.packages)) return;
+
+    const packages = this.adminData.packages;
+    const container = document.getElementById('packages-list');
+
+    if (!container) return;
+
+    container.innerHTML = packages.map(p => `
+      <div class="package-card ${p.featured ? 'featured' : ''}">
+        ${p.featured ? '<div class="package-badge">Most Popular</div>' : ''}
+        <h3>${p.title}</h3>
+        <p class="package-desc">${p.description}</p>
+        <ul>
+          ${(p.includes || []).map(item => `<li>${item}</li>`).join('')}
+        </ul>
+        <span class="package-price">${p.price}</span>
+        <a href="contact.html" class="btn ${p.featured ? 'btn-primary' : 'btn-outline'}">Inquire</a>
+      </div>
+    `).join('');
+  },
+
+  // Load testimonials dynamically
+  loadTestimonials() {
+    if (!this.adminData || !Array.isArray(this.adminData.testimonials)) return;
+
+    const testimonials = this.adminData.testimonials.sort((a, b) => (a.order || 99) - (b.order || 99));
+    const container = document.querySelector('.testimonials-slider');
+
+    if (!container || testimonials.length === 0) return;
+
+    container.innerHTML = testimonials.map((t, i) => `
+      <div class="testimonial ${i === 0 ? 'active' : ''}">
+        <blockquote><p>"${t.quote}"</p></blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">${t.initials || t.name.charAt(0)}</div>
+          <div class="author-info">
+            <strong>${t.name}</strong>
+            <span>${t.event}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Setup testimonial navigation
+    const dotsContainer = document.querySelector('.testimonial-nav');
+    if (dotsContainer) {
+      dotsContainer.innerHTML = testimonials.map((_, i) =>
+        `<button class="nav-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></button>`
+      ).join('');
+
+      document.querySelectorAll('.nav-dot').forEach(dot => {
+        dot.addEventListener('click', function() {
+          const idx = parseInt(this.dataset.index);
+          document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+          this.classList.add('active');
+
+          document.querySelectorAll('.testimonial').forEach((t, i) => {
+            if (i === idx) {
+              t.classList.add('active');
+              t.style.opacity = '1';
+              t.style.visibility = 'visible';
+            } else {
+              t.classList.remove('active');
+              t.style.opacity = '0';
+              t.style.visibility = 'hidden';
+            }
+          });
+        });
+      });
     }
   },
 
+  // Load gallery items dynamically
+  loadGallery() {
+    if (!this.adminData || !this.adminData.gallery) return;
+
+    const gallery = this.adminData.gallery;
+    const container = document.querySelector('.gallery-grid');
+
+    if (!container) return;
+
+    const items = Object.values(gallery).filter(item => item && item.url);
+
+    container.innerHTML = items.map(item => `
+      <div class="gallery-item" data-category="${item.category || 'all'}">
+        <img src="${item.url}" alt="${item.title || 'Gallery item'}" data-image-id="${item.id}">
+        <div class="gallery-overlay">
+          <h3>${item.title || ''}</h3>
+          <p>${item.category || ''}</p>
+        </div>
+      </div>
+    `).join('');
+
+    // Setup gallery filters if they exist
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    if (filterButtons.length > 0) {
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const filter = this.dataset.filter;
+          filterButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          document.querySelectorAll('.gallery-item').forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+  },
+
+  // Load FAQ dynamically
+  loadFaq() {
+    if (!this.adminData || !Array.isArray(this.adminData.faq)) return;
+
+    const faq = this.adminData.faq;
+    const container = document.getElementById('faq-list');
+
+    if (!container) return;
+
+    container.innerHTML = faq.map(f => `
+      <div class="faq-item">
+        <h4>${f.question}</h4>
+        <p>${f.answer}</p>
+      </div>
+    `).join('');
+  },
+
+  // Initialize everything
   async init() {
-    // Load the single master admin.json file
+    console.log('🚀 Initializing ContentLoader...');
+
+    // Load master admin.json file
     await this.loadAdminData();
 
-    // Load all content sections
+    if (!this.adminData) {
+      console.error('Failed to load admin.json - pages may display incorrectly');
+      return;
+    }
+
+    // Load all content in parallel
     await Promise.all([
-      this.loadSettings(),
-      this.loadHero(),
-      this.loadAbout(),
-      this.loadImages(),
-      this.loadTestimonials()
+      Promise.resolve(this.loadTextContent()),
+      Promise.resolve(this.loadImages()),
+      Promise.resolve(this.loadServices()),
+      Promise.resolve(this.loadPackages()),
+      Promise.resolve(this.loadTestimonials()),
+      Promise.resolve(this.loadGallery()),
+      Promise.resolve(this.loadFaq())
     ]);
 
-    console.log('JLC Studio content loaded from admin.json');
+    console.log('✓ All content loaded from admin.json');
   }
 };
 
 // Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => ContentLoader.init());
+} else {
   ContentLoader.init();
-});
+}
