@@ -91,28 +91,34 @@ const ContentLoader = {
 
   // Load images via data-image-id attributes
   loadImages() {
-    if (!this.adminData || !this.adminData.images) return;
+    if (!this.adminData) return;
 
-    const images = this.adminData.images;
-    const flatImages = {};
+    // Combine both image sources: structured images and flat imageMap
+    const imageMap = this.adminData.imageMap || {};
+    const flatImages = { ...imageMap };
 
-    // Flatten images object to lookup by ID
-    const traverse = (obj) => {
-      for (const key in obj) {
-        if (obj[key] && typeof obj[key] === 'object' && 'url' in obj[key]) {
-          flatImages[obj[key].id] = obj[key].url;
-        } else if (obj[key] && typeof obj[key] === 'object') {
-          traverse(obj[key]);
+    // Also flatten nested images structure if it exists
+    if (this.adminData.images) {
+      const images = this.adminData.images;
+      const traverse = (obj) => {
+        for (const key in obj) {
+          if (obj[key] && typeof obj[key] === 'object' && 'url' in obj[key]) {
+            flatImages[obj[key].id] = obj[key].url;
+          } else if (obj[key] && typeof obj[key] === 'object') {
+            traverse(obj[key]);
+          }
         }
-      }
-    };
-    traverse(images);
+      };
+      traverse(images);
+    }
 
     // Apply images to all elements with data-image-id
     document.querySelectorAll('[data-image-id]').forEach(img => {
       const id = img.getAttribute('data-image-id');
       if (flatImages[id]) {
-        img.src = flatImages[id];
+        // Handle both object format and string format
+        const url = typeof flatImages[id] === 'string' ? flatImages[id] : flatImages[id].url;
+        if (url) img.src = url;
       }
     });
   },

@@ -566,5 +566,127 @@
         "page": "about.html"
       }
     }
+  },
+  "imageMap": {
+    "featured-wedding-bouquet": {
+      "id": "featured-wedding-bouquet",
+      "url": "https://images.unsplash.com/photo-1561128290-005859246e58?w=800&q=80",
+      "label": "Featured Wedding Bouquet"
+    },
+    "featured-table-setting": {
+      "id": "featured-table-setting",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
+      "label": "Featured Table Setting"
+    },
+    "featured-flower-arrangement": {
+      "id": "featured-flower-arrangement",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+      "label": "Featured Flower Arrangement"
+    },
+    "featured-gala-setup": {
+      "id": "featured-gala-setup",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
+      "label": "Featured Gala Setup"
+    },
+    "featured-wedding-dress": {
+      "id": "featured-wedding-dress",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80",
+      "label": "Featured Wedding Dress"
+    },
+    "process-floral": {
+      "id": "process-floral",
+      "url": "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=1920&q=80",
+      "label": "Process Floral"
+    },
+    "cta-floral-arrangement": {
+      "id": "cta-floral-arrangement",
+      "url": "https://images.unsplash.com/photo-1522057384400-681b421cfebc?w=1920&q=80",
+      "label": "Cta Floral Arrangement"
+    },
+    "about-hero": {
+      "id": "about-hero",
+      "url": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1920&q=80",
+      "label": "About Hero"
+    },
+    "about-profile": {
+      "id": "about-profile",
+      "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      "label": "About Profile"
+    },
+    "about-cta-image": {
+      "id": "about-cta-image",
+      "url": "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=1920&q=80",
+      "label": "About Cta Image"
+    },
+    "services-hero": {
+      "id": "services-hero",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
+      "label": "Services Hero"
+    },
+    "services-floral-main": {
+      "id": "services-floral-main",
+      "url": "https://images.unsplash.com/photo-1561128290-005859246e58?w=600&q=80",
+      "label": "Services Floral Main"
+    },
+    "services-floral-detail-1": {
+      "id": "services-floral-detail-1",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=300&q=80",
+      "label": "Services Floral Detail 1"
+    },
+    "services-floral-detail-2": {
+      "id": "services-floral-detail-2",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80",
+      "label": "Services Floral Detail 2"
+    },
+    "services-decor-main": {
+      "id": "services-decor-main",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
+      "label": "Services Decor Main"
+    },
+    "services-decor-detail-1": {
+      "id": "services-decor-detail-1",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=300&q=80",
+      "label": "Services Decor Detail 1"
+    },
+    "services-decor-detail-2": {
+      "id": "services-decor-detail-2",
+      "url": "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=300&q=80",
+      "label": "Services Decor Detail 2"
+    },
+    "services-tailoring-main": {
+      "id": "services-tailoring-main",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
+      "label": "Services Tailoring Main"
+    },
+    "services-tailoring-detail-1": {
+      "id": "services-tailoring-detail-1",
+      "url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=300&q=80",
+      "label": "Services Tailoring Detail 1"
+    },
+    "services-tailoring-detail-2": {
+      "id": "services-tailoring-detail-2",
+      "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&q=80",
+      "label": "Services Tailoring Detail 2"
+    },
+    "services-cta-image": {
+      "id": "services-cta-image",
+      "url": "https://images.unsplash.com/photo-1522057384400-681b421cfebc?w=1920&q=80",
+      "label": "Services Cta Image"
+    },
+    "gallery-hero": {
+      "id": "gallery-hero",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80",
+      "label": "Gallery Hero"
+    },
+    "gallery-filter-hero": {
+      "id": "gallery-filter-hero",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
+      "label": "Gallery Filter Hero"
+    },
+    "contact-hero": {
+      "id": "contact-hero",
+      "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
+      "label": "Contact Hero"
+    }
   }
 }
