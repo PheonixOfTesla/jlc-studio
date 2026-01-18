@@ -50,7 +50,7 @@
                         </div>
                         <div class="contact-item">
                             <h4>Email</h4>
-                            <a href="mailto:jeremyhuffer@gmail.com">jeremyhuffer@gmail.com</a>
+                            <a href="mailto:jlcstudiollc@gmail.com">jlcstudiollc@gmail.com</a>
                         </div>
                         <div class="contact-item">
                             <h4>Location</h4>
@@ -201,22 +201,56 @@
 
     <script src="js/main.js"></script>
     <script>
-        // Form handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // Contact Form Submission - Sends to jlcstudiollc@gmail.com via API
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
             btn.textContent = 'Sending...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                this.innerHTML = `
-                    <div class="form-success">
-                        <h3>Thank You!</h3>
-                        <p>Your message has been sent. We'll be in touch within 24 hours.</p>
-                        <a href="index.html" class="btn btn-secondary">Back to Home</a>
-                    </div>
-                `;
-            }, 1500);
+            try {
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    service: document.getElementById('service').value,
+                    eventDate: document.getElementById('event-date').value,
+                    budget: document.getElementById('budget').value,
+                    message: document.getElementById('message').value
+                };
+
+                // Send to API endpoint
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    // Success - show thank you message
+                    this.innerHTML = `
+                        <div class="form-success">
+                            <h3>Thank You!</h3>
+                            <p>Your message has been sent to jlcstudiollc@gmail.com. We'll be in touch within 24 hours.</p>
+                            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                        </div>
+                    `;
+                } else {
+                    // Error response from API
+                    throw new Error(result.error || 'Failed to send email');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('Error sending message: ' + error.message + '. Please try again or call us at (941) 769-7526.');
+            }
         });
     </script>
     <script src="js/content-loader.js"></script>

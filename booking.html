@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book a consultation with JLC Studio - florals, event decor, and custom tailoring services in Sarasota, FL.">
+    <title>Book Consultation | JLC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .booking-section { padding: 6rem 0; background: var(--white); }
+        .booking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .booking-card { background: var(--white); border: 2px solid var(--taupe); border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.3s; cursor: pointer; }
+        .booking-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(196,160,82,0.15); transform: translateY(-5px); }
+        .booking-card h3 { font-size: 1.5rem; color: var(--charcoal); margin-bottom: 0.5rem; }
+        .booking-price { font-size: 2rem; color: var(--gold); font-weight: 600; margin: 1rem 0; }
+        .booking-duration { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1rem; }
+        .booking-description { color: var(--warm-gray); margin-bottom: 2rem; line-height: 1.6; }
+        .booking-card a { display: inline-block; padding: 0.875rem 2rem; background: var(--gold); color: var(--white); border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
+        .booking-card a:hover { background: var(--gold-dark); }
+        .booking-card.featured { border-color: var(--gold); border-width: 3px; }
+        .booking-card.featured::before { content: 'Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--white); padding: 0.35rem 0.75rem; font-size: 0.75rem; font-weight: 600; border-radius: 50px; text-transform: uppercase; }
+        .booking-info-section { background: var(--cream); padding: 3rem 0; margin: 3rem 0; border-radius: 12px; }
+        .info-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .info-item h4 { color: var(--gold); margin-bottom: 0.5rem; font-weight: 600; }
+        .info-item p { color: var(--warm-gray); font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">JLC</div>
+            <div class="preloader-bar"><div class="preloader-progress"></div></div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName">JLC Studio</span></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link nav-cta active">Book Now</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-hero short">
+        <div class="page-hero-image">
+            <img src="" data-image-id="contact-hero" alt="Elegant floral arrangement">
+        </div>
+        <div class="page-hero-content">
+            <span class="section-label">Schedule Your Consultation</span>
+            <h1>Book Your Appointment</h1>
+            <p>Choose the consultation type that works best for you</p>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="section-header centered">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Available Consultations</h2>
+                <p style="color: var(--warm-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Select the consultation type that best fits your needs. All bookings include professional guidance and detailed planning for your special event.</p>
+            </div>
+
+            <div class="booking-grid">
+                <!-- Free Consultation -->
+                <div class="booking-card">
+                    <h3>Free Consultation</h3>
+                    <div class="booking-duration">30 minutes</div>
+                    <div class="booking-price">FREE</div>
+                    <p class="booking-description">Perfect for getting started. Discuss your vision, ask questions, and explore how we can help bring your ideas to life.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Schedule Free Call</a>
+                </div>
+
+                <!-- Paid Design Consultation -->
+                <div class="booking-card featured" style="position: relative;">
+                    <h3>Design Consultation</h3>
+                    <div class="booking-duration">60 minutes</div>
+                    <div class="booking-price">$150</div>
+                    <p class="booking-description">In-depth planning session with expert guidance. Perfect for detailed floral and decor design consultation with personalized recommendations.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Book & Pay Now</a>
+                </div>
+
+                <!-- Wedding Consultation -->
+                <div class="booking-card">
+                    <h3>Wedding Consultation</h3>
+                    <div class="booking-duration">90 minutes</div>
+                    <div class="booking-price">$200</div>
+                    <p class="booking-description">Comprehensive wedding planning session. Ideal for complete wedding vision including florals, decor, and tailoring coordination.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Book & Pay Now</a>
+                </div>
+
+                <!-- Event Deposit -->
+                <div class="booking-card">
+                    <h3>Secure Your Event</h3>
+                    <div class="booking-duration">30 minutes planning call</div>
+                    <div class="booking-price">$500</div>
+                    <p class="booking-description">Non-refundable deposit to lock in your event date. Deposit is credited toward your final invoice.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Reserve Date</a>
+                </div>
+            </div>
+
+            <div class="booking-info-section">
+                <div class="container">
+                    <h3 style="text-align: center; margin-bottom: 2rem;">How Booking Works</h3>
+                    <div class="info-content">
+                        <div class="info-item">
+                            <h4>📅 Choose Your Time</h4>
+                            <p>Browse available dates and times that work for your schedule. Consultations available Monday through Saturday.</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>💳 Secure Payment</h4>
+                            <p>For paid consultations, payment is collected securely via Stripe during booking. Your spot is instantly confirmed.</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>📧 Instant Confirmation</h4>
+                            <p>Receive confirmation email with meeting details, Zoom link (or location for in-person), and calendar invite.</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>🎥 Easy Rescheduling</h4>
+                            <p>Need to change your time? Simply reschedule through your confirmation email with one click.</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>✅ No Surprises</h4>
+                            <p>Automatic reminders sent before your consultation. Questions? Call us at (941) 769-7526.</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>💼 Professional Service</h4>
+                            <p>Each consultation includes detailed notes and follow-up recommendations tailored to your specific needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; background: var(--cream); padding: 2rem; border-radius: 12px; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">Still Have Questions?</h3>
+                <p style="color: var(--warm-gray); margin-bottom: 1.5rem;">Not sure which consultation is right for you? Our team is happy to help guide you to the best option.</p>
+                <a href="contact.html" class="btn btn-outline" style="display: inline-block;">Send Us a Message</a>
+                <p style="margin-top: 1rem; color: var(--warm-gray); font-size: 0.9rem;">Or call us directly at <strong>(941) 769-7526</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">JLC Studio</div>
+                    <p>Where creativity meets occasion.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#florals">Floral Design</a></li>
+                        <li><a href="services.html#decor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Studio</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Portfolio</a></li>
+                        <li><a href="booking.html">Book Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>(941) 769-7526</p>
+                    <p><a href="mailto:jlcstudiollc@gmail.com">jlcstudiollc@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 JLC Studio. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/content-loader.js"></script>
+</body>
+</html>

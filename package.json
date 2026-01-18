@@ -1,0 +1,16 @@
+{
+  "name": "jlc-studio",
+  "version": "1.0.0",
+  "description": "JLC Studio - Sarasota's Premier Creative Studio",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}

@@ -300,6 +300,26 @@
             </a>
 
             <div class="sidebar-section">Business</div>
+            <a class="nav-item" data-section="team">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Team Members
+            </a>
+            <a class="nav-item" data-section="awards">
+                <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2h-2m-4-3V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v1m4-3h4"/><path d="M12 15v6M9 18h6"/></svg>
+                Awards & Press
+            </a>
+            <a class="nav-item" data-section="blog">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4V4zm0 4h16v10H4V8zm0 12h16v2H4v-2z"/><line x1="6" y1="10" x2="14" y2="10"/><line x1="6" y1="14" x2="14" y2="14"/></svg>
+                Blog & Articles
+            </a>
+            <a class="nav-item" data-section="casestudies">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="17" x2="22" y2="17"/></svg>
+                Case Studies
+            </a>
+            <a class="nav-item" data-section="promotions">
+                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/><path d="M9 12L6.5 8.5M15 12l2.5-3.5"/></svg>
+                Promotions
+            </a>
             <a class="nav-item" data-section="analytics">
                 <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 Analytics
@@ -602,56 +622,250 @@
             <section id="theme" class="section">
                 <div class="page-header">
                     <h1>Color Theme</h1>
-                    <p>Customize your website colors with RGB control</p>
+                    <p>Full control over all 13 website colors - changes pull from admin.json and apply instantly</p>
                 </div>
+                <!-- PRESETS -->
                 <div class="card">
                     <div class="card-header">
-                        <h3>Color Presets</h3>
+                        <h3>Quick Theme Presets</h3>
                     </div>
                     <div class="color-grid" id="colorPresets"></div>
+                    <p style="color:var(--text-light);font-size:0.85rem;margin-top:0.75rem">Click any preset to apply all 13 colors at once</p>
+                </div>
+                <!-- BRAND COLORS -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Brand Colors</h3>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Gold (Main Brand)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorGold" value="#C4A052" onchange="updatePreview()">
+                                <input type="text" id="colorGoldHex" placeholder="#C4A052" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorGoldRgb">RGB: 196, 160, 82</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Used on buttons, links, accents</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Gold Light</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorGoldLight" value="#D4B872" onchange="updatePreview()">
+                                <input type="text" id="colorGoldLightHex" placeholder="#D4B872" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorGoldLightRgb">RGB: 212, 184, 114</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Light variant accents</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Gold Dark</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorGoldDark" value="#A68A42" onchange="updatePreview()">
+                                <input type="text" id="colorGoldDarkHex" placeholder="#A68A42" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorGoldDarkRgb">RGB: 166, 138, 66</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Button hovers</p>
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Sage (Secondary)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorSage" value="#8B9B7A" onchange="updatePreview()">
+                                <input type="text" id="colorSageHex" placeholder="#8B9B7A" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorSageRgb">RGB: 139, 155, 122</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Secondary brand color</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Sage Light</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorSageLight" value="#A5B494" onchange="updatePreview()">
+                                <input type="text" id="colorSageLightHex" placeholder="#A5B494" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorSageLightRgb">RGB: 165, 180, 148</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Light sage variant</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Sage Dark</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorSageDark" value="#6B7B5A" onchange="updatePreview()">
+                                <input type="text" id="colorSageDarkHex" placeholder="#6B7B5A" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorSageDarkRgb">RGB: 107, 123, 90</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Dark sage hovers</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BACKGROUNDS -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Background & Neutral Colors</h3>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>White</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorWhite" value="#FFFFFF" onchange="updatePreview()">
+                                <input type="text" id="colorWhiteHex" placeholder="#FFFFFF" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorWhiteRgb">RGB: 255, 255, 255</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Cream (Bg Accent)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorCream" value="#FAF8F5" onchange="updatePreview()">
+                                <input type="text" id="colorCreamHex" placeholder="#FAF8F5" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorCreamRgb">RGB: 250, 248, 245</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ivory</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorIvory" value="#F5F2ED" onchange="updatePreview()">
+                                <input type="text" id="colorIvoryHex" placeholder="#F5F2ED" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorIvoryRgb">RGB: 245, 242, 237</div>
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Taupe (Borders)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorTaupe" value="#E8E4DC" onchange="updatePreview()">
+                                <input type="text" id="colorTaupeHex" placeholder="#E8E4DC" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorTaupeRgb">RGB: 232, 228, 220</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Warm Gray (Text Light)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorWarmGray" value="#9B9590" onchange="updatePreview()">
+                                <input type="text" id="colorWarmGrayHex" placeholder="#9B9590" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorWarmGrayRgb">RGB: 155, 149, 144</div>
+                        </div>
+                        <div class="form-group">
+                            <label>White</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorWhiteAlt" value="#FFFFFF" onchange="updatePreview()">
+                                <input type="text" id="colorWhiteAltHex" placeholder="#FFFFFF" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorWhiteAltRgb">RGB: 255, 255, 255</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TEXT COLORS -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Text Colors</h3>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Charcoal (Body Text)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorCharcoal" value="#3D3D3D" onchange="updatePreview()">
+                                <input type="text" id="colorCharcoalHex" placeholder="#3D3D3D" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorCharcoalRgb">RGB: 61, 61, 61</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Main body text</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Black (Headings)</label>
+                            <div class="color-input-group">
+                                <input type="color" id="colorBlack" value="#1A1A1A" onchange="updatePreview()">
+                                <input type="text" id="colorBlackHex" placeholder="#1A1A1A" onchange="updatePreview()">
+                            </div>
+                            <div class="rgb-display" id="colorBlackRgb">RGB: 26, 26, 26</div>
+                            <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem">Headlines, footer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- LIVE PREVIEW -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Live Preview</h3>
+                    </div>
+                    <div style="background:var(--bg);padding:1.5rem;border-radius:8px;border:1px solid var(--border)">
+                        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+                            <button style="padding:0.75rem 1.5rem;background:#C4A052;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:500" id="previewBtn">Sample Button</button>
+                            <span style="color:#3D3D3D;font-size:1rem">Sample Text</span>
+                            <div style="width:40px;height:40px;background:#FAF8F5;border:1px solid #E8E4DC;border-radius:4px"></div>
+                            <span style="font-size:0.85rem;color:var(--text-light)">Updates as you change colors</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- ACTIONS -->
+                <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                    <button type="button" class="btn btn-save" onclick="saveTheme()">Save Theme to admin.json</button>
+                    <button type="button" class="btn btn-outline" onclick="resetTheme()">Reset to Default</button>
+                </div>
+            </section>
+
+            <!-- TEAM MEMBERS -->
+            <section id="team" class="section">
+                <div class="page-header">
+                    <h1>Team Members</h1>
+                    <p>Manage your team and showcase your creative professionals</p>
+                </div>
+                <div class="item-list" id="teamList"></div>
+                <button type="button" class="btn btn-outline" onclick="addTeamMember()" style="margin-top:1rem">+ Add Team Member</button>
+                <button type="button" class="btn btn-save" onclick="saveTeam()" style="margin-top:1rem;margin-left:1rem">Save Team</button>
+            </section>
+
+            <!-- AWARDS & CREDENTIALS -->
+            <section id="awards" class="section">
+                <div class="page-header">
+                    <h1>Awards & Press</h1>
+                    <p>Manage awards, credentials, and media coverage</p>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3>Custom Colors</h3>
+                        <h3>Awards & Recognition</h3>
+                        <button type="button" class="btn btn-outline btn-small" onclick="addAward()">+ Add Award</button>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Primary Color</label>
-                            <div class="color-input-group">
-                                <input type="color" id="themePrimary" value="#C4A052">
-                                <input type="text" id="themePrimaryHex" placeholder="#C4A052">
-                            </div>
-                            <div class="rgb-display" id="themePrimaryRgb">RGB: 196, 160, 82</div>
-                        </div>
-                        <div class="form-group">
-                            <label>Accent Color</label>
-                            <div class="color-input-group">
-                                <input type="color" id="themeAccent" value="#F5E6E0">
-                                <input type="text" id="themeAccentHex" placeholder="#F5E6E0">
-                            </div>
-                            <div class="rgb-display" id="themeAccentRgb">RGB: 245, 230, 224</div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Dark Color</label>
-                            <div class="color-input-group">
-                                <input type="color" id="themeDark" value="#1A1A1A">
-                                <input type="text" id="themeDarkHex" placeholder="#1A1A1A">
-                            </div>
-                            <div class="rgb-display" id="themeDarkRgb">RGB: 26, 26, 26</div>
-                        </div>
-                        <div class="form-group">
-                            <label>Background Color</label>
-                            <div class="color-input-group">
-                                <input type="color" id="themeBg" value="#FAFAF8">
-                                <input type="text" id="themeBgHex" placeholder="#FAFAF8">
-                            </div>
-                            <div class="rgb-display" id="themeBgRgb">RGB: 250, 250, 248</div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-save" onclick="saveTheme()">Save Theme</button>
+                    <div class="item-list" id="awardsList"></div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Press & Media</h3>
+                        <button type="button" class="btn btn-outline btn-small" onclick="addPress()">+ Add Article</button>
+                    </div>
+                    <div class="item-list" id="pressList"></div>
+                </div>
+                <button type="button" class="btn btn-save" onclick="saveAwards()" style="margin-top:1rem">Save Awards & Press</button>
+            </section>
+
+            <!-- BLOG -->
+            <section id="blog" class="section">
+                <div class="page-header">
+                    <h1>Blog & Articles</h1>
+                    <p>Manage your blog posts and articles</p>
+                </div>
+                <div class="item-list" id="blogList"></div>
+                <button type="button" class="btn btn-outline" onclick="addBlogPost()" style="margin-top:1rem">+ Write New Post</button>
+                <button type="button" class="btn btn-save" onclick="saveBlog()" style="margin-top:1rem;margin-left:1rem">Save Blog</button>
+            </section>
+
+            <!-- CASE STUDIES -->
+            <section id="casestudies" class="section">
+                <div class="page-header">
+                    <h1>Case Studies</h1>
+                    <p>Showcase your best work with detailed case studies</p>
+                </div>
+                <div class="item-list" id="caseStudiesList"></div>
+                <button type="button" class="btn btn-outline" onclick="addCaseStudy()" style="margin-top:1rem">+ New Case Study</button>
+                <button type="button" class="btn btn-save" onclick="saveCaseStudies()" style="margin-top:1rem;margin-left:1rem">Save Case Studies</button>
+            </section>
+
+            <!-- PROMOTIONS -->
+            <section id="promotions" class="section">
+                <div class="page-header">
+                    <h1>Promotions & Discounts</h1>
+                    <p>Create and manage special offers and promotions</p>
+                </div>
+                <div class="item-list" id="promotionsList"></div>
+                <button type="button" class="btn btn-outline" onclick="addPromotion()" style="margin-top:1rem">+ New Promotion</button>
+                <button type="button" class="btn btn-save" onclick="savePromotions()" style="margin-top:1rem;margin-left:1rem">Save Promotions</button>
             </section>
 
             <!-- ANALYTICS -->
@@ -687,27 +901,27 @@
                         <h3>Quick Actions</h3>
                     </div>
                     <div style="display:flex;gap:1rem;flex-wrap:wrap">
-                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-outline">View Calendly Schedule</a>
+                        <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" class="btn btn-outline">View Cal.com Schedule</a>
                         <a href="https://dashboard.stripe.com" target="_blank" class="btn btn-outline">View Stripe Dashboard</a>
                     </div>
-                    <p style="margin-top:1rem;color:var(--text-light);font-size:0.85rem">Analytics will populate once Calendly and Stripe APIs are connected. Data shown here is read-only.</p>
+                    <p style="margin-top:1rem;color:var(--text-light);font-size:0.85rem">Analytics will populate once Cal.com and Stripe integrations are configured. Data shown here is read-only.</p>
                 </div>
             </section>
 
             <!-- INTEGRATIONS -->
             <section id="integrations" class="section">
                 <div class="page-header">
-                    <h1>Calendly & Stripe</h1>
+                    <h1>Cal.com & Stripe</h1>
                     <p>Manage your booking and payment integrations</p>
                 </div>
                 <div class="card-grid">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Calendly</h3>
+                            <h3>Cal.com</h3>
                             <span class="status status-connected">Connected</span>
                         </div>
-                        <p style="color:var(--text-light);margin-bottom:1rem;font-size:0.9rem">Manage your booking calendar and availability</p>
-                        <a href="https://calendly.com/jlcstudiollc" target="_blank" class="btn btn-primary">Open Calendly Dashboard</a>
+                        <p style="color:var(--text-light);margin-bottom:1rem;font-size:0.9rem">Manage booking calendar, consultation types, and availability</p>
+                        <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" class="btn btn-primary">Open Cal.com Dashboard</a>
                     </div>
                     <div class="card">
                         <div class="card-header">
@@ -1775,94 +1989,164 @@
         }
 
         // =====================
-        // THEME
+        // THEME - FULL COLOR CONTROL SYSTEM
         // =====================
         const colorPresets = [
-            { name: 'Classic Gold', primary: '#C4A052', accent: '#F5E6E0' },
-            { name: 'Sage Garden', primary: '#7D9B76', accent: '#E8EDE7' },
-            { name: 'Dusty Rose', primary: '#C4A08A', accent: '#F5E8E4' },
-            { name: 'Ocean Blue', primary: '#5B8FA8', accent: '#E4EEF2' },
-            { name: 'Terracotta', primary: '#C47D52', accent: '#F5EBE4' },
-            { name: 'Lavender', primary: '#9B7DAA', accent: '#F0EAF3' },
-            { name: 'Champagne', primary: '#D4C4A8', accent: '#FAF8F5' },
-            { name: 'Forest', primary: '#5B7D5B', accent: '#E7EDE7' },
-            { name: 'Midnight', primary: '#3D4A5C', accent: '#E8EAED' },
-            { name: 'Coral', primary: '#E07B7B', accent: '#FBF0F0' }
+            {
+                name: 'Classic Gold',
+                gold: '#C4A052', goldLight: '#D4B872', goldDark: '#A68A42',
+                sage: '#8B9B7A', sageLight: '#A5B494', sageDark: '#6B7B5A',
+                white: '#FFFFFF', cream: '#FAF8F5', ivory: '#F5F2ED',
+                taupe: '#E8E4DC', warmGray: '#9B9590', charcoal: '#3D3D3D', black: '#1A1A1A'
+            },
+            {
+                name: 'Ocean Blue',
+                gold: '#4A90A4', goldLight: '#6BA8C0', goldDark: '#2B6F8F',
+                sage: '#5FA8BC', sageLight: '#7CBFD0', sageDark: '#3E8A9D',
+                white: '#FFFFFF', cream: '#F0F8FA', ivory: '#E8F2F5',
+                taupe: '#D0E5EC', warmGray: '#8BA5B8', charcoal: '#2C3E50', black: '#1A2634'
+            },
+            {
+                name: 'Sage Garden',
+                gold: '#8B9B7A', goldLight: '#A5B494', goldDark: '#6B7B5A',
+                sage: '#6B8E5B', sageLight: '#8BA870', sageDark: '#4B6E3B',
+                white: '#FFFFFF', cream: '#F5F8F2', ivory: '#EEF2E9',
+                taupe: '#DFE5D3', warmGray: '#8FA885', charcoal: '#3D4A3C', black: '#1D2D1B'
+            },
+            {
+                name: 'Dusty Rose',
+                gold: '#D4A5A5', goldLight: '#E5BFBF', goldDark: '#B88585',
+                sage: '#B8A5A5', sageLight: '#D0BFBF', sageDark: '#9A7A7A',
+                white: '#FFFFFF', cream: '#FAF5F5', ivory: '#F5EFEF',
+                taupe: '#E8DDD0', warmGray: '#A89090', charcoal: '#4A3D3D', black: '#2D1F1F'
+            },
+            {
+                name: 'Midnight',
+                gold: '#6B7A9A', goldLight: '#8A99B8', goldDark: '#4B5A7A',
+                sage: '#5B6B8A', sageLight: '#7A8BA8', sageDark: '#3B4B6A',
+                white: '#FFFFFF', cream: '#F0F2F5', ivory: '#E8EAED',
+                taupe: '#D5D9E0', warmGray: '#7F8CA5', charcoal: '#2A2F42', black: '#1A1D2E'
+            }
         ];
-
-        function renderTheme() {
-            const container = document.getElementById('colorPresets');
-            container.innerHTML = colorPresets.map((p, i) => `
-                <div class="color-swatch" style="background:${p.primary}" title="${p.name}" onclick="applyPreset(${i})"></div>
-            `).join('');
-
-            // Set current values
-            const theme = siteData.theme.colors || {};
-            if (theme.primary) {
-                document.getElementById('themePrimary').value = theme.primary.hex || '#C4A052';
-                document.getElementById('themePrimaryHex').value = theme.primary.hex || '#C4A052';
-                document.getElementById('themePrimaryRgb').textContent = 'RGB: ' + (theme.primary.rgb || '196, 160, 82');
-            }
-            if (theme.accent) {
-                document.getElementById('themeAccent').value = theme.accent.hex || '#F5E6E0';
-                document.getElementById('themeAccentHex').value = theme.accent.hex || '#F5E6E0';
-                document.getElementById('themeAccentRgb').textContent = 'RGB: ' + (theme.accent.rgb || '245, 230, 224');
-            }
-        }
-
-        function applyPreset(index) {
-            const preset = colorPresets[index];
-            document.getElementById('themePrimary').value = preset.primary;
-            document.getElementById('themePrimaryHex').value = preset.primary;
-            document.getElementById('themePrimaryRgb').textContent = 'RGB: ' + hexToRgb(preset.primary);
-            document.getElementById('themeAccent').value = preset.accent;
-            document.getElementById('themeAccentHex').value = preset.accent;
-            document.getElementById('themeAccentRgb').textContent = 'RGB: ' + hexToRgb(preset.accent);
-
-            // Highlight selected
-            document.querySelectorAll('.color-swatch').forEach((s, i) => {
-                s.classList.toggle('active', i === index);
-            });
-        }
 
         function hexToRgb(hex) {
             const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
             return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '';
         }
 
-        // Color input sync
-        ['themePrimary', 'themeAccent', 'themeDark', 'themeBg'].forEach(id => {
-            const colorInput = document.getElementById(id);
-            const hexInput = document.getElementById(id + 'Hex');
-            const rgbDisplay = document.getElementById(id + 'Rgb');
+        function renderTheme() {
+            const container = document.getElementById('colorPresets');
+            container.innerHTML = colorPresets.map((p, i) => `
+                <div class="color-swatch" style="background:${p.gold}" title="${p.name}" onclick="applyPreset(${i})"></div>
+            `).join('');
 
-            if (colorInput) {
-                colorInput.addEventListener('input', function() {
-                    hexInput.value = this.value;
-                    rgbDisplay.textContent = 'RGB: ' + hexToRgb(this.value);
-                });
-            }
-            if (hexInput) {
-                hexInput.addEventListener('input', function() {
-                    if (/^#[0-9A-Fa-f]{6}$/.test(this.value)) {
-                        colorInput.value = this.value;
+            // Load current values from siteData.theme
+            loadThemeInputs();
+            syncColorInputs();
+        }
+
+        function loadThemeInputs() {
+            if (!siteData.theme) return;
+            const theme = siteData.theme;
+
+            // Load all 13 colors into inputs
+            const colorIds = [
+                'gold', 'goldLight', 'goldDark',
+                'sage', 'sageLight', 'sageDark',
+                'white', 'cream', 'ivory', 'taupe', 'warmGray', 'charcoal', 'black'
+            ];
+
+            colorIds.forEach(id => {
+                const colorInput = document.getElementById('color' + id.charAt(0).toUpperCase() + id.slice(1));
+                const hexInput = document.getElementById('color' + id.charAt(0).toUpperCase() + id.slice(1) + 'Hex');
+                const rgbDisplay = document.getElementById('color' + id.charAt(0).toUpperCase() + id.slice(1) + 'Rgb');
+
+                if (theme[id] && colorInput) {
+                    colorInput.value = theme[id];
+                    hexInput.value = theme[id];
+                    rgbDisplay.textContent = 'RGB: ' + hexToRgb(theme[id]);
+                }
+            });
+        }
+
+        function applyPreset(index) {
+            const preset = colorPresets[index];
+            const colorIds = ['gold', 'goldLight', 'goldDark', 'sage', 'sageLight', 'sageDark', 'white', 'cream', 'ivory', 'taupe', 'warmGray', 'charcoal', 'black'];
+
+            colorIds.forEach(id => {
+                const inputId = 'color' + id.charAt(0).toUpperCase() + id.slice(1);
+                const colorInput = document.getElementById(inputId);
+                const hexInput = document.getElementById(inputId + 'Hex');
+                const rgbDisplay = document.getElementById(inputId + 'Rgb');
+
+                if (colorInput) {
+                    colorInput.value = preset[id];
+                    hexInput.value = preset[id];
+                    rgbDisplay.textContent = 'RGB: ' + hexToRgb(preset[id]);
+                }
+            });
+
+            updatePreview();
+            document.querySelectorAll('.color-swatch').forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+        }
+
+        function updatePreview() {
+            const gold = document.getElementById('colorGold').value;
+            const charcoal = document.getElementById('colorCharcoal').value;
+            const cream = document.getElementById('colorCream').value;
+
+            const previewBtn = document.getElementById('previewBtn');
+            if (previewBtn) previewBtn.style.background = gold;
+        }
+
+        function syncColorInputs() {
+            const colorIds = ['gold', 'goldLight', 'goldDark', 'sage', 'sageLight', 'sageDark', 'white', 'cream', 'ivory', 'taupe', 'warmGray', 'charcoal', 'black'];
+
+            colorIds.forEach(id => {
+                const inputId = 'color' + id.charAt(0).toUpperCase() + id.slice(1);
+                const colorInput = document.getElementById(inputId);
+                const hexInput = document.getElementById(inputId + 'Hex');
+                const rgbDisplay = document.getElementById(inputId + 'Rgb');
+
+                if (colorInput) {
+                    colorInput.addEventListener('change', function() {
+                        hexInput.value = this.value;
                         rgbDisplay.textContent = 'RGB: ' + hexToRgb(this.value);
-                    }
-                });
-            }
-        });
+                        updatePreview();
+                    });
+                }
+                if (hexInput) {
+                    hexInput.addEventListener('change', function() {
+                        if (/^#[0-9A-Fa-f]{6}$/.test(this.value)) {
+                            colorInput.value = this.value;
+                            rgbDisplay.textContent = 'RGB: ' + hexToRgb(this.value);
+                            updatePreview();
+                        }
+                    });
+                }
+            });
+        }
 
         async function saveTheme() {
-            const themeData = {
-                colors: {
-                    primary: { hex: document.getElementById('themePrimary').value, rgb: hexToRgb(document.getElementById('themePrimary').value) },
-                    accent: { hex: document.getElementById('themeAccent').value, rgb: hexToRgb(document.getElementById('themeAccent').value) },
-                    dark: { hex: document.getElementById('themeDark').value, rgb: hexToRgb(document.getElementById('themeDark').value) },
-                    background: { hex: document.getElementById('themeBg').value, rgb: hexToRgb(document.getElementById('themeBg').value) }
-                },
-                presets: colorPresets
-            };
+            const colorIds = ['gold', 'goldLight', 'goldDark', 'sage', 'sageLight', 'sageDark', 'white', 'cream', 'ivory', 'taupe', 'warmGray', 'charcoal', 'black'];
+            const themeData = {};
+
+            colorIds.forEach(id => {
+                const inputId = 'color' + id.charAt(0).toUpperCase() + id.slice(1);
+                themeData[id] = document.getElementById(inputId).value;
+            });
+
             await saveToGitHub('theme', themeData);
+            showToast('Theme saved! Refresh your website to see changes.', 'success');
+        }
+
+        function resetTheme() {
+            if (confirm('Reset theme to Classic Gold?')) {
+                applyPreset(0);
+                saveTheme();
+            }
         }
 
         // =====================

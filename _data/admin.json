@@ -5,9 +5,9 @@
     "titleLine2": "Meets Occasion.",
     "subtitle": "Florals • Event Decor • Custom Tailoring & Precision",
     "description": "Every detail designed with intention for life's most important moments. From intimate gatherings to grand celebrations, we bring your vision to life with artistry, expertise, and precision.",
-    "primaryBtn": "Start Your Vision",
-    "secondaryBtn": "View Our Work",
-    "heroImage": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80"
+    "heroImage": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80",
+    "primaryBtn": "Book Now",
+    "secondaryBtn": "View Our Work"
   },
   "about": {
     "name": "JLynne Huffer",
@@ -21,10 +21,52 @@
     "businessName": "JLC Studio",
     "tagline": "Where Creativity Meets Occasion",
     "phone": "(941) 769-7526",
-    "email": "jlcstudio@gmail.com",
+    "email": "jlcstudiollc@gmail.com",
     "address": "Sarasota, FL 34232",
     "instagram": "https://instagram.com/jlcstudio",
     "pinterest": "https://pinterest.com/jlcstudio"
+  },
+  "integrations": {
+    "calcom": {
+      "enabled": true,
+      "username": "jlynne-huffer-8qatfj",
+      "url": "https://cal.com/jlynne-huffer-8qatfj",
+      "eventTypes": [
+        {
+          "name": "Free 30-Minute Consultation",
+          "slug": "free-consultation",
+          "duration": 30,
+          "price": 0,
+          "description": "Perfect for initial discovery calls and general inquiries"
+        },
+        {
+          "name": "Paid Design Consultation - $150",
+          "slug": "design-consultation",
+          "duration": 60,
+          "price": 150,
+          "description": "In-depth planning session with expert guidance"
+        },
+        {
+          "name": "Wedding Consultation - $200",
+          "slug": "wedding-consultation",
+          "duration": 90,
+          "price": 200,
+          "description": "Comprehensive wedding planning and design session"
+        },
+        {
+          "name": "Event Deposit - $500",
+          "slug": "event-deposit",
+          "duration": 30,
+          "price": 500,
+          "description": "Secure your event date with non-refundable deposit"
+        }
+      ]
+    },
+    "stripe": {
+      "enabled": true,
+      "connected": false,
+      "note": "Stripe is connected via Cal.com for payment processing"
+    }
   },
   "services": [
     {
@@ -492,6 +534,7 @@
     }
   },
   "theme": {
+<<<<<<< HEAD
     "colors": {
       "primary": {
         "hex": "#3d4a5c",
@@ -562,6 +605,21 @@
         "accent": "#FBF0F0"
       }
     ]
+=======
+    "gold": "#C4A052",
+    "goldLight": "#D4B872",
+    "goldDark": "#A68A42",
+    "sage": "#8B9B7A",
+    "sageLight": "#A5B494",
+    "sageDark": "#6B7B5A",
+    "white": "#FFFFFF",
+    "cream": "#FAF8F5",
+    "ivory": "#F5F2ED",
+    "taupe": "#E8E4DC",
+    "warmGray": "#9B9590",
+    "charcoal": "#3D3D3D",
+    "black": "#1A1A1A"
+>>>>>>> 5181023 (Add booking page and update navigation)
   },
   "labels": {
     "businessName": "JLC Studio",
@@ -569,7 +627,9 @@
     "hero": {
       "craft": "Our Craft",
       "craftTitle": "Artistry in Every Detail",
-      "craftDesc": "From intimate gatherings to grand celebrations, we bring your vision to life with expertise and intention."
+      "craftDesc": "From intimate gatherings to grand celebrations, we bring your vision to life with expertise and intention.",
+      "btnPrimary": "Book Now",
+      "btnSecondary": "View Our Work"
     },
     "services": {
       "expertise": "Our Expertise",
@@ -602,7 +662,7 @@
     "cta": {
       "heading": "Ready to Create Something Beautiful?",
       "description": "Let's bring your vision to life with creativity, intention, and expertise.",
-      "button": "Start Your Project"
+      "button": "Schedule Consultation"
     },
     "gallery": {
       "heading": "Our Work",

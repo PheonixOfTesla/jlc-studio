@@ -21,6 +21,31 @@ const ContentLoader = {
     }
   },
 
+  // Apply theme colors from admin.json to CSS variables
+  loadTheme() {
+    if (!this.adminData?.theme) return;
+
+    const theme = this.adminData.theme;
+    const root = document.documentElement;
+
+    // Map each JSON color to its CSS variable
+    root.style.setProperty('--gold', theme.gold);
+    root.style.setProperty('--gold-light', theme.goldLight);
+    root.style.setProperty('--gold-dark', theme.goldDark);
+    root.style.setProperty('--sage', theme.sage);
+    root.style.setProperty('--sage-light', theme.sageLight);
+    root.style.setProperty('--sage-dark', theme.sageDark);
+    root.style.setProperty('--white', theme.white);
+    root.style.setProperty('--cream', theme.cream);
+    root.style.setProperty('--ivory', theme.ivory);
+    root.style.setProperty('--taupe', theme.taupe);
+    root.style.setProperty('--warm-gray', theme.warmGray);
+    root.style.setProperty('--charcoal', theme.charcoal);
+    root.style.setProperty('--black', theme.black);
+
+    console.log('✓ Theme colors loaded from admin.json');
+  },
+
   // Load text content via data-content attributes
   loadTextContent() {
     if (!this.adminData) return;
@@ -305,6 +330,9 @@ const ContentLoader = {
       console.error('Failed to load admin.json - pages may display incorrectly');
       return;
     }
+
+    // Apply theme first (before any rendering)
+    this.loadTheme();
 
     // Load all content in parallel
     await Promise.all([
