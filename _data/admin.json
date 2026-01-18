@@ -494,12 +494,12 @@
   "theme": {
     "colors": {
       "primary": {
-        "hex": "#9b7daa",
-        "rgb": "155, 125, 170"
+        "hex": "#3d4a5c",
+        "rgb": "61, 74, 92"
       },
       "accent": {
-        "hex": "#f0eaf3",
-        "rgb": "240, 234, 243"
+        "hex": "#e8eaed",
+        "rgb": "232, 234, 237"
       },
       "dark": {
         "hex": "#1a1a1a",
