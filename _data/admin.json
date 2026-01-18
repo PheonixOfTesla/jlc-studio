@@ -492,17 +492,76 @@
     }
   },
   "theme": {
-    "primary": "#C4A052",
-    "primaryDark": "#A68A42",
-    "accent": "#F5E6E0",
-    "dark": "#1a1a1a",
-    "text": "#333",
-    "textLight": "#666",
-    "bg": "#fafaf8",
-    "white": "#fff",
-    "success": "#7D9B76",
-    "error": "#C45B5B",
-    "border": "#e5e5e5"
+    "colors": {
+      "primary": {
+        "hex": "#5b8fa8",
+        "rgb": "91, 143, 168"
+      },
+      "accent": {
+        "hex": "#e4eef2",
+        "rgb": "228, 238, 242"
+      },
+      "dark": {
+        "hex": "#1a1a1a",
+        "rgb": "26, 26, 26"
+      },
+      "background": {
+        "hex": "#fafaf8",
+        "rgb": "250, 250, 248"
+      }
+    },
+    "presets": [
+      {
+        "name": "Classic Gold",
+        "primary": "#C4A052",
+        "accent": "#F5E6E0"
+      },
+      {
+        "name": "Sage Garden",
+        "primary": "#7D9B76",
+        "accent": "#E8EDE7"
+      },
+      {
+        "name": "Dusty Rose",
+        "primary": "#C4A08A",
+        "accent": "#F5E8E4"
+      },
+      {
+        "name": "Ocean Blue",
+        "primary": "#5B8FA8",
+        "accent": "#E4EEF2"
+      },
+      {
+        "name": "Terracotta",
+        "primary": "#C47D52",
+        "accent": "#F5EBE4"
+      },
+      {
+        "name": "Lavender",
+        "primary": "#9B7DAA",
+        "accent": "#F0EAF3"
+      },
+      {
+        "name": "Champagne",
+        "primary": "#D4C4A8",
+        "accent": "#FAF8F5"
+      },
+      {
+        "name": "Forest",
+        "primary": "#5B7D5B",
+        "accent": "#E7EDE7"
+      },
+      {
+        "name": "Midnight",
+        "primary": "#3D4A5C",
+        "accent": "#E8EAED"
+      },
+      {
+        "name": "Coral",
+        "primary": "#E07B7B",
+        "accent": "#FBF0F0"
+      }
+    ]
   },
   "labels": {
     "businessName": "JLC Studio",
