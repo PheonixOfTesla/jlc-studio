@@ -533,64 +533,214 @@
       "order": 30
     }
   },
-  "theme": {
-  },
+  "theme": {},
   "labels": {
-    "businessName": "JLC Studio",
-    "tagline": "Where Creativity Meets Occasion",
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "booking": "Booking",
+      "contact": "Get in Touch",
+      "bookNow": "BOOK NOW"
+    },
     "hero": {
+      "scroll": "Scroll",
       "craft": "Our Craft",
-      "craftTitle": "Artistry in Every Detail",
-      "craftDesc": "From intimate gatherings to grand celebrations, we bring your vision to life with expertise and intention.",
-      "btnPrimary": "Book Now",
-      "btnSecondary": "View Our Work"
+      "craftTitle": "Artistry in Every Detail"
+    },
+    "featuredWork": {
+      "bridalFlorals": "Bridal Florals",
+      "eventDecor": "Event Decor",
+      "customArrangements": "Custom Arrangements",
+      "galaDesign": "Gala Design",
+      "customTailoring": "Custom Tailoring",
+      "viewPortfolioBtn": "View Full Portfolio"
+    },
+    "process": {
+      "sectionLabel": "How We Work",
+      "sectionTitle": "Your Journey With Us",
+      "step1Title": "Discovery",
+      "step1Desc": "In-depth consultation to understand your vision and story.",
+      "step2Title": "Design",
+      "step2Desc": "Mood boards and detailed proposals bring your concept to life.",
+      "step3Title": "Create",
+      "step3Desc": "Meticulous attention to detail in every handcrafted element.",
+      "step4Title": "Execute",
+      "step4Desc": "Seamless delivery and installation, exactly as imagined."
+    },
+    "aboutPreview": {
+      "meetDesigner": "Meet the Designer",
+      "yearsLabel": "Years Experience",
+      "eventsLabel": "Events Created",
+      "feature1": "✓ NYC Fashion Background",
+      "feature2": "✓ International Experience",
+      "feature3": "✓ Personalized Service",
+      "learnMoreBtn": "Learn More About Jeremy"
+    },
+    "cta": {
+      "callButton": "Call (941) 769-7526"
     },
     "services": {
       "expertise": "Our Expertise",
       "expertiseTitle": "Three Disciplines, One Vision",
-      "expertiseDesc": "We don't believe in one-dimensional events. Our unique combination of floral artistry, event design, and couture tailoring allows us to create completely cohesive experiences that exceed expectations."
+      "expertiseDesc": "The only studio in Sarasota offering florals, event decor, and custom tailoring under one roof.",
+      "floral": "Floral Design",
+      "decor": "Event Decor",
+      "tailoring": "Custom Tailoring"
     },
-    "about": {
-      "designer": "The Designer",
-      "journey": "A Journey of Creativity",
-      "background": "Background",
-      "expertise": "Professional Journey"
+    "servicesPage": {
+      "subtitle": "Three disciplines, infinite possibilities",
+      "serviceLabel": "Service",
+      "floralLead": "From intimate dinner arrangements to grand wedding installations, each bloom tells your unique story.",
+      "floralDesc": "With years of experience leading floral departments for luxury events, we approach each arrangement as a work of art. Our designs blend classic elegance with contemporary flair, using seasonal blooms and unexpected elements to create unforgettable impressions.",
+      "decorLead": "Complete venue transformations that create immersive experiences and unforgettable atmospheres.",
+      "decorDesc": "We don't just decorate spaces—we transform them. From conceptual design through on-site installation, we handle every detail. Our background in fashion and visual design brings a unique perspective to event styling that elevates every celebration.",
+      "tailoringLead": "Bespoke garments and alterations crafted with precision from our NYC fashion heritage.",
+      "tailoringDesc": "With a background that includes New York Fashion Week runway shows and work with legendary designers, we bring couture-level craftsmanship to every piece. From wedding dress alterations to custom garments designed from scratch, each stitch reflects our commitment to perfection.",
+      "packagesDesc": "Bundle services for a cohesive vision and special pricing.",
+      "ctaHeading": "Ready to Start Planning?",
+      "ctaDesc": "Let's discuss your vision and create something extraordinary together.",
+      "ctaButton": "Schedule Consultation"
+    },
+    "gallery": {
+      "subtitle": "A collection of our finest creations",
+      "filterAll": "All",
+      "filterFlorals": "Florals",
+      "filterEvents": "Events",
+      "filterTailoring": "Tailoring",
+      "ctaDesc": "Let's create something beautiful for your next occasion.",
+      "ctaButton": "Start Your Project"
+    },
+    "contact": {
+      "heading": "Get in Touch",
+      "lead": "Ready to bring your vision to life? We'd love to hear from you. Schedule a consultation or reach out with any questions.",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "locationLabel": "Location",
+      "serviceArea": "Serving Sarasota, Bradenton, Venice & Lakewood Ranch",
+      "hoursLabel": "Hours",
+      "hoursText": "By Appointment",
+      "hoursDetail": "Consultations available Monday - Saturday",
+      "socialHeading": "Follow Along",
+      "instagramLabel": "Instagram",
+      "pinterestLabel": "Pinterest",
+      "formHeading": "Send a Message",
+      "nameLabel": "Name *",
+      "phoneFormLabel": "Phone",
+      "emailFormLabel": "Email *",
+      "serviceLabel": "Service Interest",
+      "eventDateLabel": "Event Date",
+      "budgetLabel": "Estimated Budget",
+      "messageLabel": "Tell Us About Your Vision *",
+      "servicePlaceholder": "Select a service...",
+      "budgetPlaceholder": "Select range...",
+      "messagePlaceholder": "Share details about your event, style preferences, or any questions you have...",
+      "submitButton": "Send Message",
+      "successHeading": "Thank You!",
+      "successMessage": "Your message has been sent. We'll be in touch within 24 hours.",
+      "successButton": "Back to Home",
+      "heroSubtitle": "Start your creative journey",
+      "serviceFloral": "Floral Design",
+      "serviceDecor": "Event Decor",
+      "serviceTailoring": "Custom Tailoring",
+      "serviceMultiple": "Multiple Services",
+      "serviceOther": "Other",
+      "budgetUnder500": "Under $500",
+      "budget500-1500": "$500 - $1,500",
+      "budget1500-3500": "$1,500 - $3,500",
+      "budget3500-7500": "$3,500 - $7,500",
+      "budget7500plus": "$7,500+",
+      "submittingButton": "Sending..."
+    },
+    "booking": {
+      "pageLabel": "Schedule Your Consultation",
+      "pageHeading": "Book Your Appointment",
+      "pageSubtitle": "Choose the consultation type that works best for you",
+      "sectionHeading": "Available Consultations",
+      "sectionDesc": "Select the consultation type that best fits your needs. All bookings include professional guidance and detailed planning for your special event.",
+      "freeTitle": "Free Consultation",
+      "freeDuration": "30 minutes",
+      "freePrice": "FREE",
+      "freeDesc": "Perfect for getting started. Discuss your vision, ask questions, and explore how we can help bring your ideas to life.",
+      "freeButton": "Schedule Free Call",
+      "designTitle": "Design Consultation",
+      "designDuration": "60 minutes",
+      "designPrice": "$150",
+      "designDesc": "In-depth planning session with expert guidance. Perfect for detailed floral and decor design consultation with personalized recommendations.",
+      "designButton": "Book & Pay Now",
+      "weddingTitle": "Wedding Consultation",
+      "weddingDuration": "90 minutes",
+      "weddingPrice": "$200",
+      "weddingDesc": "Comprehensive wedding planning session. Ideal for complete wedding vision including florals, decor, and tailoring coordination.",
+      "weddingButton": "Book & Pay Now",
+      "depositTitle": "Secure Your Event",
+      "depositDuration": "30 minutes planning call",
+      "depositPrice": "$500",
+      "depositDesc": "Non-refundable deposit to lock in your event date. Deposit is credited toward your final invoice.",
+      "depositButton": "Reserve Date",
+      "howItWorksHeading": "How Booking Works",
+      "step1Heading": "📅 Choose Your Time",
+      "step1Desc": "Browse available dates and times that work for your schedule. Consultations available Monday through Saturday.",
+      "step2Heading": "💳 Secure Payment",
+      "step2Desc": "For paid consultations, payment is collected securely via Stripe during booking. Your spot is instantly confirmed.",
+      "step3Heading": "📧 Instant Confirmation",
+      "step3Desc": "Receive confirmation email with meeting details, Zoom link (or location for in-person), and calendar invite.",
+      "step4Heading": "🎥 Easy Rescheduling",
+      "step4Desc": "Need to change your time? Simply reschedule through your confirmation email with one click.",
+      "step5Heading": "✅ No Surprises",
+      "step5Desc": "Automatic reminders sent before your consultation. Questions? Call us at (941) 769-7526.",
+      "step6Heading": "💼 Professional Service",
+      "step6Desc": "Each consultation includes detailed notes and follow-up recommendations tailored to your specific needs.",
+      "questionsHeading": "Still Have Questions?",
+      "questionsDesc": "Not sure which consultation is right for you? Our team is happy to help guide you to the best option.",
+      "questionsButton": "Send Us a Message",
+      "questionsCallText": "Or call us directly at"
+    },
+    "pages": {
+      "about": "About Jeremy",
+      "services": "What We Do",
+      "servicesTitle": "Our Services",
+      "gallery": "Our Work",
+      "galleryTitle": "Portfolio",
+      "contact": "Let's Connect",
+      "contactTitle": "Get in Touch"
     },
     "testimonials": {
       "heading": "Client Stories",
       "subheading": "Words That Inspire Us"
     },
-    "packages": {
-      "heading": "Value",
-      "title": "Complete Packages",
-      "description": "Choose the package that best fits your vision and budget."
-    },
-    "process": {
-      "title": "How We Work",
-      "description": "Our collaborative, detail-oriented process ensures your vision becomes reality.",
-      "discovery": "Discovery",
-      "design": "Design",
-      "create": "Create",
-      "execute": "Execute"
-    },
-    "cta": {
-      "heading": "Ready to Create Something Beautiful?",
-      "description": "Let's bring your vision to life with creativity, intention, and expertise.",
-      "button": "Schedule Consultation"
-    },
-    "gallery": {
-      "heading": "Our Work",
-      "title": "Portfolio",
-      "subtitle": "A collection of our finest creations",
-      "cta": "Love What You See?"
+    "footer": {
+      "logo": "JLC Studio",
+      "tagline": "Where creativity meets occasion. Every detail designed with intention.",
+      "socialIG": "IG",
+      "socialPIN": "PIN",
+      "socialEmail": "@",
+      "servicesHeading": "Services",
+      "studioHeading": "Studio",
+      "contactHeading": "Get in Touch",
+      "contactLink": "Contact",
+      "copyright": "© 2024 JLC Studio. All rights reserved."
     },
     "faq": {
-      "label": "Questions",
-      "title": "Frequently Asked"
+      "sectionLabel": "Questions",
+      "sectionTitle": "Frequently Asked"
     },
-    "contact": {
-      "label": "Let's Connect",
-      "heading": "Contact Us"
+    "aboutPage": {
+      "designer": "The Designer",
+      "name": "Jeremy Huffer",
+      "tagline": "Where artistry meets intention",
+      "quote": "Art is a tool for expression, healing, and community creativity.",
+      "journeyHeading": "A Journey of Creativity",
+      "backgroundLabel": "Background",
+      "expertiseHeading": "Professional Journey",
+      "skillsLabel": "Expertise",
+      "skillsTitle": "Core Skills",
+      "educationLabel": "Education",
+      "ctaHeading": "Let's Create Together",
+      "ctaDesc": "Ready to bring your vision to life? I'd love to hear about your project.",
+      "ctaContactBtn": "Get in Touch",
+      "ctaPortfolioBtn": "View Portfolio"
     }
   },
   "stats": {
@@ -1042,4 +1192,5 @@
     "testimonials-4": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=100&q=80",
     "testimonials-5": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
   },
-  "photos": {
+  "photos": {}
+}

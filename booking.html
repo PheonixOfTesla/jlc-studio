@@ -40,11 +40,11 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName">JLC Studio</span></a>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
-                <li><a href="booking.html" class="nav-link nav-cta active">Book Now</a></li>
+                <li><a href="index.html" class="nav-link" data-content="navigation-home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-content="navigation-about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-content="navigation-services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link" data-content="navigation-portfolio">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link nav-cta active" data-content="navigation-booking">Book Now</a></li>
             </ul>
             <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
         </div>
@@ -55,94 +55,94 @@
             <img src="" data-image-id="contact-hero" alt="Elegant floral arrangement">
         </div>
         <div class="page-hero-content">
-            <span class="section-label">Schedule Your Consultation</span>
-            <h1>Book Your Appointment</h1>
-            <p>Choose the consultation type that works best for you</p>
+            <span class="section-label" data-content="booking-pageLabel">Schedule Your Consultation</span>
+            <h1 data-content="booking-pageHeading">Book Your Appointment</h1>
+            <p data-content="booking-pageSubtitle">Choose the consultation type that works best for you</p>
         </div>
     </section>
 
     <section class="booking-section">
         <div class="container">
             <div class="section-header centered">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Available Consultations</h2>
-                <p style="color: var(--warm-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Select the consultation type that best fits your needs. All bookings include professional guidance and detailed planning for your special event.</p>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;" data-content="booking-sectionHeading">Available Consultations</h2>
+                <p style="color: var(--warm-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto;" data-content="booking-sectionDesc">Select the consultation type that best fits your needs. All bookings include professional guidance and detailed planning for your special event.</p>
             </div>
 
             <div class="booking-grid">
                 <!-- Free Consultation -->
                 <div class="booking-card">
-                    <h3>Free Consultation</h3>
-                    <div class="booking-duration">30 minutes</div>
-                    <div class="booking-price">FREE</div>
-                    <p class="booking-description">Perfect for getting started. Discuss your vision, ask questions, and explore how we can help bring your ideas to life.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Schedule Free Call</a>
+                    <h3 data-content="booking-freeTitle">Free Consultation</h3>
+                    <div class="booking-duration" data-content="booking-freeDuration">30 minutes</div>
+                    <div class="booking-price" data-content="booking-freePrice">FREE</div>
+                    <p class="booking-description" data-content="booking-freeDesc">Perfect for getting started. Discuss your vision, ask questions, and explore how we can help bring your ideas to life.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" data-content="booking-freeButton">Schedule Free Call</a>
                 </div>
 
                 <!-- Paid Design Consultation -->
                 <div class="booking-card featured" style="position: relative;">
-                    <h3>Design Consultation</h3>
-                    <div class="booking-duration">60 minutes</div>
-                    <div class="booking-price">$150</div>
-                    <p class="booking-description">In-depth planning session with expert guidance. Perfect for detailed floral and decor design consultation with personalized recommendations.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Book & Pay Now</a>
+                    <h3 data-content="booking-designTitle">Design Consultation</h3>
+                    <div class="booking-duration" data-content="booking-designDuration">60 minutes</div>
+                    <div class="booking-price" data-content="booking-designPrice">$150</div>
+                    <p class="booking-description" data-content="booking-designDesc">In-depth planning session with expert guidance. Perfect for detailed floral and decor design consultation with personalized recommendations.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" data-content="booking-designButton">Book & Pay Now</a>
                 </div>
 
                 <!-- Wedding Consultation -->
                 <div class="booking-card">
-                    <h3>Wedding Consultation</h3>
-                    <div class="booking-duration">90 minutes</div>
-                    <div class="booking-price">$200</div>
-                    <p class="booking-description">Comprehensive wedding planning session. Ideal for complete wedding vision including florals, decor, and tailoring coordination.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Book & Pay Now</a>
+                    <h3 data-content="booking-weddingTitle">Wedding Consultation</h3>
+                    <div class="booking-duration" data-content="booking-weddingDuration">90 minutes</div>
+                    <div class="booking-price" data-content="booking-weddingPrice">$200</div>
+                    <p class="booking-description" data-content="booking-weddingDesc">Comprehensive wedding planning session. Ideal for complete wedding vision including florals, decor, and tailoring coordination.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" data-content="booking-weddingButton">Book & Pay Now</a>
                 </div>
 
                 <!-- Event Deposit -->
                 <div class="booking-card">
-                    <h3>Secure Your Event</h3>
-                    <div class="booking-duration">30 minutes planning call</div>
-                    <div class="booking-price">$500</div>
-                    <p class="booking-description">Non-refundable deposit to lock in your event date. Deposit is credited toward your final invoice.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Reserve Date</a>
+                    <h3 data-content="booking-depositTitle">Secure Your Event</h3>
+                    <div class="booking-duration" data-content="booking-depositDuration">30 minutes planning call</div>
+                    <div class="booking-price" data-content="booking-depositPrice">$500</div>
+                    <p class="booking-description" data-content="booking-depositDesc">Non-refundable deposit to lock in your event date. Deposit is credited toward your final invoice.</p>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" data-content="booking-depositButton">Reserve Date</a>
                 </div>
             </div>
 
             <div class="booking-info-section">
                 <div class="container">
-                    <h3 style="text-align: center; margin-bottom: 2rem;">How Booking Works</h3>
+                    <h3 style="text-align: center; margin-bottom: 2rem;" data-content="booking-howItWorksHeading">How Booking Works</h3>
                     <div class="info-content">
                         <div class="info-item">
-                            <h4>📅 Choose Your Time</h4>
-                            <p>Browse available dates and times that work for your schedule. Consultations available Monday through Saturday.</p>
+                            <h4 data-content="booking-step1Heading">📅 Choose Your Time</h4>
+                            <p data-content="booking-step1Desc">Browse available dates and times that work for your schedule. Consultations available Monday through Saturday.</p>
                         </div>
                         <div class="info-item">
-                            <h4>💳 Secure Payment</h4>
-                            <p>For paid consultations, payment is collected securely via Stripe during booking. Your spot is instantly confirmed.</p>
+                            <h4 data-content="booking-step2Heading">💳 Secure Payment</h4>
+                            <p data-content="booking-step2Desc">For paid consultations, payment is collected securely via Stripe during booking. Your spot is instantly confirmed.</p>
                         </div>
                         <div class="info-item">
-                            <h4>📧 Instant Confirmation</h4>
-                            <p>Receive confirmation email with meeting details, Zoom link (or location for in-person), and calendar invite.</p>
+                            <h4 data-content="booking-step3Heading">📧 Instant Confirmation</h4>
+                            <p data-content="booking-step3Desc">Receive confirmation email with meeting details, Zoom link (or location for in-person), and calendar invite.</p>
                         </div>
                         <div class="info-item">
-                            <h4>🎥 Easy Rescheduling</h4>
-                            <p>Need to change your time? Simply reschedule through your confirmation email with one click.</p>
+                            <h4 data-content="booking-step4Heading">🎥 Easy Rescheduling</h4>
+                            <p data-content="booking-step4Desc">Need to change your time? Simply reschedule through your confirmation email with one click.</p>
                         </div>
                         <div class="info-item">
-                            <h4>✅ No Surprises</h4>
-                            <p>Automatic reminders sent before your consultation. Questions? Call us at (941) 769-7526.</p>
+                            <h4 data-content="booking-step5Heading">✅ No Surprises</h4>
+                            <p data-content="booking-step5Desc">Automatic reminders sent before your consultation. Questions? Call us at (941) 769-7526.</p>
                         </div>
                         <div class="info-item">
-                            <h4>💼 Professional Service</h4>
-                            <p>Each consultation includes detailed notes and follow-up recommendations tailored to your specific needs.</p>
+                            <h4 data-content="booking-step6Heading">💼 Professional Service</h4>
+                            <p data-content="booking-step6Desc">Each consultation includes detailed notes and follow-up recommendations tailored to your specific needs.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div style="text-align: center; background: var(--cream); padding: 2rem; border-radius: 12px; margin-top: 3rem;">
-                <h3 style="margin-bottom: 1rem;">Still Have Questions?</h3>
-                <p style="color: var(--warm-gray); margin-bottom: 1.5rem;">Not sure which consultation is right for you? Our team is happy to help guide you to the best option.</p>
-                <a href="contact.html" class="btn btn-outline" style="display: inline-block;">Send Us a Message</a>
-                <p style="margin-top: 1rem; color: var(--warm-gray); font-size: 0.9rem;">Or call us directly at <strong>(941) 769-7526</strong></p>
+                <h3 style="margin-bottom: 1rem;" data-content="booking-questionsHeading">Still Have Questions?</h3>
+                <p style="color: var(--warm-gray); margin-bottom: 1.5rem;" data-content="booking-questionsDesc">Not sure which consultation is right for you? Our team is happy to help guide you to the best option.</p>
+                <a href="contact.html" class="btn btn-outline" style="display: inline-block;" data-content="booking-questionsButton">Send Us a Message</a>
+                <p style="margin-top: 1rem; color: var(--warm-gray); font-size: 0.9rem;" data-content="booking-questionsCallText">Or call us directly at <strong>(941) 769-7526</strong></p>
             </div>
         </div>
     </section>
@@ -151,32 +151,32 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">JLC Studio</div>
-                    <p>Where creativity meets occasion.</p>
+                    <div class="footer-logo" data-content="businessName">JLC Studio</div>
+                    <p data-content="tagline">Where creativity meets occasion.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Services</h4>
+                    <h4 data-content="footer-servicesHeading">Services</h4>
                     <ul>
-                        <li><a href="services.html#florals">Floral Design</a></li>
-                        <li><a href="services.html#decor">Event Decor</a></li>
-                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                        <li><a href="services.html#florals" data-content="footer-floralDesign">Floral Design</a></li>
+                        <li><a href="services.html#decor" data-content="footer-eventDecor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring" data-content="footer-customTailoring">Custom Tailoring</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Studio</h4>
+                    <h4 data-content="footer-studioHeading">Studio</h4>
                     <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="gallery.html">Portfolio</a></li>
-                        <li><a href="booking.html">Book Consultation</a></li>
+                        <li><a href="about.html" data-content="footer-about">About</a></li>
+                        <li><a href="gallery.html" data-content="footer-portfolio">Portfolio</a></li>
+                        <li><a href="booking.html" data-content="footer-booking">Book Consultation</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p>(941) 769-7526</p>
-                    <p><a href="mailto:jlcstudiollc@gmail.com">jlcstudiollc@gmail.com</a></p>
+                    <h4 data-content="footer-contactHeading">Contact</h4>
+                    <p data-content="phone">(941) 769-7526</p>
+                    <p><a href="mailto:jlcstudiollc@gmail.com" data-content="email">jlcstudiollc@gmail.com</a></p>
                 </div>
             </div>
-            <div class="footer-bottom"><p>© 2024 JLC Studio. All rights reserved.</p></div>
+            <div class="footer-bottom"><p data-content="footer-copyright">© 2024 JLC Studio. All rights reserved.</p></div>
         </div>
     </footer>
 

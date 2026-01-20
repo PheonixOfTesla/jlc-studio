@@ -22,11 +22,11 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName">JLC Studio</span></a>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
-                <li><a href="booking.html" class="nav-link nav-cta" style="background-color: var(--gold); color: white; padding: 0.5rem 1.5rem; border-radius: 4px;">BOOK NOW</a></li>
+                <li><a href="index.html" class="nav-link active" data-content="navigation-home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-content="navigation-about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-content="navigation-services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link" data-content="navigation-portfolio">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link nav-cta" style="background-color: var(--gold); color: white; padding: 0.5rem 1.5rem; border-radius: 4px;" data-content="navigation-bookNow">BOOK NOW</a></li>
             </ul>
             <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
         </div>
@@ -51,7 +51,7 @@
                 <a href="gallery.html" class="btn btn-outline">View Our Work</a>
             </div>
         </div>
-        <div class="hero-scroll"><span>Scroll</span><div class="scroll-indicator"></div></div>
+        <div class="hero-scroll"><span data-content="hero-scroll">Scroll</span><div class="scroll-indicator"></div></div>
     </section>
 
     <!-- Featured Work Gallery -->
@@ -65,36 +65,36 @@
                 <div class="featured-item large">
                     <img src="" data-image-id="featured-wedding-bouquet" alt="Romantic wedding bouquet">
                     <div class="featured-overlay">
-                        <span>Bridal Florals</span>
+                        <span data-content="featuredWork-bridalFlorals">Bridal Florals</span>
                     </div>
                 </div>
                 <div class="featured-item">
                     <img src="" data-image-id="featured-table-setting" alt="Wedding table setting">
                     <div class="featured-overlay">
-                        <span>Event Decor</span>
+                        <span data-content="featuredWork-eventDecor">Event Decor</span>
                     </div>
                 </div>
                 <div class="featured-item">
                     <img src="" data-image-id="featured-flower-arrangement" alt="Colorful flower arrangement">
                     <div class="featured-overlay">
-                        <span>Custom Arrangements</span>
+                        <span data-content="featuredWork-customArrangements">Custom Arrangements</span>
                     </div>
                 </div>
                 <div class="featured-item">
                     <img src="" data-image-id="featured-gala-setup" alt="Elegant gala setup">
                     <div class="featured-overlay">
-                        <span>Gala Design</span>
+                        <span data-content="featuredWork-galaDesign">Gala Design</span>
                     </div>
                 </div>
                 <div class="featured-item large">
                     <img src="" data-image-id="featured-wedding-dress" alt="Wedding dress detail">
                     <div class="featured-overlay">
-                        <span>Custom Tailoring</span>
+                        <span data-content="featuredWork-customTailoring">Custom Tailoring</span>
                     </div>
                 </div>
             </div>
             <div class="text-center" style="margin-top: 3rem;">
-                <a href="gallery.html" class="btn btn-secondary">View Full Portfolio</a>
+                <a href="gallery.html" class="btn btn-secondary" data-content="featuredWork-viewPortfolioBtn">View Full Portfolio</a>
             </div>
         </div>
     </section>
@@ -126,25 +126,25 @@
                     <div class="about-stats">
                         <div class="stat">
                             <span class="stat-number" data-count="15" data-content="years-experience">0</span>
-                            <span class="stat-label">Years Experience</span>
+                            <span class="stat-label" data-content="aboutPreview-yearsLabel">Years Experience</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number" data-count="500" data-content="events-created">0</span>
-                            <span class="stat-label">Events Created</span>
+                            <span class="stat-label" data-content="aboutPreview-eventsLabel">Events Created</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-content">
-                    <span class="section-label">Meet the Designer</span>
+                    <span class="section-label" data-content="aboutPreview-meetDesigner">Meet the Designer</span>
                     <h2 class="section-title" data-content="about-name">JLynne Huffer</h2>
                     <p class="about-lead" data-content="about-short-bio">A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry.</p>
                     <p class="about-text" data-content="about-full-bio">From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, JLynne brings a unique perspective that blends artistic vision with technical expertise. Having worked with celebrity clients at Mood Fabrics and assisted on multiple seasons of Project Runway, she understands how to create experiences that are both visually stunning and deeply personal.</p>
                     <div class="about-features">
-                        <div class="feature"><span>✓ NYC Fashion Background</span></div>
-                        <div class="feature"><span>✓ International Experience</span></div>
-                        <div class="feature"><span>✓ Personalized Service</span></div>
+                        <div class="feature"><span data-content="aboutPreview-feature1">✓ NYC Fashion Background</span></div>
+                        <div class="feature"><span data-content="aboutPreview-feature2">✓ International Experience</span></div>
+                        <div class="feature"><span data-content="aboutPreview-feature3">✓ Personalized Service</span></div>
                     </div>
-                    <a href="about.html" class="btn btn-secondary">Learn More About Jeremy</a>
+                    <a href="about.html" class="btn btn-secondary" data-content="aboutPreview-learnMoreBtn">Learn More About Jeremy</a>
                 </div>
             </div>
         </div>
@@ -157,14 +157,14 @@
         </div>
         <div class="container">
             <div class="section-header centered light">
-                <span class="section-label">How We Work</span>
-                <h2 class="section-title">Your Journey With Us</h2>
+                <span class="section-label" data-content="process-sectionLabel">How We Work</span>
+                <h2 class="section-title" data-content="process-sectionTitle">Your Journey With Us</h2>
             </div>
             <div class="process-timeline">
-                <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3>Discovery</h3><p>In-depth consultation to understand your vision and story.</p></div></div>
-                <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3>Design</h3><p>Mood boards and detailed proposals bring your concept to life.</p></div></div>
-                <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3>Create</h3><p>Meticulous attention to detail in every handcrafted element.</p></div></div>
-                <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3>Execute</h3><p>Seamless delivery and installation, exactly as imagined.</p></div></div>
+                <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3 data-content="process-step1Title">Discovery</h3><p data-content="process-step1Desc">In-depth consultation to understand your vision and story.</p></div></div>
+                <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3 data-content="process-step2Title">Design</h3><p data-content="process-step2Desc">Mood boards and detailed proposals bring your concept to life.</p></div></div>
+                <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3 data-content="process-step3Title">Create</h3><p data-content="process-step3Desc">Meticulous attention to detail in every handcrafted element.</p></div></div>
+                <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3 data-content="process-step4Title">Execute</h3><p data-content="process-step4Desc">Seamless delivery and installation, exactly as imagined.</p></div></div>
             </div>
         </div>
     </section>
@@ -191,8 +191,8 @@
                 <h2 data-content="cta-heading">Ready to Create Something Beautiful?</h2>
                 <p data-content="cta-description">Let's bring your vision to life. Schedule a consultation and discover what's possible.</p>
                 <div class="cta-buttons">
-                    <a href="booking.html" class="btn btn-primary btn-large">BOOK NOW</a>
-                    <a href="tel:941-769-7526" class="btn btn-outline-light btn-large">Call (941) 769-7526</a>
+                    <a href="booking.html" class="btn btn-primary btn-large" data-content="navigation-bookNow">BOOK NOW</a>
+                    <a href="tel:941-769-7526" class="btn btn-outline-light btn-large" data-content="cta-callButton">Call (941) 769-7526</a>
                 </div>
             </div>
         </div>
@@ -203,32 +203,32 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">JLC Studio</div>
-                    <p>Where creativity meets occasion. Every detail designed with intention.</p>
+                    <div class="footer-logo" data-content="footer-logo">JLC Studio</div>
+                    <p data-content="footer-tagline">Where creativity meets occasion. Every detail designed with intention.</p>
                     <div class="footer-social">
-                        <a href="#" aria-label="Instagram">IG</a>
-                        <a href="#" aria-label="Pinterest">PIN</a>
-                        <a href="mailto:jeremyhuffer@gmail.com" aria-label="Email">@</a>
+                        <a href="#" aria-label="Instagram" data-content="footer-socialIG">IG</a>
+                        <a href="#" aria-label="Pinterest" data-content="footer-socialPIN">PIN</a>
+                        <a href="mailto:jeremyhuffer@gmail.com" aria-label="Email" data-content="footer-socialEmail">@</a>
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Services</h4>
+                    <h4 data-content="footer-servicesHeading">Services</h4>
                     <ul>
-                        <li><a href="services.html#florals">Floral Design</a></li>
-                        <li><a href="services.html#decor">Event Decor</a></li>
-                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                        <li><a href="services.html#florals" data-content="services-floral">Floral Design</a></li>
+                        <li><a href="services.html#decor" data-content="services-decor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring" data-content="services-tailoring">Custom Tailoring</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Studio</h4>
+                    <h4 data-content="footer-studioHeading">Studio</h4>
                     <ul>
-                        <li><a href="about.html">About Jeremy</a></li>
-                        <li><a href="gallery.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html" data-content="pages-about">About Jeremy</a></li>
+                        <li><a href="gallery.html" data-content="navigation-portfolio">Portfolio</a></li>
+                        <li><a href="contact.html" data-content="navigation-contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Get in Touch</h4>
+                    <h4 data-content="footer-contactHeading">Get in Touch</h4>
                     <address>
                         <p data-content="address">Sarasota, FL 34232</p>
                         <p><a href="tel:941-769-7526" data-content="phone">(941) 769-7526</a></p>
@@ -237,7 +237,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 JLC Studio. All rights reserved.</p>
+                <p data-content="footer-copyright">© 2024 JLC Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>

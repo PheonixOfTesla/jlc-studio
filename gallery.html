@@ -15,12 +15,12 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName">JLC Studio</span></a>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="gallery.html" class="nav-link active">Portfolio</a></li>
-                <li><a href="booking.html" class="nav-link">Booking</a></li>
-                <li><a href="contact.html" class="nav-link nav-cta">Get in Touch</a></li>
+                <li><a href="index.html" class="nav-link" data-content="navigation-home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-content="navigation-about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-content="navigation-services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link active" data-content="navigation-portfolio">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link" data-content="navigation-booking">Booking</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta" data-content="navigation-contact">Get in Touch</a></li>
             </ul>
             <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
         </div>
@@ -41,10 +41,10 @@
     <section class="gallery-section">
         <div class="container">
             <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="florals">Florals</button>
-                <button class="filter-btn" data-filter="events">Events</button>
-                <button class="filter-btn" data-filter="tailoring">Tailoring</button>
+                <button class="filter-btn active" data-filter="all" data-content="gallery-filterAll">All</button>
+                <button class="filter-btn" data-filter="florals" data-content="gallery-filterFlorals">Florals</button>
+                <button class="filter-btn" data-filter="events" data-content="gallery-filterEvents">Events</button>
+                <button class="filter-btn" data-filter="tailoring" data-content="gallery-filterTailoring">Tailoring</button>
             </div>
 
             <div class="gallery-grid"></div>
@@ -59,9 +59,9 @@
         <div class="container">
             <div class="cta-content">
                 <h2 data-content="gallery-cta">Love What You See?</h2>
-                <p>Let's create something beautiful for your next occasion.</p>
+                <p data-content="gallery-ctaDesc">Let's create something beautiful for your next occasion.</p>
                 <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary btn-large">Start Your Project</a>
+                    <a href="contact.html" class="btn btn-primary btn-large" data-content="gallery-ctaButton">Start Your Project</a>
                 </div>
             </div>
         </div>
@@ -71,35 +71,35 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">JLC Studio</div>
-                    <p>Where creativity meets occasion.</p>
+                    <div class="footer-logo" data-content="businessName">JLC Studio</div>
+                    <p data-content="tagline">Where creativity meets occasion.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Services</h4>
+                    <h4 data-content="footer-servicesHeading">Services</h4>
                     <ul>
-                        <li><a href="services.html#florals">Floral Design</a></li>
-                        <li><a href="services.html#decor">Event Decor</a></li>
-                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                        <li><a href="services.html#florals" data-content="footer-florals">Floral Design</a></li>
+                        <li><a href="services.html#decor" data-content="footer-decor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring" data-content="footer-tailoring">Custom Tailoring</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Studio</h4>
+                    <h4 data-content="footer-studioHeading">Studio</h4>
                     <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="gallery.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html" data-content="footer-about">About</a></li>
+                        <li><a href="gallery.html" data-content="footer-portfolio">Portfolio</a></li>
+                        <li><a href="contact.html" data-content="footer-contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
+                    <h4 data-content="footer-contactHeading">Contact</h4>
                     <address>
-                        <p>Sarasota, FL 34232</p>
-                        <p><a href="tel:941-769-7526">(941) 769-7526</a></p>
-                        <p><a href="mailto:jeremyhuffer@gmail.com">jeremyhuffer@gmail.com</a></p>
+                        <p data-content="address">Sarasota, FL 34232</p>
+                        <p><a href="tel:941-769-7526" data-content="phone">(941) 769-7526</a></p>
+                        <p><a href="mailto:jeremyhuffer@gmail.com" data-content="email">jeremyhuffer@gmail.com</a></p>
                     </address>
                 </div>
             </div>
-            <div class="footer-bottom"><p>© 2024 JLC Studio. All rights reserved.</p></div>
+            <div class="footer-bottom"><p data-content="copyright">© 2024 JLC Studio. All rights reserved.</p></div>
         </div>
     </footer>
 

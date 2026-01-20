@@ -15,12 +15,12 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName">JLC Studio</span></a>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
-                <li><a href="booking.html" class="nav-link">Booking</a></li>
-                <li><a href="contact.html" class="nav-link nav-cta active">Get in Touch</a></li>
+                <li><a href="index.html" class="nav-link" data-content="navigation-home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-content="navigation-about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-content="navigation-services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link" data-content="navigation-portfolio">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link" data-content="navigation-booking">Booking</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta active" data-content="navigation-contact">Get in Touch</a></li>
             </ul>
             <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
         </div>
@@ -31,9 +31,9 @@
             <img src="" data-image-id="contact-hero" alt="Beautiful flowers">
         </div>
         <div class="page-hero-content">
-            <span class="section-label" data-content="contact-label">Let's Connect</span>
-            <h1 data-content="contact-heading">Contact Us</h1>
-            <p>Start your creative journey</p>
+            <span class="section-label" data-content="pages-contact">Let's Connect</span>
+            <h1 data-content="pages-contactTitle">Get in Touch</h1>
+            <p data-content="contact-heroSubtitle">Start your creative journey</p>
         </div>
     </section>
 
@@ -41,95 +41,95 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2>Get in Touch</h2>
-                    <p class="lead">Ready to bring your vision to life? We'd love to hear from you. Schedule a consultation or reach out with any questions.</p>
+                    <h2 data-content="contact-heading">Get in Touch</h2>
+                    <p class="lead" data-content="contact-lead">Ready to bring your vision to life? We'd love to hear from you. Schedule a consultation or reach out with any questions.</p>
 
                     <div class="contact-details">
                         <div class="contact-item">
-                            <h4>Phone</h4>
-                            <a href="tel:941-769-7526">(941) 769-7526</a>
+                            <h4 data-content="contact-phoneLabel">Phone</h4>
+                            <a href="tel:941-769-7526" data-content="phone">(941) 769-7526</a>
                         </div>
                         <div class="contact-item">
-                            <h4>Email</h4>
-                            <a href="mailto:jlcstudiollc@gmail.com">jlcstudiollc@gmail.com</a>
+                            <h4 data-content="contact-emailLabel">Email</h4>
+                            <a href="mailto:jlcstudiollc@gmail.com" data-content="email">jlcstudiollc@gmail.com</a>
                         </div>
                         <div class="contact-item">
-                            <h4>Location</h4>
-                            <p>Sarasota, FL 34232</p>
-                            <p class="small">Serving Sarasota, Bradenton, Venice & Lakewood Ranch</p>
+                            <h4 data-content="contact-locationLabel">Location</h4>
+                            <p data-content="address">Sarasota, FL 34232</p>
+                            <p class="small" data-content="contact-serviceArea">Serving Sarasota, Bradenton, Venice & Lakewood Ranch</p>
                         </div>
                         <div class="contact-item">
-                            <h4>Hours</h4>
-                            <p>By Appointment</p>
-                            <p class="small">Consultations available Monday - Saturday</p>
+                            <h4 data-content="contact-hoursLabel">Hours</h4>
+                            <p data-content="contact-hoursText">By Appointment</p>
+                            <p class="small" data-content="contact-hoursDetail">Consultations available Monday - Saturday</p>
                         </div>
                     </div>
 
                     <div class="contact-social">
-                        <h4>Follow Along</h4>
+                        <h4 data-content="contact-socialHeading">Follow Along</h4>
                         <div class="social-links">
-                            <a href="#" class="social-link">Instagram</a>
-                            <a href="#" class="social-link">Pinterest</a>
+                            <a href="#" class="social-link" data-content="contact-instagramLabel">Instagram</a>
+                            <a href="#" class="social-link" data-content="contact-pinterestLabel">Pinterest</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="contact-form-wrapper">
                     <form class="contact-form" id="contact-form">
-                        <h3>Send a Message</h3>
+                        <h3 data-content="contact-formHeading">Send a Message</h3>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">Name *</label>
+                                <label for="name" data-content="contact-nameLabel">Name *</label>
                                 <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone</label>
+                                <label for="phone" data-content="contact-phoneFormLabel">Phone</label>
                                 <input type="tel" id="phone" name="phone">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email *</label>
+                            <label for="email" data-content="contact-emailFormLabel">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="service">Service Interest</label>
+                            <label for="service" data-content="contact-serviceLabel">Service Interest</label>
                             <select id="service" name="service">
-                                <option value="">Select a service...</option>
-                                <option value="florals">Floral Design</option>
-                                <option value="decor">Event Decor</option>
-                                <option value="tailoring">Custom Tailoring</option>
-                                <option value="multiple">Multiple Services</option>
-                                <option value="other">Other</option>
+                                <option value="" data-content="contact-servicePlaceholder">Select a service...</option>
+                                <option value="florals" data-content="contact-serviceFloral">Floral Design</option>
+                                <option value="decor" data-content="contact-serviceDecor">Event Decor</option>
+                                <option value="tailoring" data-content="contact-serviceTailoring">Custom Tailoring</option>
+                                <option value="multiple" data-content="contact-serviceMultiple">Multiple Services</option>
+                                <option value="other" data-content="contact-serviceOther">Other</option>
                             </select>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="event-date">Event Date</label>
+                                <label for="event-date" data-content="contact-eventDateLabel">Event Date</label>
                                 <input type="date" id="event-date" name="event-date">
                             </div>
                             <div class="form-group">
-                                <label for="budget">Estimated Budget</label>
+                                <label for="budget" data-content="contact-budgetLabel">Estimated Budget</label>
                                 <select id="budget" name="budget">
-                                    <option value="">Select range...</option>
-                                    <option value="under-500">Under $500</option>
-                                    <option value="500-1500">$500 - $1,500</option>
-                                    <option value="1500-3500">$1,500 - $3,500</option>
-                                    <option value="3500-7500">$3,500 - $7,500</option>
-                                    <option value="7500-plus">$7,500+</option>
+                                    <option value="" data-content="contact-budgetPlaceholder">Select range...</option>
+                                    <option value="under-500" data-content="contact-budgetUnder500">Under $500</option>
+                                    <option value="500-1500" data-content="contact-budget500-1500">$500 - $1,500</option>
+                                    <option value="1500-3500" data-content="contact-budget1500-3500">$1,500 - $3,500</option>
+                                    <option value="3500-7500" data-content="contact-budget3500-7500">$3,500 - $7,500</option>
+                                    <option value="7500-plus" data-content="contact-budget7500plus">$7,500+</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Tell Us About Your Vision *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Share details about your event, style preferences, or any questions you have..."></textarea>
+                            <label for="message" data-content="contact-messageLabel">Tell Us About Your Vision *</label>
+                            <textarea id="message" name="message" rows="5" required data-placeholder="contact-messagePlaceholder" placeholder="Share details about your event, style preferences, or any questions you have..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-large" data-content="contact-submitButton">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -140,26 +140,11 @@
     <section class="faq-section">
         <div class="container">
             <div class="section-header centered">
-                <span class="section-label" data-content="faq-label">Questions</span>
-                <h2 class="section-title" data-content="faq-title">Frequently Asked</h2>
+                <span class="section-label" data-content="faq-sectionLabel">Questions</span>
+                <h2 class="section-title" data-content="faq-sectionTitle">Frequently Asked</h2>
             </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>How far in advance should I book?</h4>
-                    <p>For weddings and large events, we recommend booking 6-12 months in advance. Smaller events can often be accommodated with 2-4 weeks notice, depending on availability.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Do you offer consultations?</h4>
-                    <p>Yes! We offer complimentary initial consultations to discuss your vision and determine if we're the right fit for your project.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What areas do you serve?</h4>
-                    <p>We're based in Sarasota and serve the surrounding areas including Bradenton, Venice, Lakewood Ranch, and beyond. Travel fees may apply for distant locations.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Can I combine multiple services?</h4>
-                    <p>Absolutely! Our unique triple-service model means you can have coordinated florals, decor, and tailoring from one creative vision. We offer package pricing for combined services.</p>
-                </div>
+            <div class="faq-grid" id="faq-container">
+                <!-- FAQ items will be loaded dynamically from admin.json -->
             </div>
         </div>
     </section>
@@ -168,35 +153,35 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">JLC Studio</div>
-                    <p>Where creativity meets occasion.</p>
+                    <div class="footer-logo" data-content="footer-logo">JLC Studio</div>
+                    <p data-content="footer-tagline">Where creativity meets occasion.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Services</h4>
+                    <h4 data-content="footer-servicesHeading">Services</h4>
                     <ul>
-                        <li><a href="services.html#florals">Floral Design</a></li>
-                        <li><a href="services.html#decor">Event Decor</a></li>
-                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                        <li><a href="services.html#florals" data-content="services-floral">Floral Design</a></li>
+                        <li><a href="services.html#decor" data-content="services-decor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring" data-content="services-tailoring">Custom Tailoring</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Studio</h4>
+                    <h4 data-content="footer-studioHeading">Studio</h4>
                     <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="gallery.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html" data-content="navigation-about">About</a></li>
+                        <li><a href="gallery.html" data-content="navigation-portfolio">Portfolio</a></li>
+                        <li><a href="contact.html" data-content="footer-contactHeading">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
+                    <h4 data-content="footer-contactHeading">Contact</h4>
                     <address>
-                        <p>Sarasota, FL 34232</p>
-                        <p><a href="tel:941-769-7526">(941) 769-7526</a></p>
-                        <p><a href="mailto:jeremyhuffer@gmail.com">jeremyhuffer@gmail.com</a></p>
+                        <p data-content="address">Sarasota, FL 34232</p>
+                        <p><a href="tel:941-769-7526" data-content="phone">(941) 769-7526</a></p>
+                        <p><a href="mailto:jeremyhuffer@gmail.com" data-content="email">jlcstudiollc@gmail.com</a></p>
                     </address>
                 </div>
             </div>
-            <div class="footer-bottom"><p>© 2024 JLC Studio. All rights reserved.</p></div>
+            <div class="footer-bottom"><p data-content="footer-copyright">© 2024 JLC Studio. All rights reserved.</p></div>
         </div>
     </footer>
 
@@ -237,9 +222,9 @@
                     // Success - show thank you message
                     this.innerHTML = `
                         <div class="form-success">
-                            <h3>Thank You!</h3>
-                            <p>Your message has been sent to jlcstudiollc@gmail.com. We'll be in touch within 24 hours.</p>
-                            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                            <h3 data-content="contact-successHeading">Thank You!</h3>
+                            <p data-content="contact-successMessage">Your message has been sent. We'll be in touch within 24 hours.</p>
+                            <a href="index.html" class="btn btn-secondary" data-content="contact-successButton">Back to Home</a>
                         </div>
                     `;
                 } else {
