@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact JLC Studio - Schedule a consultation for florals, event decor, or custom tailoring in Sarasota, FL.">
+    <title>Contact | JLC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link">Booking</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta active">Get in Touch</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-hero short">
+        <div class="page-hero-image">
+            <img src="" data-image-id="contact-hero" alt="Beautiful flowers">
+        </div>
+        <div class="page-hero-content">
+            <span class="section-label" data-content="contact-label"></span>
+            <h1 data-content="contact-heading"></h1>
+            <p>Start your creative journey</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p class="lead">Ready to bring your vision to life? We'd love to hear from you. Schedule a consultation or reach out with any questions.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h4>Phone</h4>
+                            <a href="#" data-link="phone"></a>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Email</h4>
+                            <a href="#" data-link="email"></a>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Location</h4>
+                            <p data-content="address"></p>
+                            <p class="small" data-content="service-area"></p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Hours</h4>
+                            <p data-content="hours"></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h4>Follow Along</h4>
+                        <div class="social-links">
+                            <a href="#" data-link="instagram" class="social-link">Instagram</a>
+                            <a href="#" data-link="pinterest" class="social-link">Pinterest</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contact-form">
+                        <h3>Send a Message</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="florals">Floral Design</option>
+                                <option value="decor">Event Decor</option>
+                                <option value="tailoring">Custom Tailoring</option>
+                                <option value="multiple">Multiple Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-date">Event Date</label>
+                                <input type="date" id="event-date" name="event-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="budget">Estimated Budget</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select range...</option>
+                                    <option value="under-500">Under $500</option>
+                                    <option value="500-1500">$500 - $1,500</option>
+                                    <option value="1500-3500">$1,500 - $3,500</option>
+                                    <option value="3500-7500">$3,500 - $7,500</option>
+                                    <option value="7500-plus">$7,500+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Vision *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Share details about your event, style preferences, or any questions you have..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ - Dynamically loaded from admin.json -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label" data-content="faq-label"></span>
+                <h2 class="section-title" data-content="faq-title"></h2>
+            </div>
+            <div class="faq-grid">
+                <!-- Populated by content-loader.js from admin.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo" data-content="businessName"></div>
+                    <p data-content="tagline"></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#florals">Floral Design</a></li>
+                        <li><a href="services.html#decor">Event Decor</a></li>
+                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Studio</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <address>
+                        <p data-content="address"></p>
+                        <p><a href="#" data-link="phone"></a></p>
+                        <p><a href="#" data-link="email"></a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            try {
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    service: document.getElementById('service').value,
+                    eventDate: document.getElementById('event-date').value,
+                    budget: document.getElementById('budget').value,
+                    message: document.getElementById('message').value
+                };
+
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    this.innerHTML = `
+                        <div class="form-success">
+                            <h3>Thank You!</h3>
+                            <p>Your message has been sent. We'll be in touch within 24 hours.</p>
+                            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(result.error || 'Failed to send email');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('Error sending message: ' + error.message + '. Please try again or call us directly.');
+            }
+        });
+    </script>
+    <script src="js/content-loader.js"></script>
+</body>
+</html>

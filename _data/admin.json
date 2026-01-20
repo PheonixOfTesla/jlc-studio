@@ -1,0 +1,356 @@
+{
+  "hero": {
+    "badge": "Sarasota's Premier Creative Studio",
+    "titleLine1": "Where Creativity",
+    "titleLine2": "Meets Occasion",
+    "subtitle": "Florals • Event Decor • Custom Tailoring",
+    "description": "Every detail designed with intention for life's most important moments.",
+    "heroImage": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
+    "primaryBtn": "Book a Consultation",
+    "secondaryBtn": "View Our Work"
+  },
+  "about": {
+    "name": "JLynne Huffer",
+    "title": "Founder & Creative Director",
+    "photo": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80",
+    "bio": "A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry. From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, JLynne brings a unique perspective that blends artistic vision with technical expertise. Having worked with celebrity clients at Mood Fabrics and assisted on multiple seasons of Project Runway, she understands how to create experiences that are both visually stunning and deeply personal.",
+    "years": 15,
+    "events": 500,
+    "quote": "Art is a tool for expression, healing, and community creativity.",
+    "experience": [
+      {
+        "title": "New York Fashion Week",
+        "role": "Lead Designer & Stylist",
+        "years": "2008-2014",
+        "description": "Designed runway collections and styled shows for emerging designers."
+      },
+      {
+        "title": "Mood Fabrics NYC",
+        "role": "Senior Design Consultant",
+        "years": "2012-2016",
+        "description": "Worked with Project Runway contestants and celebrity clients on custom fabric selections."
+      },
+      {
+        "title": "Denver Luxury Events",
+        "role": "Creative Director",
+        "years": "2016-2020",
+        "description": "Led floral and decor design for high-end weddings and corporate galas."
+      },
+      {
+        "title": "JLC Studio",
+        "role": "Founder & Owner",
+        "years": "2020-Present",
+        "description": "Bringing three disciplines together under one roof in beautiful Sarasota, FL."
+      }
+    ],
+    "skills": [
+      { "name": "Floral Design", "level": 95 },
+      { "name": "Event Styling", "level": 90 },
+      { "name": "Custom Tailoring", "level": 92 },
+      { "name": "Color Theory", "level": 88 },
+      { "name": "Client Relations", "level": 95 }
+    ],
+    "education": {
+      "degree": "Bachelor of Fine Arts",
+      "field": "Fashion Design & Textile Arts",
+      "institution": "Fashion Institute of Technology, New York"
+    }
+  },
+  "settings": {
+    "businessName": "JLC Studio",
+    "tagline": "Where Creativity Meets Occasion",
+    "phone": "(941) 769-7526",
+    "email": "jlcstudiollc@gmail.com",
+    "address": "Sarasota, FL 34232",
+    "hours": "By Appointment - Monday through Saturday",
+    "serviceArea": "Serving Sarasota, Bradenton, Venice & Lakewood Ranch",
+    "instagram": "https://instagram.com/jlcstudio",
+    "pinterest": "https://pinterest.com/jlcstudio"
+  },
+  "services": [
+    {
+      "category": "floral",
+      "type": "Wedding Florals",
+      "desc": "Bridal bouquets, ceremony installations, reception centerpieces & more",
+      "price": "From $800"
+    },
+    {
+      "category": "floral",
+      "type": "Corporate Events",
+      "desc": "Office arrangements, corporate galas, product launches & conferences",
+      "price": "From $200"
+    },
+    {
+      "category": "floral",
+      "type": "Private Celebrations",
+      "desc": "Dinner parties, anniversaries, birthdays & intimate gatherings",
+      "price": "From $150"
+    },
+    {
+      "category": "decor",
+      "type": "Wedding Design",
+      "desc": "Complete venue transformation from ceremony to reception",
+      "price": "From $2,000"
+    },
+    {
+      "category": "decor",
+      "type": "Galas & Fundraisers",
+      "desc": "Elegant styling for charity events and black-tie affairs",
+      "price": "From $2,500"
+    },
+    {
+      "category": "decor",
+      "type": "Private Events",
+      "desc": "Birthdays, showers, anniversaries & milestone celebrations",
+      "price": "From $500"
+    },
+    {
+      "category": "tailoring",
+      "type": "Bridal Alterations",
+      "desc": "Wedding gown fitting, bustles, and precision adjustments",
+      "price": "From $150"
+    },
+    {
+      "category": "tailoring",
+      "type": "Custom Garments",
+      "desc": "One-of-a-kind pieces designed and crafted from scratch",
+      "price": "From $400"
+    },
+    {
+      "category": "tailoring",
+      "type": "Event Day Support",
+      "desc": "On-site alterations and last-minute adjustments",
+      "price": "From $75/hr"
+    }
+  ],
+  "packages": [
+    {
+      "title": "Intimate Gathering",
+      "description": "Perfect for dinner parties and small celebrations up to 20 guests",
+      "price": "From $350",
+      "featured": false,
+      "order": 1,
+      "includes": [
+        "Centerpiece florals (up to 3 arrangements)",
+        "Table styling consultation",
+        "Delivery & professional setup",
+        "Day-of coordination support"
+      ]
+    },
+    {
+      "title": "Wedding Essentials",
+      "description": "Complete floral & decor package for your special day",
+      "price": "From $3,500",
+      "featured": true,
+      "order": 2,
+      "includes": [
+        "Bridal & bridesmaid bouquets",
+        "Boutonnieres & corsages",
+        "Ceremony arch or altar florals",
+        "Reception centerpieces (up to 15 tables)",
+        "Venue styling & setup",
+        "Professional breakdown"
+      ]
+    },
+    {
+      "title": "Complete Experience",
+      "description": "All three services seamlessly coordinated for a cohesive vision",
+      "price": "Custom Quote",
+      "featured": false,
+      "order": 3,
+      "includes": [
+        "Full floral design package",
+        "Complete venue decor & styling",
+        "Bridal gown alterations",
+        "Day-of coordination",
+        "Dedicated design consultant",
+        "Premium client support"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah & Michael",
+      "event": "Wedding, Longboat Key",
+      "quote": "JLynne transformed our wedding into something out of a dream. Her attention to detail and artistic vision created an atmosphere that our guests are still talking about months later. Worth every penny!",
+      "initials": "S&M",
+      "order": 1
+    },
+    {
+      "name": "Lauren C.",
+      "event": "Corporate Gala, Sarasota",
+      "quote": "The floral arrangements for our corporate gala were absolutely stunning. Professional, creative, and delivered exactly what we envisioned. JLC Studio is now our go-to for all company events.",
+      "initials": "LC",
+      "order": 2
+    },
+    {
+      "name": "Emily M.",
+      "event": "Bride, Venice FL",
+      "quote": "Having all three services under one roof made planning so much easier. The cohesive design across florals, decor, and my custom dress alterations was absolute perfection. I couldn't have asked for more.",
+      "initials": "EM",
+      "order": 3
+    },
+    {
+      "name": "Rachel & David",
+      "event": "Wedding, Ringling Museum",
+      "quote": "From our first consultation to the final petal placement, JLynne's expertise and warmth made the entire experience a joy. Our photos look like they belong in a magazine!",
+      "initials": "R&D",
+      "order": 4
+    }
+  ],
+  "faq": [
+    {
+      "question": "How far in advance should I book?",
+      "answer": "For weddings and large events, we recommend booking 6-12 months in advance to ensure availability. Smaller events like dinner parties can often be accommodated with 2-4 weeks notice, depending on our schedule.",
+      "order": 1
+    },
+    {
+      "question": "Do you offer consultations?",
+      "answer": "Yes! We offer complimentary 30-minute discovery calls to discuss your vision and determine if we're the right fit. For in-depth design consultations with mood boards and detailed proposals, we offer paid sessions that are credited toward your final project.",
+      "order": 2
+    },
+    {
+      "question": "What areas do you serve?",
+      "answer": "We're based in Sarasota and proudly serve the surrounding areas including Bradenton, Venice, Lakewood Ranch, Longboat Key, Siesta Key, and beyond. Travel fees may apply for locations outside our primary service area.",
+      "order": 3
+    },
+    {
+      "question": "Can I combine multiple services?",
+      "answer": "Absolutely! Our unique triple-service model means you can have perfectly coordinated florals, event decor, and custom tailoring from one creative vision. We offer special package pricing for combined services.",
+      "order": 4
+    },
+    {
+      "question": "What is your cancellation policy?",
+      "answer": "We understand plans change. Cancellations made 30+ days before your event receive a full refund minus the deposit. Cancellations within 30 days are handled on a case-by-case basis. We're always happy to reschedule when possible.",
+      "order": 5
+    },
+    {
+      "question": "Do you provide day-of coordination?",
+      "answer": "Yes! All of our packages include setup and styling on the day of your event. For weddings and larger events, we offer enhanced day-of coordination services to ensure everything runs smoothly from start to finish.",
+      "order": 6
+    }
+  ],
+  "theme": {
+    "gold": "#C4A052",
+    "goldLight": "#D4B872",
+    "goldDark": "#A68A42",
+    "sage": "#8B9B7A",
+    "sageLight": "#A5B494",
+    "sageDark": "#6B7B5A",
+    "white": "#FFFFFF",
+    "cream": "#FAF8F5",
+    "ivory": "#F5F2ED",
+    "taupe": "#E8E4DC",
+    "warmGray": "#9B9590",
+    "charcoal": "#3D3D3D",
+    "black": "#1A1A1A"
+  },
+  "imageMap": {
+    "hero-main": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
+    "about-hero": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
+    "about-profile": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80",
+    "about-cta-image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&q=80",
+    "services-hero": "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1920&q=80",
+    "services-floral-main": "https://images.unsplash.com/photo-1561128290-006dc4827214?w=800&q=80",
+    "services-floral-detail-1": "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&q=80",
+    "services-floral-detail-2": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&q=80",
+    "services-decor-main": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
+    "services-decor-detail-1": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&q=80",
+    "services-decor-detail-2": "https://images.unsplash.com/photo-1510076857177-7470076d4098?w=400&q=80",
+    "services-tailoring-main": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80",
+    "services-tailoring-detail-1": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80",
+    "services-tailoring-detail-2": "https://images.unsplash.com/photo-1558171814-93e58d19b5b2?w=400&q=80",
+    "services-cta-image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=1200&q=80",
+    "contact-hero": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1920&q=80",
+    "gallery-hero": "https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?w=1920&q=80",
+    "cta-floral-arrangement": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=1200&q=80",
+    "process-floral": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
+    "featured-wedding-bouquet": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
+    "featured-table-setting": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80",
+    "featured-flower-arrangement": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600&q=80",
+    "featured-gala-setup": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
+    "featured-wedding-dress": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80"
+  },
+  "gallery": [
+    {
+      "id": "gallery-1",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
+      "title": "Romantic Bridal Bouquet",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-2",
+      "url": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
+      "title": "Elegant Reception Setup",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-3",
+      "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80",
+      "title": "Custom Bridal Gown",
+      "category": "tailoring"
+    },
+    {
+      "id": "gallery-4",
+      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80",
+      "title": "Garden Party Centerpiece",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-5",
+      "url": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+      "title": "Corporate Gala Design",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-6",
+      "url": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80",
+      "title": "Spring Wedding Florals",
+      "category": "florals"
+    }
+  ],
+  "labels": {
+    "hero": {
+      "craft": "Our Craft",
+      "craftTitle": "Artistry in Every Detail"
+    },
+    "services": {
+      "expertise": "Our Expertise",
+      "expertiseTitle": "Three Disciplines, One Vision",
+      "expertiseDesc": "The only studio in Sarasota offering florals, event decor, and custom tailoring under one roof.",
+      "floral": "Floral Design",
+      "decor": "Event Decor",
+      "tailoring": "Custom Tailoring"
+    },
+    "testimonials": {
+      "heading": "Client Stories",
+      "subheading": "Words That Inspire Us"
+    },
+    "packages": {
+      "heading": "Value",
+      "title": "Complete Packages"
+    },
+    "faq": {
+      "label": "Questions",
+      "title": "Frequently Asked"
+    },
+    "contact": {
+      "label": "Let's Connect",
+      "heading": "Contact Us"
+    },
+    "cta": {
+      "heading": "Ready to Create Something Beautiful?",
+      "description": "Let's bring your vision to life. Schedule a consultation and discover what's possible."
+    },
+    "about": {
+      "designer": "The Designer",
+      "journey": "A Journey of Creativity",
+      "background": "Background",
+      "expertise": "Professional Journey"
+    },
+    "pages": {
+      "services": "What We Do",
+      "servicesTitle": "Our Services"
+    }
+  }
+}

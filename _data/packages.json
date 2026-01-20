@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Intimate Gathering",
+    "description": "Perfect for dinner parties and small celebrations",
+    "price": "From $350",
+    "featured": false,
+    "order": 1,
+    "includes": ["Centerpiece florals", "Table styling consultation", "Delivery & setup"]
+  },
+  {
+    "title": "Wedding Essentials",
+    "description": "Florals + decor for your special day",
+    "price": "From $3,500",
+    "featured": true,
+    "order": 2,
+    "includes": ["Bridal & party bouquets", "Ceremony florals", "Reception centerpieces", "Venue styling", "Setup & breakdown"]
+  },
+  {
+    "title": "Complete Experience",
+    "description": "All three services, perfectly coordinated",
+    "price": "Custom Quote",
+    "featured": false,
+    "order": 3,
+    "includes": ["Full floral design", "Complete event decor", "Bridal alterations", "Day-of coordination", "Premium support"]
+  }
+]

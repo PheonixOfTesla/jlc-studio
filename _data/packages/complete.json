@@ -1,0 +1,14 @@
+{
+  "title": "Complete Experience",
+  "description": "All three services, perfectly coordinated",
+  "price": "Custom Quote",
+  "featured": false,
+  "order": 3,
+  "includes": [
+    "Full floral design",
+    "Complete event decor",
+    "Bridal alterations",
+    "Day-of coordination",
+    "Premium support"
+  ]
+}

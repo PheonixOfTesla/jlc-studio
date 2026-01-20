@@ -1,0 +1,22 @@
+[
+  {
+    "question": "How far in advance should I book?",
+    "answer": "For weddings and large events, we recommend booking 6-12 months in advance. Smaller events can often be accommodated with 2-4 weeks notice, depending on availability.",
+    "order": 1
+  },
+  {
+    "question": "Do you offer consultations?",
+    "answer": "Yes! We offer complimentary discovery calls to discuss your vision and determine if we're the right fit. For in-depth design consultations, we offer paid sessions that are credited toward your final project.",
+    "order": 2
+  },
+  {
+    "question": "What areas do you serve?",
+    "answer": "We're based in Sarasota and serve the surrounding areas including Bradenton, Venice, Lakewood Ranch, and beyond. Travel fees may apply for distant locations.",
+    "order": 3
+  },
+  {
+    "question": "Can I combine multiple services?",
+    "answer": "Absolutely! Our unique triple-service model means you can have coordinated florals, decor, and tailoring from one creative vision. We offer package pricing for combined services.",
+    "order": 4
+  }
+]

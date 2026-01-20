@@ -1,0 +1,30 @@
+{
+  "title": "Custom Tailoring",
+  "shortDesc": "Bespoke garments and alterations crafted with precision from our NYC fashion heritage.",
+  "fullDesc": "With a background that includes New York Fashion Week runway shows and work with legendary designers, we bring couture-level craftsmanship to every piece. From wedding dress alterations to custom garments designed from scratch, each stitch reflects our commitment to perfection.",
+  "image": "/assets/images/service-tailoring.jpg",
+  "order": 3,
+  "featured": false,
+  "pricing": [
+    {
+      "type": "Bridal Alterations",
+      "description": "Wedding gown fitting, bustles, adjustments",
+      "price": "$150 - $400"
+    },
+    {
+      "type": "Custom Design",
+      "description": "One-of-a-kind garments, special occasion wear",
+      "price": "$400 - $2,500"
+    },
+    {
+      "type": "Event Tailoring",
+      "description": "On-site alterations, last-minute adjustments",
+      "price": "$75 - $200/hr"
+    },
+    {
+      "type": "Pipe & Drape",
+      "description": "Custom event backdrops, photo areas, installations",
+      "price": "$300 - $1,200"
+    }
+  ]
+}

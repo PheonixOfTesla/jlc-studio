@@ -1,0 +1,30 @@
+{
+  "title": "Event Decor",
+  "shortDesc": "Complete venue transformations that create immersive experiences and unforgettable atmospheres.",
+  "fullDesc": "We don't just decorate spaces—we transform them. From conceptual design through on-site installation, we handle every detail. Our background in fashion and visual design brings a unique perspective to event styling that elevates every celebration.",
+  "image": "/assets/images/service-decor.jpg",
+  "order": 2,
+  "featured": true,
+  "pricing": [
+    {
+      "type": "Weddings",
+      "description": "Complete venue transformation, ceremony to reception",
+      "price": "$2,000 - $12,000"
+    },
+    {
+      "type": "Galas & Fundraisers",
+      "description": "Charity events, black-tie affairs, award ceremonies",
+      "price": "$2,500 - $15,000"
+    },
+    {
+      "type": "Corporate Events",
+      "description": "Product launches, conferences, company celebrations",
+      "price": "$1,500 - $8,000"
+    },
+    {
+      "type": "Private Celebrations",
+      "description": "Birthdays, anniversaries, baby showers",
+      "price": "$400 - $4,000"
+    }
+  ]
+}

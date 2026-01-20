@@ -1,0 +1,30 @@
+{
+  "title": "Floral Design",
+  "shortDesc": "From intimate dinner arrangements to grand wedding installations, each bloom tells your unique story.",
+  "fullDesc": "With years of experience leading floral departments for luxury events, we approach each arrangement as a work of art. Our designs blend classic elegance with contemporary flair, using seasonal blooms and unexpected elements to create unforgettable impressions.",
+  "image": "/assets/images/service-florals.jpg",
+  "order": 1,
+  "featured": false,
+  "pricing": [
+    {
+      "type": "Weddings",
+      "description": "Bridal bouquets, ceremony florals, reception centerpieces",
+      "price": "$800 - $3,500"
+    },
+    {
+      "type": "Corporate Events",
+      "description": "Office arrangements, corporate galas, product launches",
+      "price": "$200 - $1,500"
+    },
+    {
+      "type": "Dinner Parties",
+      "description": "Intimate gatherings, dinner party centerpieces",
+      "price": "$75 - $200"
+    },
+    {
+      "type": "Holiday & Seasonal",
+      "description": "Seasonal decor, home arrangements, holiday designs",
+      "price": "$100 - $500"
+    }
+  ]
+}
