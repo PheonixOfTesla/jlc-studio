@@ -44,11 +44,26 @@
       }
     ],
     "skills": [
-      { "name": "Floral Design", "level": 95 },
-      { "name": "Event Styling", "level": 90 },
-      { "name": "Custom Tailoring", "level": 92 },
-      { "name": "Color Theory", "level": 88 },
-      { "name": "Client Relations", "level": 95 }
+      {
+        "name": "Floral Design",
+        "level": 95
+      },
+      {
+        "name": "Event Styling",
+        "level": 90
+      },
+      {
+        "name": "Custom Tailoring",
+        "level": 92
+      },
+      {
+        "name": "Color Theory",
+        "level": 88
+      },
+      {
+        "name": "Client Relations",
+        "level": 95
+      }
     ],
     "education": {
       "degree": "Bachelor of Fine Arts",
@@ -231,19 +246,19 @@
     }
   ],
   "theme": {
-    "gold": "#C4A052",
-    "goldLight": "#D4B872",
-    "goldDark": "#A68A42",
-    "sage": "#8B9B7A",
-    "sageLight": "#A5B494",
-    "sageDark": "#6B7B5A",
-    "white": "#FFFFFF",
-    "cream": "#FAF8F5",
-    "ivory": "#F5F2ED",
-    "taupe": "#E8E4DC",
-    "warmGray": "#9B9590",
-    "charcoal": "#3D3D3D",
-    "black": "#1A1A1A"
+    "gold": "#8b9b7a",
+    "goldLight": "#a5b494",
+    "goldDark": "#6b7b5a",
+    "sage": "#6b8e5b",
+    "sageLight": "#8ba870",
+    "sageDark": "#4b6e3b",
+    "white": "#ffffff",
+    "cream": "#f5f8f2",
+    "ivory": "#eef2e9",
+    "taupe": "#dfe5d3",
+    "warmGray": "#8fa885",
+    "charcoal": "#3d4a3c",
+    "black": "#1d2d1b"
   },
   "imageMap": {
     "hero-main": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80",
