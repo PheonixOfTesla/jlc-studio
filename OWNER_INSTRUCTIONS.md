@@ -71,10 +71,10 @@ When you log in, you'll see a sidebar with all editable sections:
 
 ### Business
 9. **Analytics** - View booking and revenue data
-   - Links to Calendly dashboard
+   - Links to Cal.com dashboard
    - Links to Stripe dashboard
 
-10. **Calendly & Stripe** - Integration status
+10. **Cal.com** - Integration status
     - Both show as "Connected"
     - Quick access to external dashboards
 
@@ -104,7 +104,7 @@ When you log in, you'll see a sidebar with all editable sections:
 **To complete your website setup:**
 
 1. Finish creating your **Stripe account** with your business details
-2. I'll connect Stripe to Calendly for paid consultations
+2. I'll connect Stripe to Cal.com for paid consultations
 3. Your website will be fully operational!
 
 ---

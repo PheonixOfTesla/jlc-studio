@@ -326,7 +326,7 @@
             </a>
             <a class="nav-item" data-section="integrations">
                 <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                Calendly & Stripe
+                Cal.com
             </a>
 
             <div class="sidebar-footer">
@@ -878,7 +878,7 @@
                     <div class="stat-card">
                         <div class="stat-label">Total Bookings</div>
                         <div class="stat-value" id="statBookings">-</div>
-                        <div class="stat-note">Via Calendly</div>
+                        <div class="stat-note">Via Cal.com</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-label">This Month</div>
@@ -2191,7 +2191,6 @@
                 if (!container) continue;
 
                 const html = config.keys
-                    .filter(key => imageMap[key])
                     .map(key => createPhotoCard(key, imageMap[key]))
                     .join('');
 
