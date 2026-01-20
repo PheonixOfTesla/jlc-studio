@@ -1089,6 +1089,11 @@
             // Render lists
             renderServices();
             renderPackages();
+            renderTeam();
+            renderAwards();
+            renderBlog();
+            renderCaseStudies();
+            renderPromotions();
             renderTestimonials();
             renderFaq();
             renderTheme();
@@ -2000,6 +2005,9 @@
 
         async function saveAwards() {
             if (!siteData.awards) siteData.awards = [];
+            if (!siteData.press) siteData.press = [];
+            siteData.awards = siteData.awards;
+            siteData.press = siteData.press;
             await saveToGitHub('awards', siteData.awards);
         }
 
@@ -2016,6 +2024,351 @@
         async function savePromotions() {
             if (!siteData.promotions) siteData.promotions = [];
             await saveToGitHub('promotions', siteData.promotions);
+        }
+
+        // =====================
+        // TEAM MEMBERS
+        // =====================
+        function renderTeam() {
+            const container = document.getElementById('teamList');
+            const items = siteData.team || [];
+            container.innerHTML = items.length ? items.map((member, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Team Member ${i + 1}</span>
+                        <button class="delete-btn" onclick="deleteTeamMember(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" value="${member.name || ''}" onchange="siteData.team[${i}].name = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Role/Title</label>
+                            <input type="text" value="${member.role || ''}" onchange="siteData.team[${i}].role = this.value">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea rows="2" onchange="siteData.team[${i}].bio = this.value">${member.bio || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Photo URL</label>
+                        <input type="url" value="${member.photo || ''}" onchange="siteData.team[${i}].photo = this.value" placeholder="https://...">
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No team members yet.</p>';
+        }
+
+        function addTeamMember() {
+            if (!siteData.team) siteData.team = [];
+            siteData.team.push({ name: '', role: '', bio: '', photo: '', order: siteData.team.length + 1 });
+            renderTeam();
+        }
+
+        function deleteTeamMember(index) {
+            if (confirm('Remove this team member?')) {
+                siteData.team.splice(index, 1);
+                renderTeam();
+            }
+        }
+
+        // =====================
+        // AWARDS & PRESS
+        // =====================
+        function renderAwards() {
+            const awardsContainer = document.getElementById('awardsList');
+            const awards = siteData.awards || [];
+            awardsContainer.innerHTML = awards.length ? awards.map((award, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Award ${i + 1}</span>
+                        <button class="delete-btn" onclick="deleteAward(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Award Title</label>
+                            <input type="text" value="${award.title || ''}" onchange="siteData.awards[${i}].title = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Year</label>
+                            <input type="text" value="${award.year || ''}" onchange="siteData.awards[${i}].year = this.value" placeholder="2024">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Organization/Source</label>
+                        <input type="text" value="${award.organization || ''}" onchange="siteData.awards[${i}].organization = this.value">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea rows="2" onchange="siteData.awards[${i}].description = this.value">${award.description || ''}</textarea>
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No awards yet.</p>';
+
+            const pressContainer = document.getElementById('pressList');
+            const press = siteData.press || [];
+            pressContainer.innerHTML = press.length ? press.map((article, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Article ${i + 1}</span>
+                        <button class="delete-btn" onclick="deletePress(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Article Title</label>
+                            <input type="text" value="${article.title || ''}" onchange="siteData.press[${i}].title = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Publication</label>
+                            <input type="text" value="${article.publication || ''}" onchange="siteData.press[${i}].publication = this.value">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" value="${article.date || ''}" onchange="siteData.press[${i}].date = this.value" placeholder="January 2024">
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input type="url" value="${article.link || ''}" onchange="siteData.press[${i}].link = this.value" placeholder="https://...">
+                        </div>
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No press articles yet.</p>';
+        }
+
+        function addAward() {
+            if (!siteData.awards) siteData.awards = [];
+            siteData.awards.push({ title: '', year: '', organization: '', description: '', order: siteData.awards.length + 1 });
+            renderAwards();
+        }
+
+        function deleteAward(index) {
+            if (confirm('Remove this award?')) {
+                siteData.awards.splice(index, 1);
+                renderAwards();
+            }
+        }
+
+        function addPress() {
+            if (!siteData.press) siteData.press = [];
+            siteData.press.push({ title: '', publication: '', date: '', link: '', order: siteData.press.length + 1 });
+            renderAwards();
+        }
+
+        function deletePress(index) {
+            if (confirm('Remove this article?')) {
+                siteData.press.splice(index, 1);
+                renderAwards();
+            }
+        }
+
+        // =====================
+        // BLOG & ARTICLES
+        // =====================
+        function renderBlog() {
+            const container = document.getElementById('blogList');
+            const items = siteData.blog || [];
+            container.innerHTML = items.length ? items.map((post, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Blog Post ${i + 1}</span>
+                        <button class="delete-btn" onclick="deleteBlogPost(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Post Title</label>
+                            <input type="text" value="${post.title || ''}" onchange="siteData.blog[${i}].title = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" value="${post.date || ''}" onchange="siteData.blog[${i}].date = this.value" placeholder="January 20, 2024">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Excerpt/Summary</label>
+                        <textarea rows="2" onchange="siteData.blog[${i}].excerpt = this.value">${post.excerpt || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Content</label>
+                        <textarea rows="6" onchange="siteData.blog[${i}].content = this.value">${post.content || ''}</textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Featured Image URL</label>
+                            <input type="url" value="${post.image || ''}" onchange="siteData.blog[${i}].image = this.value" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <input type="text" value="${post.category || ''}" onchange="siteData.blog[${i}].category = this.value" placeholder="Tips, Behind the Scenes, etc.">
+                        </div>
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No blog posts yet.</p>';
+        }
+
+        function addBlogPost() {
+            if (!siteData.blog) siteData.blog = [];
+            siteData.blog.push({
+                title: '',
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                excerpt: '',
+                content: '',
+                image: '',
+                category: '',
+                order: siteData.blog.length + 1
+            });
+            renderBlog();
+        }
+
+        function deleteBlogPost(index) {
+            if (confirm('Delete this blog post?')) {
+                siteData.blog.splice(index, 1);
+                renderBlog();
+            }
+        }
+
+        // =====================
+        // CASE STUDIES
+        // =====================
+        function renderCaseStudies() {
+            const container = document.getElementById('caseStudiesList');
+            const items = siteData.caseStudies || [];
+            container.innerHTML = items.length ? items.map((study, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Case Study ${i + 1}</span>
+                        <button class="delete-btn" onclick="deleteCaseStudy(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Project Name</label>
+                            <input type="text" value="${study.title || ''}" onchange="siteData.caseStudies[${i}].title = this.value">
+                        </div>
+                        <div class="form-group">
+                            <label>Client Name</label>
+                            <input type="text" value="${study.client || ''}" onchange="siteData.caseStudies[${i}].client = this.value">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Event Type</label>
+                            <input type="text" value="${study.eventType || ''}" onchange="siteData.caseStudies[${i}].eventType = this.value" placeholder="Wedding, Corporate Gala, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" value="${study.date || ''}" onchange="siteData.caseStudies[${i}].date = this.value" placeholder="June 2024">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Challenge/Brief</label>
+                        <textarea rows="2" onchange="siteData.caseStudies[${i}].challenge = this.value">${study.challenge || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Solution/Approach</label>
+                        <textarea rows="3" onchange="siteData.caseStudies[${i}].solution = this.value">${study.solution || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Results/Outcome</label>
+                        <textarea rows="2" onchange="siteData.caseStudies[${i}].results = this.value">${study.results || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Featured Image URL</label>
+                        <input type="url" value="${study.image || ''}" onchange="siteData.caseStudies[${i}].image = this.value" placeholder="https://...">
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No case studies yet.</p>';
+        }
+
+        function addCaseStudy() {
+            if (!siteData.caseStudies) siteData.caseStudies = [];
+            siteData.caseStudies.push({
+                title: '',
+                client: '',
+                eventType: '',
+                date: '',
+                challenge: '',
+                solution: '',
+                results: '',
+                image: '',
+                order: siteData.caseStudies.length + 1
+            });
+            renderCaseStudies();
+        }
+
+        function deleteCaseStudy(index) {
+            if (confirm('Delete this case study?')) {
+                siteData.caseStudies.splice(index, 1);
+                renderCaseStudies();
+            }
+        }
+
+        // =====================
+        // PROMOTIONS & DISCOUNTS
+        // =====================
+        function renderPromotions() {
+            const container = document.getElementById('promotionsList');
+            const items = siteData.promotions || [];
+            container.innerHTML = items.length ? items.map((promo, i) => `
+                <div class="item card">
+                    <div class="item-header">
+                        <span class="item-number">Promotion ${i + 1}</span>
+                        <button class="delete-btn" onclick="deletePromotion(${i})">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Promotion Title</label>
+                            <input type="text" value="${promo.title || ''}" onchange="siteData.promotions[${i}].title = this.value" placeholder="Spring Special">
+                        </div>
+                        <div class="form-group">
+                            <label>Discount Code</label>
+                            <input type="text" value="${promo.code || ''}" onchange="siteData.promotions[${i}].code = this.value" placeholder="SPRING2024">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Discount Amount</label>
+                            <input type="text" value="${promo.discount || ''}" onchange="siteData.promotions[${i}].discount = this.value" placeholder="20% off or $100 off">
+                        </div>
+                        <div class="form-group">
+                            <label>Valid Until</label>
+                            <input type="text" value="${promo.validUntil || ''}" onchange="siteData.promotions[${i}].validUntil = this.value" placeholder="March 31, 2024">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description/Terms</label>
+                        <textarea rows="2" onchange="siteData.promotions[${i}].description = this.value">${promo.description || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" ${promo.active ? 'checked' : ''} onchange="siteData.promotions[${i}].active = this.checked">
+                            Active (show on website)
+                        </label>
+                    </div>
+                </div>
+            `).join('') : '<p style="color:var(--text-light);padding:1rem">No promotions yet.</p>';
+        }
+
+        function addPromotion() {
+            if (!siteData.promotions) siteData.promotions = [];
+            siteData.promotions.push({
+                title: '',
+                code: '',
+                discount: '',
+                validUntil: '',
+                description: '',
+                active: true,
+                order: siteData.promotions.length + 1
+            });
+            renderPromotions();
+        }
+
+        function deletePromotion(index) {
+            if (confirm('Delete this promotion?')) {
+                siteData.promotions.splice(index, 1);
+                renderPromotions();
+            }
         }
 
         // =====================
