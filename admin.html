@@ -943,14 +943,24 @@
         <div class="photo-modal-content">
             <h3 style="margin-bottom:1rem" id="photoModalTitle">Update Photo</h3>
             <img id="photoModalPreview" class="photo-modal-preview" src="" alt="Preview">
+
             <div class="form-group">
-                <label>Image URL</label>
-                <input type="text" id="photoModalUrl" placeholder="https://...">
-                <div class="form-hint">Paste an image URL from Unsplash, Imgur, Cloudinary, or any image hosting service</div>
-                <div class="form-hint" style="color:#C4A052;font-weight:500;margin-top:0.5rem">⚠️ URLs only - no file uploads (keeps site fast & lean)</div>
+                <label>Upload Photo</label>
+                <input type="file" id="photoModalFile" accept="image/*" style="padding:0.5rem">
+                <div class="form-hint">Select a photo to upload to GitHub</div>
             </div>
+
+            <div style="text-align:center;color:var(--text-light);margin:1rem 0">- OR -</div>
+
+            <div class="form-group">
+                <label>Paste Image URL</label>
+                <input type="text" id="photoModalUrl" placeholder="https://...">
+                <div class="form-hint">Use an image URL from Unsplash, Imgur, or any hosting service</div>
+            </div>
+
             <div style="display:flex;gap:1rem;margin-top:1rem">
-                <button type="button" class="btn btn-save" onclick="savePhotoUrl()">Save Photo</button>
+                <button type="button" class="btn btn-save" id="uploadPhotoBtn" onclick="uploadPhoto()" style="display:none">Upload & Save</button>
+                <button type="button" class="btn btn-save" id="saveUrlBtn" onclick="savePhotoUrl()">Save Photo</button>
                 <button type="button" class="btn btn-outline" onclick="closePhotoModal()">Cancel</button>
             </div>
         </div>
@@ -2606,14 +2616,107 @@
             document.getElementById('photoModal').classList.remove('show');
             currentEditingPhoto = null;
             document.getElementById('photoModalUrl').value = '';
+            document.getElementById('photoModalFile').value = '';
+            document.getElementById('uploadPhotoBtn').style.display = 'none';
+            document.getElementById('saveUrlBtn').style.display = 'inline-block';
         }
 
-        // Handle URL input preview (URLs only, no base64)
+        // Handle file selection
+        document.getElementById('photoModalFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('photoModalPreview').src = event.target.result;
+                    document.getElementById('photoModalUrl').value = ''; // Clear URL input
+                    document.getElementById('uploadPhotoBtn').style.display = 'inline-block';
+                    document.getElementById('saveUrlBtn').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle URL input
         document.getElementById('photoModalUrl').addEventListener('input', function() {
             if (this.value.startsWith('http')) {
                 document.getElementById('photoModalPreview').src = this.value;
+                document.getElementById('photoModalFile').value = ''; // Clear file input
+                document.getElementById('uploadPhotoBtn').style.display = 'none';
+                document.getElementById('saveUrlBtn').style.display = 'inline-block';
             }
         });
+
+        // Upload photo to GitHub
+        async function uploadPhoto() {
+            if (!currentEditingPhoto) return;
+
+            const fileInput = document.getElementById('photoModalFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                showToast('Please select a file', 'error');
+                return;
+            }
+
+            // Show uploading state
+            const uploadBtn = document.getElementById('uploadPhotoBtn');
+            uploadBtn.textContent = 'Uploading...';
+            uploadBtn.disabled = true;
+
+            try {
+                // Read file as base64
+                const reader = new FileReader();
+                reader.onload = async function(event) {
+                    const base64Content = event.target.result;
+
+                    const apiUrl = window.location.hostname.includes('localhost')
+                        ? '/api/upload-image'
+                        : 'https://jlc-studio.vercel.app/api/upload-image';
+
+                    // Upload to GitHub via API
+                    const res = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${authToken}`
+                        },
+                        body: JSON.stringify({
+                            filename: file.name,
+                            content: base64Content,
+                            imageId: currentEditingPhoto.id
+                        })
+                    });
+
+                    const result = await res.json();
+
+                    if (result.success && result.url) {
+                        // Save the URL to imageMap
+                        if (!siteData.imageMap) {
+                            siteData.imageMap = {};
+                        }
+
+                        siteData.imageMap[currentEditingPhoto.id] = result.url;
+                        closePhotoModal();
+                        renderPhotos();
+
+                        // Save to admin.json
+                        await saveDirectToServer('Photo uploaded and saved!');
+                    } else {
+                        showToast('Upload failed: ' + (result.error || 'Unknown error'), 'error');
+                    }
+
+                    uploadBtn.textContent = 'Upload & Save';
+                    uploadBtn.disabled = false;
+                };
+
+                reader.readAsDataURL(file);
+
+            } catch (error) {
+                showToast('Upload error: ' + error.message, 'error');
+                uploadBtn.textContent = 'Upload & Save';
+                uploadBtn.disabled = false;
+            }
+        }
 
         async function savePhotoUrl() {
             if (!currentEditingPhoto) return;
