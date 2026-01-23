@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="JLC Studio - Admin Editor">
     <title>JLC Studio | Admin Editor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Editor Overlay Styles */
+        /* Login */
         .editor-login { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 10000; }
         .editor-login.hidden { display: none; }
         .editor-login-box { background: white; padding: 3rem; border-radius: 16px; text-align: center; max-width: 380px; width: 90%; }
         .editor-login-box h1 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; }
         .editor-login-box p { color: #666; margin-bottom: 2rem; font-size: 0.9rem; }
-        .editor-login-box input { width: 100%; padding: 1rem; border: 2px solid #e5e5e5; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; }
+        .editor-login-box input { width: 100%; padding: 1rem; border: 2px solid #e5e5e5; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; box-sizing: border-box; }
         .editor-login-box input:focus { outline: none; border-color: var(--gold); }
         .editor-login-box button { width: 100%; padding: 1rem; background: var(--gold); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
-        .editor-login-box button:hover { background: var(--gold-dark); }
         .editor-login-error { color: #c45b5b; font-size: 0.85rem; margin-top: 0.5rem; display: none; }
         .editor-login-error.show { display: block; }
 
-        .editor-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #1a1a1a; color: white; padding: 0.6rem 1.5rem; display: none; align-items: center; justify-content: space-between; z-index: 9999; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        /* Toolbar */
+        .editor-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #1a1a1a; color: white; padding: 0.6rem 1.5rem; display: none; align-items: center; justify-content: space-between; z-index: 9999; }
         .editor-toolbar.active { display: flex; }
         .editor-toolbar-left { display: flex; align-items: center; gap: 1rem; }
         .editor-toolbar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
@@ -31,61 +30,70 @@
         .editor-toolbar-right { display: flex; align-items: center; gap: 0.5rem; }
         .editor-btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
         .editor-btn-primary { background: var(--gold); color: white; }
-        .editor-btn-primary:hover { background: var(--gold-dark); }
         .editor-btn-secondary { background: rgba(255,255,255,0.15); color: white; }
-        .editor-btn-secondary:hover { background: rgba(255,255,255,0.25); }
         .editor-btn-danger { background: rgba(196,91,91,0.3); color: #ffb4b4; }
 
-        body.editor-mode { padding-top: 52px; }
-        body.editor-mode .navbar { top: 52px; }
-        body.editor-mode .preloader { display: none; }
+        /* Page Tabs */
+        .page-tabs { position: fixed; top: 52px; left: 0; right: 0; background: #2a2a2a; display: none; z-index: 9998; padding: 0 1rem; }
+        .page-tabs.active { display: flex; }
+        .page-tab { padding: 0.8rem 1.5rem; color: #999; cursor: pointer; border-bottom: 3px solid transparent; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+        .page-tab:hover { color: white; }
+        .page-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-        body.editor-mode [data-content] { outline: 2px dashed transparent; cursor: text; transition: outline-color 0.2s; }
-        body.editor-mode [data-content]:hover { outline-color: rgba(196,160,82,0.5); }
-        body.editor-mode [data-content]:focus { outline-color: var(--gold); background: rgba(196,160,82,0.15); }
+        /* Page Sections */
+        .admin-page { display: none; padding-top: 100px; }
+        .admin-page.active { display: block; }
 
-        /* Fix hero section in editor mode - make image and text visible */
+        /* Editor Mode Styles */
+        body.editor-mode [data-content] { outline: 2px dashed transparent; cursor: text; transition: all 0.2s; min-height: 1em; }
+        body.editor-mode [data-content]:hover { outline-color: rgba(139,155,122,0.5); }
+        body.editor-mode [data-content]:focus { outline-color: var(--gold); background: rgba(139,155,122,0.1); }
+
+        /* Hero image editing */
         body.editor-mode .hero-image { z-index: 0; }
         body.editor-mode .hero { position: relative; }
         body.editor-mode .hero-content { position: relative; z-index: 2; }
+        .hero-image-edit-btn { position: absolute; bottom: 2rem; right: 2rem; z-index: 10; background: white; color: #333; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: none; }
+        body.editor-mode .hero-image-edit-btn { display: block; }
 
-        .image-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 5; }
+        /* Image overlays */
+        .image-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 5; }
         .image-edit-overlay:hover { opacity: 1; }
         .image-edit-overlay span { background: white; color: #333; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
 
-        /* Hero image edit button - bottom right corner */
-        .hero-image-edit-btn { position: absolute; bottom: 2rem; right: 2rem; z-index: 10; background: white; color: #333; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: none; }
-        .hero-image-edit-btn:hover { background: var(--gold); color: white; }
-        body.editor-mode .hero-image-edit-btn { display: block; }
-
+        /* Modals */
         .editor-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 10001; }
         .editor-modal.active { display: flex; }
-        .editor-modal-box { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 450px; }
-        .editor-modal-box h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+        .editor-modal-box { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
+        .editor-modal-box h3 { margin-bottom: 1rem; }
         .editor-modal-box img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; background: #f0f0f0; margin-bottom: 1rem; }
-        .editor-modal-box input { width: 100%; padding: 0.75rem; border: 2px solid #e5e5e5; border-radius: 8px; margin-bottom: 0.75rem; font-size: 0.9rem; }
-        .editor-modal-box input:focus { outline: none; border-color: var(--gold); }
+        .editor-modal-box input[type="text"], .editor-modal-box input[type="file"] { width: 100%; padding: 0.75rem; border: 2px solid #e5e5e5; border-radius: 8px; margin-bottom: 0.75rem; box-sizing: border-box; }
         .editor-modal-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
         .editor-modal-actions button { flex: 1; padding: 0.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
         .editor-modal-actions .save { background: var(--gold); color: white; }
         .editor-modal-actions .cancel { background: #e5e5e5; color: #333; }
 
+        /* Toast */
         .editor-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #1a1a1a; color: white; padding: 1rem 2rem; border-radius: 8px; opacity: 0; transition: all 0.3s; z-index: 10002; }
         .editor-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .editor-toast.success { background: #7D9B76; }
         .editor-toast.error { background: #c45b5b; }
 
-        .color-panel { position: fixed; top: 52px; right: -320px; width: 320px; height: calc(100vh - 52px); background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 9998; overflow-y: auto; transition: right 0.3s; }
+        /* Color Panel */
+        .color-panel { position: fixed; top: 100px; right: -320px; width: 320px; height: calc(100vh - 100px); background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 9997; overflow-y: auto; transition: right 0.3s; }
         .color-panel.open { right: 0; }
         .color-panel-header { padding: 1rem; border-bottom: 1px solid #e5e5e5; display: flex; justify-content: space-between; align-items: center; }
-        .color-panel-header h3 { margin: 0; font-size: 1rem; }
-        .color-panel-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999; }
+        .color-panel-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
         .color-panel-body { padding: 1rem; }
         .color-group { margin-bottom: 1rem; }
         .color-group label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.3rem; color: #666; }
         .color-row { display: flex; gap: 0.5rem; }
         .color-row input[type="color"] { width: 45px; height: 36px; border: none; border-radius: 6px; cursor: pointer; }
-        .color-row input[type="text"] { flex: 1; padding: 0.4rem; border: 1px solid #ddd; border-radius: 6px; font-family: monospace; font-size: 0.85rem; }
+        .color-row input[type="text"] { flex: 1; padding: 0.4rem; border: 1px solid #ddd; border-radius: 6px; font-family: monospace; }
+
+        /* Page hero for non-home pages */
+        .page-hero { min-height: 50vh; }
+        body.editor-mode .page-hero-image { position: relative; z-index: 0; }
     </style>
 </head>
 <body>
@@ -108,9 +116,19 @@
         </div>
         <div class="editor-toolbar-right">
             <button class="editor-btn editor-btn-secondary" onclick="toggleColors()">Colors</button>
-            <button class="editor-btn editor-btn-primary" onclick="saveAll()">Save</button>
+            <button class="editor-btn editor-btn-primary" onclick="saveAll()">Save All</button>
             <button class="editor-btn editor-btn-danger" onclick="editorLogout()">Logout</button>
         </div>
+    </div>
+
+    <!-- PAGE TABS -->
+    <div class="page-tabs" id="pageTabs">
+        <div class="page-tab active" data-page="home">Home</div>
+        <div class="page-tab" data-page="about">About</div>
+        <div class="page-tab" data-page="services">Services</div>
+        <div class="page-tab" data-page="portfolio">Portfolio</div>
+        <div class="page-tab" data-page="booking">Booking</div>
+        <div class="page-tab" data-page="settings">Settings</div>
     </div>
 
     <!-- COLOR PANEL -->
@@ -120,12 +138,12 @@
             <button class="color-panel-close" onclick="toggleColors()">&times;</button>
         </div>
         <div class="color-panel-body">
-            <div class="color-group"><label>Gold (Primary)</label><div class="color-row"><input type="color" id="cGold" value="#C4A052"><input type="text" id="cGoldHex" value="#C4A052"></div></div>
-            <div class="color-group"><label>Gold Light</label><div class="color-row"><input type="color" id="cGoldLight" value="#D4B872"><input type="text" id="cGoldLightHex" value="#D4B872"></div></div>
-            <div class="color-group"><label>Gold Dark</label><div class="color-row"><input type="color" id="cGoldDark" value="#A68A42"><input type="text" id="cGoldDarkHex" value="#A68A42"></div></div>
-            <div class="color-group"><label>Sage</label><div class="color-row"><input type="color" id="cSage" value="#8B9B7A"><input type="text" id="cSageHex" value="#8B9B7A"></div></div>
-            <div class="color-group"><label>Cream</label><div class="color-row"><input type="color" id="cCream" value="#FAF8F5"><input type="text" id="cCreamHex" value="#FAF8F5"></div></div>
-            <div class="color-group"><label>Charcoal</label><div class="color-row"><input type="color" id="cCharcoal" value="#3D3D3D"><input type="text" id="cCharcoalHex" value="#3D3D3D"></div></div>
+            <div class="color-group"><label>Primary (Gold/Sage)</label><div class="color-row"><input type="color" id="cGold"><input type="text" id="cGoldHex"></div></div>
+            <div class="color-group"><label>Primary Light</label><div class="color-row"><input type="color" id="cGoldLight"><input type="text" id="cGoldLightHex"></div></div>
+            <div class="color-group"><label>Primary Dark</label><div class="color-row"><input type="color" id="cGoldDark"><input type="text" id="cGoldDarkHex"></div></div>
+            <div class="color-group"><label>Accent (Sage)</label><div class="color-row"><input type="color" id="cSage"><input type="text" id="cSageHex"></div></div>
+            <div class="color-group"><label>Background (Cream)</label><div class="color-row"><input type="color" id="cCream"><input type="text" id="cCreamHex"></div></div>
+            <div class="color-group"><label>Text (Charcoal)</label><div class="color-row"><input type="color" id="cCharcoal"><input type="text" id="cCharcoalHex"></div></div>
             <button class="editor-btn editor-btn-primary" style="width:100%;margin-top:1rem" onclick="applyColors()">Apply Colors</button>
         </div>
     </div>
@@ -147,232 +165,272 @@
     <!-- TOAST -->
     <div class="editor-toast" id="editorToast"></div>
 
-    <!-- ============ EXACT SAME CONTENT AS INDEX.HTML ============ -->
+    <!-- ==================== HOME PAGE ==================== -->
+    <div class="admin-page active" id="page-home">
+        <section class="hero" id="hero">
+            <div class="hero-image">
+                <img src="" data-image-id="hero-main" alt="Hero image">
+                <div class="hero-overlay"></div>
+                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-home [data-image-id=hero-main]'))">Change Hero Photo</button>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge" data-content="hero-badge"></div>
+                <h1 class="hero-title">
+                    <span class="title-line" data-content="hero-title-1"></span>
+                    <span class="title-line accent" data-content="hero-title-2"></span>
+                </h1>
+                <p class="hero-subtitle" data-content="hero-subtitle"></p>
+                <p class="hero-description" data-content="hero-description"></p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary" data-content="hero-btn-primary"></a>
+                    <a href="#" class="btn btn-outline" data-content="hero-btn-secondary"></a>
+                </div>
+            </div>
+        </section>
 
-    <div class="preloader" id="preloader">
-        <div class="preloader-content">
-            <div class="preloader-logo">JLC</div>
-            <div class="preloader-bar"><div class="preloader-progress"></div></div>
-        </div>
+        <section class="featured-work">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-label" data-content="hero-craft"></span>
+                    <h2 class="section-title" data-content="hero-craftTitle"></h2>
+                </div>
+                <div class="featured-grid">
+                    <div class="featured-item large"><img src="" data-image-id="featured-wedding-bouquet" alt=""><div class="featured-overlay"><span>Bridal Florals</span></div></div>
+                    <div class="featured-item"><img src="" data-image-id="featured-table-setting" alt=""><div class="featured-overlay"><span>Event Decor</span></div></div>
+                    <div class="featured-item"><img src="" data-image-id="featured-flower-arrangement" alt=""><div class="featured-overlay"><span>Custom Arrangements</span></div></div>
+                    <div class="featured-item"><img src="" data-image-id="featured-gala-setup" alt=""><div class="featured-overlay"><span>Gala Design</span></div></div>
+                    <div class="featured-item large"><img src="" data-image-id="featured-wedding-dress" alt=""><div class="featured-overlay"><span>Custom Tailoring</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-preview">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label" data-content="services-expertise"></span>
+                    <h2 class="section-title" data-content="services-expertiseTitle"></h2>
+                    <p class="section-description" data-content="services-expertiseDesc"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-preview">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="image-frame"><img src="" data-image-id="about-profile" alt=""></div>
+                    </div>
+                    <div class="about-content">
+                        <span class="section-label" data-content="about-designer"></span>
+                        <h2 class="section-title" data-content="about-name"></h2>
+                        <p class="about-lead" data-content="about-short-bio"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-label" data-content="testimonials-heading"></span>
+                    <h2 class="section-title" data-content="testimonials-subheading"></h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-image"><img src="" data-image-id="cta-floral-arrangement" alt=""></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 data-content="cta-heading"></h2>
+                    <p data-content="cta-description"></p>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
-                <li><a href="booking.html" class="nav-link nav-cta" style="background-color: var(--gold); color: white; padding: 0.5rem 1.5rem; border-radius: 4px;">BOOK NOW</a></li>
-            </ul>
-            <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <div class="admin-page" id="page-about">
+        <section class="page-hero">
+            <div class="page-hero-image">
+                <img src="" data-image-id="about-hero" alt="">
+                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-about [data-image-id=about-hero]'))">Change Photo</button>
+            </div>
+            <div class="page-hero-content">
+                <span class="section-label" data-content="about-designer"></span>
+                <h1 data-content="about-name"></h1>
+                <p data-content="tagline"></p>
+            </div>
+        </section>
 
-    <section class="hero" id="hero">
-        <div class="hero-image">
-            <img src="" data-image-id="hero-main" alt="Elegant floral arrangement">
-            <div class="hero-overlay"></div>
-            <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('[data-image-id=hero-main]'))">Change Hero Photo</button>
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge" data-content="hero-badge"></div>
-            <h1 class="hero-title">
-                <span class="title-line" data-content="hero-title-1"></span>
-                <span class="title-line accent" data-content="hero-title-2"></span>
-            </h1>
-            <p class="hero-subtitle" data-content="hero-subtitle"></p>
-            <p class="hero-description" data-content="hero-description"></p>
-            <div class="hero-cta">
-                <a href="booking.html" class="btn btn-primary" data-content="hero-btn-primary"></a>
-                <a href="gallery.html" class="btn btn-outline" data-content="hero-btn-secondary"></a>
-            </div>
-        </div>
-        <div class="hero-scroll"><span>Scroll</span><div class="scroll-indicator"></div></div>
-    </section>
-
-    <section class="featured-work">
-        <div class="container">
-            <div class="section-header centered">
-                <span class="section-label" data-content="hero-craft"></span>
-                <h2 class="section-title" data-content="hero-craftTitle"></h2>
-            </div>
-            <div class="featured-grid">
-                <div class="featured-item large">
-                    <img src="" data-image-id="featured-wedding-bouquet" alt="Romantic wedding bouquet">
-                    <div class="featured-overlay"><span>Bridal Florals</span></div>
-                </div>
-                <div class="featured-item">
-                    <img src="" data-image-id="featured-table-setting" alt="Wedding table setting">
-                    <div class="featured-overlay"><span>Event Decor</span></div>
-                </div>
-                <div class="featured-item">
-                    <img src="" data-image-id="featured-flower-arrangement" alt="Colorful flower arrangement">
-                    <div class="featured-overlay"><span>Custom Arrangements</span></div>
-                </div>
-                <div class="featured-item">
-                    <img src="" data-image-id="featured-gala-setup" alt="Elegant gala setup">
-                    <div class="featured-overlay"><span>Gala Design</span></div>
-                </div>
-                <div class="featured-item large">
-                    <img src="" data-image-id="featured-wedding-dress" alt="Wedding dress detail">
-                    <div class="featured-overlay"><span>Custom Tailoring</span></div>
-                </div>
-            </div>
-            <div class="text-center" style="margin-top: 3rem;">
-                <a href="gallery.html" class="btn btn-secondary">View Full Portfolio</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="services-preview" id="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label" data-content="services-expertise"></span>
-                <h2 class="section-title" data-content="services-expertiseTitle"></h2>
-                <p class="section-description" data-content="services-expertiseDesc"></p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3 data-content="services-floral"></h3>
-                    <div data-service-category="floral"></div>
-                    <a href="services.html#florals" class="btn btn-outline">Learn More</a>
-                </div>
-                <div class="service-card">
-                    <h3 data-content="services-decor"></h3>
-                    <div data-service-category="decor"></div>
-                    <a href="services.html#decor" class="btn btn-outline">Learn More</a>
-                </div>
-                <div class="service-card">
-                    <h3 data-content="services-tailoring"></h3>
-                    <div data-service-category="tailoring"></div>
-                    <a href="services.html#tailoring" class="btn btn-outline">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about-preview">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-frame">
-                        <img src="" data-image-id="about-profile" alt="Designer at work">
+        <section class="bio-section">
+            <div class="container">
+                <div class="bio-grid">
+                    <div class="bio-image">
+                        <img src="" data-image-id="about-profile" alt="">
+                        <div class="bio-quote"><blockquote data-content="about-quote"></blockquote></div>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-count="15" data-content="years-experience">0</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="500" data-content="events-created">0</span>
-                            <span class="stat-label">Events Created</span>
-                        </div>
+                    <div class="bio-content">
+                        <h2 data-content="about-journey"></h2>
+                        <p data-content="about-full-bio"></p>
                     </div>
                 </div>
-                <div class="about-content">
-                    <span class="section-label" data-content="about-designer"></span>
-                    <h2 class="section-title" data-content="about-name"></h2>
-                    <p class="about-lead" data-content="about-short-bio"></p>
-                    <div class="about-features">
-                        <div class="feature"><span>✓ NYC Fashion Background</span></div>
-                        <div class="feature"><span>✓ International Experience</span></div>
-                        <div class="feature"><span>✓ Personalized Service</span></div>
-                    </div>
-                    <a href="about.html" class="btn btn-secondary">Learn More</a>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="process-section">
-        <div class="process-bg">
-            <img src="" data-image-id="process-floral" alt="Floral arrangement process">
-        </div>
-        <div class="container">
-            <div class="section-header centered light">
-                <span class="section-label">How We Work</span>
-                <h2 class="section-title">Your Journey With Us</h2>
+        <section class="experience-section">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-label" data-content="about-background"></span>
+                    <h2 class="section-title" data-content="about-expertise"></h2>
+                </div>
             </div>
-            <div class="process-timeline">
-                <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3>Discovery</h3><p>In-depth consultation to understand your vision and story.</p></div></div>
-                <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3>Design</h3><p>Mood boards and detailed proposals bring your concept to life.</p></div></div>
-                <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3>Create</h3><p>Meticulous attention to detail in every handcrafted element.</p></div></div>
-                <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3>Execute</h3><p>Seamless delivery and installation, exactly as imagined.</p></div></div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header centered">
-                <span class="section-label" data-content="testimonials-heading"></span>
-                <h2 class="section-title" data-content="testimonials-subheading"></h2>
+    <!-- ==================== SERVICES PAGE ==================== -->
+    <div class="admin-page" id="page-services">
+        <section class="page-hero">
+            <div class="page-hero-image">
+                <img src="" data-image-id="services-hero" alt="">
+                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-services [data-image-id=services-hero]'))">Change Photo</button>
             </div>
-            <div class="testimonials-slider"></div>
-            <div class="testimonial-nav"></div>
-        </div>
-    </section>
+            <div class="page-hero-content">
+                <span class="section-label" data-content="pages-services"></span>
+                <h1 data-content="pages-servicesTitle"></h1>
+                <p data-content="services-expertiseDesc"></p>
+            </div>
+        </section>
 
-    <section class="cta-section">
-        <div class="cta-image">
-            <img src="" data-image-id="cta-floral-arrangement" alt="Beautiful floral arrangement">
-        </div>
-        <div class="container">
-            <div class="cta-content">
-                <h2 data-content="cta-heading"></h2>
-                <p data-content="cta-description"></p>
-                <div class="cta-buttons">
-                    <a href="booking.html" class="btn btn-primary btn-large">BOOK NOW</a>
-                    <a href="#" data-link="phone" class="btn btn-outline-light btn-large"></a>
+        <section class="service-detail">
+            <div class="container">
+                <h2 data-content="services-floral"></h2>
+                <div class="service-detail-images" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
+                    <img src="" data-image-id="services-floral-main" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                    <img src="" data-image-id="services-floral-detail-1" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                    <img src="" data-image-id="services-floral-detail-2" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo" data-content="businessName"></div>
-                    <p data-content="tagline"></p>
-                    <div class="footer-social">
-                        <a href="#" data-link="instagram" class="social-icon" aria-label="Instagram">IG</a>
-                        <a href="#" data-link="pinterest" class="social-icon" aria-label="Pinterest">PIN</a>
-                        <a href="#" data-link="email-icon" class="social-icon" aria-label="Email">@</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html#florals">Floral Design</a></li>
-                        <li><a href="services.html#decor">Event Decor</a></li>
-                        <li><a href="services.html#tailoring">Custom Tailoring</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Studio</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="gallery.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Get in Touch</h4>
-                    <address>
-                        <p data-content="address"></p>
-                        <p><a href="#" data-link="phone"></a></p>
-                        <p><a href="#" data-link="email"></a></p>
-                    </address>
+        <section class="service-detail">
+            <div class="container">
+                <h2 data-content="services-decor"></h2>
+                <div class="service-detail-images" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
+                    <img src="" data-image-id="services-decor-main" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                    <img src="" data-image-id="services-decor-detail-1" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                    <img src="" data-image-id="services-decor-detail-2" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p>
+        </section>
+
+        <section class="service-detail">
+            <div class="container">
+                <h2 data-content="services-tailoring"></h2>
+                <div class="service-detail-images" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
+                    <img src="" data-image-id="services-tailoring-main" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                    <img src="" data-image-id="services-tailoring-detail-1" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                    <img src="" data-image-id="services-tailoring-detail-2" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <section class="packages-section">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-label" data-content="packages-heading"></span>
+                    <h2 class="section-title" data-content="packages-title"></h2>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PORTFOLIO PAGE ==================== -->
+    <div class="admin-page" id="page-portfolio">
+        <section class="page-hero">
+            <div class="page-hero-image">
+                <img src="" data-image-id="gallery-hero" alt="">
+                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-portfolio [data-image-id=gallery-hero]'))">Change Photo</button>
+            </div>
+            <div class="page-hero-content">
+                <span class="section-label">Our Work</span>
+                <h1>Portfolio</h1>
+                <p>A curated collection of our finest creations</p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <p style="text-align:center;color:var(--warm-gray);padding:2rem;">Gallery images are loaded from admin.json. Add images via the imageMap.</p>
+                <div class="gallery-grid"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== BOOKING PAGE ==================== -->
+    <div class="admin-page" id="page-booking">
+        <section class="page-hero short">
+            <div class="page-hero-image">
+                <img src="" data-image-id="contact-hero" alt="">
+                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-booking [data-image-id=contact-hero]'))">Change Photo</button>
+            </div>
+            <div class="page-hero-content">
+                <span class="section-label">Schedule Your Consultation</span>
+                <h1>Book Your Appointment</h1>
+            </div>
+        </section>
+
+        <section style="padding:4rem 0;">
+            <div class="container">
+                <p style="text-align:center;color:var(--warm-gray);">Booking cards are hardcoded with Cal.com links. Contact info comes from Settings.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== SETTINGS PAGE ==================== -->
+    <div class="admin-page" id="page-settings">
+        <section style="padding:6rem 0;">
+            <div class="container" style="max-width:600px;">
+                <h1 style="margin-bottom:2rem;">Business Settings</h1>
+
+                <div style="background:var(--cream);padding:2rem;border-radius:12px;margin-bottom:2rem;">
+                    <h3 style="margin-bottom:1rem;">Business Info</h3>
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Business Name</label>
+                    <div data-content="businessName" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Tagline</label>
+                    <div data-content="tagline" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+                </div>
+
+                <div style="background:var(--cream);padding:2rem;border-radius:12px;margin-bottom:2rem;">
+                    <h3 style="margin-bottom:1rem;">Contact Info</h3>
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Phone</label>
+                    <div data-content="phone" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Email</label>
+                    <div data-content="email" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Address</label>
+                    <div data-content="address" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Hours</label>
+                    <div data-content="hours" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Service Area</label>
+                    <div data-content="service-area" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;background:white;"></div>
+                </div>
+
+                <div style="background:var(--cream);padding:2rem;border-radius:12px;">
+                    <h3 style="margin-bottom:1rem;">Social Links</h3>
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Instagram URL</label>
+                    <div data-content="instagram" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
+
+                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Pinterest URL</label>
+                    <div data-content="pinterest" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;background:white;"></div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script src="js/main.js"></script>
     <script src="js/content-loader.js"></script>
@@ -386,6 +444,7 @@
             if (document.getElementById('editorPassword').value === EDITOR_PASSWORD) {
                 document.getElementById('editorLogin').classList.add('hidden');
                 document.getElementById('editorToolbar').classList.add('active');
+                document.getElementById('pageTabs').classList.add('active');
                 document.body.classList.add('editor-mode');
                 localStorage.setItem('jlc-editor', 'true');
                 initEditor();
@@ -407,13 +466,23 @@
         if (localStorage.getItem('jlc-editor') === 'true') {
             document.getElementById('editorLogin').classList.add('hidden');
             document.getElementById('editorToolbar').classList.add('active');
+            document.getElementById('pageTabs').classList.add('active');
             document.body.classList.add('editor-mode');
             setTimeout(initEditor, 500);
         }
 
+        // Page tabs
+        document.querySelectorAll('.page-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('page-' + this.dataset.page).classList.add('active');
+            });
+        });
+
         // Init
         async function initEditor() {
-            // Load siteData
             try {
                 const res = await fetch('/_data/admin.json?t=' + Date.now());
                 siteData = await res.json();
@@ -425,11 +494,10 @@
                 el.setAttribute('spellcheck', 'false');
             });
 
-            // Add image overlays (skip hero-main - it has its own button)
+            // Add image overlays (skip hero images - they have buttons)
             document.querySelectorAll('[data-image-id]').forEach(img => {
                 const imageId = img.getAttribute('data-image-id');
-                // Skip hero image - has special button
-                if (imageId === 'hero-main') return;
+                if (imageId.includes('hero') || imageId === 'hero-main') return;
 
                 const wrapper = img.parentElement;
                 wrapper.style.position = 'relative';
@@ -460,6 +528,26 @@
                 if (t.cream) { document.getElementById('cCream').value = t.cream; document.getElementById('cCreamHex').value = t.cream; }
                 if (t.charcoal) { document.getElementById('cCharcoal').value = t.charcoal; document.getElementById('cCharcoalHex').value = t.charcoal; }
             }
+
+            // Load settings values
+            if (siteData.settings) {
+                const s = siteData.settings;
+                setContentValue('phone', s.phone);
+                setContentValue('email', s.email);
+                setContentValue('address', s.address);
+                setContentValue('hours', s.hours);
+                setContentValue('service-area', s.serviceArea);
+                setContentValue('instagram', s.instagram);
+                setContentValue('pinterest', s.pinterest);
+            }
+
+            toast('Ready to edit!', 'success');
+        }
+
+        function setContentValue(key, value) {
+            document.querySelectorAll(`[data-content="${key}"]`).forEach(el => {
+                if (value) el.textContent = value;
+            });
         }
 
         // Colors
@@ -469,28 +557,23 @@
 
         function applyColors() {
             const root = document.documentElement;
-            const gold = document.getElementById('cGold').value;
-            const goldLight = document.getElementById('cGoldLight').value;
-            const goldDark = document.getElementById('cGoldDark').value;
-            const sage = document.getElementById('cSage').value;
-            const cream = document.getElementById('cCream').value;
-            const charcoal = document.getElementById('cCharcoal').value;
+            const colors = {
+                gold: document.getElementById('cGold').value,
+                goldLight: document.getElementById('cGoldLight').value,
+                goldDark: document.getElementById('cGoldDark').value,
+                sage: document.getElementById('cSage').value,
+                cream: document.getElementById('cCream').value,
+                charcoal: document.getElementById('cCharcoal').value
+            };
 
-            root.style.setProperty('--gold', gold);
-            root.style.setProperty('--gold-light', goldLight);
-            root.style.setProperty('--gold-dark', goldDark);
-            root.style.setProperty('--sage', sage);
-            root.style.setProperty('--cream', cream);
-            root.style.setProperty('--charcoal', charcoal);
+            root.style.setProperty('--gold', colors.gold);
+            root.style.setProperty('--gold-light', colors.goldLight);
+            root.style.setProperty('--gold-dark', colors.goldDark);
+            root.style.setProperty('--sage', colors.sage);
+            root.style.setProperty('--cream', colors.cream);
+            root.style.setProperty('--charcoal', colors.charcoal);
 
-            if (!siteData.theme) siteData.theme = {};
-            siteData.theme.gold = gold;
-            siteData.theme.goldLight = goldLight;
-            siteData.theme.goldDark = goldDark;
-            siteData.theme.sage = sage;
-            siteData.theme.cream = cream;
-            siteData.theme.charcoal = charcoal;
-
+            siteData.theme = { ...siteData.theme, ...colors };
             toast('Colors applied', 'success');
         }
 
@@ -514,7 +597,7 @@
             if (url) {
                 currentImageEl.src = url;
                 const id = currentImageEl.getAttribute('data-image-id');
-                if (id) siteData.imageMap[id] = url;
+                if (id && siteData.imageMap) siteData.imageMap[id] = url;
             }
             closeImageModal();
             toast('Image updated', 'success');
@@ -556,7 +639,7 @@
 
         // Save All
         async function saveAll() {
-            // Collect text
+            // Collect all text content
             document.querySelectorAll('[data-content]').forEach(el => {
                 const key = el.getAttribute('data-content');
                 const val = el.textContent.trim();
@@ -582,7 +665,9 @@
         }
 
         function mapToSiteData(key, val) {
+            if (!siteData) return;
             const map = {
+                // Hero
                 'hero-badge': () => siteData.hero.badge = val,
                 'hero-title-1': () => siteData.hero.titleLine1 = val,
                 'hero-title-2': () => siteData.hero.titleLine2 = val,
@@ -592,22 +677,43 @@
                 'hero-btn-secondary': () => siteData.hero.secondaryBtn = val,
                 'hero-craft': () => siteData.labels.hero.craft = val,
                 'hero-craftTitle': () => siteData.labels.hero.craftTitle = val,
+                // About
                 'about-name': () => siteData.about.name = val,
                 'about-designer': () => siteData.labels.about.designer = val,
                 'about-short-bio': () => siteData.about.bio = val,
+                'about-full-bio': () => siteData.about.bio = val,
+                'about-quote': () => siteData.about.quote = val,
+                'about-journey': () => siteData.labels.about.journey = val,
+                'about-background': () => siteData.labels.about.background = val,
+                'about-expertise': () => siteData.labels.about.expertise = val,
+                // Services
                 'services-expertise': () => siteData.labels.services.expertise = val,
                 'services-expertiseTitle': () => siteData.labels.services.expertiseTitle = val,
                 'services-expertiseDesc': () => siteData.labels.services.expertiseDesc = val,
                 'services-floral': () => siteData.labels.services.floral = val,
                 'services-decor': () => siteData.labels.services.decor = val,
                 'services-tailoring': () => siteData.labels.services.tailoring = val,
+                'pages-services': () => siteData.labels.pages.services = val,
+                'pages-servicesTitle': () => siteData.labels.pages.servicesTitle = val,
+                // Packages
+                'packages-heading': () => siteData.labels.packages.heading = val,
+                'packages-title': () => siteData.labels.packages.title = val,
+                // Testimonials
                 'testimonials-heading': () => siteData.labels.testimonials.heading = val,
                 'testimonials-subheading': () => siteData.labels.testimonials.subheading = val,
+                // CTA
                 'cta-heading': () => siteData.labels.cta.heading = val,
                 'cta-description': () => siteData.labels.cta.description = val,
+                // Settings
                 'businessName': () => siteData.settings.businessName = val,
                 'tagline': () => siteData.settings.tagline = val,
+                'phone': () => siteData.settings.phone = val,
+                'email': () => siteData.settings.email = val,
                 'address': () => siteData.settings.address = val,
+                'hours': () => siteData.settings.hours = val,
+                'service-area': () => siteData.settings.serviceArea = val,
+                'instagram': () => siteData.settings.instagram = val,
+                'pinterest': () => siteData.settings.pinterest = val,
             };
             if (map[key]) try { map[key](); } catch(e) {}
         }
