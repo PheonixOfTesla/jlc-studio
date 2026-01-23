@@ -814,7 +814,10 @@
             if (url) {
                 currentImageEl.src = url;
                 const id = currentImageEl.getAttribute('data-image-id');
-                if (id && siteData.imageMap) siteData.imageMap[id] = url;
+                if (id) {
+                    if (!siteData.imageMap) siteData.imageMap = {};
+                    siteData.imageMap[id] = url;
+                }
             }
             closeImageModal();
             toast('Image updated', 'success');
