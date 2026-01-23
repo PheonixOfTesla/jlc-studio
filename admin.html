@@ -886,21 +886,37 @@
         });
 
         async function saveAll() {
-            // Collect all text content
+            // Collect all text content from ALL tabs
             document.querySelectorAll('[data-content]').forEach(el => {
                 const key = el.getAttribute('data-content');
                 const val = el.textContent.trim();
                 mapToSiteData(key, val);
             });
 
-            // Collect ALL images from DOM and sync to data
+            // Collect ALL images from ALL tabs - build deduplicated map
+            const imageUrls = {};
             document.querySelectorAll('[data-image-id]').forEach(img => {
                 const id = img.getAttribute('data-image-id');
                 const url = img.src;
-                if (id && url && !url.startsWith('data:') && url !== '') {
-                    syncImageToData(id, url);
+                // Only take valid URLs, prefer first non-empty one found
+                if (id && url && !url.startsWith('data:') && url !== '' && url !== window.location.href) {
+                    if (!imageUrls[id]) {
+                        imageUrls[id] = url;
+                    }
                 }
             });
+
+            // Sync all collected images to siteData
+            if (!siteData.imageMap) siteData.imageMap = {};
+            Object.keys(imageUrls).forEach(id => {
+                siteData.imageMap[id] = imageUrls[id];
+            });
+
+            // Also sync legacy fields
+            if (imageUrls['hero-main'] && siteData.hero) siteData.hero.heroImage = imageUrls['hero-main'];
+            if (imageUrls['about-profile'] && siteData.about) siteData.about.photo = imageUrls['about-profile'];
+
+            console.log('Saving images:', Object.keys(imageUrls).length, imageUrls);
 
             toast('Saving...', '');
             try {
