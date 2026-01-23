@@ -246,18 +246,18 @@
     }
   ],
   "theme": {
-    "gold": "#9aa60e",
-    "goldLight": "#00a3d7",
+    "gold": "#d2c0f6",
+    "goldLight": "#008bed",
     "goldDark": "#864ffe",
-    "sage": "#6b8e5b",
+    "sage": "#56e9da",
     "sageLight": "#8ba870",
     "sageDark": "#4b6e3b",
     "white": "#ffffff",
-    "cream": "#f5f8f2",
+    "cream": "#f4f0f0",
     "ivory": "#eef2e9",
     "taupe": "#dfe5d3",
     "warmGray": "#8fa885",
-    "charcoal": "#3d4a3c",
+    "charcoal": "#210050",
     "black": "#1d2d1b"
   },
   "imageMap": {
@@ -284,7 +284,7 @@
     "featured-table-setting": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80",
     "featured-flower-arrangement": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600&q=80",
     "featured-gala-setup": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
-    "featured-wedding-dress": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/featured-wedding-dress.jpg?v=1769191582130"
+    "featured-wedding-dress": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/featured-wedding-dress.JPG?v=1769212744157"
   },
   "gallery": [
     {
