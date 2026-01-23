@@ -780,6 +780,16 @@
                     }
                 });
             }
+            // Check API health before allowing edits
+            try {
+                const health = await fetch('/api/save-content').then(r => r.json());
+                if (!health.tokenConfigured) {
+                    toast('Warning: Server misconfigured', 'error');
+                    return;
+                }
+            } catch (e) {
+                toast('Warning: Cannot reach server', 'error');
+            }
             toast('Ready to edit!', 'success');
         }
 
@@ -839,6 +849,16 @@
         document.getElementById('imageModalFile').addEventListener('change', async function(e) {
             const file = e.target.files[0];
             if (!file) return;
+            if (file.size > 5 * 1024 * 1024) {
+                toast('Image too large (max 5MB)', 'error');
+                this.value = '';
+                return;
+            }
+            if (!file.type.startsWith('image/')) {
+                toast('Invalid file type', 'error');
+                this.value = '';
+                return;
+            }
             toast('Uploading...', '');
             const reader = new FileReader();
             reader.onload = async (ev) => {
@@ -888,7 +908,7 @@
                     body: JSON.stringify({ type: 'admin', data: siteData })
                 });
                 const result = await res.json();
-                if (result.success) toast('Saved! Changes are live.', 'success');
+                if (result.success) toast('Saved! Site updates in ~60 seconds.', 'success');
                 else toast('Save failed: ' + result.error, 'error');
             } catch (e) { toast('Save error: ' + e.message, 'error'); }
         }
