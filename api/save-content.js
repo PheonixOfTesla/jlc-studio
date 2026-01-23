@@ -83,12 +83,25 @@ module.exports = async (req, res) => {
     log('Request received:', req.method, req.url);
 
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     if (req.method === 'OPTIONS') {
         log('OPTIONS request, returning 200');
         return res.status(200).end();
+    }
+
+    // GET request = health check / debug
+    if (req.method === 'GET') {
+        const hasToken = !!process.env.GITHUB_TOKEN;
+        const tokenPreview = hasToken ? process.env.GITHUB_TOKEN.substring(0, 15) + '...' : 'NOT SET';
+        log('Health check - token status:', tokenPreview);
+        return res.status(200).json({
+            status: 'ok',
+            tokenConfigured: hasToken,
+            tokenPreview: tokenPreview,
+            repo: `${REPO_OWNER}/${REPO_NAME}`
+        });
     }
 
     if (req.method !== 'POST') {
@@ -111,6 +124,8 @@ module.exports = async (req, res) => {
             details: 'GITHUB_TOKEN not configured'
         });
     }
+
+    log('GITHUB_TOKEN is configured, length:', process.env.GITHUB_TOKEN.length);
 
     try {
         const { type, data } = req.body || {};
@@ -145,9 +160,21 @@ module.exports = async (req, res) => {
     } catch (error) {
         log('Save error:', error.message);
         console.error('Full error:', error);
+
+        // Provide more helpful error messages
+        let userMessage = error.message;
+        if (error.message.includes('Bad credentials')) {
+            userMessage = 'GitHub token is invalid or expired. Please check your GITHUB_TOKEN.';
+        } else if (error.message.includes('Not Found')) {
+            userMessage = 'Repository not found or token lacks access. Check token permissions.';
+        } else if (error.message.includes('Resource not accessible')) {
+            userMessage = 'Token does not have write permission. Enable "Contents: Read and write" for the token.';
+        }
+
         return res.status(500).json({
             error: 'Failed to save content',
-            details: error.message
+            details: userMessage,
+            raw: error.message
         });
     }
 };
