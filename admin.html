@@ -42,11 +42,21 @@
 
         body.editor-mode [data-content] { outline: 2px dashed transparent; cursor: text; transition: outline-color 0.2s; }
         body.editor-mode [data-content]:hover { outline-color: rgba(196,160,82,0.5); }
-        body.editor-mode [data-content]:focus { outline-color: var(--gold); background: rgba(196,160,82,0.1); }
+        body.editor-mode [data-content]:focus { outline-color: var(--gold); background: rgba(196,160,82,0.15); }
 
-        .image-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; }
+        /* Fix hero section in editor mode - make image and text visible */
+        body.editor-mode .hero-image { z-index: 0; }
+        body.editor-mode .hero { position: relative; }
+        body.editor-mode .hero-content { position: relative; z-index: 2; }
+
+        .image-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 5; }
         .image-edit-overlay:hover { opacity: 1; }
         .image-edit-overlay span { background: white; color: #333; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+
+        /* Hero image edit button - special positioning */
+        .hero-image-edit-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; background: white; color: #333; padding: 1rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: none; }
+        .hero-image-edit-btn:hover { background: var(--gold); color: white; }
+        body.editor-mode .hero-image-edit-btn { display: block; }
 
         .editor-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 10001; }
         .editor-modal.active { display: flex; }
@@ -164,6 +174,7 @@
         <div class="hero-image">
             <img src="" data-image-id="hero-main" alt="Elegant floral arrangement">
             <div class="hero-overlay"></div>
+            <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('[data-image-id=hero-main]'))">Change Hero Photo</button>
         </div>
         <div class="hero-content">
             <div class="hero-badge" data-content="hero-badge"></div>
@@ -414,8 +425,12 @@
                 el.setAttribute('spellcheck', 'false');
             });
 
-            // Add image overlays
+            // Add image overlays (skip hero-main - it has its own button)
             document.querySelectorAll('[data-image-id]').forEach(img => {
+                const imageId = img.getAttribute('data-image-id');
+                // Skip hero image - has special button
+                if (imageId === 'hero-main') return;
+
                 const wrapper = img.parentElement;
                 wrapper.style.position = 'relative';
                 const overlay = document.createElement('div');
