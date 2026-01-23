@@ -56,13 +56,14 @@ const Navigation = {
 
         // Close menu on outside click
         document.addEventListener('click', (e) => {
-            if (!this.navMenu.contains(e.target) && !this.navToggle.contains(e.target)) {
+            if (this.navMenu && this.navToggle && !this.navMenu.contains(e.target) && !this.navToggle.contains(e.target)) {
                 this.closeMenu();
             }
         });
     },
 
     checkScroll() {
+        if (!this.navbar) return;
         if (window.scrollY > 100) {
             this.navbar.classList.add('scrolled');
         } else {
@@ -71,12 +72,14 @@ const Navigation = {
     },
 
     toggleMenu() {
+        if (!this.navToggle || !this.navMenu) return;
         this.navToggle.classList.toggle('active');
         this.navMenu.classList.toggle('active');
         document.body.style.overflow = this.navMenu.classList.contains('active') ? 'hidden' : '';
     },
 
     closeMenu() {
+        if (!this.navToggle || !this.navMenu) return;
         this.navToggle.classList.remove('active');
         this.navMenu.classList.remove('active');
         document.body.style.overflow = '';

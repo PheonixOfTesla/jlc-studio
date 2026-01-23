@@ -859,7 +859,10 @@
             try {
                 const res = await fetch('/api/save-content', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer admin'
+                    },
                     body: JSON.stringify({ type: 'admin', data: siteData })
                 });
                 const result = await res.json();
