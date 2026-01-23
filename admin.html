@@ -822,10 +822,15 @@
             if (!currentImageEl) return;
             const url = document.getElementById('imageModalUrl').value.trim();
             if (url) {
-                currentImageEl.src = url;
                 const id = currentImageEl.getAttribute('data-image-id');
+                // Update ALL elements with this image ID (fixes duplicate ID issue across tabs)
                 if (id) {
+                    document.querySelectorAll(`[data-image-id="${id}"]`).forEach(img => {
+                        img.src = url;
+                    });
                     syncImageToData(id, url);
+                } else {
+                    currentImageEl.src = url;
                 }
             }
             closeImageModal();
