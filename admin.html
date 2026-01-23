@@ -271,9 +271,9 @@
                         <h2 class="section-title" data-content="about-name"></h2>
                         <p class="about-lead" data-content="about-short-bio"></p>
                         <div class="about-features">
-                            <div class="feature"><span>✓ NYC Fashion Background</span></div>
-                            <div class="feature"><span>✓ International Experience</span></div>
-                            <div class="feature"><span>✓ Personalized Service</span></div>
+                            <div class="feature"><span>✓ <span data-content="about-feature1">NYC Fashion Background</span></span></div>
+                            <div class="feature"><span>✓ <span data-content="about-feature2">International Experience</span></span></div>
+                            <div class="feature"><span>✓ <span data-content="about-feature3">Personalized Service</span></span></div>
                         </div>
                         <a href="#" class="btn btn-secondary">Learn More</a>
                     </div>
@@ -287,14 +287,14 @@
             </div>
             <div class="container">
                 <div class="section-header centered light">
-                    <span class="section-label">How We Work</span>
-                    <h2 class="section-title">Your Journey With Us</h2>
+                    <span class="section-label" data-content="process-label">How We Work</span>
+                    <h2 class="section-title" data-content="process-title">Your Journey With Us</h2>
                 </div>
                 <div class="process-timeline">
-                    <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3>Discovery</h3><p>In-depth consultation to understand your vision and story.</p></div></div>
-                    <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3>Design</h3><p>Mood boards and detailed proposals bring your concept to life.</p></div></div>
-                    <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3>Create</h3><p>Meticulous attention to detail in every handcrafted element.</p></div></div>
-                    <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3>Execute</h3><p>Seamless delivery and installation, exactly as imagined.</p></div></div>
+                    <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3 data-content="process-step1Title">Discovery</h3><p data-content="process-step1Desc">In-depth consultation to understand your vision and story.</p></div></div>
+                    <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3 data-content="process-step2Title">Design</h3><p data-content="process-step2Desc">Mood boards and detailed proposals bring your concept to life.</p></div></div>
+                    <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3 data-content="process-step3Title">Create</h3><p data-content="process-step3Desc">Meticulous attention to detail in every handcrafted element.</p></div></div>
+                    <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3 data-content="process-step4Title">Execute</h3><p data-content="process-step4Desc">Seamless delivery and installation, exactly as imagined.</p></div></div>
                 </div>
             </div>
         </section>
@@ -397,8 +397,8 @@
             <div class="container">
                 <div class="skills-grid">
                     <div class="skills-content">
-                        <span class="section-label">Expertise</span>
-                        <h2 class="section-title">Core Skills</h2>
+                        <span class="section-label" data-content="about-skillsLabel">Expertise</span>
+                        <h2 class="section-title" data-content="about-skillsTitle">Core Skills</h2>
                         <div class="skills-list" id="skills-list"></div>
                     </div>
                     <div class="skills-image"><img src="" data-image-id="about-cta-image" alt="Floral arrangement"></div>
@@ -457,7 +457,8 @@
                     <div class="service-detail-content">
                         <span class="section-label">Service</span>
                         <h2 data-content="services-floral"></h2>
-                        <p class="lead">From intimate dinner arrangements to grand wedding installations, each bloom tells your unique story.</p>
+                        <p class="lead" data-content="services-floralLead">From intimate dinner arrangements to grand wedding installations, each bloom tells your unique story.</p>
+                        <p data-content="services-floralDesc">With years of experience leading floral departments for luxury events, we approach each arrangement as a work of art. Our designs blend classic elegance with contemporary flair, using seasonal blooms and unexpected elements to create unforgettable impressions.</p>
                         <div data-service-category="floral"></div>
                     </div>
                     <div class="service-detail-images">
@@ -474,7 +475,8 @@
                     <div class="service-detail-content">
                         <span class="section-label">Service</span>
                         <h2 data-content="services-decor"></h2>
-                        <p class="lead">Complete venue transformations that create immersive experiences and unforgettable atmospheres.</p>
+                        <p class="lead" data-content="services-decorLead">Complete venue transformations that create immersive experiences and unforgettable atmospheres.</p>
+                        <p data-content="services-decorDesc">We don't just decorate spaces—we transform them. From conceptual design through on-site installation, we handle every detail. Our background in fashion and visual design brings a unique perspective to event styling that elevates every celebration.</p>
                         <div data-service-category="decor"></div>
                     </div>
                     <div class="service-detail-images">
@@ -491,7 +493,8 @@
                     <div class="service-detail-content">
                         <span class="section-label">Service</span>
                         <h2 data-content="services-tailoring"></h2>
-                        <p class="lead">Bespoke garments and alterations crafted with precision from our NYC fashion heritage.</p>
+                        <p class="lead" data-content="services-tailoringLead">Bespoke garments and alterations crafted with precision from our NYC fashion heritage.</p>
+                        <p data-content="services-tailoringDesc">With a background that includes New York Fashion Week runway shows and work with legendary designers, we bring couture-level craftsmanship to every piece. From wedding dress alterations to custom garments designed from scratch, each stitch reflects our commitment to perfection.</p>
                         <div data-service-category="tailoring"></div>
                     </div>
                     <div class="service-detail-images">
@@ -507,6 +510,7 @@
                 <div class="section-header centered">
                     <span class="section-label" data-content="packages-heading"></span>
                     <h2 class="section-title" data-content="packages-title"></h2>
+                    <p class="section-description" data-content="packages-description">Bundle services for a cohesive vision and special pricing.</p>
                 </div>
                 <div id="packages-list" class="packages-grid"></div>
             </div>
@@ -551,9 +555,9 @@
                 <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
             </div>
             <div class="page-hero-content">
-                <span class="section-label">Our Work</span>
-                <h1>Portfolio</h1>
-                <p>A curated collection of our finest creations</p>
+                <span class="section-label" data-content="portfolio-label">Our Work</span>
+                <h1 data-content="portfolio-title">Portfolio</h1>
+                <p data-content="portfolio-description">A curated collection of our finest creations</p>
             </div>
         </section>
 
@@ -610,7 +614,7 @@
             <div class="page-hero-content">
                 <span class="section-label" data-content="contact-label"></span>
                 <h1 data-content="contact-heading"></h1>
-                <p>Start your creative journey</p>
+                <p data-content="contact-subtitle">Start your creative journey</p>
             </div>
         </section>
 
@@ -618,8 +622,8 @@
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h2>Get in Touch</h2>
-                        <p class="lead">Ready to bring your vision to life? We'd love to hear from you.</p>
+                        <h2 data-content="contact-infoTitle">Get in Touch</h2>
+                        <p class="lead" data-content="contact-infoLead">Ready to bring your vision to life? We'd love to hear from you.</p>
                         <div class="contact-details">
                             <div class="contact-item"><h4>Phone</h4><a href="#" data-link="phone"></a></div>
                             <div class="contact-item"><h4>Email</h4><a href="#" data-link="email"></a></div>
@@ -673,17 +677,17 @@
                 <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
             </div>
             <div class="page-hero-content">
-                <span class="section-label">Schedule Your Consultation</span>
-                <h1>Book Your Appointment</h1>
-                <p>Choose the consultation type that works best for you</p>
+                <span class="section-label" data-content="booking-label">Schedule Your Consultation</span>
+                <h1 data-content="booking-title">Book Your Appointment</h1>
+                <p data-content="booking-subtitle">Choose the consultation type that works best for you</p>
             </div>
         </section>
 
         <section style="padding: 4rem 0;">
             <div class="container">
                 <div class="section-header centered">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Available Consultations</h2>
-                    <p style="color: var(--warm-gray);">Booking cards link to Cal.com - prices and details are set there.</p>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;" data-content="booking-consultationsTitle">Available Consultations</h2>
+                    <p style="color: var(--warm-gray);" data-content="booking-consultationsDesc">Select the consultation type that best fits your needs. All bookings include professional guidance and detailed planning for your special event.</p>
                 </div>
             </div>
         </section>
@@ -884,24 +888,57 @@
                 'about-journey': () => siteData.labels.about.journey = val,
                 'about-background': () => siteData.labels.about.background = val,
                 'about-expertise': () => siteData.labels.about.expertise = val,
+                'about-skillsLabel': () => siteData.labels.about.skillsLabel = val,
+                'about-skillsTitle': () => siteData.labels.about.skillsTitle = val,
+                'about-feature1': () => siteData.labels.aboutFeatures.feature1 = val,
+                'about-feature2': () => siteData.labels.aboutFeatures.feature2 = val,
+                'about-feature3': () => siteData.labels.aboutFeatures.feature3 = val,
                 'services-expertise': () => siteData.labels.services.expertise = val,
                 'services-expertiseTitle': () => siteData.labels.services.expertiseTitle = val,
                 'services-expertiseDesc': () => siteData.labels.services.expertiseDesc = val,
                 'services-floral': () => siteData.labels.services.floral = val,
                 'services-decor': () => siteData.labels.services.decor = val,
                 'services-tailoring': () => siteData.labels.services.tailoring = val,
+                'services-floralLead': () => siteData.labels.services.floralLead = val,
+                'services-floralDesc': () => siteData.labels.services.floralDesc = val,
+                'services-decorLead': () => siteData.labels.services.decorLead = val,
+                'services-decorDesc': () => siteData.labels.services.decorDesc = val,
+                'services-tailoringLead': () => siteData.labels.services.tailoringLead = val,
+                'services-tailoringDesc': () => siteData.labels.services.tailoringDesc = val,
                 'pages-services': () => siteData.labels.pages.services = val,
                 'pages-servicesTitle': () => siteData.labels.pages.servicesTitle = val,
                 'packages-heading': () => siteData.labels.packages.heading = val,
                 'packages-title': () => siteData.labels.packages.title = val,
+                'packages-description': () => siteData.labels.packages.description = val,
                 'testimonials-heading': () => siteData.labels.testimonials.heading = val,
                 'testimonials-subheading': () => siteData.labels.testimonials.subheading = val,
                 'cta-heading': () => siteData.labels.cta.heading = val,
                 'cta-description': () => siteData.labels.cta.description = val,
                 'contact-label': () => siteData.labels.contact.label = val,
                 'contact-heading': () => siteData.labels.contact.heading = val,
+                'contact-subtitle': () => siteData.labels.contact.subtitle = val,
+                'contact-infoTitle': () => siteData.labels.contact.infoTitle = val,
+                'contact-infoLead': () => siteData.labels.contact.infoLead = val,
                 'faq-label': () => siteData.labels.faq.label = val,
                 'faq-title': () => siteData.labels.faq.title = val,
+                'portfolio-label': () => siteData.labels.portfolio.label = val,
+                'portfolio-title': () => siteData.labels.portfolio.title = val,
+                'portfolio-description': () => siteData.labels.portfolio.description = val,
+                'booking-label': () => siteData.labels.booking.label = val,
+                'booking-title': () => siteData.labels.booking.title = val,
+                'booking-subtitle': () => siteData.labels.booking.subtitle = val,
+                'booking-consultationsTitle': () => siteData.labels.booking.consultationsTitle = val,
+                'booking-consultationsDesc': () => siteData.labels.booking.consultationsDesc = val,
+                'process-label': () => siteData.labels.process.label = val,
+                'process-title': () => siteData.labels.process.title = val,
+                'process-step1Title': () => siteData.labels.process.step1Title = val,
+                'process-step1Desc': () => siteData.labels.process.step1Desc = val,
+                'process-step2Title': () => siteData.labels.process.step2Title = val,
+                'process-step2Desc': () => siteData.labels.process.step2Desc = val,
+                'process-step3Title': () => siteData.labels.process.step3Title = val,
+                'process-step3Desc': () => siteData.labels.process.step3Desc = val,
+                'process-step4Title': () => siteData.labels.process.step4Title = val,
+                'process-step4Desc': () => siteData.labels.process.step4Desc = val,
                 'businessName': () => siteData.settings.businessName = val,
                 'tagline': () => siteData.settings.tagline = val,
                 'phone': () => siteData.settings.phone = val,

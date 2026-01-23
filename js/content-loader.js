@@ -145,6 +145,12 @@ const ContentLoader = {
         this.setContent('services-floral', labels.services.floral);
         this.setContent('services-decor', labels.services.decor);
         this.setContent('services-tailoring', labels.services.tailoring);
+        this.setContent('services-floralLead', labels.services.floralLead);
+        this.setContent('services-floralDesc', labels.services.floralDesc);
+        this.setContent('services-decorLead', labels.services.decorLead);
+        this.setContent('services-decorDesc', labels.services.decorDesc);
+        this.setContent('services-tailoringLead', labels.services.tailoringLead);
+        this.setContent('services-tailoringDesc', labels.services.tailoringDesc);
       }
 
       // Testimonials labels
@@ -157,6 +163,7 @@ const ContentLoader = {
       if (labels.packages) {
         this.setContent('packages-heading', labels.packages.heading);
         this.setContent('packages-title', labels.packages.title);
+        this.setContent('packages-description', labels.packages.description);
       }
 
       // FAQ labels
@@ -169,6 +176,9 @@ const ContentLoader = {
       if (labels.contact) {
         this.setContent('contact-label', labels.contact.label);
         this.setContent('contact-heading', labels.contact.heading);
+        this.setContent('contact-subtitle', labels.contact.subtitle);
+        this.setContent('contact-infoTitle', labels.contact.infoTitle);
+        this.setContent('contact-infoLead', labels.contact.infoLead);
       }
 
       // CTA labels
@@ -183,12 +193,51 @@ const ContentLoader = {
         this.setContent('about-journey', labels.about.journey);
         this.setContent('about-background', labels.about.background);
         this.setContent('about-expertise', labels.about.expertise);
+        this.setContent('about-skillsLabel', labels.about.skillsLabel);
+        this.setContent('about-skillsTitle', labels.about.skillsTitle);
       }
 
       // Page labels
       if (labels.pages) {
         this.setContent('pages-services', labels.pages.services);
         this.setContent('pages-servicesTitle', labels.pages.servicesTitle);
+      }
+
+      // Portfolio labels
+      if (labels.portfolio) {
+        this.setContent('portfolio-label', labels.portfolio.label);
+        this.setContent('portfolio-title', labels.portfolio.title);
+        this.setContent('portfolio-description', labels.portfolio.description);
+      }
+
+      // Booking labels
+      if (labels.booking) {
+        this.setContent('booking-label', labels.booking.label);
+        this.setContent('booking-title', labels.booking.title);
+        this.setContent('booking-subtitle', labels.booking.subtitle);
+        this.setContent('booking-consultationsTitle', labels.booking.consultationsTitle);
+        this.setContent('booking-consultationsDesc', labels.booking.consultationsDesc);
+      }
+
+      // Process section labels
+      if (labels.process) {
+        this.setContent('process-label', labels.process.label);
+        this.setContent('process-title', labels.process.title);
+        this.setContent('process-step1Title', labels.process.step1Title);
+        this.setContent('process-step1Desc', labels.process.step1Desc);
+        this.setContent('process-step2Title', labels.process.step2Title);
+        this.setContent('process-step2Desc', labels.process.step2Desc);
+        this.setContent('process-step3Title', labels.process.step3Title);
+        this.setContent('process-step3Desc', labels.process.step3Desc);
+        this.setContent('process-step4Title', labels.process.step4Title);
+        this.setContent('process-step4Desc', labels.process.step4Desc);
+      }
+
+      // About features
+      if (labels.aboutFeatures) {
+        this.setContent('about-feature1', labels.aboutFeatures.feature1);
+        this.setContent('about-feature2', labels.aboutFeatures.feature2);
+        this.setContent('about-feature3', labels.aboutFeatures.feature3);
       }
     }
 
