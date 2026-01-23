@@ -257,11 +257,7 @@ const ContentLoader = {
       }
     });
 
-    // Also set hero image if specified
-    if (this.adminData.hero?.heroImage) {
-      const heroImg = document.querySelector('[data-image-id="hero-main"]');
-      if (heroImg) heroImg.src = this.adminData.hero.heroImage;
-    }
+    // imageMap is the single source of truth for all images
 
     console.log('✓ Images loaded');
   },
