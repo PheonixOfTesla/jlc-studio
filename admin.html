@@ -815,12 +815,21 @@
                 currentImageEl.src = url;
                 const id = currentImageEl.getAttribute('data-image-id');
                 if (id) {
-                    if (!siteData.imageMap) siteData.imageMap = {};
-                    siteData.imageMap[id] = url;
+                    syncImageToData(id, url);
                 }
             }
             closeImageModal();
             toast('Image updated', 'success');
+        }
+
+        // Sync image to BOTH imageMap AND legacy fields
+        function syncImageToData(id, url) {
+            if (!siteData.imageMap) siteData.imageMap = {};
+            siteData.imageMap[id] = url;
+
+            // Sync legacy fields so nothing can override
+            if (id === 'hero-main' && siteData.hero) siteData.hero.heroImage = url;
+            if (id === 'about-profile' && siteData.about) siteData.about.photo = url;
         }
 
         document.getElementById('imageModalUrl').addEventListener('input', function() {
@@ -852,10 +861,20 @@
         });
 
         async function saveAll() {
+            // Collect all text content
             document.querySelectorAll('[data-content]').forEach(el => {
                 const key = el.getAttribute('data-content');
                 const val = el.textContent.trim();
                 mapToSiteData(key, val);
+            });
+
+            // Collect ALL images from DOM and sync to data
+            document.querySelectorAll('[data-image-id]').forEach(img => {
+                const id = img.getAttribute('data-image-id');
+                const url = img.src;
+                if (id && url && !url.startsWith('data:') && url !== '') {
+                    syncImageToData(id, url);
+                }
             });
 
             toast('Saving...', '');
