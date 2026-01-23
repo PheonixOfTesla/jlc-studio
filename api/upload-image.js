@@ -77,8 +77,9 @@ async function uploadImage(filename, base64Content) {
 
     const result = await githubRequest('PUT', `/contents/${filePath}`, body);
 
-    // Return the raw.githubusercontent.com URL
-    return `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${filePath}`;
+    // Return the raw.githubusercontent.com URL with cache-busting timestamp
+    const timestamp = Date.now();
+    return `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${filePath}?v=${timestamp}`;
 }
 
 module.exports = async (req, res) => {

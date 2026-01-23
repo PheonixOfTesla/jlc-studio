@@ -115,6 +115,11 @@ const ContentLoader = {
         el.textContent = settings.email;
       });
 
+      // Update email icon (just href, keep the @ symbol)
+      document.querySelectorAll('[data-link="email-icon"]').forEach(el => {
+        el.href = `mailto:${settings.email}`;
+      });
+
       // Update social links
       document.querySelectorAll('[data-link="instagram"]').forEach(el => {
         el.href = settings.instagram || '#';
