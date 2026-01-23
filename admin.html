@@ -893,24 +893,22 @@
                 mapToSiteData(key, val);
             });
 
-            // Collect ALL images from ALL tabs - build deduplicated map
-            const imageUrls = {};
+            // Start with existing imageMap (preserve what's already saved)
+            if (!siteData.imageMap) siteData.imageMap = {};
+            const imageUrls = { ...siteData.imageMap };
+
+            // Collect ALL images from ALL tabs - update map with DOM values
             document.querySelectorAll('[data-image-id]').forEach(img => {
                 const id = img.getAttribute('data-image-id');
                 const url = img.src;
-                // Only take valid URLs, prefer first non-empty one found
+                // Update if we have a valid URL from DOM
                 if (id && url && !url.startsWith('data:') && url !== '' && url !== window.location.href) {
-                    if (!imageUrls[id]) {
-                        imageUrls[id] = url;
-                    }
+                    imageUrls[id] = url;
                 }
             });
 
-            // Sync all collected images to siteData
-            if (!siteData.imageMap) siteData.imageMap = {};
-            Object.keys(imageUrls).forEach(id => {
-                siteData.imageMap[id] = imageUrls[id];
-            });
+            // Write back to siteData.imageMap
+            siteData.imageMap = imageUrls;
 
             // Also sync legacy fields
             if (imageUrls['hero-main'] && siteData.hero) siteData.hero.heroImage = imageUrls['hero-main'];
