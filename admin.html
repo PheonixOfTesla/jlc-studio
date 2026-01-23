@@ -16,84 +16,77 @@
         .editor-login-box h1 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; }
         .editor-login-box p { color: #666; margin-bottom: 2rem; font-size: 0.9rem; }
         .editor-login-box input { width: 100%; padding: 1rem; border: 2px solid #e5e5e5; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; box-sizing: border-box; }
-        .editor-login-box input:focus { outline: none; border-color: var(--gold); }
         .editor-login-box button { width: 100%; padding: 1rem; background: var(--gold); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
         .editor-login-error { color: #c45b5b; font-size: 0.85rem; margin-top: 0.5rem; display: none; }
         .editor-login-error.show { display: block; }
 
         /* Toolbar */
-        .editor-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #1a1a1a; color: white; padding: 0.6rem 1.5rem; display: none; align-items: center; justify-content: space-between; z-index: 9999; }
+        .editor-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #1a1a1a; color: white; padding: 0.5rem 1rem; display: none; align-items: center; justify-content: space-between; z-index: 9999; }
         .editor-toolbar.active { display: flex; }
-        .editor-toolbar-left { display: flex; align-items: center; gap: 1rem; }
-        .editor-toolbar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
-        .editor-toolbar-status { font-size: 0.75rem; padding: 0.3rem 0.6rem; background: rgba(125,155,118,0.2); color: #7D9B76; border-radius: 20px; }
-        .editor-toolbar-right { display: flex; align-items: center; gap: 0.5rem; }
-        .editor-btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+        .editor-toolbar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); }
+        .editor-btn { padding: 0.4rem 0.8rem; border: none; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; margin-left: 0.5rem; }
         .editor-btn-primary { background: var(--gold); color: white; }
         .editor-btn-secondary { background: rgba(255,255,255,0.15); color: white; }
         .editor-btn-danger { background: rgba(196,91,91,0.3); color: #ffb4b4; }
 
         /* Page Tabs */
-        .page-tabs { position: fixed; top: 52px; left: 0; right: 0; background: #2a2a2a; display: none; z-index: 9998; padding: 0 1rem; }
+        .page-tabs { position: fixed; top: 44px; left: 0; right: 0; background: #2a2a2a; display: none; z-index: 9998; padding: 0; overflow-x: auto; }
         .page-tabs.active { display: flex; }
-        .page-tab { padding: 0.8rem 1.5rem; color: #999; cursor: pointer; border-bottom: 3px solid transparent; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+        .page-tab { padding: 0.6rem 1.2rem; color: #888; cursor: pointer; border-bottom: 2px solid transparent; font-size: 0.8rem; white-space: nowrap; }
         .page-tab:hover { color: white; }
         .page-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
         /* Page Sections */
-        .admin-page { display: none; padding-top: 100px; }
+        .admin-page { display: none; }
         .admin-page.active { display: block; }
+        body.editor-mode { padding-top: 88px; }
+        body.editor-mode .navbar { top: 88px; }
+        body.editor-mode .preloader { display: none !important; }
 
-        /* Editor Mode Styles */
-        body.editor-mode [data-content] { outline: 2px dashed transparent; cursor: text; transition: all 0.2s; min-height: 1em; }
+        /* Editor Mode - text editing */
+        body.editor-mode [data-content] { outline: 2px dashed transparent; cursor: text; transition: outline-color 0.2s; }
         body.editor-mode [data-content]:hover { outline-color: rgba(139,155,122,0.5); }
         body.editor-mode [data-content]:focus { outline-color: var(--gold); background: rgba(139,155,122,0.1); }
 
         /* Hero image editing */
-        body.editor-mode .hero-image { z-index: 0; }
-        body.editor-mode .hero { position: relative; }
+        body.editor-mode .hero-image { z-index: 0 !important; }
         body.editor-mode .hero-content { position: relative; z-index: 2; }
-        .hero-image-edit-btn { position: absolute; bottom: 2rem; right: 2rem; z-index: 10; background: white; color: #333; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.3); display: none; }
-        body.editor-mode .hero-image-edit-btn { display: block; }
+        body.editor-mode .page-hero-image { z-index: 0 !important; }
+        .hero-edit-btn { position: absolute; bottom: 1.5rem; right: 1.5rem; z-index: 10; background: white; color: #333; padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: none; }
+        body.editor-mode .hero-edit-btn { display: block; }
 
         /* Image overlays */
-        .image-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 5; }
-        .image-edit-overlay:hover { opacity: 1; }
-        .image-edit-overlay span { background: white; color: #333; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+        .img-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 5; }
+        .img-edit-overlay:hover { opacity: 1; }
+        .img-edit-overlay span { background: white; color: #333; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
 
-        /* Modals */
+        /* Modal */
         .editor-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 10001; }
         .editor-modal.active { display: flex; }
-        .editor-modal-box { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
-        .editor-modal-box h3 { margin-bottom: 1rem; }
-        .editor-modal-box img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; background: #f0f0f0; margin-bottom: 1rem; }
-        .editor-modal-box input[type="text"], .editor-modal-box input[type="file"] { width: 100%; padding: 0.75rem; border: 2px solid #e5e5e5; border-radius: 8px; margin-bottom: 0.75rem; box-sizing: border-box; }
-        .editor-modal-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
-        .editor-modal-actions button { flex: 1; padding: 0.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .editor-modal-box { background: white; padding: 1.5rem; border-radius: 12px; width: 90%; max-width: 450px; }
+        .editor-modal-box h3 { margin-bottom: 1rem; font-size: 1rem; }
+        .editor-modal-box img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; background: #f0f0f0; margin-bottom: 1rem; }
+        .editor-modal-box input { width: 100%; padding: 0.6rem; border: 2px solid #e5e5e5; border-radius: 6px; margin-bottom: 0.5rem; box-sizing: border-box; font-size: 0.9rem; }
+        .editor-modal-actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .editor-modal-actions button { flex: 1; padding: 0.6rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
         .editor-modal-actions .save { background: var(--gold); color: white; }
-        .editor-modal-actions .cancel { background: #e5e5e5; color: #333; }
+        .editor-modal-actions .cancel { background: #e5e5e5; }
 
         /* Toast */
-        .editor-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #1a1a1a; color: white; padding: 1rem 2rem; border-radius: 8px; opacity: 0; transition: all 0.3s; z-index: 10002; }
+        .editor-toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #1a1a1a; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; opacity: 0; transition: all 0.3s; z-index: 10002; font-size: 0.9rem; }
         .editor-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .editor-toast.success { background: #7D9B76; }
         .editor-toast.error { background: #c45b5b; }
 
         /* Color Panel */
-        .color-panel { position: fixed; top: 100px; right: -320px; width: 320px; height: calc(100vh - 100px); background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 9997; overflow-y: auto; transition: right 0.3s; }
+        .color-panel { position: fixed; top: 88px; right: -280px; width: 280px; height: calc(100vh - 88px); background: white; box-shadow: -2px 0 15px rgba(0,0,0,0.1); z-index: 9997; overflow-y: auto; transition: right 0.3s; padding: 1rem; box-sizing: border-box; }
         .color-panel.open { right: 0; }
-        .color-panel-header { padding: 1rem; border-bottom: 1px solid #e5e5e5; display: flex; justify-content: space-between; align-items: center; }
-        .color-panel-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-        .color-panel-body { padding: 1rem; }
-        .color-group { margin-bottom: 1rem; }
-        .color-group label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.3rem; color: #666; }
+        .color-panel h3 { margin-bottom: 1rem; font-size: 1rem; }
+        .color-group { margin-bottom: 0.8rem; }
+        .color-group label { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; margin-bottom: 0.2rem; color: #666; }
         .color-row { display: flex; gap: 0.5rem; }
-        .color-row input[type="color"] { width: 45px; height: 36px; border: none; border-radius: 6px; cursor: pointer; }
-        .color-row input[type="text"] { flex: 1; padding: 0.4rem; border: 1px solid #ddd; border-radius: 6px; font-family: monospace; }
-
-        /* Page hero for non-home pages */
-        .page-hero { min-height: 50vh; }
-        body.editor-mode .page-hero-image { position: relative; z-index: 0; }
+        .color-row input[type="color"] { width: 40px; height: 32px; border: none; border-radius: 4px; cursor: pointer; }
+        .color-row input[type="text"] { flex: 1; padding: 0.3rem; border: 1px solid #ddd; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -110,11 +103,8 @@
 
     <!-- TOOLBAR -->
     <div class="editor-toolbar" id="editorToolbar">
-        <div class="editor-toolbar-left">
-            <span class="editor-toolbar-logo">JLC Editor</span>
-            <span class="editor-toolbar-status">Editing</span>
-        </div>
-        <div class="editor-toolbar-right">
+        <span class="editor-toolbar-logo">JLC Editor</span>
+        <div>
             <button class="editor-btn editor-btn-secondary" onclick="toggleColors()">Colors</button>
             <button class="editor-btn editor-btn-primary" onclick="saveAll()">Save All</button>
             <button class="editor-btn editor-btn-danger" onclick="editorLogout()">Logout</button>
@@ -127,25 +117,20 @@
         <div class="page-tab" data-page="about">About</div>
         <div class="page-tab" data-page="services">Services</div>
         <div class="page-tab" data-page="portfolio">Portfolio</div>
+        <div class="page-tab" data-page="contact">Contact</div>
         <div class="page-tab" data-page="booking">Booking</div>
-        <div class="page-tab" data-page="settings">Settings</div>
     </div>
 
     <!-- COLOR PANEL -->
     <div class="color-panel" id="colorPanel">
-        <div class="color-panel-header">
-            <h3>Theme Colors</h3>
-            <button class="color-panel-close" onclick="toggleColors()">&times;</button>
-        </div>
-        <div class="color-panel-body">
-            <div class="color-group"><label>Primary (Gold/Sage)</label><div class="color-row"><input type="color" id="cGold"><input type="text" id="cGoldHex"></div></div>
-            <div class="color-group"><label>Primary Light</label><div class="color-row"><input type="color" id="cGoldLight"><input type="text" id="cGoldLightHex"></div></div>
-            <div class="color-group"><label>Primary Dark</label><div class="color-row"><input type="color" id="cGoldDark"><input type="text" id="cGoldDarkHex"></div></div>
-            <div class="color-group"><label>Accent (Sage)</label><div class="color-row"><input type="color" id="cSage"><input type="text" id="cSageHex"></div></div>
-            <div class="color-group"><label>Background (Cream)</label><div class="color-row"><input type="color" id="cCream"><input type="text" id="cCreamHex"></div></div>
-            <div class="color-group"><label>Text (Charcoal)</label><div class="color-row"><input type="color" id="cCharcoal"><input type="text" id="cCharcoalHex"></div></div>
-            <button class="editor-btn editor-btn-primary" style="width:100%;margin-top:1rem" onclick="applyColors()">Apply Colors</button>
-        </div>
+        <h3>Theme Colors</h3>
+        <div class="color-group"><label>Primary</label><div class="color-row"><input type="color" id="cGold"><input type="text" id="cGoldHex"></div></div>
+        <div class="color-group"><label>Primary Light</label><div class="color-row"><input type="color" id="cGoldLight"><input type="text" id="cGoldLightHex"></div></div>
+        <div class="color-group"><label>Primary Dark</label><div class="color-row"><input type="color" id="cGoldDark"><input type="text" id="cGoldDarkHex"></div></div>
+        <div class="color-group"><label>Sage</label><div class="color-row"><input type="color" id="cSage"><input type="text" id="cSageHex"></div></div>
+        <div class="color-group"><label>Cream</label><div class="color-row"><input type="color" id="cCream"><input type="text" id="cCreamHex"></div></div>
+        <div class="color-group"><label>Charcoal</label><div class="color-row"><input type="color" id="cCharcoal"><input type="text" id="cCharcoalHex"></div></div>
+        <button class="editor-btn editor-btn-primary" style="width:100%;margin-top:1rem" onclick="applyColors()">Apply</button>
     </div>
 
     <!-- IMAGE MODAL -->
@@ -165,13 +150,26 @@
     <!-- TOAST -->
     <div class="editor-toast" id="editorToast"></div>
 
-    <!-- ==================== HOME PAGE ==================== -->
+    <!-- ====================== HOME PAGE (EXACT COPY OF index.html) ====================== -->
     <div class="admin-page active" id="page-home">
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#" class="nav-link">About</a></li>
+                    <li><a href="#" class="nav-link">Services</a></li>
+                    <li><a href="#" class="nav-link">Portfolio</a></li>
+                    <li><a href="#" class="nav-link nav-cta" style="background-color: var(--gold); color: white; padding: 0.5rem 1.5rem; border-radius: 4px;">BOOK NOW</a></li>
+                </ul>
+            </div>
+        </nav>
+
         <section class="hero" id="hero">
             <div class="hero-image">
-                <img src="" data-image-id="hero-main" alt="Hero image">
+                <img src="" data-image-id="hero-main" alt="Elegant floral arrangement">
                 <div class="hero-overlay"></div>
-                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-home [data-image-id=hero-main]'))">Change Hero Photo</button>
+                <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Hero Photo</button>
             </div>
             <div class="hero-content">
                 <div class="hero-badge" data-content="hero-badge"></div>
@@ -186,6 +184,7 @@
                     <a href="#" class="btn btn-outline" data-content="hero-btn-secondary"></a>
                 </div>
             </div>
+            <div class="hero-scroll"><span>Scroll</span><div class="scroll-indicator"></div></div>
         </section>
 
         <section class="featured-work">
@@ -195,21 +194,56 @@
                     <h2 class="section-title" data-content="hero-craftTitle"></h2>
                 </div>
                 <div class="featured-grid">
-                    <div class="featured-item large"><img src="" data-image-id="featured-wedding-bouquet" alt=""><div class="featured-overlay"><span>Bridal Florals</span></div></div>
-                    <div class="featured-item"><img src="" data-image-id="featured-table-setting" alt=""><div class="featured-overlay"><span>Event Decor</span></div></div>
-                    <div class="featured-item"><img src="" data-image-id="featured-flower-arrangement" alt=""><div class="featured-overlay"><span>Custom Arrangements</span></div></div>
-                    <div class="featured-item"><img src="" data-image-id="featured-gala-setup" alt=""><div class="featured-overlay"><span>Gala Design</span></div></div>
-                    <div class="featured-item large"><img src="" data-image-id="featured-wedding-dress" alt=""><div class="featured-overlay"><span>Custom Tailoring</span></div></div>
+                    <div class="featured-item large">
+                        <img src="" data-image-id="featured-wedding-bouquet" alt="Romantic wedding bouquet">
+                        <div class="featured-overlay"><span>Bridal Florals</span></div>
+                    </div>
+                    <div class="featured-item">
+                        <img src="" data-image-id="featured-table-setting" alt="Wedding table setting">
+                        <div class="featured-overlay"><span>Event Decor</span></div>
+                    </div>
+                    <div class="featured-item">
+                        <img src="" data-image-id="featured-flower-arrangement" alt="Colorful flower arrangement">
+                        <div class="featured-overlay"><span>Custom Arrangements</span></div>
+                    </div>
+                    <div class="featured-item">
+                        <img src="" data-image-id="featured-gala-setup" alt="Elegant gala setup">
+                        <div class="featured-overlay"><span>Gala Design</span></div>
+                    </div>
+                    <div class="featured-item large">
+                        <img src="" data-image-id="featured-wedding-dress" alt="Wedding dress detail">
+                        <div class="featured-overlay"><span>Custom Tailoring</span></div>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="#" class="btn btn-secondary">View Full Portfolio</a>
                 </div>
             </div>
         </section>
 
-        <section class="services-preview">
+        <section class="services-preview" id="services">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label" data-content="services-expertise"></span>
                     <h2 class="section-title" data-content="services-expertiseTitle"></h2>
                     <p class="section-description" data-content="services-expertiseDesc"></p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3 data-content="services-floral"></h3>
+                        <div data-service-category="floral"></div>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-content="services-decor"></h3>
+                        <div data-service-category="decor"></div>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                    <div class="service-card">
+                        <h3 data-content="services-tailoring"></h3>
+                        <div data-service-category="tailoring"></div>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -218,13 +252,49 @@
             <div class="container">
                 <div class="about-grid">
                     <div class="about-image">
-                        <div class="image-frame"><img src="" data-image-id="about-profile" alt=""></div>
+                        <div class="image-frame">
+                            <img src="" data-image-id="about-profile" alt="Designer at work">
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-count="15" data-content="years-experience">0</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-count="500" data-content="events-created">0</span>
+                                <span class="stat-label">Events Created</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="about-content">
                         <span class="section-label" data-content="about-designer"></span>
                         <h2 class="section-title" data-content="about-name"></h2>
                         <p class="about-lead" data-content="about-short-bio"></p>
+                        <div class="about-features">
+                            <div class="feature"><span>✓ NYC Fashion Background</span></div>
+                            <div class="feature"><span>✓ International Experience</span></div>
+                            <div class="feature"><span>✓ Personalized Service</span></div>
+                        </div>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="process-bg">
+                <img src="" data-image-id="process-floral" alt="Floral arrangement process">
+            </div>
+            <div class="container">
+                <div class="section-header centered light">
+                    <span class="section-label">How We Work</span>
+                    <h2 class="section-title">Your Journey With Us</h2>
+                </div>
+                <div class="process-timeline">
+                    <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3>Discovery</h3><p>In-depth consultation to understand your vision and story.</p></div></div>
+                    <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3>Design</h3><p>Mood boards and detailed proposals bring your concept to life.</p></div></div>
+                    <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3>Create</h3><p>Meticulous attention to detail in every handcrafted element.</p></div></div>
+                    <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3>Execute</h3><p>Seamless delivery and installation, exactly as imagined.</p></div></div>
                 </div>
             </div>
         </section>
@@ -235,26 +305,61 @@
                     <span class="section-label" data-content="testimonials-heading"></span>
                     <h2 class="section-title" data-content="testimonials-subheading"></h2>
                 </div>
+                <div class="testimonials-slider"></div>
+                <div class="testimonial-nav"></div>
             </div>
         </section>
 
         <section class="cta-section">
-            <div class="cta-image"><img src="" data-image-id="cta-floral-arrangement" alt=""></div>
+            <div class="cta-image">
+                <img src="" data-image-id="cta-floral-arrangement" alt="Beautiful floral arrangement">
+            </div>
             <div class="container">
                 <div class="cta-content">
                     <h2 data-content="cta-heading"></h2>
                     <p data-content="cta-description"></p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary btn-large">BOOK NOW</a>
+                        <a href="#" data-link="phone" class="btn btn-outline-light btn-large"></a>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo" data-content="businessName"></div>
+                        <p data-content="tagline"></p>
+                        <div class="footer-social">
+                            <a href="#" data-link="instagram" class="social-icon">IG</a>
+                            <a href="#" data-link="pinterest" class="social-icon">PIN</a>
+                            <a href="#" data-link="email-icon" class="social-icon">@</a>
+                        </div>
+                    </div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
+                    <div class="footer-contact"><h4>Get in Touch</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
+                </div>
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
     </div>
 
-    <!-- ==================== ABOUT PAGE ==================== -->
+    <!-- ====================== ABOUT PAGE (EXACT COPY OF about.html) ====================== -->
     <div class="admin-page" id="page-about">
+        <nav class="navbar scrolled">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+                <ul class="nav-menu"><li><a href="#" class="nav-link">Home</a></li><li><a href="#" class="nav-link active">About</a></li><li><a href="#" class="nav-link">Services</a></li><li><a href="#" class="nav-link">Portfolio</a></li><li><a href="#" class="nav-link nav-cta">Get in Touch</a></li></ul>
+            </div>
+        </nav>
+
         <section class="page-hero">
             <div class="page-hero-image">
-                <img src="" data-image-id="about-hero" alt="">
-                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-about [data-image-id=about-hero]'))">Change Photo</button>
+                <img src="" data-image-id="about-hero" alt="Creative studio workspace">
+                <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
             </div>
             <div class="page-hero-content">
                 <span class="section-label" data-content="about-designer"></span>
@@ -267,7 +372,7 @@
             <div class="container">
                 <div class="bio-grid">
                     <div class="bio-image">
-                        <img src="" data-image-id="about-profile" alt="">
+                        <img src="" data-image-id="about-profile" alt="Designer portrait">
                         <div class="bio-quote"><blockquote data-content="about-quote"></blockquote></div>
                     </div>
                     <div class="bio-content">
@@ -284,16 +389,60 @@
                     <span class="section-label" data-content="about-background"></span>
                     <h2 class="section-title" data-content="about-expertise"></h2>
                 </div>
+                <div class="experience-grid" id="experience-timeline"></div>
             </div>
         </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <div class="skills-grid">
+                    <div class="skills-content">
+                        <span class="section-label">Expertise</span>
+                        <h2 class="section-title">Core Skills</h2>
+                        <div class="skills-list" id="skills-list"></div>
+                    </div>
+                    <div class="skills-image"><img src="" data-image-id="about-cta-image" alt="Floral arrangement"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-image"><img src="" data-image-id="about-cta-image" alt="Beautiful flowers"></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 data-content="cta-heading"></h2>
+                    <p data-content="cta-description"></p>
+                    <div class="cta-buttons"><a href="#" class="btn btn-primary btn-large">Get in Touch</a><a href="#" class="btn btn-outline-light btn-large">View Portfolio</a></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
+                    <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
+                </div>
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
     </div>
 
-    <!-- ==================== SERVICES PAGE ==================== -->
+    <!-- ====================== SERVICES PAGE (EXACT COPY OF services.html) ====================== -->
     <div class="admin-page" id="page-services">
+        <nav class="navbar scrolled">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+                <ul class="nav-menu"><li><a href="#" class="nav-link">Home</a></li><li><a href="#" class="nav-link">About</a></li><li><a href="#" class="nav-link active">Services</a></li><li><a href="#" class="nav-link">Portfolio</a></li><li><a href="#" class="nav-link nav-cta">Get in Touch</a></li></ul>
+            </div>
+        </nav>
+
         <section class="page-hero">
             <div class="page-hero-image">
-                <img src="" data-image-id="services-hero" alt="">
-                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-services [data-image-id=services-hero]'))">Change Photo</button>
+                <img src="" data-image-id="services-hero" alt="Elegant event setup">
+                <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
             </div>
             <div class="page-hero-content">
                 <span class="section-label" data-content="pages-services"></span>
@@ -302,55 +451,104 @@
             </div>
         </section>
 
-        <section class="service-detail">
+        <section class="service-detail" id="florals">
             <div class="container">
-                <h2 data-content="services-floral"></h2>
-                <div class="service-detail-images" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
-                    <img src="" data-image-id="services-floral-main" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
-                    <img src="" data-image-id="services-floral-detail-1" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
-                    <img src="" data-image-id="services-floral-detail-2" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                <div class="service-detail-grid">
+                    <div class="service-detail-content">
+                        <span class="section-label">Service</span>
+                        <h2 data-content="services-floral"></h2>
+                        <p class="lead">From intimate dinner arrangements to grand wedding installations, each bloom tells your unique story.</p>
+                        <div data-service-category="floral"></div>
+                    </div>
+                    <div class="service-detail-images">
+                        <img src="" data-image-id="services-floral-main" alt="Wedding bouquet" class="main-image">
+                        <div class="image-row"><img src="" data-image-id="services-floral-detail-1" alt=""><img src="" data-image-id="services-floral-detail-2" alt=""></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="service-detail">
+        <section class="service-detail alt-bg" id="decor">
             <div class="container">
-                <h2 data-content="services-decor"></h2>
-                <div class="service-detail-images" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
-                    <img src="" data-image-id="services-decor-main" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
-                    <img src="" data-image-id="services-decor-detail-1" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
-                    <img src="" data-image-id="services-decor-detail-2" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                <div class="service-detail-grid reverse">
+                    <div class="service-detail-content">
+                        <span class="section-label">Service</span>
+                        <h2 data-content="services-decor"></h2>
+                        <p class="lead">Complete venue transformations that create immersive experiences and unforgettable atmospheres.</p>
+                        <div data-service-category="decor"></div>
+                    </div>
+                    <div class="service-detail-images">
+                        <img src="" data-image-id="services-decor-main" alt="Event decor" class="main-image">
+                        <div class="image-row"><img src="" data-image-id="services-decor-detail-1" alt=""><img src="" data-image-id="services-decor-detail-2" alt=""></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="service-detail">
+        <section class="service-detail" id="tailoring">
             <div class="container">
-                <h2 data-content="services-tailoring"></h2>
-                <div class="service-detail-images" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
-                    <img src="" data-image-id="services-tailoring-main" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
-                    <img src="" data-image-id="services-tailoring-detail-1" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
-                    <img src="" data-image-id="services-tailoring-detail-2" alt="" style="height:200px;object-fit:cover;border-radius:8px;">
+                <div class="service-detail-grid">
+                    <div class="service-detail-content">
+                        <span class="section-label">Service</span>
+                        <h2 data-content="services-tailoring"></h2>
+                        <p class="lead">Bespoke garments and alterations crafted with precision from our NYC fashion heritage.</p>
+                        <div data-service-category="tailoring"></div>
+                    </div>
+                    <div class="service-detail-images">
+                        <img src="" data-image-id="services-tailoring-main" alt="Wedding dress" class="main-image">
+                        <div class="image-row"><img src="" data-image-id="services-tailoring-detail-1" alt=""><img src="" data-image-id="services-tailoring-detail-2" alt=""></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="packages-section">
+        <section class="packages-section" id="packages">
             <div class="container">
                 <div class="section-header centered">
                     <span class="section-label" data-content="packages-heading"></span>
                     <h2 class="section-title" data-content="packages-title"></h2>
                 </div>
+                <div id="packages-list" class="packages-grid"></div>
             </div>
         </section>
+
+        <section class="cta-section">
+            <div class="cta-image"><img src="" data-image-id="services-cta-image" alt=""></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 data-content="cta-heading"></h2>
+                    <p data-content="cta-description"></p>
+                    <div class="cta-buttons"><a href="#" class="btn btn-primary btn-large">Schedule Consultation</a></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
+                    <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
+                </div>
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
     </div>
 
-    <!-- ==================== PORTFOLIO PAGE ==================== -->
+    <!-- ====================== PORTFOLIO PAGE (EXACT COPY OF gallery.html) ====================== -->
     <div class="admin-page" id="page-portfolio">
+        <nav class="navbar scrolled">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+                <ul class="nav-menu"><li><a href="#" class="nav-link">Home</a></li><li><a href="#" class="nav-link">About</a></li><li><a href="#" class="nav-link">Services</a></li><li><a href="#" class="nav-link active">Portfolio</a></li><li><a href="#" class="nav-link nav-cta">Get in Touch</a></li></ul>
+            </div>
+        </nav>
+
         <section class="page-hero">
             <div class="page-hero-image">
-                <img src="" data-image-id="gallery-hero" alt="">
-                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-portfolio [data-image-id=gallery-hero]'))">Change Photo</button>
+                <img src="" data-image-id="gallery-hero" alt="Portfolio showcase">
+                <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
             </div>
             <div class="page-hero-content">
                 <span class="section-label">Our Work</span>
@@ -361,75 +559,146 @@
 
         <section class="gallery-section">
             <div class="container">
-                <p style="text-align:center;color:var(--warm-gray);padding:2rem;">Gallery images are loaded from admin.json. Add images via the imageMap.</p>
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="florals">Florals</button>
+                    <button class="filter-btn" data-filter="decor">Event Decor</button>
+                    <button class="filter-btn" data-filter="tailoring">Tailoring</button>
+                </div>
                 <div class="gallery-grid"></div>
             </div>
         </section>
+
+        <section class="cta-section">
+            <div class="cta-image"><img src="" data-image-id="cta-floral-arrangement" alt=""></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 data-content="cta-heading"></h2>
+                    <p data-content="cta-description"></p>
+                    <div class="cta-buttons"><a href="#" class="btn btn-primary btn-large">Book a Consultation</a><a href="#" class="btn btn-outline-light btn-large">Get in Touch</a></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
+                    <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
+                </div>
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
     </div>
 
-    <!-- ==================== BOOKING PAGE ==================== -->
-    <div class="admin-page" id="page-booking">
+    <!-- ====================== CONTACT PAGE (EXACT COPY OF contact.html) ====================== -->
+    <div class="admin-page" id="page-contact">
+        <nav class="navbar scrolled">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+                <ul class="nav-menu"><li><a href="#" class="nav-link">Home</a></li><li><a href="#" class="nav-link">About</a></li><li><a href="#" class="nav-link">Services</a></li><li><a href="#" class="nav-link">Portfolio</a></li><li><a href="#" class="nav-link nav-cta active">Get in Touch</a></li></ul>
+            </div>
+        </nav>
+
         <section class="page-hero short">
             <div class="page-hero-image">
-                <img src="" data-image-id="contact-hero" alt="">
-                <button class="hero-image-edit-btn" onclick="openImageModal(document.querySelector('#page-booking [data-image-id=contact-hero]'))">Change Photo</button>
+                <img src="" data-image-id="contact-hero" alt="Beautiful flowers">
+                <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
+            </div>
+            <div class="page-hero-content">
+                <span class="section-label" data-content="contact-label"></span>
+                <h1 data-content="contact-heading"></h1>
+                <p>Start your creative journey</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p class="lead">Ready to bring your vision to life? We'd love to hear from you.</p>
+                        <div class="contact-details">
+                            <div class="contact-item"><h4>Phone</h4><a href="#" data-link="phone"></a></div>
+                            <div class="contact-item"><h4>Email</h4><a href="#" data-link="email"></a></div>
+                            <div class="contact-item"><h4>Location</h4><p data-content="address"></p><p class="small" data-content="service-area"></p></div>
+                            <div class="contact-item"><h4>Hours</h4><p data-content="hours"></p></div>
+                        </div>
+                        <div class="contact-social"><h4>Follow Along</h4><div class="social-links"><a href="#" data-link="instagram" class="social-link">Instagram</a><a href="#" data-link="pinterest" class="social-link">Pinterest</a></div></div>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form"><h3>Send a Message</h3><p style="color:var(--warm-gray);">Contact form - not editable here</p></form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-label" data-content="faq-label"></span>
+                    <h2 class="section-title" data-content="faq-title"></h2>
+                </div>
+                <div class="faq-grid"></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
+                    <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
+                </div>
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ====================== BOOKING PAGE (EXACT COPY OF booking.html) ====================== -->
+    <div class="admin-page" id="page-booking">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><span class="logo-text" data-content="businessName"></span></a>
+                <ul class="nav-menu"><li><a href="#" class="nav-link">Home</a></li><li><a href="#" class="nav-link">About</a></li><li><a href="#" class="nav-link">Services</a></li><li><a href="#" class="nav-link">Portfolio</a></li><li><a href="#" class="nav-link nav-cta active">Book Now</a></li></ul>
+            </div>
+        </nav>
+
+        <section class="page-hero short">
+            <div class="page-hero-image">
+                <img src="" data-image-id="contact-hero" alt="Elegant floral arrangement">
+                <button class="hero-edit-btn" onclick="openImageModal(this.parentElement.querySelector('img'))">Change Photo</button>
             </div>
             <div class="page-hero-content">
                 <span class="section-label">Schedule Your Consultation</span>
                 <h1>Book Your Appointment</h1>
+                <p>Choose the consultation type that works best for you</p>
             </div>
         </section>
 
-        <section style="padding:4rem 0;">
+        <section style="padding: 4rem 0;">
             <div class="container">
-                <p style="text-align:center;color:var(--warm-gray);">Booking cards are hardcoded with Cal.com links. Contact info comes from Settings.</p>
-            </div>
-        </section>
-    </div>
-
-    <!-- ==================== SETTINGS PAGE ==================== -->
-    <div class="admin-page" id="page-settings">
-        <section style="padding:6rem 0;">
-            <div class="container" style="max-width:600px;">
-                <h1 style="margin-bottom:2rem;">Business Settings</h1>
-
-                <div style="background:var(--cream);padding:2rem;border-radius:12px;margin-bottom:2rem;">
-                    <h3 style="margin-bottom:1rem;">Business Info</h3>
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Business Name</label>
-                    <div data-content="businessName" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Tagline</label>
-                    <div data-content="tagline" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-                </div>
-
-                <div style="background:var(--cream);padding:2rem;border-radius:12px;margin-bottom:2rem;">
-                    <h3 style="margin-bottom:1rem;">Contact Info</h3>
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Phone</label>
-                    <div data-content="phone" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Email</label>
-                    <div data-content="email" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Address</label>
-                    <div data-content="address" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Hours</label>
-                    <div data-content="hours" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Service Area</label>
-                    <div data-content="service-area" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;background:white;"></div>
-                </div>
-
-                <div style="background:var(--cream);padding:2rem;border-radius:12px;">
-                    <h3 style="margin-bottom:1rem;">Social Links</h3>
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Instagram URL</label>
-                    <div data-content="instagram" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;margin-bottom:1rem;background:white;"></div>
-
-                    <label style="display:block;margin-bottom:0.5rem;font-weight:600;">Pinterest URL</label>
-                    <div data-content="pinterest" style="padding:0.75rem;border:2px solid #ddd;border-radius:8px;background:white;"></div>
+                <div class="section-header centered">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Available Consultations</h2>
+                    <p style="color: var(--warm-gray);">Booking cards link to Cal.com - prices and details are set there.</p>
                 </div>
             </div>
         </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Book Consultation</a></li></ul></div>
+                    <div class="footer-contact"><h4>Contact</h4><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></div>
+                </div>
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
     </div>
 
     <script src="js/main.js"></script>
@@ -439,7 +708,6 @@
         let siteData = null;
         let currentImageEl = null;
 
-        // Login
         function editorLogin() {
             if (document.getElementById('editorPassword').value === EDITOR_PASSWORD) {
                 document.getElementById('editorLogin').classList.add('hidden');
@@ -453,25 +721,18 @@
             }
         }
 
-        function editorLogout() {
-            localStorage.removeItem('jlc-editor');
-            location.reload();
-        }
+        function editorLogout() { localStorage.removeItem('jlc-editor'); location.reload(); }
 
-        document.getElementById('editorPassword').addEventListener('keypress', e => {
-            if (e.key === 'Enter') editorLogin();
-        });
+        document.getElementById('editorPassword').addEventListener('keypress', e => { if (e.key === 'Enter') editorLogin(); });
 
-        // Check session
         if (localStorage.getItem('jlc-editor') === 'true') {
             document.getElementById('editorLogin').classList.add('hidden');
             document.getElementById('editorToolbar').classList.add('active');
             document.getElementById('pageTabs').classList.add('active');
             document.body.classList.add('editor-mode');
-            setTimeout(initEditor, 500);
+            setTimeout(initEditor, 300);
         }
 
-        // Page tabs
         document.querySelectorAll('.page-tab').forEach(tab => {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
@@ -481,115 +742,67 @@
             });
         });
 
-        // Init
         async function initEditor() {
             try {
                 const res = await fetch('/_data/admin.json?t=' + Date.now());
                 siteData = await res.json();
             } catch(e) { toast('Failed to load data', 'error'); return; }
 
-            // Make text editable
             document.querySelectorAll('[data-content]').forEach(el => {
                 el.setAttribute('contenteditable', 'true');
                 el.setAttribute('spellcheck', 'false');
             });
 
-            // Add image overlays (skip hero images - they have buttons)
             document.querySelectorAll('[data-image-id]').forEach(img => {
-                const imageId = img.getAttribute('data-image-id');
-                if (imageId.includes('hero') || imageId === 'hero-main') return;
-
+                if (img.closest('.hero-image') || img.closest('.page-hero-image')) return;
                 const wrapper = img.parentElement;
                 wrapper.style.position = 'relative';
                 const overlay = document.createElement('div');
-                overlay.className = 'image-edit-overlay';
-                overlay.innerHTML = '<span>Change Photo</span>';
+                overlay.className = 'img-edit-overlay';
+                overlay.innerHTML = '<span>Change</span>';
                 overlay.onclick = () => openImageModal(img);
                 wrapper.appendChild(overlay);
             });
 
-            // Sync color inputs
-            ['Gold','GoldLight','GoldDark','Sage','Cream','Charcoal'].forEach(n => {
-                const picker = document.getElementById('c' + n);
-                const hex = document.getElementById('c' + n + 'Hex');
-                if (picker && hex) {
-                    picker.onchange = () => hex.value = picker.value;
-                    hex.onchange = () => { if (/^#[0-9A-Fa-f]{6}$/.test(hex.value)) picker.value = hex.value; };
-                }
-            });
-
-            // Load current colors
             if (siteData.theme) {
                 const t = siteData.theme;
-                if (t.gold) { document.getElementById('cGold').value = t.gold; document.getElementById('cGoldHex').value = t.gold; }
-                if (t.goldLight) { document.getElementById('cGoldLight').value = t.goldLight; document.getElementById('cGoldLightHex').value = t.goldLight; }
-                if (t.goldDark) { document.getElementById('cGoldDark').value = t.goldDark; document.getElementById('cGoldDarkHex').value = t.goldDark; }
-                if (t.sage) { document.getElementById('cSage').value = t.sage; document.getElementById('cSageHex').value = t.sage; }
-                if (t.cream) { document.getElementById('cCream').value = t.cream; document.getElementById('cCreamHex').value = t.cream; }
-                if (t.charcoal) { document.getElementById('cCharcoal').value = t.charcoal; document.getElementById('cCharcoalHex').value = t.charcoal; }
+                ['gold','goldLight','goldDark','sage','cream','charcoal'].forEach(k => {
+                    const key = k.charAt(0).toUpperCase() + k.slice(1);
+                    if (t[k]) {
+                        const picker = document.getElementById('c' + key);
+                        const hex = document.getElementById('c' + key + 'Hex');
+                        if (picker) picker.value = t[k];
+                        if (hex) hex.value = t[k];
+                    }
+                });
             }
-
-            // Load settings values
-            if (siteData.settings) {
-                const s = siteData.settings;
-                setContentValue('phone', s.phone);
-                setContentValue('email', s.email);
-                setContentValue('address', s.address);
-                setContentValue('hours', s.hours);
-                setContentValue('service-area', s.serviceArea);
-                setContentValue('instagram', s.instagram);
-                setContentValue('pinterest', s.pinterest);
-            }
-
             toast('Ready to edit!', 'success');
         }
 
-        function setContentValue(key, value) {
-            document.querySelectorAll(`[data-content="${key}"]`).forEach(el => {
-                if (value) el.textContent = value;
-            });
-        }
-
-        // Colors
-        function toggleColors() {
-            document.getElementById('colorPanel').classList.toggle('open');
-        }
+        function toggleColors() { document.getElementById('colorPanel').classList.toggle('open'); }
 
         function applyColors() {
             const root = document.documentElement;
-            const colors = {
-                gold: document.getElementById('cGold').value,
-                goldLight: document.getElementById('cGoldLight').value,
-                goldDark: document.getElementById('cGoldDark').value,
-                sage: document.getElementById('cSage').value,
-                cream: document.getElementById('cCream').value,
-                charcoal: document.getElementById('cCharcoal').value
-            };
-
-            root.style.setProperty('--gold', colors.gold);
-            root.style.setProperty('--gold-light', colors.goldLight);
-            root.style.setProperty('--gold-dark', colors.goldDark);
-            root.style.setProperty('--sage', colors.sage);
-            root.style.setProperty('--cream', colors.cream);
-            root.style.setProperty('--charcoal', colors.charcoal);
-
-            siteData.theme = { ...siteData.theme, ...colors };
+            ['Gold','GoldLight','GoldDark','Sage','Cream','Charcoal'].forEach(n => {
+                const val = document.getElementById('c' + n).value;
+                const cssVar = '--' + n.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '');
+                root.style.setProperty(cssVar, val);
+                const key = n.charAt(0).toLowerCase() + n.slice(1);
+                if (!siteData.theme) siteData.theme = {};
+                siteData.theme[key] = val;
+            });
             toast('Colors applied', 'success');
         }
 
-        // Images
         function openImageModal(img) {
             currentImageEl = img;
-            document.getElementById('imageModalTitle').textContent = 'Change: ' + img.getAttribute('data-image-id');
+            document.getElementById('imageModalTitle').textContent = 'Change: ' + (img.getAttribute('data-image-id') || 'image');
             document.getElementById('imageModalPreview').src = img.src || '';
             document.getElementById('imageModalUrl').value = img.src || '';
             document.getElementById('imageModal').classList.add('active');
         }
 
-        function closeImageModal() {
-            document.getElementById('imageModal').classList.remove('active');
-            currentImageEl = null;
-        }
+        function closeImageModal() { document.getElementById('imageModal').classList.remove('active'); currentImageEl = null; }
 
         function saveImageChange() {
             if (!currentImageEl) return;
@@ -604,9 +817,7 @@
         }
 
         document.getElementById('imageModalUrl').addEventListener('input', function() {
-            if (this.value.startsWith('http')) {
-                document.getElementById('imageModalPreview').src = this.value;
-            }
+            if (this.value.startsWith('http')) document.getElementById('imageModalPreview').src = this.value;
         });
 
         document.getElementById('imageModalFile').addEventListener('change', async function(e) {
@@ -626,20 +837,14 @@
                     const result = await res.json();
                     if (result.success && result.url) {
                         document.getElementById('imageModalUrl').value = result.url;
-                        toast('Uploaded! Click Save.', 'success');
-                    } else {
-                        toast('Upload failed', 'error');
-                    }
-                } catch (err) {
-                    toast('Upload error', 'error');
-                }
+                        toast('Uploaded!', 'success');
+                    } else toast('Upload failed', 'error');
+                } catch (err) { toast('Upload error', 'error'); }
             };
             reader.readAsDataURL(file);
         });
 
-        // Save All
         async function saveAll() {
-            // Collect all text content
             document.querySelectorAll('[data-content]').forEach(el => {
                 const key = el.getAttribute('data-content');
                 const val = el.textContent.trim();
@@ -654,20 +859,14 @@
                     body: JSON.stringify({ type: 'admin', data: siteData })
                 });
                 const result = await res.json();
-                if (result.success) {
-                    toast('Saved! Changes are live.', 'success');
-                } else {
-                    toast('Save failed: ' + result.error, 'error');
-                }
-            } catch (e) {
-                toast('Save error: ' + e.message, 'error');
-            }
+                if (result.success) toast('Saved! Changes are live.', 'success');
+                else toast('Save failed: ' + result.error, 'error');
+            } catch (e) { toast('Save error: ' + e.message, 'error'); }
         }
 
         function mapToSiteData(key, val) {
             if (!siteData) return;
-            const map = {
-                // Hero
+            const m = {
                 'hero-badge': () => siteData.hero.badge = val,
                 'hero-title-1': () => siteData.hero.titleLine1 = val,
                 'hero-title-2': () => siteData.hero.titleLine2 = val,
@@ -677,7 +876,6 @@
                 'hero-btn-secondary': () => siteData.hero.secondaryBtn = val,
                 'hero-craft': () => siteData.labels.hero.craft = val,
                 'hero-craftTitle': () => siteData.labels.hero.craftTitle = val,
-                // About
                 'about-name': () => siteData.about.name = val,
                 'about-designer': () => siteData.labels.about.designer = val,
                 'about-short-bio': () => siteData.about.bio = val,
@@ -686,7 +884,6 @@
                 'about-journey': () => siteData.labels.about.journey = val,
                 'about-background': () => siteData.labels.about.background = val,
                 'about-expertise': () => siteData.labels.about.expertise = val,
-                // Services
                 'services-expertise': () => siteData.labels.services.expertise = val,
                 'services-expertiseTitle': () => siteData.labels.services.expertiseTitle = val,
                 'services-expertiseDesc': () => siteData.labels.services.expertiseDesc = val,
@@ -695,16 +892,16 @@
                 'services-tailoring': () => siteData.labels.services.tailoring = val,
                 'pages-services': () => siteData.labels.pages.services = val,
                 'pages-servicesTitle': () => siteData.labels.pages.servicesTitle = val,
-                // Packages
                 'packages-heading': () => siteData.labels.packages.heading = val,
                 'packages-title': () => siteData.labels.packages.title = val,
-                // Testimonials
                 'testimonials-heading': () => siteData.labels.testimonials.heading = val,
                 'testimonials-subheading': () => siteData.labels.testimonials.subheading = val,
-                // CTA
                 'cta-heading': () => siteData.labels.cta.heading = val,
                 'cta-description': () => siteData.labels.cta.description = val,
-                // Settings
+                'contact-label': () => siteData.labels.contact.label = val,
+                'contact-heading': () => siteData.labels.contact.heading = val,
+                'faq-label': () => siteData.labels.faq.label = val,
+                'faq-title': () => siteData.labels.faq.title = val,
                 'businessName': () => siteData.settings.businessName = val,
                 'tagline': () => siteData.settings.tagline = val,
                 'phone': () => siteData.settings.phone = val,
@@ -712,13 +909,10 @@
                 'address': () => siteData.settings.address = val,
                 'hours': () => siteData.settings.hours = val,
                 'service-area': () => siteData.settings.serviceArea = val,
-                'instagram': () => siteData.settings.instagram = val,
-                'pinterest': () => siteData.settings.pinterest = val,
             };
-            if (map[key]) try { map[key](); } catch(e) {}
+            if (m[key]) try { m[key](); } catch(e) {}
         }
 
-        // Toast
         function toast(msg, type) {
             const t = document.getElementById('editorToast');
             t.textContent = msg;
