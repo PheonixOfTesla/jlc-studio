@@ -246,18 +246,18 @@
     }
   ],
   "theme": {
-    "gold": "#d2c0f6",
+    "gold": "#442490",
     "goldLight": "#fefefe",
     "goldDark": "#210050",
     "sage": "#56e9da",
     "sageLight": "#8ba870",
     "sageDark": "#4b6e3b",
     "white": "#ffffff",
-    "cream": "#d9ff02",
+    "cream": "#e5dbdb",
     "ivory": "#eef2e9",
     "taupe": "#dfe5d3",
     "warmGray": "#8fa885",
-    "charcoal": "#093c1d",
+    "charcoal": "#008bed",
     "black": "#1d2d1b"
   },
   "imageMap": {
