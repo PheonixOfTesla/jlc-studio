@@ -248,16 +248,16 @@
   "theme": {
     "gold": "#d2c0f6",
     "goldLight": "#fefefe",
-    "goldDark": "#864ffe",
+    "goldDark": "#210050",
     "sage": "#56e9da",
     "sageLight": "#8ba870",
     "sageDark": "#4b6e3b",
     "white": "#ffffff",
-    "cream": "#f4f0f0",
+    "cream": "#d9ff02",
     "ivory": "#eef2e9",
     "taupe": "#dfe5d3",
     "warmGray": "#8fa885",
-    "charcoal": "#d8bafa",
+    "charcoal": "#093c1d",
     "black": "#1d2d1b"
   },
   "imageMap": {
