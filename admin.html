@@ -1051,86 +1051,103 @@
             } catch (e) { toast('Save error: ' + e.message, 'error'); }
         }
 
+        /**
+         * Auto-map data-content keys to siteData paths
+         * Naming conventions:
+         *   - "hero-badge" -> siteData.hero.badge
+         *   - "hero-title-1" -> siteData.hero.titleLine1 (number suffix = camelCase)
+         *   - "about-name" -> siteData.about.name
+         *   - "services-floralLead" -> siteData.labels.services.floralLead (if in labels)
+         *   - "businessName" -> siteData.settings.businessName (root-level settings)
+         */
         function mapToSiteData(key, val) {
             if (!siteData) return;
-            const m = {
-                'hero-badge': () => siteData.hero.badge = val,
-                'hero-title-1': () => siteData.hero.titleLine1 = val,
-                'hero-title-2': () => siteData.hero.titleLine2 = val,
-                'hero-subtitle': () => siteData.hero.subtitle = val,
-                'hero-description': () => siteData.hero.description = val,
-                'hero-btn-primary': () => siteData.hero.primaryBtn = val,
-                'hero-btn-secondary': () => siteData.hero.secondaryBtn = val,
-                'hero-craft': () => siteData.labels.hero.craft = val,
-                'hero-craftTitle': () => siteData.labels.hero.craftTitle = val,
-                'about-name': () => siteData.about.name = val,
-                'about-designer': () => siteData.labels.about.designer = val,
+
+            // Special case mappings that don't follow conventions
+            const specialMappings = {
                 'about-short-bio': () => siteData.about.bio = val,
                 'about-full-bio': () => siteData.about.bio = val,
-                'about-quote': () => siteData.about.quote = val,
-                'about-journey': () => siteData.labels.about.journey = val,
-                'about-background': () => siteData.labels.about.background = val,
-                'about-expertise': () => siteData.labels.about.expertise = val,
-                'about-skillsLabel': () => siteData.labels.about.skillsLabel = val,
-                'about-skillsTitle': () => siteData.labels.about.skillsTitle = val,
-                'about-feature1': () => siteData.labels.aboutFeatures.feature1 = val,
-                'about-feature2': () => siteData.labels.aboutFeatures.feature2 = val,
-                'about-feature3': () => siteData.labels.aboutFeatures.feature3 = val,
-                'services-expertise': () => siteData.labels.services.expertise = val,
-                'services-expertiseTitle': () => siteData.labels.services.expertiseTitle = val,
-                'services-expertiseDesc': () => siteData.labels.services.expertiseDesc = val,
-                'services-floral': () => siteData.labels.services.floral = val,
-                'services-decor': () => siteData.labels.services.decor = val,
-                'services-tailoring': () => siteData.labels.services.tailoring = val,
-                'services-floralLead': () => siteData.labels.services.floralLead = val,
-                'services-floralDesc': () => siteData.labels.services.floralDesc = val,
-                'services-decorLead': () => siteData.labels.services.decorLead = val,
-                'services-decorDesc': () => siteData.labels.services.decorDesc = val,
-                'services-tailoringLead': () => siteData.labels.services.tailoringLead = val,
-                'services-tailoringDesc': () => siteData.labels.services.tailoringDesc = val,
-                'pages-services': () => siteData.labels.pages.services = val,
-                'pages-servicesTitle': () => siteData.labels.pages.servicesTitle = val,
-                'packages-heading': () => siteData.labels.packages.heading = val,
-                'packages-title': () => siteData.labels.packages.title = val,
-                'packages-description': () => siteData.labels.packages.description = val,
-                'testimonials-heading': () => siteData.labels.testimonials.heading = val,
-                'testimonials-subheading': () => siteData.labels.testimonials.subheading = val,
-                'cta-heading': () => siteData.labels.cta.heading = val,
-                'cta-description': () => siteData.labels.cta.description = val,
-                'contact-label': () => siteData.labels.contact.label = val,
-                'contact-heading': () => siteData.labels.contact.heading = val,
-                'contact-subtitle': () => siteData.labels.contact.subtitle = val,
-                'contact-infoTitle': () => siteData.labels.contact.infoTitle = val,
-                'contact-infoLead': () => siteData.labels.contact.infoLead = val,
-                'faq-label': () => siteData.labels.faq.label = val,
-                'faq-title': () => siteData.labels.faq.title = val,
-                'portfolio-label': () => siteData.labels.portfolio.label = val,
-                'portfolio-title': () => siteData.labels.portfolio.title = val,
-                'portfolio-description': () => siteData.labels.portfolio.description = val,
-                'booking-label': () => siteData.labels.booking.label = val,
-                'booking-title': () => siteData.labels.booking.title = val,
-                'booking-subtitle': () => siteData.labels.booking.subtitle = val,
-                'booking-consultationsTitle': () => siteData.labels.booking.consultationsTitle = val,
-                'booking-consultationsDesc': () => siteData.labels.booking.consultationsDesc = val,
-                'process-label': () => siteData.labels.process.label = val,
-                'process-title': () => siteData.labels.process.title = val,
-                'process-step1Title': () => siteData.labels.process.step1Title = val,
-                'process-step1Desc': () => siteData.labels.process.step1Desc = val,
-                'process-step2Title': () => siteData.labels.process.step2Title = val,
-                'process-step2Desc': () => siteData.labels.process.step2Desc = val,
-                'process-step3Title': () => siteData.labels.process.step3Title = val,
-                'process-step3Desc': () => siteData.labels.process.step3Desc = val,
-                'process-step4Title': () => siteData.labels.process.step4Title = val,
-                'process-step4Desc': () => siteData.labels.process.step4Desc = val,
-                'businessName': () => siteData.settings.businessName = val,
-                'tagline': () => siteData.settings.tagline = val,
-                'phone': () => siteData.settings.phone = val,
-                'email': () => siteData.settings.email = val,
-                'address': () => siteData.settings.address = val,
-                'hours': () => siteData.settings.hours = val,
                 'service-area': () => siteData.settings.serviceArea = val,
+                'years-experience': () => siteData.about.years = parseInt(val) || val,
+                'events-created': () => siteData.about.events = parseInt(val) || val,
             };
-            if (m[key]) try { m[key](); } catch(e) {}
+
+            // Check special mappings first
+            if (specialMappings[key]) {
+                try { specialMappings[key](); } catch(e) { console.warn('Special mapping failed:', key, e); }
+                return;
+            }
+
+            // Root-level settings (no hyphen = settings field)
+            const rootSettings = ['businessName', 'tagline', 'phone', 'email', 'address', 'hours'];
+            if (rootSettings.includes(key)) {
+                if (siteData.settings) siteData.settings[key] = val;
+                return;
+            }
+
+            // Parse the key: split on first hyphen only
+            const firstHyphen = key.indexOf('-');
+            if (firstHyphen === -1) return; // Unknown format
+
+            const section = key.substring(0, firstHyphen);
+            let field = key.substring(firstHyphen + 1);
+
+            // Convert "title-1" style to "titleLine1" camelCase
+            field = field.replace(/-(\d+)$/, (_, num) => 'Line' + num);
+
+            // Convert "btn-primary" style to "primaryBtn" (swap order for buttons)
+            if (field.startsWith('btn-')) {
+                field = field.substring(4) + 'Btn';
+            }
+
+            // Try direct section mapping (hero.*, about.*)
+            if (siteData[section] && typeof siteData[section] === 'object' && !Array.isArray(siteData[section])) {
+                if (field in siteData[section]) {
+                    siteData[section][field] = val;
+                    return;
+                }
+            }
+
+            // Try labels mapping (labels.section.field)
+            if (siteData.labels) {
+                // Direct section in labels (labels.hero, labels.services, etc.)
+                if (siteData.labels[section] && field in siteData.labels[section]) {
+                    siteData.labels[section][field] = val;
+                    return;
+                }
+
+                // Special nested labels: about-feature1 -> labels.aboutFeatures.feature1
+                if (section === 'about' && field.startsWith('feature')) {
+                    if (siteData.labels.aboutFeatures && field in siteData.labels.aboutFeatures) {
+                        siteData.labels.aboutFeatures[field] = val;
+                        return;
+                    }
+                }
+
+                // Try all label sections for this field
+                for (const labelSection in siteData.labels) {
+                    if (typeof siteData.labels[labelSection] === 'object' &&
+                        siteData.labels[labelSection] !== null &&
+                        field in siteData.labels[labelSection]) {
+                        siteData.labels[labelSection][field] = val;
+                        return;
+                    }
+                }
+            }
+
+            // Fallback: try creating the path if section exists
+            if (siteData[section] && typeof siteData[section] === 'object' && !Array.isArray(siteData[section])) {
+                siteData[section][field] = val;
+                return;
+            }
+
+            // Final fallback: check if it belongs in labels
+            if (siteData.labels && siteData.labels[section]) {
+                siteData.labels[section][field] = val;
+                return;
+            }
+
+            console.warn('mapToSiteData: No mapping found for', key);
         }
 
         function toast(msg, type) {
