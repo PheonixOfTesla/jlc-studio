@@ -390,6 +390,39 @@ const ContentLoader = {
       ? this.adminData.gallery
       : Object.values(this.adminData.gallery);
 
+    // Check for category-specific gallery containers first
+    const categoryContainers = document.querySelectorAll('[data-gallery-category]');
+
+    if (categoryContainers.length > 0) {
+      // Load filtered gallery for category sub-pages
+      categoryContainers.forEach(container => {
+        const category = container.getAttribute('data-gallery-category');
+        const filteredGallery = gallery.filter(item => item && item.url && item.category === category);
+
+        if (filteredGallery.length === 0) {
+          container.innerHTML = `
+            <div class="gallery-empty">
+              <p>No items in this category yet. Check back soon!</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = filteredGallery.map(item => `
+            <div class="gallery-item" data-category="${item.category || 'all'}">
+              <img src="${item.url}" alt="${item.title || 'Gallery item'}">
+              <div class="gallery-overlay">
+                <h3>${item.title || ''}</h3>
+                <p>${item.category || ''}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      });
+
+      console.log('✓ Category gallery loaded');
+      return;
+    }
+
+    // Standard gallery grid (for pages without category filter)
     const container = document.querySelector('.gallery-grid');
 
     if (!container) return;
