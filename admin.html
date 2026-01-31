@@ -715,6 +715,36 @@
         const EDITOR_PASSWORD = 'JLC2024!';
         let siteData = null;
         let currentImageEl = null;
+        let currentSha = null; // Track file SHA for conflict detection
+        const DRAFT_KEY = 'jlc-admin-draft';
+
+        // Auto-save draft to localStorage every 30 seconds
+        setInterval(() => {
+            if (siteData && document.body.classList.contains('editor-mode')) {
+                localStorage.setItem(DRAFT_KEY, JSON.stringify({ data: siteData, timestamp: Date.now() }));
+                console.log('Draft auto-saved');
+            }
+        }, 30000);
+
+        // Check for unsaved draft on load
+        function checkDraft() {
+            const draft = localStorage.getItem(DRAFT_KEY);
+            if (draft) {
+                try {
+                    const { data, timestamp } = JSON.parse(draft);
+                    const age = Date.now() - timestamp;
+                    if (age < 86400000) { // Less than 24 hours old
+                        if (confirm(`Found unsaved draft from ${new Date(timestamp).toLocaleString()}. Restore it?`)) {
+                            siteData = data;
+                            ContentLoader.applyData(siteData);
+                            toast('Draft restored! Click Save to publish.', 'success');
+                        } else {
+                            localStorage.removeItem(DRAFT_KEY);
+                        }
+                    }
+                } catch(e) { localStorage.removeItem(DRAFT_KEY); }
+            }
+        }
 
         function editorLogin() {
             if (document.getElementById('editorPassword').value === EDITOR_PASSWORD) {
@@ -752,8 +782,18 @@
 
         async function initEditor() {
             try {
+                // Fetch with cache-busting
                 const res = await fetch('/_data/admin.json?t=' + Date.now());
                 siteData = await res.json();
+                // Try to get current SHA from GitHub API for conflict detection
+                try {
+                    const shaRes = await fetch('https://api.github.com/repos/PheonixOfTesla/jlc-studio/contents/_data/admin.json');
+                    const shaData = await shaRes.json();
+                    currentSha = shaData.sha;
+                    console.log('Current file SHA:', currentSha?.substring(0, 7));
+                } catch(e) { console.log('Could not fetch SHA, conflict detection disabled'); }
+                // Check for unsaved drafts
+                checkDraft();
             } catch(e) { toast('Failed to load data', 'error'); return; }
 
             document.querySelectorAll('[data-content]').forEach(el => {
@@ -939,11 +979,25 @@
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer admin'
                     },
-                    body: JSON.stringify({ type: 'admin', data: siteData })
+                    body: JSON.stringify({ type: 'admin', data: siteData, expectedSha: currentSha })
                 });
                 const result = await res.json();
-                if (result.success) toast('Saved! Site updates in ~60 seconds.', 'success');
-                else toast('Save failed: ' + result.error, 'error');
+                if (result.success) {
+                    toast('Saved! Site updates in ~60 seconds.', 'success');
+                    currentSha = result.sha; // Update SHA for next save
+                    localStorage.removeItem(DRAFT_KEY); // Clear draft on success
+                } else if (res.status === 409) {
+                    // Conflict detected
+                    toast('⚠️ Someone else edited! Refresh to see their changes.', 'error');
+                    if (confirm('Your changes conflict with recent edits. Save your draft locally and refresh?')) {
+                        localStorage.setItem(DRAFT_KEY, JSON.stringify({ data: siteData, timestamp: Date.now() }));
+                        location.reload();
+                    }
+                } else if (res.status === 400 && result.details) {
+                    toast('Validation error: ' + result.details.join(', '), 'error');
+                } else {
+                    toast('Save failed: ' + (result.error || result.details), 'error');
+                }
             } catch (e) { toast('Save error: ' + e.message, 'error'); }
         }
 
