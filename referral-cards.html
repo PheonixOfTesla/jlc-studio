@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JLC Studio — Referral Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #3b4a3a;
+    --green-mid: #6b7f6a;
+    --green-light: #a3b89c;
+    --cream: #f5f2ed;
+    --cream-dark: #ebe6df;
+    --gold: #c4a86a;
+    --text-muted: #7a8a78;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #d9d4cd;
+    padding: 48px 24px;
+    color: var(--green-dark);
+  }
+
+  /* Page header */
+  .page-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .page-header .brand {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 38px;
+    color: var(--green-dark);
+  }
+  .page-header p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  /* Section labels */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    text-align: center;
+    margin: 56px 0 20px;
+    position: relative;
+  }
+  .section-label::before, .section-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 1px;
+    background: var(--green-light);
+  }
+  .section-label::before { right: calc(50% + 140px); }
+  .section-label::after  { left: calc(50% + 140px); }
+
+  /* Card grid */
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Single card — business card size ratio 3.5x2 inches */
+  .card {
+    width: 350px;
+    height: 200px;
+    background: var(--cream);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 28px rgba(59,74,58,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 26px 20px;
+  }
+
+  /* Decorative corner accent */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    opacity: 0.06;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.08;
+  }
+
+  /* Card target tag */
+  .card-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    background: rgba(107,127,106,0.1);
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Card body */
+  .card-body {
+    position: relative;
+    z-index: 1;
+  }
+  .card-body .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.25;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+  .card-body .headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .card-body .sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* Card footer */
+  .card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .card-footer .contact {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .card-footer .contact strong {
+    color: var(--green-dark);
+    font-weight: 500;
+    font-size: 10.5px;
+  }
+  .card-footer .reward {
+    text-align: right;
+  }
+  .card-footer .reward .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .card-footer .reward .label {
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ─── FACEBOOK MARKETPLACE POST ─── */
+  .fb-section {
+    max-width: 680px;
+    margin: 60px auto 0;
+  }
+  .fb-post {
+    background: var(--cream);
+    border-radius: 16px;
+    box-shadow: 0 4px 28px rgba(59,74,58,0.1);
+    overflow: hidden;
+  }
+  .fb-post .fb-header {
+    background: var(--green-dark);
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .fb-post .fb-header .fb-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fb-post .fb-header .fb-icon svg {
+    width: 20px; height: 20px; fill: var(--gold);
+  }
+  .fb-post .fb-header .fb-title {
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .fb-post .fb-header .fb-title span {
+    display: block;
+    font-size: 10px;
+    color: var(--green-light);
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-top: 2px;
+  }
+
+  .fb-post .fb-body {
+    padding: 28px;
+  }
+  .fb-post .fb-body .fb-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 26px;
+    color: var(--green-dark);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .fb-post .fb-body .fb-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .fb-post .fb-body .fb-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    white-space: pre-line;
+  }
+  .fb-post .fb-body .fb-copy strong {
+    color: var(--green-dark);
+    font-weight: 500;
+  }
+  .fb-post .fb-footer {
+    padding: 0 28px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .fb-post .fb-footer .fb-contact {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .fb-post .fb-footer .fb-contact strong {
+    color: var(--green-dark);
+    font-weight: 500;
+  }
+  .fb-post .fb-footer .fb-badge {
+    background: var(--green-dark);
+    color: var(--cream);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 400;
+  }
+  .fb-post .fb-footer .fb-badge span {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  /* Copy-to-clipboard text block */
+  .copy-block {
+    margin-top: 24px;
+    background: #eae5de;
+    border-radius: 10px;
+    padding: 20px 24px;
+    position: relative;
+  }
+  .copy-block .copy-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 12px;
+  }
+  .copy-block pre {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--green-dark);
+    white-space: pre-wrap;
+    line-height: 1.7;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: #2e3d2d; }
+  .copy-btn.copied { background: var(--gold); color: #fff; }
+
+  /* Print styles */
+  @media print {
+    body { background: #fff; padding: 20px; }
+    .page-header, .section-label, .fb-section, .no-print { display: none !important; }
+    .card-grid { gap: 16px; }
+    .card {
+      box-shadow: 0 0 0 1px #ccc;
+      page-break-inside: avoid;
+    }
+  }
+  .no-print { display: block; }
+
+  @media (max-width: 500px) {
+    .card { width: 100%; max-width: 350px; }
+    .section-label::before, .section-label::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="brand">JLC Studio</div>
+  <h1>Referral Cards & Outreach</h1>
+  <p>Print cards · Drop on Marketplace · Earn $50 per referral</p>
+</div>
+
+<!-- ═══ PRINTABLE CARDS ═══ -->
+<div class="section-label">Printable Referral Cards</div>
+
+<div class="card-grid">
+
+  <!-- 1. Flower Shops -->
+  <div class="card">
+    <div class="card-tag">Flower Shops</div>
+    <div class="card-body">
+      <div class="headline">Know someone planning<br/><em>a wedding or event?</em></div>
+      <div class="sub">Refer them to JLC Studio.<br/>We handle florals, decor & more.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Bridal / Wedding Dress Stores -->
+  <div class="card">
+    <div class="card-tag">Bridal Boutiques</div>
+    <div class="card-body">
+      <div class="headline">She found the dress.<br/><em>Now the florals.</em></div>
+      <div class="sub">Refer your brides to us for<br/>custom wedding florals & decor.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Wedding Venues -->
+  <div class="card">
+    <div class="card-tag">Wedding Venues</div>
+    <div class="card-body">
+      <div class="headline">The venue is booked.<br/><em>Let us make it bloom.</em></div>
+      <div class="sub">Full floral design & event decor<br/>for weddings of any size.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Event Planners -->
+  <div class="card">
+    <div class="card-tag">Event Planners</div>
+    <div class="card-body">
+      <div class="headline">Every event needs<br/><em>a floral story.</em></div>
+      <div class="sub">Florals, decor & styling — we work<br/>directly with planners, seamless.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Photographers -->
+  <div class="card">
+    <div class="card-tag">Photographers</div>
+    <div class="card-body">
+      <div class="headline">Beautiful florals make<br/><em>beautiful photos.</em></div>
+      <div class="sub">Refer your wedding & event clients.<br/>We make the moments worth shooting.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Alterations / Tailoring shops -->
+  <div class="card">
+    <div class="card-tag">Alterations & Tailors</div>
+    <div class="card-body">
+      <div class="headline">We do custom tailoring<br/><em>too. Refer & earn.</em></div>
+      <div class="sub">Bespoke tailoring, alterations &<br/>custom garment work — Sarasota.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Caterers -->
+  <div class="card">
+    <div class="card-tag">Caterers</div>
+    <div class="card-body">
+      <div class="headline">Great food deserves<br/><em>a great setting.</em></div>
+      <div class="sub">Refer your event clients for florals<br/>& full table decor. $50 your way.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. General / All-purpose -->
+  <div class="card">
+    <div class="card-tag">General</div>
+    <div class="card-body">
+      <div class="headline">Florals. Decor.<br/><em>Custom tailoring.</em></div>
+      <div class="sub">Know someone who needs it? Send<br/>them our way. You get $50.</div>
+    </div>
+    <div class="card-footer">
+      <div class="contact">
+        <strong>JLC Studio</strong><br/>
+        jlcstudio.art<br/>
+        (941) 769-7526
+      </div>
+      <div class="reward">
+        <div class="amount">$50</div>
+        <div class="label">per referral</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FACEBOOK MARKETPLACE ═══ -->
+<div class="section-label" style="margin-top:64px;">Facebook Marketplace Post</div>
+
+<div class="fb-section">
+  <div class="fb-post">
+    <div class="fb-header">
+      <div class="fb-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </div>
+      <div class="fb-title">
+        Facebook Marketplace — Services
+        <span>Sarasota, FL · Floral Design & Event Decor</span>
+      </div>
+    </div>
+
+    <div class="fb-body">
+      <div class="fb-headline">Custom Florals & Event Decor<br/><em>— Sarasota, FL</em></div>
+      <div class="fb-copy"><strong>JLC Studio</strong> — Florals, Event Decor & Custom Tailoring based in Sarasota.
+
+Whether it's a wedding, gala, corporate event, or just a stunning arrangement for your space — we handle it all. Handcrafted, personalized, and done right.
+
+<strong>What we do:</strong>
+• Bridal & wedding florals
+• Full event decor & styling
+• Custom arrangements (any occasion)
+• Gala & corporate design
+• Custom tailoring & alterations
+
+<strong>Referral program:</strong> Know someone planning an event? Refer them to us and earn $50 when they book. Drop the form at the link below.
+
+<strong>📍</strong> Sarasota, FL 34232
+<strong>📞</strong> (941) 769-7526
+<strong>🌿</strong> jlcstudio.art</div>
+    </div>
+
+    <div class="fb-footer">
+      <div class="fb-contact">
+        <strong>jlcstudiollc@gmail.com</strong><br/>
+        jlcstudio.art/referral
+      </div>
+      <div class="fb-badge">Refer & Earn <span>$50</span></div>
+    </div>
+  </div>
+
+  <!-- Copy-ready text -->
+  <div class="copy-block">
+    <div class="copy-label">Copy-Ready Text (paste directly into Marketplace)</div>
+    <button class="copy-btn" onclick="copyText()">Copy</button>
+    <pre id="fbText">Custom Florals & Event Decor — Sarasota, FL
+
+JLC Studio — Florals, Event Decor & Custom Tailoring based in Sarasota.
+
+Whether it's a wedding, gala, corporate event, or just a stunning arrangement for your space — we handle it all. Handcrafted, personalized, done right.
+
+What we do:
+• Bridal & wedding florals
+• Full event decor & styling
+• Custom arrangements (any occasion)
+• Gala & corporate design
+• Custom tailoring & alterations
+
+Referral program: Know someone planning an event? Refer them to us and earn $50 when they book. Drop the form at jlcstudio.art
+
+📍 Sarasota, FL 34232
+📞 (941) 769-7526
+📧 jlcstudiollc@gmail.com
+🌿 jlcstudio.art</pre>
+  </div>
+</div>
+
+<script>
+function copyText() {
+  const text = document.getElementById('fbText').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+</script>
+
+</body>
+</html>

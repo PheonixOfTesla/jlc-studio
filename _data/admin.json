@@ -3,7 +3,7 @@
     "badge": "Sarasota's Premier Creative Studio",
     "titleLine1": "Where Creativity",
     "titleLine2": "Meets Occasion",
-    "subtitle": "Florals • Event Decor • Custom Tailoring",
+    "subtitle": "Florals • Event Decor • Sewing",
     "description": "Every detail designed with intention for life's most important moments.",
     "heroImage": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/hero-main.jpg?v=1769299952668",
     "primaryBtn": "Book a Consultation",
@@ -53,7 +53,7 @@
         "level": 90
       },
       {
-        "name": "Custom Tailoring",
+        "name": "Sewing",
         "level": 92
       },
       {
@@ -303,7 +303,7 @@
       "id": "gallery-3",
       "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80",
       "title": "Custom Bridal Gown",
-      "category": "tailoring"
+      "category": "sewing"
     },
     {
       "id": "gallery-4",
@@ -335,7 +335,7 @@
       "expertiseDesc": "The only studio in Sarasota offering florals, event decor, and custom tailoring under one roof.",
       "floral": "Floral Design",
       "decor": "Event Decor",
-      "tailoring": "Custom Tailoring",
+      "tailoring": "Sewing",
       "floralLead": "From intimate dinner arrangements to grand wedding installations, each bloom tells your unique story.",
       "floralDesc": "With years of experience leading floral departments for luxury events, we approach each arrangement as a work of art. Our designs blend classic elegance with contemporary flair, using seasonal blooms and unexpected elements to create unforgettable impressions.",
       "decorLead": "Complete venue transformations that create immersive experiences and unforgettable atmospheres.",

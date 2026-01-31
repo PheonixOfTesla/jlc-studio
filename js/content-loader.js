@@ -417,6 +417,16 @@ const ContentLoader = {
       });
     });
 
+    // Auto-select category from URL parameter (e.g., ?category=florals)
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam) {
+      const filterBtn = document.querySelector(`[data-filter="${categoryParam}"]`);
+      if (filterBtn) {
+        filterBtn.click();
+      }
+    }
+
     console.log('✓ Gallery loaded');
   },
 

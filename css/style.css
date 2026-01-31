@@ -63,7 +63,7 @@ img { max-width: 100%; height: auto; display: block; }
 .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 0; transition: var(--transition-medium); }
 .navbar.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.05); }
 .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; }
-.logo-text { font-family: var(--font-display); font-size: 1.75rem; font-weight: 500; color: var(--gold); }
+.logo-text { font-family: var(--font-display); font-size: 2.25rem; font-weight: 500; color: var(--gold); }
 .nav-menu { display: flex; align-items: center; gap: 3rem; list-style: none; }
 .nav-link { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); position: relative; }
 .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--gold); transition: var(--transition-medium); }

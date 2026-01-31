@@ -1,6 +1,8 @@
 {
   "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" }
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/referral", "destination": "/referral.html" },
+    { "source": "/referral-cards", "destination": "/referral-cards.html" }
   ],
   "headers": [
     {

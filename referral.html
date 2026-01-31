@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JLC Studio — Refer & Earn</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #3b4a3a;
+    --green-mid: #6b7f6a;
+    --green-light: #a3b89c;
+    --cream: #f5f2ed;
+    --cream-dark: #ebe6df;
+    --text: #3b4a3a;
+    --text-muted: #7a8a78;
+    --gold: #c4a86a;
+  }
+
+  html { min-height: 100%; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Subtle botanical bg texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(107,127,106,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 85% 75%, rgba(107,127,106,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+  .header .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 18px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 7vw, 44px);
+    color: var(--green-dark);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .header .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--green-light);
+    margin: 20px auto 18px;
+  }
+  .header p {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* Reward badge */
+  .reward-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--green-dark);
+    color: var(--cream);
+    border-radius: 30px;
+    padding: 10px 22px;
+    width: fit-content;
+    margin: 0 auto 36px;
+  }
+  .reward-badge .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--gold);
+  }
+  .reward-badge .label {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 32px 32px;
+    box-shadow: 0 2px 24px rgba(59,74,58,0.06), 0 1px 4px rgba(59,74,58,0.04);
+  }
+
+  .field-row {
+    display: flex;
+    gap: 16px;
+  }
+  .field-row .field { flex: 1; }
+
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 8px;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd9d2;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .field input:focus, .field textarea:focus {
+    border-color: var(--green-light);
+    box-shadow: 0 0 0 3px rgba(163,184,156,0.2);
+    background: #fff;
+  }
+  .field input::placeholder, .field textarea::placeholder {
+    color: #b5b0a8;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+  }
+
+  /* Arrow between referrer → referree */
+  .arrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -8px 0 12px;
+    gap: 8px;
+  }
+  .arrow-row .line {
+    flex: 1;
+    height: 1px;
+    background: var(--cream-dark);
+  }
+  .arrow-row .arrow-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .arrow-row .arrow-icon svg {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Submit button */
+  .send-btn {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 15px 24px;
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.15s;
+    text-decoration: none;
+    text-align: center;
+  }
+  .send-btn:hover { background: #2e3d2d; }
+  .send-btn:active { transform: scale(0.97); }
+
+  /* Success state */
+  .success-overlay {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .success-overlay.visible { display: flex; }
+  .success-overlay .check-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .success-overlay .check-circle svg {
+    width: 28px; height: 28px;
+    fill: none; stroke: var(--gold);
+    stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .success-overlay h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 26px;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+  }
+  .success-overlay p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 300px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+  }
+  .footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .footer a {
+    color: var(--green-mid);
+    text-decoration: none;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .card { padding: 28px 20px 24px; }
+    .field-row { flex-direction: column; gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="brand">JLC Studio</div>
+    <h1>Refer a friend.<br/><em>Earn $50.</em></h1>
+    <div class="divider"></div>
+    <p>Know someone planning an event, wedding, or needing custom work? Share them with us — when they book, you earn.</p>
+  </div>
+
+  <!-- Reward badge -->
+  <div class="reward-badge">
+    <span class="amount">$50</span>
+    <span class="label">per referral</span>
+  </div>
+
+  <!-- Form card -->
+  <div class="card" id="formCard">
+    <div id="formContent">
+
+      <!-- Referrer -->
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" id="referrerName" placeholder="e.g. Sarah Mitchell" />
+      </div>
+
+      <!-- Arrow -->
+      <div class="arrow-row">
+        <div class="line"></div>
+        <div class="arrow-icon">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Referree -->
+      <div class="field">
+        <label>Friend's Name</label>
+        <input type="text" id="referreeName" placeholder="e.g. Jessica & Tom" />
+      </div>
+
+      <!-- Description -->
+      <div class="field">
+        <label>What are they planning?</label>
+        <textarea id="description" placeholder="e.g. Wedding florals for ~80 guests, summer ceremony..."></textarea>
+      </div>
+
+      <!-- Send button -->
+      <a href="#" class="send-btn" id="sendBtn">Send Referral →</a>
+    </div>
+
+    <!-- Success state (hidden by default) -->
+    <div class="success-overlay" id="successOverlay">
+      <div class="check-circle">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Referral Sent</h2>
+      <p>Your email app should have opened. If not, email us directly at <strong>jlcstudiollc@gmail.com</strong> with the details.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Questions? <a href="mailto:jlcstudiollc@gmail.com">jlcstudiollc@gmail.com</a> &nbsp;·&nbsp; <a href="tel:9417697526">(941) 769-7526</a></p>
+  </div>
+</div>
+
+<script>
+document.getElementById('sendBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const referrer  = document.getElementById('referrerName').value.trim();
+  const referree  = document.getElementById('referreeName').value.trim();
+  const desc      = document.getElementById('description').value.trim();
+
+  // Basic validation
+  if (!referrer || !referree) {
+    if (!referrer) document.getElementById('referrerName').style.borderColor = '#c0392b';
+    if (!referree) document.getElementById('referreeName').style.borderColor = '#c0392b';
+    return;
+  }
+
+  // Reset border colors
+  document.getElementById('referrerName').style.borderColor = '';
+  document.getElementById('referreeName').style.borderColor = '';
+
+  // Build mailto
+  const subject = encodeURIComponent('Referral from ' + referrer);
+  const body = encodeURIComponent(
+    'Hi JLC Studio,\n\n' +
+    referrer + ' has referred ' + referree + ' for your services.\n\n' +
+    (desc ? 'Details:\n' + desc + '\n\n' : '') +
+    'Please reach out to them to discuss.\n\n' +
+    '— Submitted via jlcstudio.art referral page'
+  );
+
+  const mailto = 'mailto:jlcstudiollc@gmail.com?subject=' + subject + '&body=' + body;
+
+  // Open mailto (triggers native email app on any device)
+  window.location.href = mailto;
+
+  // Show success after short delay
+  setTimeout(function() {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successOverlay').classList.add('visible');
+  }, 1200);
+});
+</script>
+
+</body>
+</html>

@@ -56,6 +56,10 @@
         body.editor-mode .hero-edit-btn { display: block; }
 
         /* Image overlays */
+        .img-edit-wrapper { position: relative; display: inline-block; vertical-align: top; }
+        .img-edit-wrapper img { display: block; width: 100%; height: auto; }
+        .image-row .img-edit-wrapper { width: calc(50% - 0.25rem); margin-right: 0.5rem; }
+        .image-row .img-edit-wrapper:last-child { margin-right: 0; }
         .img-edit-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 5; }
         .img-edit-overlay:hover { opacity: 1; }
         .img-edit-overlay span { background: white; color: #333; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
@@ -194,26 +198,26 @@
                     <h2 class="section-title" data-content="hero-craftTitle"></h2>
                 </div>
                 <div class="featured-grid">
-                    <div class="featured-item large">
+                    <a href="gallery.html?category=florals" class="featured-item large">
                         <img src="" data-image-id="featured-wedding-bouquet" alt="Romantic wedding bouquet">
                         <div class="featured-overlay"><span>Bridal Florals</span></div>
-                    </div>
-                    <div class="featured-item">
+                    </a>
+                    <a href="gallery.html?category=decor" class="featured-item">
                         <img src="" data-image-id="featured-table-setting" alt="Wedding table setting">
                         <div class="featured-overlay"><span>Event Decor</span></div>
-                    </div>
-                    <div class="featured-item">
+                    </a>
+                    <a href="gallery.html?category=florals" class="featured-item">
                         <img src="" data-image-id="featured-flower-arrangement" alt="Colorful flower arrangement">
                         <div class="featured-overlay"><span>Custom Arrangements</span></div>
-                    </div>
-                    <div class="featured-item">
+                    </a>
+                    <a href="gallery.html?category=decor" class="featured-item">
                         <img src="" data-image-id="featured-gala-setup" alt="Elegant gala setup">
                         <div class="featured-overlay"><span>Gala Design</span></div>
-                    </div>
-                    <div class="featured-item large">
+                    </a>
+                    <a href="gallery.html?category=sewing" class="featured-item large">
                         <img src="" data-image-id="featured-wedding-dress" alt="Wedding dress detail">
-                        <div class="featured-overlay"><span>Custom Tailoring</span></div>
-                    </div>
+                        <div class="featured-overlay"><span>Sewing</span></div>
+                    </a>
                 </div>
                 <div class="text-center" style="margin-top: 3rem;">
                     <a href="#" class="btn btn-secondary">View Full Portfolio</a>
@@ -338,7 +342,7 @@
                             <a href="#" data-link="email-icon" class="social-icon">@</a>
                         </div>
                     </div>
-                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Sewing</a></li></ul></div>
                     <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
                     <div class="footer-contact"><h4>Get in Touch</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
                 </div>
@@ -421,7 +425,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
-                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Sewing</a></li></ul></div>
                     <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
                     <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
                 </div>
@@ -531,7 +535,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
-                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Sewing</a></li></ul></div>
                     <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
                     <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
                 </div>
@@ -588,7 +592,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
-                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Sewing</a></li></ul></div>
                     <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
                     <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
                 </div>
@@ -653,7 +657,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
-                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Sewing</a></li></ul></div>
                     <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Contact</a></li></ul></div>
                     <div class="footer-contact"><h4>Contact</h4><address><p data-content="address"></p><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></address></div>
                 </div>
@@ -696,7 +700,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand"><div class="footer-logo" data-content="businessName"></div><p data-content="tagline"></p></div>
-                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Custom Tailoring</a></li></ul></div>
+                    <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Floral Design</a></li><li><a href="#">Event Decor</a></li><li><a href="#">Sewing</a></li></ul></div>
                     <div class="footer-links"><h4>Studio</h4><ul><li><a href="#">About</a></li><li><a href="#">Portfolio</a></li><li><a href="#">Book Consultation</a></li></ul></div>
                     <div class="footer-contact"><h4>Contact</h4><p><a href="#" data-link="phone"></a></p><p><a href="#" data-link="email"></a></p></div>
                 </div>
@@ -759,8 +763,19 @@
 
             document.querySelectorAll('[data-image-id]').forEach(img => {
                 if (img.closest('.hero-image') || img.closest('.page-hero-image')) return;
-                const wrapper = img.parentElement;
+
+                // Create individual wrapper for each image
+                const wrapper = document.createElement('div');
+                wrapper.className = 'img-edit-wrapper';
                 wrapper.style.position = 'relative';
+                wrapper.style.display = 'inline-block';
+                wrapper.style.width = img.parentElement.classList.contains('image-row') ? '50%' : '100%';
+
+                // Insert wrapper and move image into it
+                img.parentNode.insertBefore(wrapper, img);
+                wrapper.appendChild(img);
+
+                // Add overlay to the wrapper
                 const overlay = document.createElement('div');
                 overlay.className = 'img-edit-overlay';
                 overlay.innerHTML = '<span>Change</span>';
