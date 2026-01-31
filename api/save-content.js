@@ -6,6 +6,41 @@ const https = require('https');
 const REPO_OWNER = 'PheonixOfTesla';
 const REPO_NAME = 'jlc-studio';
 
+// Schema validation - required fields and structure
+const REQUIRED_SCHEMA = {
+    hero: ['badge', 'titleLine1', 'titleLine2'],
+    about: ['name', 'bio'],
+    settings: ['businessName', 'email'],
+    labels: ['hero', 'about', 'services']
+};
+
+function validateSchema(data) {
+    const errors = [];
+
+    // Check required top-level keys
+    for (const [key, requiredFields] of Object.entries(REQUIRED_SCHEMA)) {
+        if (!data[key]) {
+            errors.push(`Missing required section: ${key}`);
+            continue;
+        }
+        if (Array.isArray(requiredFields)) {
+            for (const field of requiredFields) {
+                if (typeof data[key][field] === 'undefined') {
+                    errors.push(`Missing required field: ${key}.${field}`);
+                }
+            }
+        }
+    }
+
+    // Check for dangerous content (XSS prevention)
+    const jsonStr = JSON.stringify(data);
+    if (/<script/i.test(jsonStr)) {
+        errors.push('Script tags not allowed in content');
+    }
+
+    return errors;
+}
+
 // Debug logging
 function log(...args) {
     console.log('[save-content]', ...args);
@@ -56,14 +91,23 @@ async function githubRequest(method, path, body = null) {
 async function getFileSha(filePath) {
     try {
         const file = await githubRequest('GET', `/contents/${filePath}`);
-        return file.sha;
+        return { sha: file.sha, content: file.content };
     } catch (e) {
-        return null; // File doesn't exist
+        return { sha: null, content: null }; // File doesn't exist
     }
 }
 
-async function saveFile(filePath, content, message) {
-    const sha = await getFileSha(filePath);
+async function saveFile(filePath, content, message, expectedSha = null) {
+    const { sha: currentSha } = await getFileSha(filePath);
+
+    // Conflict detection: if client sent expectedSha and it doesn't match current, reject
+    if (expectedSha && currentSha && expectedSha !== currentSha) {
+        const error = new Error('CONFLICT: File was modified by another user. Please refresh and try again.');
+        error.code = 'CONFLICT';
+        error.currentSha = currentSha;
+        throw error;
+    }
+
     const base64Content = Buffer.from(JSON.stringify(content, null, 2)).toString('base64');
 
     const body = {
@@ -72,11 +116,13 @@ async function saveFile(filePath, content, message) {
         branch: 'main'
     };
 
-    if (sha) {
-        body.sha = sha; // Required for updates
+    if (currentSha) {
+        body.sha = currentSha; // Required for updates
     }
 
-    return githubRequest('PUT', `/contents/${filePath}`, body);
+    const result = await githubRequest('PUT', `/contents/${filePath}`, body);
+    result.newSha = result.content?.sha; // Return new SHA for client to track
+    return result;
 }
 
 module.exports = async (req, res) => {
@@ -128,12 +174,22 @@ module.exports = async (req, res) => {
     log('GITHUB_TOKEN is configured, length:', process.env.GITHUB_TOKEN.length);
 
     try {
-        const { type, data } = req.body || {};
-        log('Processing save for type:', type);
+        const { type, data, expectedSha } = req.body || {};
+        log('Processing save for type:', type, 'expectedSha:', expectedSha?.substring(0, 7));
 
         if (!type || data === undefined) {
             log('Missing type or data in request body');
             return res.status(400).json({ error: 'Missing type or data' });
+        }
+
+        // Schema validation
+        const validationErrors = validateSchema(data);
+        if (validationErrors.length > 0) {
+            log('Validation failed:', validationErrors);
+            return res.status(400).json({
+                error: 'Validation failed',
+                details: validationErrors
+            });
         }
 
         // Single source of truth: admin.json contains all data
@@ -141,11 +197,12 @@ module.exports = async (req, res) => {
 
         log('Saving to master file:', filePath, 'Type:', type);
 
-        // Save to GitHub
+        // Save to GitHub with conflict detection
         const result = await saveFile(
             filePath,
             data,
-            `Update admin data via admin panel (${type})`
+            `Update admin data via admin panel (${type})`,
+            expectedSha
         );
 
         log('Save successful, commit:', result.commit?.sha);
@@ -154,12 +211,22 @@ module.exports = async (req, res) => {
             success: true,
             message: `${type} saved and deployed`,
             commit: result.commit?.sha?.substring(0, 7),
+            sha: result.newSha, // Return new SHA for client tracking
             timestamp: new Date().toISOString()
         });
 
     } catch (error) {
         log('Save error:', error.message);
         console.error('Full error:', error);
+
+        // Handle conflict errors specially
+        if (error.code === 'CONFLICT') {
+            return res.status(409).json({
+                error: 'Conflict detected',
+                details: error.message,
+                currentSha: error.currentSha
+            });
+        }
 
         // Provide more helpful error messages
         let userMessage = error.message;

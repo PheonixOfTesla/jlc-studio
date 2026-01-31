@@ -8,7 +8,9 @@
   "dependencies": {
     "nodemailer": "^6.9.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "puppeteer": "^24.36.1"
+  },
   "engines": {
     "node": "20.x"
   }
