@@ -289,7 +289,7 @@
   "gallery": [
     {
       "id": "gallery-1",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771265757647.JPG?v=1771265758857",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771261187517.png?v=1771261189266",
       "title": "Romantic Bridal Bouquet",
       "category": "florals"
     },
@@ -322,6 +322,24 @@
       "url": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80",
       "title": "Spring Wedding Florals",
       "category": "florals"
+    },
+    {
+      "id": "gallery-1771266392742",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771266383527.png?v=1771266385394",
+      "title": "Floral Design",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1771266418212",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771266407119.png?v=1771266408711",
+      "title": "Foral Design",
+      "category": "sewing"
+    },
+    {
+      "id": "gallery-1771266434264",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771266429738.png?v=1771266431507",
+      "title": "Floral design",
+      "category": "florals"
     }
   ],
   "labels": {
@@ -349,8 +367,8 @@
     },
     "packages": {
       "heading": "Value",
-      "title": "Sewing & Tailoring",
-      "description": "Bespoke garments and alterations with couture craftsmanship"
+      "title": "Floral Design",
+      "description": "From intimate arrangements to grand wedding installations"
     },
     "faq": {
       "label": "Questions",
