@@ -249,16 +249,16 @@
     "gold": "#ad93fb",
     "goldLight": "#00f0a8",
     "goldDark": "#5a5dff",
-    "sage": "#8B9B7A",
+    "sage": "#000000",
     "sageLight": "#A5B494",
     "sageDark": "#6B7B5A",
     "white": "#ffffff",
     "cream": "#ffffff",
     "ivory": "#eef2e9",
     "taupe": "#dfe5d3",
-    "warmGray": "#8B9B7A",
-    "charcoal": "#8B9B7A",
-    "black": "#8B9B7A"
+    "warmGray": "#000000",
+    "charcoal": "#000000",
+    "black": "#000000"
   },
   "imageMap": {
     "hero-main": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/hero-main.png?v=1770737141951",
