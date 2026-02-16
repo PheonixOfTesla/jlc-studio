@@ -55,8 +55,8 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-secondary:hover { background: var(--sage-dark); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid var(--charcoal); }
 .btn-outline:hover { background: var(--charcoal); color: var(--white); }
-.btn-outline-light { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5); }
-.btn-outline-light:hover { background: var(--white); color: var(--charcoal); }
+.btn-outline-light { background: transparent; color: var(--charcoal); border: 1.5px solid var(--charcoal); }
+.btn-outline-light:hover { background: var(--charcoal); color: var(--white); }
 .btn-large { padding: 1.25rem 3rem; font-size: 0.9rem; }
 
 /* Navigation */
