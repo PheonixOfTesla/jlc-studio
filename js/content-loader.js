@@ -127,6 +127,12 @@ const ContentLoader = {
       document.querySelectorAll('[data-link="pinterest"]').forEach(el => {
         el.href = settings.pinterest || '#';
       });
+      document.querySelectorAll('[data-link="facebook"]').forEach(el => {
+        el.href = settings.facebook || '#';
+      });
+      document.querySelectorAll('[data-link="etsy"]').forEach(el => {
+        el.href = settings.etsy || '#';
+      });
     }
 
     // Labels - section headings, etc.
