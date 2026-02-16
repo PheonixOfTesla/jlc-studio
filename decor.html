@@ -16,7 +16,6 @@
             <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="JLC Studio" class="logo-img"></a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="gallery.html" class="nav-link active">Portfolio</a></li>
                 <li><a href="booking.html" class="nav-link">Booking</a></li>
@@ -42,8 +41,15 @@
             <div class="portfolio-back">
                 <a href="gallery.html" class="btn btn-outline">Back to Portfolio</a>
             </div>
-            <div class="gallery-grid" data-gallery-category="decor">
-                <!-- Populated by content-loader.js from admin.json -->
+            <div class="gallery-carousel" data-gallery-category="decor">
+                <div class="carousel-container">
+                    <div class="carousel-track" data-carousel-track>
+                        <!-- Populated by content-loader.js from admin.json -->
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-prev" data-carousel-prev>&#8249;</button>
+                <button class="carousel-btn carousel-btn-next" data-carousel-next>&#8250;</button>
+                <div class="carousel-dots" data-carousel-dots></div>
             </div>
         </div>
     </section>
@@ -84,9 +90,8 @@
                 <div class="footer-links">
                     <h4>Studio</h4>
                     <ul>
-                        <li><a href="about.html">About</a></li>
                         <li><a href="gallery.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
