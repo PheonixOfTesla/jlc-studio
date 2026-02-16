@@ -398,13 +398,36 @@ const ContentLoader = {
       categoryContainers.forEach(container => {
         const category = container.getAttribute('data-gallery-category');
         const filteredGallery = gallery.filter(item => item && item.url && item.category === category);
+        const isCarousel = container.classList.contains('gallery-carousel');
 
         if (filteredGallery.length === 0) {
-          container.innerHTML = `
+          const target = isCarousel ? container.querySelector('[data-carousel-track]') : container;
+          if (target) target.innerHTML = `
             <div class="gallery-empty">
               <p>No items in this category yet. Check back soon!</p>
             </div>
           `;
+        } else if (isCarousel) {
+          // Render as carousel
+          const track = container.querySelector('[data-carousel-track]');
+          const dotsContainer = container.querySelector('[data-carousel-dots]');
+
+          if (track) {
+            track.innerHTML = filteredGallery.map(item => `
+              <div class="carousel-slide">
+                <img src="${item.url}" alt="${item.title || 'Gallery item'}">
+              </div>
+            `).join('');
+          }
+
+          if (dotsContainer) {
+            dotsContainer.innerHTML = filteredGallery.map((_, i) => `
+              <button class="carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></button>
+            `).join('');
+          }
+
+          // Initialize carousel
+          this.initCarousel(container);
         } else {
           container.innerHTML = filteredGallery.map(item => `
             <div class="gallery-item" data-category="${item.category || 'all'}">
@@ -536,6 +559,47 @@ const ContentLoader = {
     });
 
     console.log('✓ Footer loaded');
+  },
+
+  // Initialize carousel functionality
+  initCarousel(container) {
+    const track = container.querySelector('[data-carousel-track]');
+    const slides = track ? track.querySelectorAll('.carousel-slide') : [];
+    const prevBtn = container.querySelector('[data-carousel-prev]');
+    const nextBtn = container.querySelector('[data-carousel-next]');
+    const dots = container.querySelectorAll('.carousel-dot');
+
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+
+    const updateCarousel = () => {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+    });
+
+    console.log('✓ Carousel initialized with', slides.length, 'slides');
   },
 
   // Initialize everything
