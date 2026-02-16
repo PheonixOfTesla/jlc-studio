@@ -247,7 +247,7 @@
   ],
   "theme": {
     "gold": "#ad93fb",
-    "goldLight": "#00efdd",
+    "goldLight": "#00f0a8",
     "goldDark": "#5a5dff",
     "sage": "#00ff72",
     "sageLight": "#8ba870",
@@ -265,7 +265,7 @@
     "about-hero": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/about-hero.svg?v=1770519611372",
     "about-profile": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/about-profile.jpeg?v=1769192759617",
     "about-cta-image": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1200&q=80",
-    "services-hero": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/services-hero.jpg?v=1771256716698",
+    "services-hero": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/services-hero.png?v=1771257204683",
     "services-floral-main": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/services-floral-main.JPG?v=1769302829404",
     "services-floral-detail-1": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/services-floral-detail-1.jpg?v=1770737439508",
     "services-floral-detail-2": "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&q=80",
