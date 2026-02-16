@@ -784,9 +784,10 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-admin-header">
-                    <h3>Florals Gallery</h3>
-                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'florals')">+ Add Floral Image</button>
+                    <h3>Florals Carousel <span id="floralsCount" style="font-weight: normal; color: #888; font-size: 0.9rem;"></span></h3>
+                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'florals')">+ Add Photo</button>
                 </div>
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 1.5rem;">📷 These photos appear in the <strong>Floral Design carousel</strong> on your website. Add unlimited photos - hover any image to edit or delete it.</p>
                 <div class="gallery-grid" id="adminFloralsGrid"></div>
             </div>
         </section>
@@ -912,9 +913,10 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-admin-header">
-                    <h3>Decor Gallery</h3>
-                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'decor')">+ Add Decor Image</button>
+                    <h3>Decor Carousel <span id="decorCount" style="font-weight: normal; color: #888; font-size: 0.9rem;"></span></h3>
+                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'decor')">+ Add Photo</button>
                 </div>
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 1.5rem;">📷 These photos appear in the <strong>Event Decor carousel</strong> on your website. Add unlimited photos - hover any image to edit or delete it.</p>
                 <div class="gallery-grid" id="adminDecorGrid"></div>
             </div>
         </section>
@@ -955,9 +957,10 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-admin-header">
-                    <h3>Sewing Gallery</h3>
-                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'sewing')">+ Add Sewing Image</button>
+                    <h3>Sewing Carousel <span id="sewingCount" style="font-weight: normal; color: #888; font-size: 0.9rem;"></span></h3>
+                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'sewing')">+ Add Photo</button>
                 </div>
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 1.5rem;">📷 These photos appear in the <strong>Sewing & Tailoring carousel</strong> on your website. Add unlimited photos - hover any image to edit or delete it.</p>
                 <div class="gallery-grid" id="adminSewingGrid"></div>
             </div>
         </section>
@@ -1464,7 +1467,10 @@
                             <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
                         </div>
                     </div>
-                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No floral images yet. Click "Add Floral Image" to add one.</p>';
+                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No photos yet. Click "+ Add Photo" to add your first one!</p>';
+                // Update count
+                const floralsCountEl = document.getElementById('floralsCount');
+                if (floralsCountEl) floralsCountEl.textContent = `(${floralsItems.length} photo${floralsItems.length !== 1 ? 's' : ''})`;
             }
 
             // Render decor-specific gallery
@@ -1483,7 +1489,10 @@
                             <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
                         </div>
                     </div>
-                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No decor images yet. Click "Add Decor Image" to add one.</p>';
+                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No photos yet. Click "+ Add Photo" to add your first one!</p>';
+                // Update count
+                const decorCountEl = document.getElementById('decorCount');
+                if (decorCountEl) decorCountEl.textContent = `(${decorItems.length} photo${decorItems.length !== 1 ? 's' : ''})`;
             }
 
             // Render sewing-specific gallery
@@ -1502,7 +1511,10 @@
                             <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
                         </div>
                     </div>
-                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No sewing images yet. Click "Add Sewing Image" to add one.</p>';
+                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No photos yet. Click "+ Add Photo" to add your first one!</p>';
+                // Update count
+                const sewingCountEl = document.getElementById('sewingCount');
+                if (sewingCountEl) sewingCountEl.textContent = `(${sewingItems.length} photo${sewingItems.length !== 1 ? 's' : ''})`;
             }
 
             // Setup filter functionality
