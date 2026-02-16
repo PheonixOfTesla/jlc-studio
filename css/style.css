@@ -88,6 +88,8 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-subtitle { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; color: var(--warm-gray); }
 .hero-description { font-size: 1.125rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2.5rem; }
 .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.hero-cta .btn { background: #a4ff00; color: #FFFFFF; border: none; }
+.hero-cta .btn:hover { background: #8de600; color: #FFFFFF; }
 .hero-scroll { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); text-align: center; }
 .hero-scroll span { display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 1rem; }
 .scroll-indicator { width: 24px; height: 40px; border: 2px solid var(--taupe); border-radius: 12px; margin: 0 auto; position: relative; }
