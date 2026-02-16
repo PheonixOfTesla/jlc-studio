@@ -256,9 +256,9 @@
     "cream": "#ffbebf",
     "ivory": "#eef2e9",
     "taupe": "#dfe5d3",
-    "warmGray": "#8fa885",
-    "charcoal": "#a4ff00",
-    "black": "#1d2d1b"
+    "warmGray": "#000000",
+    "charcoal": "#000000",
+    "black": "#000000"
   },
   "imageMap": {
     "hero-main": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/hero-main.png?v=1770737141951",
