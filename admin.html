@@ -783,19 +783,11 @@
 
         <section class="gallery-section">
             <div class="container">
-                <div class="portfolio-back">
-                    <a href="gallery.html" class="btn btn-outline">Back to Portfolio</a>
+                <div class="gallery-admin-header">
+                    <h3>Florals Gallery</h3>
+                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'florals')">+ Add Floral Image</button>
                 </div>
-                <div class="gallery-carousel" data-gallery-category="florals">
-                    <div class="carousel-container">
-                        <div class="carousel-track" data-carousel-track>
-                            <!-- Populated by content-loader.js from admin.json -->
-                        </div>
-                    </div>
-                    <button class="carousel-btn carousel-btn-prev" data-carousel-prev>&#8249;</button>
-                    <button class="carousel-btn carousel-btn-next" data-carousel-next>&#8250;</button>
-                    <div class="carousel-dots" data-carousel-dots></div>
-                </div>
+                <div class="gallery-grid" id="adminFloralsGrid"></div>
             </div>
         </section>
 
@@ -891,14 +883,56 @@
         </footer>
     </div>
 
-    <!-- ====================== SEWING PAGE (EXACT COPY OF sewing.html) ====================== -->
+    <!-- ====================== DECOR PAGE ====================== -->
+    <div class="admin-page" id="page-decor">
+        <nav class="navbar scrolled">
+            <div class="nav-container">
+                <a href="#" class="nav-logo"><img src="images/logo.png" alt="JLC Studio" class="logo-img"></a>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">Services</a></li>
+                    <li><a href="#" class="nav-link active">Portfolio</a></li>
+                    <li><a href="#" class="nav-link">Booking</a></li>
+                    <li><a href="#" class="nav-link nav-cta">Get in Touch</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="page-hero">
+            <div class="page-hero-image">
+                <img src="" data-image-id="services-decor-main" alt="Event Decor Portfolio">
+            </div>
+            <div class="page-hero-content">
+                <span class="section-label">Portfolio</span>
+                <h1>Event Decor</h1>
+                <p>Complete venue transformations for unforgettable celebrations</p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-admin-header">
+                    <h3>Decor Gallery</h3>
+                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'decor')">+ Add Decor Image</button>
+                </div>
+                <div class="gallery-grid" id="adminDecorGrid"></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-bottom"><p>© 2024 <span data-content="businessName"></span>. All rights reserved.</p></div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ====================== SEWING PAGE ====================== -->
     <div class="admin-page" id="page-sewing">
         <nav class="navbar scrolled">
             <div class="nav-container">
                 <a href="#" class="nav-logo"><img src="images/logo.png" alt="JLC Studio" class="logo-img"></a>
                 <ul class="nav-menu">
                     <li><a href="#" class="nav-link">Home</a></li>
-                    <li><a href="#" class="nav-link">About</a></li>
                     <li><a href="#" class="nav-link">Services</a></li>
                     <li><a href="#" class="nav-link active">Portfolio</a></li>
                     <li><a href="#" class="nav-link">Booking</a></li>
@@ -913,19 +947,18 @@
             </div>
             <div class="page-hero-content">
                 <span class="section-label">Portfolio</span>
-                <h1 data-content="sewing-title">Sewing & Tailoring</h1>
-                <p data-content="sewing-description">Bespoke garments and alterations with couture craftsmanship</p>
+                <h1>Sewing & Tailoring</h1>
+                <p>Bespoke garments and alterations with couture craftsmanship</p>
             </div>
         </section>
 
         <section class="gallery-section">
             <div class="container">
-                <div class="portfolio-back">
-                    <a href="gallery.html" class="btn btn-outline">Back to Portfolio</a>
+                <div class="gallery-admin-header">
+                    <h3>Sewing Gallery</h3>
+                    <button class="btn-add-gallery" onclick="openGalleryModal(null, 'sewing')">+ Add Sewing Image</button>
                 </div>
-                <div class="gallery-grid" data-gallery-category="sewing">
-                    <!-- Populated by content-loader.js from admin.json -->
-                </div>
+                <div class="gallery-grid" id="adminSewingGrid"></div>
             </div>
         </section>
 
@@ -1394,23 +1427,83 @@
 
         function renderAdminGallery() {
             const container = document.getElementById('adminGalleryGrid');
-            if (!container || !siteData?.gallery) return;
+            if (!siteData?.gallery) return;
 
             const gallery = Array.isArray(siteData.gallery) ? siteData.gallery : Object.values(siteData.gallery);
 
-            container.innerHTML = gallery.filter(item => item && item.url).map(item => `
-                <div class="gallery-item gallery-item-admin" data-category="${item.category || 'all'}" data-gallery-id="${item.id}">
-                    <img src="${item.url}" alt="${item.title || 'Gallery item'}">
-                    <div class="gallery-overlay">
-                        <h3>${item.title || ''}</h3>
-                        <p>${item.category || ''}</p>
+            // Render main portfolio gallery (all categories)
+            if (container) {
+                container.innerHTML = gallery.filter(item => item && item.url).map(item => `
+                    <div class="gallery-item gallery-item-admin" data-category="${item.category || 'all'}" data-gallery-id="${item.id}">
+                        <img src="${item.url}" alt="${item.title || 'Gallery item'}">
+                        <div class="gallery-overlay">
+                            <h3>${item.title || ''}</h3>
+                            <p>${item.category || ''}</p>
+                        </div>
+                        <div class="gallery-admin-overlay">
+                            <button class="btn-edit" onclick="openGalleryModal('${item.id}')">Edit</button>
+                            <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
+                        </div>
                     </div>
-                    <div class="gallery-admin-overlay">
-                        <button class="btn-edit" onclick="openGalleryModal('${item.id}')">Edit</button>
-                        <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
+                `).join('');
+            }
+
+            // Render florals-specific gallery
+            const floralsContainer = document.getElementById('adminFloralsGrid');
+            if (floralsContainer) {
+                const floralsItems = gallery.filter(item => item && item.url && item.category === 'florals');
+                floralsContainer.innerHTML = floralsItems.length > 0 ? floralsItems.map(item => `
+                    <div class="gallery-item gallery-item-admin" data-category="${item.category}" data-gallery-id="${item.id}">
+                        <img src="${item.url}" alt="${item.title || 'Gallery item'}">
+                        <div class="gallery-overlay">
+                            <h3>${item.title || ''}</h3>
+                            <p>${item.category || ''}</p>
+                        </div>
+                        <div class="gallery-admin-overlay">
+                            <button class="btn-edit" onclick="openGalleryModal('${item.id}')">Edit</button>
+                            <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No floral images yet. Click "Add Floral Image" to add one.</p>';
+            }
+
+            // Render decor-specific gallery
+            const decorContainer = document.getElementById('adminDecorGrid');
+            if (decorContainer) {
+                const decorItems = gallery.filter(item => item && item.url && item.category === 'decor');
+                decorContainer.innerHTML = decorItems.length > 0 ? decorItems.map(item => `
+                    <div class="gallery-item gallery-item-admin" data-category="${item.category}" data-gallery-id="${item.id}">
+                        <img src="${item.url}" alt="${item.title || 'Gallery item'}">
+                        <div class="gallery-overlay">
+                            <h3>${item.title || ''}</h3>
+                            <p>${item.category || ''}</p>
+                        </div>
+                        <div class="gallery-admin-overlay">
+                            <button class="btn-edit" onclick="openGalleryModal('${item.id}')">Edit</button>
+                            <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
+                        </div>
+                    </div>
+                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No decor images yet. Click "Add Decor Image" to add one.</p>';
+            }
+
+            // Render sewing-specific gallery
+            const sewingContainer = document.getElementById('adminSewingGrid');
+            if (sewingContainer) {
+                const sewingItems = gallery.filter(item => item && item.url && item.category === 'sewing');
+                sewingContainer.innerHTML = sewingItems.length > 0 ? sewingItems.map(item => `
+                    <div class="gallery-item gallery-item-admin" data-category="${item.category}" data-gallery-id="${item.id}">
+                        <img src="${item.url}" alt="${item.title || 'Gallery item'}">
+                        <div class="gallery-overlay">
+                            <h3>${item.title || ''}</h3>
+                            <p>${item.category || ''}</p>
+                        </div>
+                        <div class="gallery-admin-overlay">
+                            <button class="btn-edit" onclick="openGalleryModal('${item.id}')">Edit</button>
+                            <button class="btn-delete" onclick="deleteGalleryImage('${item.id}')">Delete</button>
+                        </div>
+                    </div>
+                `).join('') : '<p style="color: #666; text-align: center; padding: 2rem;">No sewing images yet. Click "Add Sewing Image" to add one.</p>';
+            }
 
             // Setup filter functionality
             document.querySelectorAll('[data-filter]').forEach(btn => {
@@ -1425,7 +1518,7 @@
             });
         }
 
-        function openGalleryModal(editId = null) {
+        function openGalleryModal(editId = null, defaultCategory = 'florals') {
             currentGalleryEditId = editId;
             const modal = document.getElementById('galleryModal');
             const titleEl = document.getElementById('galleryModalTitle');
@@ -1454,7 +1547,7 @@
                 previewEl.src = '';
                 urlInput.value = '';
                 titleInput.value = '';
-                categorySelect.value = 'florals';
+                categorySelect.value = defaultCategory;
             }
 
             modal.classList.add('active');
