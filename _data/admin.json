@@ -249,16 +249,16 @@
     "gold": "#ad93fb",
     "goldLight": "#00f0a8",
     "goldDark": "#5a5dff",
-    "sage": "#000000",
-    "sageLight": "#A5B494",
-    "sageDark": "#6B7B5A",
+    "sage": "#00ff72",
+    "sageLight": "#8ba870",
+    "sageDark": "#4b6e3b",
     "white": "#ffffff",
-    "cream": "#ffffff",
+    "cream": "#ffbebf",
     "ivory": "#eef2e9",
     "taupe": "#dfe5d3",
-    "warmGray": "#000000",
-    "charcoal": "#000000",
-    "black": "#000000"
+    "warmGray": "#8fa885",
+    "charcoal": "#a4ff00",
+    "black": "#1d2d1b"
   },
   "imageMap": {
     "hero-main": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/hero-main.png?v=1770737141951",
@@ -321,24 +321,6 @@
       "id": "gallery-6",
       "url": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80",
       "title": "Spring Wedding Florals",
-      "category": "florals"
-    },
-    {
-      "id": "gallery-7",
-      "url": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=800&q=80",
-      "title": "Rustic Wildflower Arrangement",
-      "category": "florals"
-    },
-    {
-      "id": "gallery-8",
-      "url": "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80",
-      "title": "Elegant Rose Bouquet",
-      "category": "florals"
-    },
-    {
-      "id": "gallery-9",
-      "url": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80",
-      "title": "Ceremony Arch Florals",
       "category": "florals"
     }
   ],
