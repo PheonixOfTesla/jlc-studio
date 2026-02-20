@@ -301,7 +301,7 @@
     },
     {
       "id": "gallery-3",
-      "url": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771552791837.png?v=1771552793608",
       "title": "Custom Bridal Gown",
       "category": "sewing"
     },
@@ -327,6 +327,18 @@
       "id": "gallery-1771266434264",
       "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771266429738.png?v=1771266431507",
       "title": "Floral design",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771555338669",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771555296765.png?v=1771555299470",
+      "title": "Sewing",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771555653799",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771555639670.png?v=1771555640967",
+      "title": "Panda",
       "category": "florals"
     }
   ],
