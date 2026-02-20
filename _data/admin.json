@@ -296,7 +296,7 @@
     {
       "id": "gallery-2",
       "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771547667479.png?v=1771547668643",
-      "title": "Elegant Reception Setup",
+      "title": "Elegant Proposal Setup",
       "category": "decor"
     },
     {
@@ -313,8 +313,8 @@
     },
     {
       "id": "gallery-5",
-      "url": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-      "title": "Corporate Gala Design",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771594851654.png?v=1771594855006",
+      "title": "Charcuterie",
       "category": "decor"
     },
     {
@@ -340,6 +340,36 @@
       "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771555639670.png?v=1771555640967",
       "title": "Panda",
       "category": "florals"
+    },
+    {
+      "id": "gallery-1771594764423",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771594728409.png?v=1771594731148",
+      "title": "Engagement Reception",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1771594806151",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771594781951.png?v=1771594784587",
+      "title": "Centerpiece",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1771594970816",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771594944799.png?v=1771594948363",
+      "title": "Corporate Lunch Event",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1771595027199",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771594995867.png?v=1771594998453",
+      "title": "Corporate Lunch",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1771595060167",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595044071.png?v=1771595046973",
+      "title": "Tasting",
+      "category": "decor"
     }
   ],
   "labels": {
