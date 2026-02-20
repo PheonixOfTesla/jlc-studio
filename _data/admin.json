@@ -319,20 +319,20 @@
     },
     {
       "id": "gallery-6",
-      "url": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&q=80",
-      "title": "Spring Wedding Florals",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595291291.png?v=1771595292995",
+      "title": "Splash Of Color",
       "category": "florals"
     },
     {
       "id": "gallery-1771266434264",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771266429738.png?v=1771266431507",
-      "title": "Floral design",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595414178.png?v=1771595415950",
+      "title": "Spring Has Sprung",
       "category": "florals"
     },
     {
       "id": "gallery-1771555338669",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771555296765.png?v=1771555299470",
-      "title": "Sewing",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595588377.png?v=1771595591385",
+      "title": "Romance",
       "category": "florals"
     },
     {
@@ -370,6 +370,18 @@
       "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595044071.png?v=1771595046973",
       "title": "Tasting",
       "category": "decor"
+    },
+    {
+      "id": "gallery-1771595656822",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595638551.png?v=1771595640918",
+      "title": "Tiny",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771595717931",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595703624.png?v=1771595705675",
+      "title": "Glam",
+      "category": "florals"
     }
   ],
   "labels": {
