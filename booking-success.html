@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed | JLC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .success-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: var(--ivory);
+        }
+        .success-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 540px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+            stroke-width: 2.5;
+            fill: none;
+        }
+        .success-card h1 {
+            font-size: 2rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+        .success-card p {
+            color: var(--warm-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .next-steps {
+            background: var(--ivory);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            margin: 2rem 0;
+        }
+        .next-steps h3 {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .next-steps ol {
+            color: var(--warm-gray);
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+        .next-steps li {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        .schedule-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .schedule-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--taupe);
+        }
+        .contact-info p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="JLC Studio" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Portfolio</a></li>
+                <li><a href="booking.html" class="nav-link nav-cta">Book Now</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="success-section">
+        <div class="success-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h1>Payment Confirmed!</h1>
+            <p>Thank you for booking with JLC Studio. Your payment has been processed successfully, and we're excited to work with you!</p>
+
+            <div class="next-steps">
+                <h3>What Happens Next</h3>
+                <ol>
+                    <li><strong>Check your email</strong> - You'll receive a confirmation and receipt shortly</li>
+                    <li><strong>Schedule your consultation</strong> - Click the button below to choose your preferred date and time</li>
+                    <li><strong>Prepare your ideas</strong> - We'll send you a questionnaire to help us understand your vision</li>
+                </ol>
+            </div>
+
+            <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" class="schedule-btn">
+                Schedule Your Consultation
+            </a>
+
+            <div class="contact-info">
+                <p>Questions? Call us at <strong>(941) 769-7526</strong> or email <strong>jlcstudiollc@gmail.com</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom"><p>© 2024 JLC Studio. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -6,7 +6,10 @@
     "dev": "vercel dev"
   },
   "dependencies": {
-    "nodemailer": "^6.9.7"
+    "googleapis": "^134.0.0",
+    "micro": "^10.0.1",
+    "nodemailer": "^6.9.7",
+    "stripe": "^14.14.0"
   },
   "devDependencies": {
     "puppeteer": "^24.36.1"

@@ -17,6 +17,7 @@
     --text: #3b4a3a;
     --text-muted: #7a8a78;
     --gold: #c4a86a;
+    --error: #c0392b;
   }
 
   html { min-height: 100%; }
@@ -35,7 +36,6 @@
     overflow-x: hidden;
   }
 
-  /* Subtle botanical bg texture */
   body::before {
     content: '';
     position: fixed;
@@ -54,7 +54,6 @@
     max-width: 520px;
   }
 
-  /* Header */
   .header {
     text-align: center;
     margin-bottom: 44px;
@@ -95,7 +94,6 @@
     margin: 0 auto;
   }
 
-  /* Reward badge */
   .reward-badge {
     display: flex;
     align-items: center;
@@ -122,7 +120,6 @@
     opacity: 0.8;
   }
 
-  /* Card */
   .card {
     background: #fff;
     border-radius: 16px;
@@ -148,7 +145,7 @@
     color: var(--green-mid);
     margin-bottom: 8px;
   }
-  .field input, .field textarea {
+  .field input, .field select {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #ddd9d2;
@@ -160,54 +157,63 @@
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
   }
-  .field input:focus, .field textarea:focus {
+  .field input:focus, .field select:focus {
     border-color: var(--green-light);
     box-shadow: 0 0 0 3px rgba(163,184,156,0.2);
     background: #fff;
   }
-  .field input::placeholder, .field textarea::placeholder {
+  .field input::placeholder {
     color: #b5b0a8;
   }
-  .field textarea {
-    resize: vertical;
-    min-height: 90px;
-    line-height: 1.5;
+  .field input.error, .field select.error {
+    border-color: var(--error);
+  }
+  .field .helper {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
   }
 
-  /* Arrow between referrer → referree */
-  .arrow-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -8px 0 12px;
-    gap: 8px;
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 28px 0 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cream-dark);
   }
-  .arrow-row .line {
+
+  .payment-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .payment-option {
     flex: 1;
-    height: 1px;
-    background: var(--cream-dark);
+    padding: 12px 16px;
+    border: 2px solid #ddd9d2;
+    border-radius: 8px;
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
   }
-  .arrow-row .arrow-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
+  .payment-option:hover {
+    border-color: var(--green-light);
+  }
+  .payment-option.selected {
+    border-color: var(--green-dark);
     background: var(--green-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .arrow-row .arrow-icon svg {
-    width: 12px;
-    height: 12px;
-    fill: none;
-    stroke: var(--gold);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    color: var(--cream);
   }
 
-  /* Submit button */
-  .send-btn {
+  .submit-btn {
     display: block;
     width: 100%;
     margin-top: 8px;
@@ -223,11 +229,24 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.25s, transform 0.15s;
-    text-decoration: none;
-    text-align: center;
   }
-  .send-btn:hover { background: #2e3d2d; }
-  .send-btn:active { transform: scale(0.97); }
+  .submit-btn:hover:not(:disabled) { background: #2e3d2d; }
+  .submit-btn:active:not(:disabled) { transform: scale(0.97); }
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .error-message {
+    background: #fdecea;
+    color: var(--error);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    display: none;
+  }
+  .error-message.visible { display: block; }
 
   /* Success state */
   .success-overlay {
@@ -264,10 +283,73 @@
     font-size: 13px;
     color: var(--text-muted);
     line-height: 1.6;
-    max-width: 300px;
+    max-width: 320px;
   }
 
-  /* Footer */
+  .code-display {
+    background: var(--green-dark);
+    padding: 24px 32px;
+    border-radius: 12px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .code-display .code-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .code-display .code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+  .copy-btn {
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .copy-btn:hover {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+  .copy-btn.copied {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+
+  .share-link {
+    background: var(--cream);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .share-link p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .share-link a {
+    color: var(--gold);
+    font-weight: 500;
+    word-break: break-all;
+    font-size: 13px;
+  }
+
   .footer {
     text-align: center;
     margin-top: 32px;
@@ -282,10 +364,11 @@
   }
   .footer a:hover { text-decoration: underline; }
 
-  /* Mobile */
   @media (max-width: 480px) {
     .card { padding: 28px 20px 24px; }
     .field-row { flex-direction: column; gap: 0; }
+    .payment-options { flex-wrap: wrap; }
+    .payment-option { flex: 1 1 calc(50% - 5px); }
   }
 </style>
 </head>
@@ -293,111 +376,219 @@
 
 <div class="container">
 
-  <!-- Header -->
   <div class="header">
     <div class="brand">JLC Studio</div>
     <h1>Refer a friend.<br/><em>Earn $50.</em></h1>
     <div class="divider"></div>
-    <p>Know someone planning an event, wedding, or needing custom work? Share them with us — when they book, you earn.</p>
+    <p>Know someone planning an event, wedding, or needing custom work? Get your unique referral code and earn $50 for every friend who books.</p>
   </div>
 
-  <!-- Reward badge -->
   <div class="reward-badge">
     <span class="amount">$50</span>
     <span class="label">per referral</span>
   </div>
 
-  <!-- Form card -->
   <div class="card" id="formCard">
     <div id="formContent">
 
-      <!-- Referrer -->
-      <div class="field">
-        <label>Your Name</label>
-        <input type="text" id="referrerName" placeholder="e.g. Sarah Mitchell" />
-      </div>
+      <div class="error-message" id="errorMessage"></div>
 
-      <!-- Arrow -->
-      <div class="arrow-row">
-        <div class="line"></div>
-        <div class="arrow-icon">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      <div class="field-row">
+        <div class="field">
+          <label>First Name *</label>
+          <input type="text" id="firstName" placeholder="Sarah" />
         </div>
-        <div class="line"></div>
+        <div class="field">
+          <label>Last Name *</label>
+          <input type="text" id="lastName" placeholder="Mitchell" />
+        </div>
       </div>
 
-      <!-- Referree -->
       <div class="field">
-        <label>Friend's Name</label>
-        <input type="text" id="referreeName" placeholder="e.g. Jessica & Tom" />
+        <label>Email *</label>
+        <input type="email" id="email" placeholder="sarah@email.com" />
+        <div class="helper">We'll send your referral code here</div>
       </div>
 
-      <!-- Description -->
       <div class="field">
-        <label>What are they planning?</label>
-        <textarea id="description" placeholder="e.g. Wedding florals for ~80 guests, summer ceremony..."></textarea>
+        <label>Phone (Optional)</label>
+        <input type="tel" id="phone" placeholder="(941) 555-1234" />
       </div>
 
-      <!-- Send button -->
-      <a href="#" class="send-btn" id="sendBtn">Send Referral →</a>
+      <div class="section-label">How would you like to be paid?</div>
+
+      <div class="payment-options">
+        <button type="button" class="payment-option" data-method="Venmo">Venmo</button>
+        <button type="button" class="payment-option" data-method="PayPal">PayPal</button>
+        <button type="button" class="payment-option" data-method="Zelle">Zelle</button>
+        <button type="button" class="payment-option" data-method="Check">Check</button>
+      </div>
+
+      <div class="field" id="paymentDetailsField" style="display: none;">
+        <label id="paymentDetailsLabel">Payment Details *</label>
+        <input type="text" id="paymentDetails" placeholder="" />
+        <div class="helper" id="paymentDetailsHelper"></div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn">Get My Referral Code</button>
     </div>
 
-    <!-- Success state (hidden by default) -->
     <div class="success-overlay" id="successOverlay">
       <div class="check-circle">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h2>Referral Sent</h2>
-      <p>Your email app should have opened. If not, email us directly at <strong>jlcstudiollc@gmail.com</strong> with the details.</p>
+      <h2>You're All Set!</h2>
+      <p>Here's your unique referral code. Share it with friends and earn $50 when they book!</p>
+
+      <div class="code-display">
+        <div class="code-label">Your Referral Code</div>
+        <div class="code" id="referralCode">JLC-XX-0000</div>
+        <button class="copy-btn" id="copyBtn">Copy Code</button>
+      </div>
+
+      <div class="share-link">
+        <p>Or share this link directly:</p>
+        <a href="#" id="shareLink" target="_blank">jlcstudio.art/booking?ref=CODE</a>
+      </div>
+
+      <p style="margin-top: 20px;">We've also emailed you these details.</p>
     </div>
   </div>
 
-  <!-- Footer -->
   <div class="footer">
     <p>Questions? <a href="mailto:jlcstudiollc@gmail.com">jlcstudiollc@gmail.com</a> &nbsp;·&nbsp; <a href="tel:9417697526">(941) 769-7526</a></p>
   </div>
 </div>
 
 <script>
-document.getElementById('sendBtn').addEventListener('click', function(e) {
-  e.preventDefault();
+(function() {
+  let selectedPaymentMethod = null;
 
-  const referrer  = document.getElementById('referrerName').value.trim();
-  const referree  = document.getElementById('referreeName').value.trim();
-  const desc      = document.getElementById('description').value.trim();
+  const paymentLabels = {
+    'Venmo': { label: 'Venmo Username *', placeholder: '@username', helper: 'Your Venmo username (starts with @)' },
+    'PayPal': { label: 'PayPal Email *', placeholder: 'your@email.com', helper: 'Email linked to your PayPal account' },
+    'Zelle': { label: 'Zelle Phone or Email *', placeholder: 'Phone or email', helper: 'Phone or email registered with Zelle' },
+    'Check': { label: 'Mailing Address *', placeholder: '123 Main St, Sarasota, FL 34236', helper: 'We\'ll mail your check here' }
+  };
 
-  // Basic validation
-  if (!referrer || !referree) {
-    if (!referrer) document.getElementById('referrerName').style.borderColor = '#c0392b';
-    if (!referree) document.getElementById('referreeName').style.borderColor = '#c0392b';
-    return;
-  }
+  // Payment method selection
+  document.querySelectorAll('.payment-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.payment-option').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      selectedPaymentMethod = this.dataset.method;
 
-  // Reset border colors
-  document.getElementById('referrerName').style.borderColor = '';
-  document.getElementById('referreeName').style.borderColor = '';
+      const field = document.getElementById('paymentDetailsField');
+      const config = paymentLabels[selectedPaymentMethod];
+      document.getElementById('paymentDetailsLabel').textContent = config.label;
+      document.getElementById('paymentDetails').placeholder = config.placeholder;
+      document.getElementById('paymentDetailsHelper').textContent = config.helper;
+      field.style.display = 'block';
+      document.getElementById('paymentDetails').value = '';
+    });
+  });
 
-  // Build mailto
-  const subject = encodeURIComponent('Referral from ' + referrer);
-  const body = encodeURIComponent(
-    'Hi JLC Studio,\n\n' +
-    referrer + ' has referred ' + referree + ' for your services.\n\n' +
-    (desc ? 'Details:\n' + desc + '\n\n' : '') +
-    'Please reach out to them to discuss.\n\n' +
-    '— Submitted via jlcstudio.art referral page'
-  );
+  // Form submission
+  document.getElementById('submitBtn').addEventListener('click', async function() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const paymentDetails = document.getElementById('paymentDetails').value.trim();
 
-  const mailto = 'mailto:jlcstudiollc@gmail.com?subject=' + subject + '&body=' + body;
+    // Reset errors
+    document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+    const errorEl = document.getElementById('errorMessage');
+    errorEl.classList.remove('visible');
 
-  // Open mailto (triggers native email app on any device)
-  window.location.href = mailto;
+    // Validate
+    let hasError = false;
+    if (!firstName) { document.getElementById('firstName').classList.add('error'); hasError = true; }
+    if (!lastName) { document.getElementById('lastName').classList.add('error'); hasError = true; }
+    if (!email) { document.getElementById('email').classList.add('error'); hasError = true; }
+    if (!selectedPaymentMethod) {
+      errorEl.textContent = 'Please select a payment method.';
+      errorEl.classList.add('visible');
+      return;
+    }
+    if (!paymentDetails) { document.getElementById('paymentDetails').classList.add('error'); hasError = true; }
 
-  // Show success after short delay
-  setTimeout(function() {
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('successOverlay').classList.add('visible');
-  }, 1200);
-});
+    if (hasError) {
+      errorEl.textContent = 'Please fill in all required fields.';
+      errorEl.classList.add('visible');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      document.getElementById('email').classList.add('error');
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.classList.add('visible');
+      return;
+    }
+
+    // Disable button during submission
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Creating Code...';
+
+    try {
+      const response = await fetch('/api/referral-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          paymentMethod: selectedPaymentMethod,
+          paymentDetails
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (data.existingCode) {
+          errorEl.textContent = `This email is already registered. Your code is: ${data.existingCode}`;
+        } else {
+          errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+        }
+        errorEl.classList.add('visible');
+        btn.disabled = false;
+        btn.textContent = 'Get My Referral Code';
+        return;
+      }
+
+      // Success!
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('referralCode').textContent = data.code;
+      document.getElementById('shareLink').href = data.shareUrl;
+      document.getElementById('shareLink').textContent = data.shareUrl.replace('https://', '');
+      document.getElementById('successOverlay').classList.add('visible');
+
+    } catch (error) {
+      errorEl.textContent = 'Network error. Please check your connection and try again.';
+      errorEl.classList.add('visible');
+      btn.disabled = false;
+      btn.textContent = 'Get My Referral Code';
+    }
+  });
+
+  // Copy button
+  document.getElementById('copyBtn').addEventListener('click', function() {
+    const code = document.getElementById('referralCode').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      this.textContent = 'Copied!';
+      this.classList.add('copied');
+      setTimeout(() => {
+        this.textContent = 'Copy Code';
+        this.classList.remove('copied');
+      }, 2000);
+    });
+  });
+})();
 </script>
 
 </body>

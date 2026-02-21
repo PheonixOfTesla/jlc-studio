@@ -12,20 +12,51 @@
     <style>
         .booking-section { padding: 6rem 0; background: var(--white); }
         .booking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
-        .booking-card { background: var(--white); border: 2px solid var(--taupe); border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.3s; cursor: pointer; }
+        .booking-card { background: var(--white); border: 2px solid var(--taupe); border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.3s; }
         .booking-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(196,160,82,0.15); transform: translateY(-5px); }
         .booking-card h3 { font-size: 1.5rem; color: var(--charcoal); margin-bottom: 0.5rem; }
         .booking-price { font-size: 2rem; color: var(--gold); font-weight: 600; margin: 1rem 0; }
         .booking-duration { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1rem; }
         .booking-description { color: var(--warm-gray); margin-bottom: 2rem; line-height: 1.6; }
-        .booking-card a { display: inline-block; padding: 0.875rem 2rem; background: var(--gold); color: var(--white); border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
-        .booking-card a:hover { background: var(--gold-dark); }
-        .booking-card.featured { border-color: var(--gold); border-width: 3px; }
+        .booking-card .book-btn { display: inline-block; padding: 0.875rem 2rem; background: var(--gold); color: var(--white); border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.2s; border: none; cursor: pointer; font-size: 1rem; }
+        .booking-card .book-btn:hover { background: var(--gold-dark); }
+        .booking-card .book-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .booking-card.featured { border-color: var(--gold); border-width: 3px; position: relative; }
         .booking-card.featured::before { content: 'Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--white); padding: 0.35rem 0.75rem; font-size: 0.75rem; font-weight: 600; border-radius: 50px; text-transform: uppercase; }
         .booking-info-section { background: var(--ivory); padding: 3rem 0; margin: 3rem 0; border-radius: 12px; }
         .info-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
         .info-item h4 { color: var(--gold); margin-bottom: 0.5rem; font-weight: 600; }
         .info-item p { color: var(--warm-gray); font-size: 0.95rem; }
+
+        /* Referral badge */
+        .referral-banner {
+            display: none;
+            background: linear-gradient(135deg, #3b4a3a 0%, #4a5d49 100%);
+            color: #f5f2ed;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .referral-banner.visible { display: block; }
+        .referral-banner .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.8;
+            margin-bottom: 0.25rem;
+        }
+        .referral-banner .code {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #c4a86a;
+            letter-spacing: 2px;
+        }
+        .referral-banner .note {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -62,6 +93,13 @@
 
     <section class="booking-section">
         <div class="container">
+            <!-- Referral Badge -->
+            <div class="referral-banner" id="referralBanner">
+                <div class="label">Referred by</div>
+                <div class="code" id="referralCodeDisplay">JLC-XX-0000</div>
+                <div class="note">Your friend will receive $50 when you book!</div>
+            </div>
+
             <div class="section-header centered">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;" data-content="booking-consultationsTitle">Available Consultations</h2>
                 <p style="color: var(--warm-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto;" data-content="booking-consultationsDesc">Select the consultation type that best fits your needs. All bookings include professional guidance and detailed planning for your special event.</p>
@@ -74,16 +112,16 @@
                     <div class="booking-duration">30 minutes</div>
                     <div class="booking-price">FREE</div>
                     <p class="booking-description">Perfect for getting started. Discuss your vision, ask questions, and explore how we can help bring your ideas to life.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Schedule Free Call</a>
+                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank" class="book-btn">Schedule Free Call</a>
                 </div>
 
                 <!-- Paid Design Consultation -->
-                <div class="booking-card featured" style="position: relative;">
+                <div class="booking-card featured">
                     <h3>Design Consultation</h3>
                     <div class="booking-duration">60 minutes</div>
                     <div class="booking-price">$150</div>
                     <p class="booking-description">In-depth planning session with expert guidance. Perfect for detailed floral and decor design consultation with personalized recommendations.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Book & Pay Now</a>
+                    <button class="book-btn" data-product="design-consultation">Book & Pay Now</button>
                 </div>
 
                 <!-- Wedding Consultation -->
@@ -92,7 +130,7 @@
                     <div class="booking-duration">90 minutes</div>
                     <div class="booking-price">$200</div>
                     <p class="booking-description">Comprehensive wedding planning session. Ideal for complete wedding vision including florals, decor, and tailoring coordination.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Book & Pay Now</a>
+                    <button class="book-btn" data-product="wedding-consultation">Book & Pay Now</button>
                 </div>
 
                 <!-- Event Deposit -->
@@ -101,7 +139,7 @@
                     <div class="booking-duration">30 minutes planning call</div>
                     <div class="booking-price">$500</div>
                     <p class="booking-description">Non-refundable deposit to lock in your event date. Deposit is credited toward your final invoice.</p>
-                    <a href="https://cal.com/jlynne-huffer-8qatfj" target="_blank">Reserve Date</a>
+                    <button class="book-btn" data-product="event-deposit">Reserve Date</button>
                 </div>
             </div>
 
@@ -110,27 +148,27 @@
                     <h3 style="text-align: center; margin-bottom: 2rem;">How Booking Works</h3>
                     <div class="info-content">
                         <div class="info-item">
-                            <h4>📅 Choose Your Time</h4>
-                            <p>Browse available dates and times that work for your schedule. Consultations available Monday through Saturday.</p>
+                            <h4>1. Choose & Pay</h4>
+                            <p>Select your consultation type and complete secure payment via Stripe. Your spot is instantly confirmed.</p>
                         </div>
                         <div class="info-item">
-                            <h4>💳 Secure Payment</h4>
-                            <p>For paid consultations, payment is collected securely via Stripe during booking. Your spot is instantly confirmed.</p>
+                            <h4>2. Schedule Your Time</h4>
+                            <p>After payment, you'll be directed to choose your preferred date and time from our availability calendar.</p>
                         </div>
                         <div class="info-item">
-                            <h4>📧 Instant Confirmation</h4>
+                            <h4>3. Instant Confirmation</h4>
                             <p>Receive confirmation email with meeting details, Zoom link (or location for in-person), and calendar invite.</p>
                         </div>
                         <div class="info-item">
-                            <h4>🎥 Easy Rescheduling</h4>
+                            <h4>4. Easy Rescheduling</h4>
                             <p>Need to change your time? Simply reschedule through your confirmation email with one click.</p>
                         </div>
                         <div class="info-item">
-                            <h4>✅ No Surprises</h4>
+                            <h4>5. No Surprises</h4>
                             <p>Automatic reminders sent before your consultation. Questions? Call us at (941) 769-7526.</p>
                         </div>
                         <div class="info-item">
-                            <h4>💼 Professional Service</h4>
+                            <h4>6. Professional Service</h4>
                             <p>Each consultation includes detailed notes and follow-up recommendations tailored to your specific needs.</p>
                         </div>
                     </div>
@@ -180,5 +218,61 @@
 
     <script src="js/main.js"></script>
     <script src="js/content-loader.js"></script>
+    <script>
+    (function() {
+        // Get referral code from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralCode = urlParams.get('ref');
+
+        // Store referral code in sessionStorage for checkout
+        if (referralCode) {
+            sessionStorage.setItem('jlc_referral_code', referralCode);
+            // Show referral banner
+            document.getElementById('referralCodeDisplay').textContent = referralCode;
+            document.getElementById('referralBanner').classList.add('visible');
+        }
+
+        // Get stored referral code (in case they navigated away and back)
+        const storedReferralCode = sessionStorage.getItem('jlc_referral_code');
+
+        // Handle paid booking buttons
+        document.querySelectorAll('[data-product]').forEach(btn => {
+            btn.addEventListener('click', async function() {
+                const productId = this.dataset.product;
+                const originalText = this.textContent;
+
+                // Disable button and show loading
+                this.disabled = true;
+                this.textContent = 'Processing...';
+
+                try {
+                    const response = await fetch('/api/create-checkout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            productId,
+                            referralCode: storedReferralCode || referralCode || null
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Failed to create checkout');
+                    }
+
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+
+                } catch (error) {
+                    console.error('Checkout error:', error);
+                    alert('Something went wrong. Please try again or call us at (941) 769-7526.');
+                    this.disabled = false;
+                    this.textContent = originalText;
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
