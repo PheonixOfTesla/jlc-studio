@@ -13,34 +13,34 @@
     "name": "JLynne Huffer",
     "title": "Founder & Creative Director",
     "photo": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/about-profile.jpeg?v=1769192759617",
-    "bio": "A multidisciplinary creative professional with over 15 years of experience spanning fashion design, event decor, and floral artistry. From the runways of New York Fashion Week to luxury events in Denver and now Sarasota, JLynne brings a unique perspective that blends artistic vision with technical expertise. Having worked with celebrity clients at Mood Fabrics and assisted on multiple seasons of Project Runway, she understands how to create experiences that are both visually stunning and deeply personal.",
-    "years": "0",
-    "events": "0",
+    "bio": "With 15+ years mastering the intersection of fashion, florals, and event design, JLynne brings an unmatched eye for color, texture, and detail to every creation. Her journey began in Manhattan's fashion elite—developing seasonal collections for Elise Overland, managing the prestigious Silk Department at Mood Fabrics, and designing for celebrity clients including Sarah Jessica Parker and Katie Holmes. She assisted on multiple seasons of Project Runway and worked backstage at Fashion Week with legendary designers Yigal Azrouel and Cynthia Rowley. This couture-level precision now elevates every floral arrangement, event installation, and custom garment she creates. Born in the U.S. and raised in Sweden with years spent in Israel, JLynne's international perspective infuses her work with a sophisticated global aesthetic. She believes art is a tool for expression, healing, and community creativity—and that belief transforms ordinary events into unforgettable experiences.",
+    "years": "15",
+    "events": "500",
     "quote": "Art is a tool for expression, healing, and community creativity.",
     "experience": [
       {
-        "title": "New York Fashion Week",
-        "role": "Lead Designer & Stylist",
-        "years": "2008-2014",
-        "description": "Designed runway collections and styled shows for emerging designers."
+        "title": "Elise Overland",
+        "role": "Fashion Designer & Studio Manager",
+        "years": "2008-2011",
+        "description": "Developed seasonal collections, produced patterns and tech packs, supported runway shows and photoshoots in Manhattan."
       },
       {
         "title": "Mood Fabrics NYC",
-        "role": "Senior Design Consultant",
-        "years": "2012-2016",
-        "description": "Worked with Project Runway contestants and celebrity clients on custom fabric selections."
+        "role": "Silk Department Manager",
+        "years": "2011-2013",
+        "description": "Designed for celebrity clients including Sarah Jessica Parker, Katie Holmes, and Damon Dash. Assisted on Project Runway and Project Runway All Stars."
       },
       {
-        "title": "Denver Luxury Events",
-        "role": "Creative Director",
-        "years": "2016-2020",
-        "description": "Led floral and decor design for high-end weddings and corporate galas."
+        "title": "Catering by Design",
+        "role": "Creative Designer & Floral Lead",
+        "years": "2022-2024",
+        "description": "Led the Floral Department for luxury Denver events—overseeing concept creation, production, and bridal designs."
       },
       {
         "title": "JLC Studio",
         "role": "Founder & Owner",
-        "years": "2020-Present",
-        "description": "Bringing three disciplines together under one roof in beautiful Sarasota, FL."
+        "years": "2024-Present",
+        "description": "Bringing three disciplines together under one roof in beautiful Sarasota, FL—where fashion precision meets floral artistry."
       }
     ],
     "skills": [
@@ -50,15 +50,15 @@
       },
       {
         "name": "Event Styling",
-        "level": 90
+        "level": 95
       },
       {
-        "name": "Sewing",
-        "level": 92
+        "name": "Garment Construction",
+        "level": 98
       },
       {
-        "name": "Color Theory",
-        "level": 88
+        "name": "Color & Textile Expertise",
+        "level": 97
       },
       {
         "name": "Client Relations",
@@ -67,8 +67,8 @@
     ],
     "education": {
       "degree": "Bachelor of Fine Arts",
-      "field": "Fashion Design & Textile Arts",
-      "institution": "Fashion Institute of Technology, New York"
+      "field": "Fashion Design & Marketing",
+      "institution": "International Academy of Design & Technology, Tampa"
     }
   },
   "settings": {
