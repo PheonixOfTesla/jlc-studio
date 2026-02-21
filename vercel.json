@@ -1,14 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/referral", "destination": "/referral.html" },
-    { "source": "/referral-cards", "destination": "/referral-cards.html" },
-    { "source": "/booking", "destination": "/booking.html" },
-    { "source": "/booking-success", "destination": "/booking-success.html" },
-    { "source": "/florals", "destination": "/florals.html" },
-    { "source": "/decor", "destination": "/decor.html" },
-    { "source": "/sewing", "destination": "/sewing.html" }
-  ],
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/api/(.*)",
