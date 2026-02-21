@@ -10,14 +10,16 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --green-dark: #3b4a3a;
-    --green-mid: #6b7f6a;
-    --green-light: #a3b89c;
-    --cream: #f5f2ed;
-    --cream-dark: #ebe6df;
-    --text: #3b4a3a;
-    --text-muted: #7a8a78;
-    --gold: #c4a86a;
+    --gold: #C4A052;
+    --gold-dark: #A68A42;
+    --sage: #8B9B7A;
+    --cream: #FAF8F5;
+    --cream-dark: #F5F2ED;
+    --ivory: #F5F2ED;
+    --taupe: #E8E4DC;
+    --text: #000000;
+    --text-muted: #666666;
+    --charcoal: #000000;
     --error: #c0392b;
   }
 
@@ -65,14 +67,14 @@
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--green-mid);
+    color: var(--sage);
     margin-bottom: 18px;
   }
   .header h1 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: clamp(32px, 7vw, 44px);
-    color: var(--green-dark);
+    color: var(--charcoal);
     line-height: 1.2;
     letter-spacing: -0.5px;
   }
@@ -83,7 +85,7 @@
   .header .divider {
     width: 40px;
     height: 1px;
-    background: var(--green-light);
+    background: var(--taupe);
     margin: 20px auto 18px;
   }
   .header p {
@@ -100,8 +102,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: var(--green-dark);
-    color: var(--cream);
+    background: var(--gold);
+    color: white;
     border-radius: 30px;
     padding: 10px 22px;
     width: fit-content;
@@ -110,15 +112,15 @@
   .reward-badge .amount {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
-    font-weight: 400;
-    color: var(--gold);
+    font-weight: 600;
+    color: white;
   }
   .reward-badge .label {
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   .card {
@@ -143,7 +145,7 @@
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--green-mid);
+    color: var(--sage);
     margin-bottom: 8px;
   }
   .field input, .field select {
@@ -159,7 +161,7 @@
     outline: none;
   }
   .field input:focus, .field select:focus {
-    border-color: var(--green-light);
+    border-color: var(--taupe);
     box-shadow: 0 0 0 3px rgba(163,184,156,0.2);
     background: #fff;
   }
@@ -206,12 +208,12 @@
     transition: all 0.2s;
   }
   .payment-option:hover {
-    border-color: var(--green-light);
+    border-color: var(--taupe);
   }
   .payment-option.selected {
-    border-color: var(--green-dark);
-    background: var(--green-dark);
-    color: var(--cream);
+    border-color: var(--gold);
+    background: var(--gold);
+    color: white;
   }
 
   .submit-btn {
@@ -219,11 +221,11 @@
     width: 100%;
     margin-top: 8px;
     padding: 15px 24px;
-    background: var(--green-dark);
-    color: var(--cream);
+    background: var(--gold);
+    color: white;
     border: none;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 2px;
@@ -231,7 +233,7 @@
     cursor: pointer;
     transition: background 0.25s, transform 0.15s;
   }
-  .submit-btn:hover:not(:disabled) { background: #2e3d2d; }
+  .submit-btn:hover:not(:disabled) { background: var(--gold-dark); }
   .submit-btn:active:not(:disabled) { transform: scale(0.97); }
   .submit-btn:disabled {
     opacity: 0.6;
@@ -262,7 +264,7 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: var(--green-dark);
+    background: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -270,14 +272,14 @@
   }
   .success-overlay .check-circle svg {
     width: 28px; height: 28px;
-    fill: none; stroke: var(--gold);
+    fill: none; stroke: white;
     stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
   }
   .success-overlay h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: 26px;
-    color: var(--green-dark);
+    color: var(--charcoal);
     margin-bottom: 10px;
   }
   .success-overlay p {
@@ -288,7 +290,7 @@
   }
 
   .code-display {
-    background: var(--green-dark);
+    background: var(--gold);
     padding: 24px 32px;
     border-radius: 12px;
     margin: 24px 0;
@@ -298,25 +300,25 @@
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--cream);
-    opacity: 0.7;
+    color: white;
+    opacity: 0.8;
     margin-bottom: 8px;
   }
   .code-display .code {
     font-family: 'Cormorant Garamond', serif;
     font-size: 32px;
-    font-weight: 400;
-    color: var(--gold);
+    font-weight: 600;
+    color: white;
     letter-spacing: 3px;
     margin-bottom: 16px;
   }
   .copy-btn {
     padding: 8px 20px;
-    background: transparent;
-    border: 1px solid var(--gold);
+    background: white;
+    border: none;
     color: var(--gold);
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -325,12 +327,10 @@
     transition: all 0.2s;
   }
   .copy-btn:hover {
-    background: var(--gold);
-    color: var(--green-dark);
+    background: var(--cream);
   }
   .copy-btn.copied {
-    background: var(--gold);
-    color: var(--green-dark);
+    background: var(--cream);
   }
 
   .share-link {
@@ -360,7 +360,7 @@
     color: var(--text-muted);
   }
   .footer a {
-    color: var(--green-mid);
+    color: var(--sage);
     text-decoration: none;
   }
   .footer a:hover { text-decoration: underline; }
