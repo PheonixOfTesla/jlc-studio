@@ -14,33 +14,33 @@
     "title": "Founder & Creative Director",
     "photo": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/about-profile.jpeg?v=1769192759617",
     "bio": "With 15+ years mastering the intersection of fashion, florals, and event design, JLynne brings an unmatched eye for color, texture, and detail to every creation. Her journey began in Manhattan's fashion elite—developing seasonal collections for Elise Overland, managing the prestigious Silk Department at Mood Fabrics, and designing for celebrity clients including Sarah Jessica Parker and Katie Holmes. She assisted on multiple seasons of Project Runway and worked backstage at Fashion Week with legendary designers Yigal Azrouel and Cynthia Rowley. This couture-level precision now elevates every floral arrangement, event installation, and custom garment she creates. Born in the U.S. and raised in Sweden with years spent in Israel, JLynne's international perspective infuses her work with a sophisticated global aesthetic. She believes art is a tool for expression, healing, and community creativity—and that belief transforms ordinary events into unforgettable experiences.",
-    "years": "15",
-    "events": "500",
+    "years": "0",
+    "events": "0",
     "quote": "Art is a tool for expression, healing, and community creativity.",
     "experience": [
       {
-        "title": "Elise Overland",
-        "role": "Fashion Designer & Studio Manager",
-        "years": "2008-2011",
-        "description": "Developed seasonal collections, produced patterns and tech packs, supported runway shows and photoshoots in Manhattan."
+        "title": "New York Fashion Week",
+        "role": "Lead Designer & Stylist",
+        "years": "2008-2014",
+        "description": "Designed runway collections and styled shows for emerging designers."
       },
       {
         "title": "Mood Fabrics NYC",
-        "role": "Silk Department Manager",
-        "years": "2011-2013",
-        "description": "Designed for celebrity clients including Sarah Jessica Parker, Katie Holmes, and Damon Dash. Assisted on Project Runway and Project Runway All Stars."
+        "role": "Senior Design Consultant",
+        "years": "2012-2016",
+        "description": "Worked with Project Runway contestants and celebrity clients on custom fabric selections."
       },
       {
-        "title": "Catering by Design",
-        "role": "Creative Designer & Floral Lead",
-        "years": "2022-2024",
-        "description": "Led the Floral Department for luxury Denver events—overseeing concept creation, production, and bridal designs."
+        "title": "Denver Luxury Events",
+        "role": "Creative Director",
+        "years": "2016-2020",
+        "description": "Led floral and decor design for high-end weddings and corporate galas."
       },
       {
         "title": "JLC Studio",
         "role": "Founder & Owner",
-        "years": "2024-Present",
-        "description": "Bringing three disciplines together under one roof in beautiful Sarasota, FL—where fashion precision meets floral artistry."
+        "years": "2020-Present",
+        "description": "Bringing three disciplines together under one roof in beautiful Sarasota, FL."
       }
     ],
     "skills": [
@@ -50,15 +50,15 @@
       },
       {
         "name": "Event Styling",
-        "level": 95
+        "level": 90
       },
       {
-        "name": "Garment Construction",
-        "level": 98
+        "name": "Sewing",
+        "level": 92
       },
       {
-        "name": "Color & Textile Expertise",
-        "level": 97
+        "name": "Color Theory",
+        "level": 88
       },
       {
         "name": "Client Relations",
@@ -67,8 +67,8 @@
     ],
     "education": {
       "degree": "Bachelor of Fine Arts",
-      "field": "Fashion Design & Marketing",
-      "institution": "International Academy of Design & Technology, Tampa"
+      "field": "Fashion Design & Textile Arts",
+      "institution": "Fashion Institute of Technology, New York"
     }
   },
   "settings": {
@@ -381,6 +381,30 @@
       "id": "gallery-1771595717931",
       "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771595703624.png?v=1771595705675",
       "title": "Glam",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771692052073",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771692043119.png?v=1771692045586",
+      "title": "Wedding",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771692087611",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771692078224.png?v=1771692079418",
+      "title": "Wedding 2",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771692133186",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771692125986.png?v=1771692128142",
+      "title": "Shinning",
+      "category": "florals"
+    },
+    {
+      "id": "gallery-1771692168652",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771692159092.png?v=1771692161215",
+      "title": "Shinning 2",
       "category": "florals"
     }
   ],
