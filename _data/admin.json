@@ -426,10 +426,22 @@
       "category": "decor"
     },
     {
-      "id": "gallery-1772035247311",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772035240787.png?v=1772035242084",
+      "id": "gallery-1772035286734",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772035279951.png?v=1772035281410",
       "title": "H 8",
-      "category": "florals"
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1772035310890",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772035303193.png?v=1772035304667",
+      "title": "H 4",
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1772035333784",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772035326049.png?v=1772035327323",
+      "title": "H 5",
+      "category": "decor"
     }
   ],
   "labels": {
