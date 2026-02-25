@@ -325,8 +325,8 @@
     },
     {
       "id": "gallery-1771594806151",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1771594781951.png?v=1771594784587",
-      "title": "Centerpiece",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772032152581.png?v=1772032153875",
+      "title": "Wedding Arch",
       "category": "decor"
     },
     {
@@ -402,10 +402,16 @@
       "category": "florals"
     },
     {
-      "id": "gallery-1772032008783",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772031997112.png?v=1772031998316",
-      "title": "Wedding Arch",
+      "id": "gallery-1772032196649",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772032185491.png?v=1772032186553",
+      "title": "Wedding Flare",
       "category": "decor"
+    },
+    {
+      "id": "gallery-1772032234306",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772032224122.png?v=1772032225412",
+      "title": "Wedding Isle",
+      "category": "florals"
     }
   ],
   "labels": {
