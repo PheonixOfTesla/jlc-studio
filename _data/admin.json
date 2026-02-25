@@ -408,10 +408,16 @@
       "category": "decor"
     },
     {
-      "id": "gallery-1772032234306",
-      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772032224122.png?v=1772032225412",
+      "id": "gallery-1772032352074",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772032341336.png?v=1772032342717",
       "title": "Wedding Isle",
-      "category": "florals"
+      "category": "decor"
+    },
+    {
+      "id": "gallery-1772032392902",
+      "url": "https://raw.githubusercontent.com/PheonixOfTesla/jlc-studio/main/images/gallery-img-1772032384926.png?v=1772032386346",
+      "title": "Wedding 1",
+      "category": "decor"
     }
   ],
   "labels": {
